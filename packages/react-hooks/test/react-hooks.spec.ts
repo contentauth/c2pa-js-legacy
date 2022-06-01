@@ -1,12 +1,15 @@
-import { renderHook } from './lib/hook-testing';
+import { renderHook } from '@contentauth/testing';
 import wrapper from './lib/test-wrapper';
-import { useC2pa } from '@contentauth/react-hooks';
+import { useC2pa } from '../';
 
-xdescribe('react-hooks', () => {
+describe('react-hooks', () => {
   describe('useC2pa', () => {
     it('should return provenance data', async () => {
       const { result, waitForNextUpdate } = renderHook(
-        () => useC2pa('tests/assets/CAICAI.jpg'),
+        () =>
+          useC2pa(
+            './node_modules/@contentauth/testing/fixtures/images/CAICAI.jpg',
+          ),
         { wrapper },
       );
 

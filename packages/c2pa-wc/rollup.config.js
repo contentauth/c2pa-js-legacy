@@ -34,6 +34,8 @@ const banner = `
 
 const baseConfig = createBasicConfig({
   developmentMode,
+  // we provide our own node-resolve plugin as the included version does not satisfy the commonjs' plugin version requirement
+  nodeResolve: false,
 });
 
 export default merge(baseConfig, {

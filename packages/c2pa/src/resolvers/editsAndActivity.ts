@@ -13,7 +13,7 @@ import uniqBy from 'lodash/fp/uniqBy';
 import sortBy from 'lodash/fp/sortBy';
 import debug from 'debug';
 import { Downloader } from '../lib/downloader';
-import { createTypedResolvers } from '.';
+import { createTypedResolvers } from './createTypedResolvers';
 import { BaseManifest } from '../manifest';
 
 const dbg = debug('c2pa:resolvers:editsAndActivity');

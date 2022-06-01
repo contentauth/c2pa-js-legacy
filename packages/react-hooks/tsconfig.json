@@ -1,14 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
     "outDir": "dist",
-    "jsx": "react"
+    "jsx": "react",
+    "module": "ES6",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "ES6",
+    "esModuleInterop": true
   },
-  "include": [
-    "./**/*"
-  ],
-  "exclude": [
-    "./dist/**/*",
-    "./test/**/*"
-  ]
+  "include": ["./**/*.ts"],
+  "exclude": ["./dist/**/*", "./test/**/*"]
 }

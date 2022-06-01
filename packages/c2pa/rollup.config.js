@@ -9,7 +9,6 @@
 
 import { resolve } from 'path';
 import merge from 'lodash/merge';
-import alias from '@rollup/plugin-alias';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
@@ -29,28 +28,23 @@ const banner = `
  **************************************************************************/
 `;
 
-const workspaceModules = resolve(__dirname, '../../node_modules');
 const outputDir = resolve(__dirname, './dist');
 const developmentMode = process.env.ROLLUP_WATCH === 'true';
 const plugins = [
-  alias({
-    entries: [
-      {
-        find: 'debug',
-        replacement: `${workspaceModules}/debug/src/browser.js`,
-      },
-    ],
-  }),
   copy({
     targets: [
       {
-        src: [`${workspaceModules}/@contentauth/toolkit/pkg/**/*.wasm`],
-        dest: `${outputDir}/assets/wasm`,
+        src: [
+          resolve(
+            __dirname,
+            './node_modules/@contentauth/toolkit/pkg/**/*.wasm',
+          ),
+        ],
+        dest: resolve(__dirname, './dist/assets/wasm'),
       },
     ],
     copyOnce: false,
     flatten: true,
-    verbose: true,
   }),
   wasm({
     maxFileSize: 1024000,
@@ -59,7 +53,7 @@ const plugins = [
     browser: true,
   }),
   commonjs(),
-  typescript({ sourceMap: developmentMode }),
+  typescript(),
 ];
 
 const files = [

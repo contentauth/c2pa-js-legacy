@@ -19,7 +19,13 @@
   ],
   "scripts": {
     "dev": "nodemon -x wasm-pack -e rs -w src -w -- build --dev --out-name detector --target web",
-    "build": "wasm-pack build --out-name detector --release --target web && rm -f pkg/.gitignore pkg/package.json",
-    "clean": "rm -rf ./pkg"
+    "build": "wasm-pack --quiet build --out-name detector --release --target web && rm -f pkg/.gitignore pkg/package.json",
+    "build:verbose": "wasm-pack --verbose build --out-name detector --release --target web && rm -f pkg/.gitignore pkg/package.json",
+    "clean": "rimraf ./pkg",
+    "test": "echo \"@contentauth/detector\" no tests"
+  },
+  "devDependencies": {
+    "nodemon": "~2.0.16",
+    "rimraf": "^3.0.2"
   }
 }

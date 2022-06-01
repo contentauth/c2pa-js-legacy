@@ -4,7 +4,7 @@ import {
   GetManifestType,
   resolvers,
   GetIngredientType,
-} from 'c2pa';
+} from '../';
 
 const manifestResolvers = resolvers.createTypedResolvers({
   customResolver: (manifest) => manifest.data.title,
@@ -24,13 +24,15 @@ describe('c2pa', function () {
     describe('CAICAI.jpg', function () {
       beforeAll(async function (this: TestContext) {
         const c2pa = await createC2pa({
-          wasmSrc: 'packages/c2pa/dist/assets/wasm/toolkit_bg.wasm',
-          workerSrc: 'packages/c2pa/dist/c2pa.worker.js',
+          wasmSrc: './dist/assets/wasm/toolkit_bg.wasm',
+          workerSrc: './dist/c2pa.worker.js',
 
           manifestResolvers,
         });
 
-        this.result = await c2pa.read('tests/assets/CAICAI.jpg');
+        this.result = await c2pa.read(
+          './node_modules/@contentauth/testing/fixtures/images/CAICAI.jpg',
+        );
       });
 
       describe('manifestStore', function () {

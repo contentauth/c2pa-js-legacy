@@ -1,8 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "module": "ES6",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "ES6"
   },
-  "include": ["./**/*"],
-  "exclude": ["./dist/**/*", "./test/**/*"]
+  "include": ["**/*"],
+  "exclude": ["dist/**/*", "test/**/*"]
 }

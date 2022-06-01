@@ -1,5 +1,5 @@
 import { omitDeep } from 'deepdash-es/standalone';
-import { getManifestStoreFromArrayBuffer } from '@contentauth/toolkit';
+import { getManifestStoreFromArrayBuffer } from '../../pkg/toolkit';
 import type { ManifestStoreFixture } from './ManifestStoreFixture';
 
 export interface ValidationStatus {
@@ -16,11 +16,11 @@ export interface TestContext {
 export async function loadTestData(filename: string, hasFixture = true) {
   const parts = /(.*)\.(\w{2,4})$/;
   const [, assetBase, assetExt] = parts.exec(filename) || [null, null, null];
-  const testImage = await fetch(`tests/assets/${assetBase}.${assetExt}`).then(
+  const testImage = await fetch(`./node_modules/@contentauth/testing/fixtures/images/${assetBase}.${assetExt}`).then(
     (x) => x.blob(),
   );
   const fixture = hasFixture
-    ? ((await fetch(`tests/fixtures/manifest-store/${assetBase}.json`).then(
+    ? ((await fetch(`./node_modules/@contentauth/testing/fixtures/manifest-store/${assetBase}.json`).then(
         (x) => x.json(),
       )) as ManifestStoreFixture)
     : null;

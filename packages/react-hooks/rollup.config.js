@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import merge from 'lodash/merge';
-import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import strip from '@rollup/plugin-strip';
 import { terser } from 'rollup-plugin-terser';
@@ -18,7 +17,7 @@ const banner = `
 
 const outputDir = resolve(__dirname, './dist');
 const developmentMode = process.env.ROLLUP_WATCH === 'true';
-const plugins = [commonjs(), typescript({ sourceMap: developmentMode })];
+const plugins = [typescript()];
 
 const files = [
   {
@@ -34,6 +33,7 @@ const files = [
 export default files.reduce((acc, config) => {
   const suffix = config.output.format === 'es' ? 'esm.' : '';
   const baseConfig = merge({}, config, {
+    external: ['react', 'c2pa'],
     output: {
       entryFileNames: `[name].${suffix}js`,
       dir: outputDir,

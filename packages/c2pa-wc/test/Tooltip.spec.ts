@@ -1,5 +1,5 @@
 import { fixture, html } from '@open-wc/testing';
-import 'c2pa-wc';
+import '../dist';
 
 describe('Tooltip', function () {
   it('renders text', async function () {

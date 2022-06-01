@@ -1,4 +1,4 @@
-import { default as initToolkit } from '@contentauth/toolkit';
+import { default as initToolkit } from '../pkg/toolkit';
 import {
   itMatchesFixture,
   itMatchesValidation,
@@ -8,7 +8,7 @@ import {
 
 describe('@contentauth/toolkit', function () {
   beforeAll(async () => {
-    await initToolkit('packages/toolkit/pkg/toolkit_bg.wasm');
+    await initToolkit('pkg/toolkit_bg.wasm');
   });
 
   describe('getManifestStoreFromArrayBuffer()', function () {

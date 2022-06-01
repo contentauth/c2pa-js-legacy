@@ -7,6 +7,7 @@
   },
   "license": "MIT",
   "description": "WebAssembly binary and bindings for the c2pa-toolkit",
+  "type": "module",
   "main": "pkg/toolkit.js",
   "types": "pkg/toolkit.d.ts",
   "repository": {
@@ -19,8 +20,28 @@
   ],
   "scripts": {
     "dev": "nodemon -x wasm-pack -e rs -w src -w ../../../c2pa-toolkit/lib -- build --dev --out-name toolkit --target web",
-    "build": "wasm-pack build --out-name toolkit --release --target web && rm -f pkg/.gitignore pkg/package.json",
-    "clean": "rm -rf ./pkg"
+    "build": "rushx clean && wasm-pack --quiet build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json",
+    "build:verbose": "rushx clean && wasm-pack --verbose build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json",
+    "clean": "rimraf ./pkg",
+    "test": "wtr"
   },
-  "gitHead": "a5096943d5b286dd35b1cc70ad0ebfa7688c5c5f"
+  "gitHead": "a5096943d5b286dd35b1cc70ad0ebfa7688c5c5f",
+  "devDependencies": {
+    "@contentauth/testing": "workspace:*",
+    "nodemon": "~2.0.16",
+    "@types/jasmine": "~4.0.3",
+    "rimraf": "^3.0.2",
+    "@web/test-runner": "~0.13.27",
+    "@web/dev-server-esbuild": "~0.3.0",
+    "@rollup/plugin-replace": "~4.0.0",
+    "rollup": "~2.70.2",
+    "@web/dev-server-rollup": "~0.3.17",
+    "@web/test-runner-browserstack": "~0.5.0",
+    "@web/test-runner-puppeteer": "~0.10.5",
+    "typescript": "~4.6.3",
+    "web-test-runner-jasmine": "~0.0.1",
+    "@web/test-runner-core": "~0.10.26",
+    "jasmine-core": "~4.1.0",
+    "deepdash-es": "~5.3.9"
+  }
 }

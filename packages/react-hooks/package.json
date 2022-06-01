@@ -7,6 +7,7 @@
   },
   "license": "MIT",
   "description": "React Hooks for the CAI JavaScript SDK",
+  "type": "module",
   "main": "dist/c2pa-react-hooks.esm.js",
   "module": "dist/c2pa-react-hooks.esm.js",
   "types": "dist/index.d.ts",
@@ -20,12 +21,40 @@
   },
   "scripts": {
     "dev": "rollup -c ./rollup.config.js -w",
-    "clean": "rm -rf dist",
-    "build:lib": "rollup -c ./rollup.config.js",
-    "build": "run-s clean build:lib"
+    "clean": "rimraf dist",
+    "build": "rushx clean && rollup -c ./rollup.config.js --silent",
+    "build:verbose": "rushx clean && rollup -c ./rollup.config.js",
+    "test": "wtr"
   },
-  "peerDependencies": {
-    "c2pa": "*",
-    "react": ">= 16.8.0"
+  "dependencies": {
+    "c2pa": "workspace:*",
+    "react": "^16.13.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@contentauth/testing": "workspace:*",
+    "@rollup/plugin-strip": "~2.1.0",
+    "@rollup/plugin-typescript": "~8.3.2",
+    "rollup": "~2.70.2",
+    "rollup-plugin-terser": "~7.0.2",
+    "tslib": "~2.4.0",
+    "typescript": "~4.6.3",
+    "eslint": "~8.14.0",
+    "@rushstack/eslint-config": "~2.6.0",
+    "@types/react": "^16.13.1",
+    "@rollup/plugin-alias": "~3.1.9",
+    "@rollup/plugin-replace": "~4.0.0",
+    "@web/dev-server-esbuild": "~0.3.0",
+    "@web/test-runner": "~0.13.27",
+    "@web/test-runner-core": "~0.10.26",
+    "@web/dev-server-rollup": "~0.3.17",
+    "@web/test-runner-browserstack": "~0.5.0",
+    "@web/test-runner-puppeteer": "~0.10.5",
+    "web-test-runner-jasmine": "~0.0.1",
+    "jasmine-core": "~4.1.0",
+    "@esm-bundle/react": "~17.0.2-fix.1",
+    "@testing-library/react-hooks": "~8.0.0",
+    "@types/jasmine": "~4.0.3",
+    "rimraf": "^3.0.2"
   }
 }
