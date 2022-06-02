@@ -21,6 +21,7 @@
   "scripts": {
     "dev": "nodemon -x wasm-pack -e rs -w src -w ../../../c2pa-toolkit/lib -- build --dev --out-name toolkit --target web",
     "build": "rushx clean && wasm-pack --quiet build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json",
+    "build:release": "rushx build",
     "build:verbose": "rushx clean && wasm-pack --verbose build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json",
     "clean": "rimraf ./pkg",
     "test": "wtr"

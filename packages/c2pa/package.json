@@ -35,6 +35,7 @@
     "dev": "rollup -c ./rollup.config.js -w",
     "clean": "rimraf dist",
     "build": "rushx clean && rollup -c ./rollup.config.js --silent",
+    "build:release": "rushx build",
     "build:verbose": "rushx clean && rollup -c ./rollup.config.js",
     "test": "wtr"
   },

@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:release": "rushx build",
     "serve": "vite preview",
     "test": "echo \"examples/react-ts-vite\" no tests"
   },

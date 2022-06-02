@@ -22,9 +22,22 @@
     },
 
     {
+      "commandKind": "bulk",
+      "name": "build:release",
+      "summary": "Release build",
+      "description": "Release build workaround due to rust/wasm info logs treated as failures",
+      "safeForSimultaneousRushProcesses": false,
+      "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true,
+      "incremental": true,
+      "ignoreMissingScript": false
+    },
+
+    {
       "name": "build:verbose",
       "commandKind": "bulk",
       "summary": "Build all packages with detailed logs",
+      "safeForSimultaneousRushProcesses": false,
       "enableParallelism": true,
       "allowWarningsInSuccessfulBuild": true,
       "incremental": true,
