@@ -104,3 +104,6 @@ lib
 
 # Prettier reformats code blocks inside Markdown, which affects rendered output
 *.md
+
+# Package-specific ignores
+tools/testing/src/esm-bundle/

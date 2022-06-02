@@ -6,6 +6,6 @@
     "moduleResolution": "node",
     "declaration": true,
     "declarationMap": true,
-    "outDir": "../src/esm-bundle",
+    "outDir": "../src/esm-bundle"
   }
 }

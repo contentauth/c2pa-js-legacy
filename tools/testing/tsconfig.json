@@ -8,7 +8,7 @@
     "declarationMap": true,
     "allowJs": true,
     "outDir": "dist",
-    "sourceMap": true,
+    "sourceMap": true
   },
-  "files": ["./src/index.ts"],
+  "files": ["./src/index.ts"]
 }
