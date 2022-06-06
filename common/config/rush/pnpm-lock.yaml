@@ -7,12 +7,12 @@ importers:
 
   ../../examples/react-ts-vite:
     specifiers:
-      '@contentauth/react-hooks': workspace:*
+      '@contentauth/react-hooks': '*'
       '@types/react': ^16.13.1
       '@types/react-dom': ^16.9.9
       '@vitejs/plugin-react': ^1.1.0
-      c2pa: workspace:*
-      c2pa-wc: workspace:*
+      c2pa: '*'
+      c2pa-wc: '*'
       postcss: ~8.4.12
       postcss-nesting: ^10.0.2
       react: ^16.13.1
@@ -20,9 +20,9 @@ importers:
       typescript: ~4.6.3
       vite: ^2.7.12
     dependencies:
-      '@contentauth/react-hooks': link:../../packages/react-hooks
-      c2pa: link:../../packages/c2pa
-      c2pa-wc: link:../../packages/c2pa-wc
+      '@contentauth/react-hooks': 0.5.0_c2pa@0.9.0+react@16.14.0
+      c2pa: 0.9.0
+      c2pa-wc: 0.5.0
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
     devDependencies:
@@ -1835,6 +1835,24 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@contentauth/detector/0.3.0:
+    resolution: {integrity: sha512-FyOX0srUvImLEF9Hb7K02RannDerD//v2lRdgvmHCu9rum2DUEu0mfCMFjuVzPP2DYoG++K98q4q3iSbyCvwoA==}
+    dev: false
+
+  /@contentauth/react-hooks/0.5.0_c2pa@0.9.0+react@16.14.0:
+    resolution: {integrity: sha512-N88JMFbvh5MbfbehCztHkTOMBfFOiTe9Zkj2X5kRFDQruLzqkgtgkU+gglzRkqs6T0vHpeaU3HiPQHzaxYzOGw==}
+    peerDependencies:
+      c2pa: '*'
+      react: '>= 16.8.0'
+    dependencies:
+      c2pa: 0.9.0
+      react: 16.14.0
+    dev: false
+
+  /@contentauth/toolkit/0.7.0:
+    resolution: {integrity: sha512-yCGe77iFFmgW5MNaGaLRrnkojVmLD9ZbEbm+lfvEdRV9ovEwZXHB8MVy+lqJHz+HMhj9YF23WvVtGMbQSc63fQ==}
+    dev: false
 
   /@csstools/selector-specificity/1.0.0_d7c8774722f6269932261ce53a091c71:
     resolution: {integrity: sha512-RkYG5KiGNX0fJ5YoI0f4Wfq2Yo74D25Hru4fxTOioYdQvHBxcrrtTTyT5Ozzh2ejcNrhFy7IEts2WyEY7yi5yw==}
@@ -6054,6 +6072,28 @@ packages:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
     dev: true
+
+  /c2pa-wc/0.5.0:
+    resolution: {integrity: sha512-5bsjroajSDJHoK5A2wZW+6fd6z9IOowGoez+ib8xqOg+xLjS1selcIpxBY8HoQoxs8nSe+OZnJOEM6mvvubEiA==}
+    dependencies:
+      date-fns: 2.28.0
+      fast-deep-equal: 3.1.3
+      lit: 2.2.2
+      lodash: 4.17.21
+      tippy.js: 6.3.7
+    dev: false
+
+  /c2pa/0.9.0:
+    resolution: {integrity: sha512-haDasn/LA1OeAOopEMH4F5PFtQ61GL1AEaAl6WYeGCXYNbI8Pb63wnpmtykLELCoj39sZYwYEY3niGZ4fmGN2g==}
+    dependencies:
+      '@contentauth/detector': 0.3.0
+      '@contentauth/toolkit': 0.7.0
+      date-fns: 2.28.0
+      lodash: 4.17.21
+      make-error: 1.3.6
+      p-props: 5.0.0
+      workerpool: 6.2.1
+    dev: false
 
   /cacache/12.0.4:
     resolution: {integrity: sha512-a0tMB40oefvuInr4Cwb3GerbL9xTj1D5yg0T5xrjGCGyfvbxseIXX7BAO/u/hIXdafzOI5JC3wDwHyf24buOAQ==}
