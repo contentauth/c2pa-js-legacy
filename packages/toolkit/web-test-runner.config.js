@@ -12,7 +12,7 @@ const IS_CI = process.argv.includes('--ci');
 const sharedCapabilities = {
   'browserstack.user': process.env.BROWSERSTACK_USER,
   'browserstack.key': process.env.BROWSERSTACK_KEY,
-  project: 'CAI SDK',
+  project: '@contentauth/toolkit',
   build: process.env.GITHUB_REF || 'local',
   acceptSslCerts: true,
 };
