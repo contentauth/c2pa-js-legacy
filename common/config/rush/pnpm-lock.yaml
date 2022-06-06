@@ -325,6 +325,7 @@ importers:
       '@rollup/plugin-node-resolve': ^13.3.0
       '@rollup/plugin-typescript': ~8.3.2
       '@testing-library/react-hooks': ~8.0.0
+      '@types/react-dom': ~18.0.5
       react: ^16.13.1
       rimraf: ^3.0.2
       rollup: ~2.70.2
@@ -341,6 +342,7 @@ importers:
       tslib: 2.4.0
       typescript: 4.6.3
     devDependencies:
+      '@types/react-dom': 18.0.5
       rimraf: 3.0.2
 
 packages:
@@ -4196,6 +4198,12 @@ packages:
 
   /@types/range-parser/1.2.4:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
+    dev: true
+
+  /@types/react-dom/18.0.5:
+    resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
+    dependencies:
+      '@types/react': 16.14.25
     dev: true
 
   /@types/react-syntax-highlighter/11.0.5:
