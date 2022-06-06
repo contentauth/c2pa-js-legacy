@@ -24,10 +24,10 @@ jobs:
         run: cargo install wasm-pack
       - name: Install project dependencies
         run: rush install
-      - name: Lint packages
-        run: rush lint
       - name: Build packages
         run: rush build:release --only tag:production --only tag:tooling
+      - name: Lint packages
+        run: rush lint
       - name: Run integration tests
         env:
           BROWSERSTACK_USER: ${{ secrets.BROWSERSTACK_USER }}
