@@ -50,7 +50,6 @@
     "workerpool": "^6.1.5",
     "debug": "~4.3.4"
   },
-  "gitHead": "a5096943d5b286dd35b1cc70ad0ebfa7688c5c5f",
   "devDependencies": {
     "@contentauth/config": "workspace:*",
     "@contentauth/testing": "workspace:*",

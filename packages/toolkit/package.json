@@ -27,7 +27,6 @@
     "test": "wtr",
     "lint": "echo \"@contentauth/detector\" no-op"
   },
-  "gitHead": "a5096943d5b286dd35b1cc70ad0ebfa7688c5c5f",
   "devDependencies": {
     "@contentauth/testing": "workspace:*",
     "nodemon": "~2.0.16",
