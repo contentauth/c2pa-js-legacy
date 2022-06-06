@@ -80,8 +80,8 @@ export function createManifest<T extends ManifestResolvers>(
 
     data: manifestData,
 
-    async asSerializable(config: any) {
-      return createSerializableManifest(this, finalResolvers, config);
+    async asSerializable(serializeConfig: any) {
+      return createSerializableManifest(this, finalResolvers, serializeConfig);
     },
   } as Manifest<T>;
 

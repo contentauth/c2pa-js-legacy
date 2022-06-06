@@ -59,9 +59,8 @@ export class Validator {
    * Scans an individual binary chunk for a C2PA metadata marker
    *
    * @param chunk - the chunk to check for the metadata marker
-   * @param shouldTransfer - `true` to pass this chunk as a transferable object
    */
-  async scanChunk(chunk: ArrayBuffer, shouldTransfer = false) {
+  async scanChunk(chunk: ArrayBuffer) {
     const wasm = await detectorWasm();
 
     dbg('Scanning buffer for C2PA marker with length %d', chunk.byteLength);
@@ -83,7 +82,6 @@ export class Validator {
    */
   async scanInput(input: ArrayBuffer | Blob) {
     let buffer: ArrayBuffer | null = null;
-    let shouldTransfer = false;
 
     if (input instanceof ArrayBuffer) {
       buffer = input;
@@ -91,7 +89,6 @@ export class Validator {
       // Only send this as a transferable object if we are extracting an array
       // buffer from a blob, since we won't be re-using this buffer anywhere else
       const fullBuffer = await input.arrayBuffer();
-      shouldTransfer = true;
       if (this.#detectionLength > 0) {
         buffer = fullBuffer.slice(0, this.#detectionLength);
       } else {
@@ -103,6 +100,6 @@ export class Validator {
       throw new InvalidInputError();
     }
 
-    return this.scanChunk(buffer, shouldTransfer);
+    return this.scanChunk(buffer);
   }
 }

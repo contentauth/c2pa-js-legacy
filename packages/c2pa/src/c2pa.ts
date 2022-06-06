@@ -112,7 +112,6 @@ export async function createC2pa<T extends ManifestResolvers>(
   let jobCounter = 0;
 
   dbg('Creating c2pa with config', config);
-
   ensureCompatibility();
 
   const pool = await createWorkerPool(config);

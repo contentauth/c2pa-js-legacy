@@ -21,8 +21,8 @@ export function useC2pa<T extends ManifestResolvers = {}>(
     const read = async () => {
       if (promisedC2pa && input) {
         const c2pa = await promisedC2pa;
-        const result = await c2pa.read(input);
-        setResult(result as C2paReadResult<T>);
+        const readResult = await c2pa.read(input);
+        setResult(readResult as C2paReadResult<T>);
       }
     };
 

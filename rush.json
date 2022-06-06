@@ -429,6 +429,11 @@
       "tags": ["tooling"]
     },
     {
+      "packageName": "@contentauth/config",
+      "projectFolder": "tools/config",
+      "tags": ["tooling"]
+    },
+    {
       "packageName": "react-ts-vite",
       "projectFolder": "examples/react-ts-vite",
       "tags": ["example"]

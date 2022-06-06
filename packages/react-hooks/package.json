@@ -25,7 +25,8 @@
     "build": "rushx clean && rollup -c ./rollup.config.js --silent",
     "build:release": "rushx build",
     "build:verbose": "rushx clean && rollup -c ./rollup.config.js",
-    "test": "wtr"
+    "test": "wtr",
+    "lint": "eslint ."
   },
   "dependencies": {
     "c2pa": "workspace:*",
@@ -33,6 +34,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@contentauth/config": "workspace:*",
     "@contentauth/testing": "workspace:*",
     "@rollup/plugin-strip": "~2.1.0",
     "@rollup/plugin-typescript": "~8.3.2",

@@ -16,8 +16,8 @@ export function useThumbnailUrl(thumbnail: Thumbnail | undefined) {
 
   useEffect(() => {
     const computeHash = async () => {
-      const hash = await thumbnail?.hash?.();
-      setHash(hash);
+      const thumbnailHash = await thumbnail?.hash?.();
+      setHash(thumbnailHash);
     };
 
     computeHash();

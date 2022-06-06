@@ -45,6 +45,18 @@
     },
 
     {
+      "commandKind": "bulk",
+      "name": "lint",
+      "summary": "Lint all packages",
+      "safeForSimultaneousRushProcesses": false,
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": false,
+      "allowWarningsInSuccessfulBuild": false,
+      "incremental": true
+    },
+
+    {
       "name": "prettier",
       "commandKind": "global",
       "summary": "Used by the pre-commit Git hook. This command invokes Prettier to reformat staged changes.",

@@ -37,7 +37,8 @@
     "build": "rushx clean && rollup -c ./rollup.config.js --silent",
     "build:release": "rushx build",
     "build:verbose": "rushx clean && rollup -c ./rollup.config.js",
-    "test": "wtr"
+    "test": "wtr",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@contentauth/detector": "workspace:*",
@@ -51,6 +52,7 @@
   },
   "gitHead": "a5096943d5b286dd35b1cc70ad0ebfa7688c5c5f",
   "devDependencies": {
+    "@contentauth/config": "workspace:*",
     "@contentauth/testing": "workspace:*",
     "@rollup/plugin-commonjs": "~22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",

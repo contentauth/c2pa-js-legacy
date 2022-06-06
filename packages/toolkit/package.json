@@ -24,7 +24,8 @@
     "build:release": "rushx build",
     "build:verbose": "rushx clean && wasm-pack --verbose build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json",
     "clean": "rimraf ./pkg",
-    "test": "wtr"
+    "test": "wtr",
+    "lint": "echo \"@contentauth/detector\" no-op"
   },
   "gitHead": "a5096943d5b286dd35b1cc70ad0ebfa7688c5c5f",
   "devDependencies": {

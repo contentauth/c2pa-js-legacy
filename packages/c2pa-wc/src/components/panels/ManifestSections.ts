@@ -38,6 +38,7 @@ export interface MinimumViableProvenanceConfig extends SectionConfig {
   showDescriptions?: boolean;
 }
 
+/* eslint-disable @typescript-eslint/no-shadow */
 export function MinimumViableProvenance({
   manifest,
   config: customConfig,

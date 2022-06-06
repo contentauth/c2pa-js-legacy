@@ -30,8 +30,7 @@
     "build:verbose": "rushx clean && rollup -c rollup.config.js",
     "build:vite": "rushx clean && vite build",
     "test": "wtr",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "prettier --check \"src/**/*.ts\"",
+    "lint": "eslint .",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "clean": "rimraf dist"
@@ -49,6 +48,7 @@
   },
   "devDependencies": {
     "@contentauth/testing": "workspace:*",
+    "@contentauth/config": "workspace:*",
     "@babel/core": "^7.16.7",
     "@storybook/addon-a11y": "^6.4.15",
     "@storybook/addon-actions": "^6.4.14",

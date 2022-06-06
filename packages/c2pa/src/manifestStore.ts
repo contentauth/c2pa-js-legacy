@@ -63,16 +63,16 @@ export function createManifestStore<T extends ManifestResolvers>(
     activeManifest: manifests[manifestStoreData.activeManifest],
     data: manifestStoreData,
 
-    asSerializable: async (config) => {
+    asSerializable: async (serializeConfig) => {
       const serializableManifests = await pProps(manifests, (manifest) =>
-        (manifest as Manifest<T>).asSerializable(config),
+        (manifest as Manifest<T>).asSerializable(serializeConfig),
       );
 
       const serializableManifestData = Object.entries(
         serializableManifests,
-      ).reduce((serializableManifestData, [label, { data }]) => {
-        serializableManifestData[label] = data;
-        return serializableManifestData;
+      ).reduce((manifestData, [label, { data }]) => {
+        manifestData[label] = data;
+        return manifestData;
       }, {} as SerializableManifestStoreData<T>['manifests']);
 
       return {
@@ -126,15 +126,18 @@ function createManifests<T extends ManifestResolvers>(
     });
   }
 
-  const manifests = postorderManifests.reduce((manifests, manifestData) => {
-    dbg('Creating manifest with data', manifestData);
+  const orderedManifests = postorderManifests.reduce(
+    (manifests, manifestData) => {
+      dbg('Creating manifest with data', manifestData);
 
-    const manifest = createManifest<T>(config, manifestData, manifests);
-    manifests[manifestData.label] = manifest;
-    return manifests;
-  }, {} as ManifestMap<T>);
+      const manifest = createManifest<T>(config, manifestData, manifests);
+      manifests[manifestData.label] = manifest;
+      return manifests;
+    },
+    {} as ManifestMap<T>,
+  );
 
-  const manifestStack = [manifests[toolkitActiveManifestId]];
+  const manifestStack = [orderedManifests[toolkitActiveManifestId]];
 
   // Perform an in-order traversal of the manifest tree to set 'parent' values of ingredient manifests
   while (manifestStack.length) {
@@ -149,5 +152,5 @@ function createManifests<T extends ManifestResolvers>(
     });
   }
 
-  return manifests;
+  return orderedManifests;
 }
