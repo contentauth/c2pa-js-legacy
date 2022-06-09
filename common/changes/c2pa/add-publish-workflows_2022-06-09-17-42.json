@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add API document model via api-extractor",
+      "type": "none"
+    }
+  ],
+  "packageName": "c2pa"
+}
