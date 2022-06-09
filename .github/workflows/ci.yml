@@ -27,6 +27,7 @@ jobs:
       - name: Create API extractor output
         run: api-extractor run --verbose
         working-directory: packages/c2pa
+        continue-on-error: true
       - name: Lint packages
         run: rush lint
       - name: Run integration tests
