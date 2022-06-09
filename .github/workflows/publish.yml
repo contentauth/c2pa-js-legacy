@@ -1,0 +1,31 @@
+name: Publish
+on:
+  pull_request:
+    types: [closed]
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Rush needs to diff against origin/main for changeset verification
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Install rush
+        run: npm install -g @microsoft/rush
+      - name: Install project dependencies
+        run: rush install
+      - name: Check changeset status
+        id: verify
+        run: rush change --verify
+        continue-on-error: true
+      - name: Run publish
+        id: publish
+        run: rush publish --apply --target-branch main --publish
+        if: ${{ steps.verify.outcome == 'success' }}
