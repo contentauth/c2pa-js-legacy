@@ -1,11 +1,7 @@
 name: ci
 on:
-  push:
-    paths-ignore:
-      - 'docs/**'
   pull_request:
-    paths-ignore:
-      - 'docs/**'
+    types: [opened, synchronize]
 jobs:
   build-test:
     name: 'Build and test'
