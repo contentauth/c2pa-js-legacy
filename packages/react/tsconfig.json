@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "jsx": "react",
+    "module": "ES6",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "ES6"
+  },
+  "include": ["**/*"],
+  "exclude": ["dist"]
+}

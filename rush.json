@@ -424,6 +424,12 @@
       "tags": ["production"]
     },
     {
+      "packageName": "@contentauth/react",
+      "projectFolder": "packages/react",
+      "shouldPublish": true,
+      "tags": ["production"]
+    },
+    {
       "packageName": "@contentauth/testing",
       "projectFolder": "tools/testing",
       "tags": ["tooling"]
