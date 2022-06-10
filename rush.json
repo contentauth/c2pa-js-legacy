@@ -412,12 +412,6 @@
       "tags": ["production"]
     },
     {
-      "packageName": "@contentauth/react-hooks",
-      "projectFolder": "packages/react-hooks",
-      "shouldPublish": true,
-      "tags": ["production"]
-    },
-    {
       "packageName": "@contentauth/toolkit",
       "projectFolder": "packages/toolkit",
       "shouldPublish": true,

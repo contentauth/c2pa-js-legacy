@@ -250,67 +250,6 @@ importers:
       tslib: 2.4.0
       typescript: 4.6.3
 
-  ../../packages/react-hooks:
-    specifiers:
-      '@contentauth/config': workspace:*
-      '@contentauth/testing': workspace:*
-      '@esm-bundle/react': ~17.0.2-fix.1
-      '@rollup/plugin-alias': ~3.1.9
-      '@rollup/plugin-replace': ~4.0.0
-      '@rollup/plugin-strip': ~2.1.0
-      '@rollup/plugin-typescript': ~8.3.2
-      '@rushstack/eslint-config': ~2.6.0
-      '@testing-library/react-hooks': ~8.0.0
-      '@types/jasmine': ~4.0.3
-      '@types/react': ^16.13.1
-      '@web/dev-server-esbuild': ~0.3.0
-      '@web/dev-server-rollup': ~0.3.17
-      '@web/test-runner': ~0.13.27
-      '@web/test-runner-browserstack': ~0.5.0
-      '@web/test-runner-core': ~0.10.26
-      '@web/test-runner-puppeteer': ~0.10.5
-      c2pa: workspace:*
-      eslint: ~8.14.0
-      jasmine-core: ~4.1.0
-      lodash: ^4.17.21
-      react: ^16.13.1
-      rimraf: ^3.0.2
-      rollup: ~2.70.2
-      rollup-plugin-terser: ~7.0.2
-      tslib: ~2.4.0
-      typescript: ~4.6.3
-      web-test-runner-jasmine: ~0.0.1
-    dependencies:
-      c2pa: link:../c2pa
-      lodash: 4.17.21
-      react: 16.14.0
-    devDependencies:
-      '@contentauth/config': link:../../tools/config
-      '@contentauth/testing': link:../../tools/testing
-      '@esm-bundle/react': 17.0.2-fix.1
-      '@rollup/plugin-alias': 3.1.9_rollup@2.70.2
-      '@rollup/plugin-replace': 4.0.0_rollup@2.70.2
-      '@rollup/plugin-strip': 2.1.0_rollup@2.70.2
-      '@rollup/plugin-typescript': 8.3.2_056aba5e56e0ab5307259a29131f3fbe
-      '@rushstack/eslint-config': 2.6.0_eslint@8.14.0+typescript@4.6.3
-      '@testing-library/react-hooks': 8.0.0_6dabb63a8e3fbfb488bb23675567415c
-      '@types/jasmine': 4.0.3
-      '@types/react': 16.14.25
-      '@web/dev-server-esbuild': 0.3.0
-      '@web/dev-server-rollup': 0.3.17
-      '@web/test-runner': 0.13.27
-      '@web/test-runner-browserstack': 0.5.0_typescript@4.6.3
-      '@web/test-runner-core': 0.10.26
-      '@web/test-runner-puppeteer': 0.10.5
-      eslint: 8.14.0
-      jasmine-core: 4.1.0
-      rimraf: 3.0.2
-      rollup: 2.70.2
-      rollup-plugin-terser: 7.0.2_rollup@2.70.2
-      tslib: 2.4.0
-      typescript: 4.6.3
-      web-test-runner-jasmine: 0.0.1
-
   ../../packages/toolkit:
     specifiers:
       '@contentauth/testing': workspace:*
@@ -2016,6 +1955,7 @@ packages:
 
   /@esm-bundle/react/17.0.2-fix.1:
     resolution: {integrity: sha512-AzHd8Hi5KQjwgU2e3SD1XrMm5WF8y8zsKmP9ttsyR6bzTS8TAc1mWRc8UW0Q/px4D38mcP4+ofJDAhhFiB7KXg==}
+    dev: false
 
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
@@ -3911,28 +3851,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       defer-to-connect: 2.0.1
-    dev: true
-
-  /@testing-library/react-hooks/8.0.0_6dabb63a8e3fbfb488bb23675567415c:
-    resolution: {integrity: sha512-uZqcgtcUUtw7Z9N32W13qQhVAD+Xki2hxbTR461MKax8T6Jr8nsUvZB+vcBTkzY2nFvsUet434CsgF0ncW2yFw==}
-    engines: {node: '>=12'}
-    peerDependencies:
-      '@types/react': ^16.9.0 || ^17.0.0
-      react: ^16.9.0 || ^17.0.0
-      react-dom: ^16.9.0 || ^17.0.0
-      react-test-renderer: ^16.9.0 || ^17.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      react-dom:
-        optional: true
-      react-test-renderer:
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.17.9
-      '@types/react': 16.14.25
-      react: 16.14.0
-      react-error-boundary: 3.1.4_react@16.14.0
     dev: true
 
   /@testing-library/react-hooks/8.0.0_react@16.14.0:
@@ -12620,6 +12538,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.17.9
       react: 16.14.0
+    dev: false
 
   /react-fast-compare/3.2.0:
     resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
