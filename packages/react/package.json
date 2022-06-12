@@ -1,8 +1,12 @@
 {
   "name": "@contentauth/react",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "description": "React Components and Hooks for the c2pa JavaScript SDK",
   "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "rollup -c ./rollup.config.js -w",
     "build": "rushx clean && rollup -c ./rollup.config.js --silent",
@@ -33,7 +37,9 @@
   "peerDependencies": {
     "c2pa": "^0.9.1",
     "c2pa-wc": "^0.5.0",
-    "styled-components": ">= 5"
+    "styled-components": ">= 5",
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "c2pa": "workspace:*",
