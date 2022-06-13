@@ -1,0 +1,17 @@
+{
+  "name": "@contentauth/react",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@contentauth/react_v0.1.0",
+      "date": "Mon, 13 Jun 2022 21:37:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Initial release of @contentauth/react"
+          }
+        ]
+      }
+    }
+  ]
+}
