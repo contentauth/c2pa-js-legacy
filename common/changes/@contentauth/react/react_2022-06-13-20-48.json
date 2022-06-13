@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/react",
+      "comment": "Initial release of @contentauth/react",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@contentauth/react"
+}
