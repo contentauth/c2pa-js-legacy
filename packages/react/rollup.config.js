@@ -1,4 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
+import postcss from 'rollup-plugin-postcss';
 
 const banner = `
 /*!*************************************************************************
@@ -19,5 +20,8 @@ export default {
     banner,
   },
   external: ['react', 'c2pa', 'styled-components'],
-  plugins: [typescript({ tsconfig: './tsconfig.json' })],
+  plugins: [
+    typescript({ tsconfig: './tsconfig.json' }),
+    postcss({ modules: true }),
+  ],
 };

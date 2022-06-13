@@ -7,5 +7,4 @@
  * it.
  */
 
-export * from './hooks';
-export * from './components';
+export { L2Image } from './L2Image/L2Image';
