@@ -32,7 +32,8 @@
   },
   "homepage": "https://github.com/contentauth/c2pa-js#readme",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "classnames": "~2.3.1"
   },
   "peerDependencies": {
     "c2pa": "^0.9.1",
@@ -61,6 +62,8 @@
     "react-dom": "^16.13.1",
     "rollup-plugin-postcss": "~4.0.2",
     "postcss": "~8.4.12",
-    "node-sass": "~7.0.1"
+    "node-sass": "~7.0.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-commonjs": "~22.0.0"
   }
 }

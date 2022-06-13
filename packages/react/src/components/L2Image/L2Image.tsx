@@ -11,6 +11,7 @@ import { ManifestSummary } from 'c2pa-wc';
 import React, { useEffect, useRef } from 'react';
 import { useC2pa, useSerialized } from '../../hooks';
 import { generateVerifyUrl } from 'c2pa';
+import classNames from 'classnames';
 
 import styles from './L2Image.scss';
 
@@ -20,10 +21,13 @@ interface L2ImageProps
     HTMLImageElement
   > {
   wcClassName?: string;
+  wrapperClass?: React.HTMLAttributes<HTMLDivElement>['className'];
+  wrapperStyle?: React.HTMLAttributes<HTMLDivElement>['style'];
 }
 
 export function L2Image(props: L2ImageProps) {
-  const { srcSet, wcClassName, ...imgProps } = props;
+  const { srcSet, wcClassName, wrapperClass, wrapperStyle, ...imgProps } =
+    props;
 
   if (srcSet) {
     throw new Error('<L2Image> does not support srcSet. Use src instead');
@@ -44,7 +48,10 @@ export function L2Image(props: L2ImageProps) {
   }, [summaryRef, serializedManifest]);
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      style={wrapperStyle}
+      className={classNames([wrapperClass, styles.wrapper])}
+    >
       <img {...imgProps} />
       {serializedManifest ? (
         <cai-popover interactive class={wcClassName}>

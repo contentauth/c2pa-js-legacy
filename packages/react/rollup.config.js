@@ -1,5 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 const banner = `
 /*!*************************************************************************
@@ -23,5 +25,7 @@ export default {
   plugins: [
     typescript({ tsconfig: './tsconfig.json' }),
     postcss({ modules: true }),
+    nodeResolve(),
+    commonjs(),
   ],
 };
