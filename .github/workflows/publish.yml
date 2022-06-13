@@ -26,6 +26,8 @@ jobs:
         run: rush change --verify
         continue-on-error: true
       - name: Run publish
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         id: publish
         run: rush publish --apply --target-branch main --publish
         if: ${{ steps.verify.outcome == 'success' }}
