@@ -11,16 +11,25 @@ jobs:
         with:
           # Rush needs to diff against origin/main for changeset verification
           fetch-depth: 0
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.MACHINEUSER_PRIVATE_KEY }}
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
-      - name: Install rush
+      - name: Install wasm-pack
+        run: |
+          rustup target add wasm32-unknown-unknown
+          curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - name: Install Rush
         run: npm install -g @microsoft/rush
       - name: Install project dependencies
         run: rush install
+      - name: Build packages
+        run: rush build:release --only tag:production --only tag:tooling
       - name: Check changeset status
         id: verify
         run: rush change --verify
