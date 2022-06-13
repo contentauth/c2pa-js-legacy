@@ -412,14 +412,14 @@
       "tags": ["production"]
     },
     {
-      "packageName": "@contentauth/react-hooks",
-      "projectFolder": "packages/react-hooks",
+      "packageName": "@contentauth/toolkit",
+      "projectFolder": "packages/toolkit",
       "shouldPublish": true,
       "tags": ["production"]
     },
     {
-      "packageName": "@contentauth/toolkit",
-      "projectFolder": "packages/toolkit",
+      "packageName": "@contentauth/react",
+      "projectFolder": "packages/react",
       "shouldPublish": true,
       "tags": ["production"]
     },
@@ -433,6 +433,11 @@
       "projectFolder": "tools/config",
       "tags": ["tooling"]
     }
+    // {
+    //   "packageName": "react-ts-vite",
+    //   "projectFolder": "examples/react-ts-vite",
+    //   "tags": ["example"]
+    // }
     // {
     //   /**
     //    * The NPM package name of the project (must match package.json)

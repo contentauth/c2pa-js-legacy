@@ -14,20 +14,19 @@ import { useC2paContext } from './useC2paContext';
 export function useC2pa<T extends ManifestResolvers = {}>(
   input: C2paSourceType | undefined,
 ) {
-  const promisedC2pa = useC2paContext();
+  const c2paContext = useC2paContext();
   const [result, setResult] = useState<C2paReadResult<T> | undefined>();
 
   useEffect(() => {
-    const read = async () => {
-      if (promisedC2pa && input) {
-        const c2pa = await promisedC2pa;
-        const readResult = await c2pa.read(input);
+    async function read() {
+      if (c2paContext && input) {
+        const readResult = await c2paContext.read(input);
         setResult(readResult as C2paReadResult<T>);
       }
-    };
+    }
 
     read();
-  }, [promisedC2pa, input]);
+  }, [c2paContext, input]);
 
   return result;
 }

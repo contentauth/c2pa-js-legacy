@@ -7,7 +7,7 @@
  * it.
  */
 
-import React, { createContext, useEffect, ReactNode, useRef } from 'react';
+import React, { createContext, useEffect, ReactNode, useState } from 'react';
 import { createC2pa, C2paConfig, ManifestResolvers, C2pa } from 'c2pa';
 
 export interface C2paProviderProps<T extends ManifestResolvers> {
@@ -15,7 +15,7 @@ export interface C2paProviderProps<T extends ManifestResolvers> {
   children: ReactNode;
 }
 
-export type C2paContextValue = Promise<C2pa> | null;
+export type C2paContextValue = C2pa | null;
 
 export const C2paContext = createContext<C2paContextValue>(null);
 
@@ -23,21 +23,22 @@ export function C2paProvider<T extends ManifestResolvers>({
   config,
   children,
 }: C2paProviderProps<T>) {
-  const c2paRef = useRef(createC2pa(config));
+  const [c2paState, setC2paState] = useState<null | C2pa>(null);
 
   useEffect(() => {
-    return () => {
-      async function cleanup() {
-        (await c2paRef.current).dispose();
-      }
+    async function initC2pa() {
+      const c2pa = await createC2pa(config);
+      setC2paState(c2pa);
+    }
 
-      cleanup();
+    initC2pa();
+
+    return () => {
+      c2paState?.dispose();
     };
   }, []);
 
   return (
-    <C2paContext.Provider value={c2paRef.current}>
-      {children}
-    </C2paContext.Provider>
+    <C2paContext.Provider value={c2paState}>{children}</C2paContext.Provider>
   );
 }

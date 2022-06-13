@@ -3,6 +3,55 @@ on:
   pull_request:
     types: [opened, synchronize]
 jobs:
+  check-changeset:
+    name: 'Check changeset status'
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Rush needs to diff against origin/main for changeset verification
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install Rush tooling
+        run: npm install -g @microsoft/rush
+      - name: Find comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body-includes: CHANGESET_MESSAGE
+      - name: Check changeset status
+        id: verify
+        run: rush change --verify
+        continue-on-error: true
+      - name: Comment on changeset success
+        if: ${{ steps.verify.outcome == 'success' }}
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            <!-- CHANGESET_MESSAGE -->
+            ### ✅ Changeset has been found!
+
+            **This will create and publish a new version to NPM after a successful merge.**
+          edit-mode: replace
+      - name: Comment on changeset failure
+        if: ${{ steps.verify.outcome == 'failure' }}
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            <!-- CHANGESET_MESSAGE -->
+            ### ❌ No changeset has been found!
+
+            **This means no version will be published on merge.**
+
+            If you would like this PR to create a new version on merge, please run `rush change` and commit the generated change description files to this branch.
+          edit-mode: replace
   build-test:
     name: 'Build and test'
     runs-on: ubuntu-20.04

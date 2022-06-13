@@ -8,9 +8,8 @@
     "module": "ES6",
     "moduleResolution": "node",
     "strict": true,
-    "target": "ES6",
-    "esModuleInterop": true
+    "target": "ES6"
   },
-  "include": ["./**/*"],
-  "exclude": ["./dist/**/*"]
+  "include": ["**/*"],
+  "exclude": ["dist"]
 }
