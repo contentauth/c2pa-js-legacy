@@ -1,20 +1,20 @@
-import { LitElement, html, css, nothing } from 'lit';
-import { hasChanged, defaultDateFormatter } from '../../utils';
-import merge from 'lodash/merge';
+import type { SerializableManifestData } from 'c2pa';
+import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import merge from 'lodash/merge';
+import { defaultStyles } from '../../styles';
+import { defaultDateFormatter, hasChanged } from '../../utils';
 import {
-  MinimumViableProvenanceConfig,
-  SectionTemplate,
+  AssetsUsed,
+  EditsAndActivity,
   MinimumViableProvenance,
+  MinimumViableProvenanceConfig,
   ProducedBy,
   ProducedWith,
-  EditsAndActivity,
+  SectionTemplate,
   SocialMedia,
-  AssetsUsed,
 } from './ManifestSections';
 import defaultStringMap from './ManifestSummary.str.json';
-import { defaultStyles } from '../../styles';
-import type { SerializableManifestData } from 'c2pa';
 
 declare global {
   namespace JSX {
@@ -76,9 +76,6 @@ export class ManifestSummary extends LitElement {
           padding-bottom: 20px;
           margin-bottom: 20px;
           border-bottom: 1px solid #e1e1e1;
-        }
-        #content {
-          width: 200px;
         }
         #view-more {
           transition: background-color 150ms ease-in-out;

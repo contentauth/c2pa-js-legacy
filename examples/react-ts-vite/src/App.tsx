@@ -1,4 +1,4 @@
-import { useC2pa, useThumbnailUrl } from '@contentauth/react-hooks';
+import { useC2pa, useThumbnailUrl } from '@contentauth/react';
 import {
   C2paReadResult,
   generateVerifyUrl,
@@ -16,9 +16,7 @@ import './App.css';
 import { Resolvers } from './main';
 
 const sampleImage =
-
-  'https://media.githubusercontent.com/media/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
-
+  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 interface ManifestInfoProps {
   manifest: Manifest<Resolvers>;

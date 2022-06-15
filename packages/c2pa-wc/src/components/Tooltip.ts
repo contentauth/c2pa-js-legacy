@@ -40,20 +40,15 @@ export class Tooltip extends LitElement {
           --cai-icon-fill: var(--cai-popover-icon-fill, #a8a8a8);
           cursor: pointer;
         }
-        #content {
-          max-width: 230px;
-          width: max-content;
-          padding: 5px;
-        }
-        #popover::part(tooltip-popover-box) {
+        #popover::part(popover-box) {
           border-radius: var(--cai-border-radius);
           background-color: #fff;
-          min-width: 185px;
-          max-width: 250px;
           filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.4));
         }
-        #popover::part(tooltip-popover-content) {
-          font-size: 14px;
+        #popover::part(popover-content) {
+          min-width: 185px;
+          max-width: 250px;
+          font-size: 13px;
           padding: 10px;
         }
       `,
@@ -64,6 +59,7 @@ export class Tooltip extends LitElement {
     return html`
       <cai-popover
         id="popover"
+        placement="bottom-end"
         ?interactive=${false}
         part-prefix=${Tooltip.popoverPrefix}
         exportparts=${exportParts(Popover.cssParts, Tooltip.popoverPrefix)}

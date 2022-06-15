@@ -26,6 +26,7 @@ declare global {
 @customElement('cai-popover')
 export class Popover extends PartPrefixable(LitElement) {
   private _updateCleanupFn: Function | null = null;
+
   private _eventCleanupFns: Function[] = [];
 
   static readonly cssParts: Record<string, string> = {
@@ -50,7 +51,7 @@ export class Popover extends PartPrefixable(LitElement) {
   offset = { mainAxis: 10 };
 
   @property({ type: Object })
-  shift = { padding: 10 };
+  shift = {};
 
   @property({ type: Boolean })
   interactive = false;
@@ -191,6 +192,9 @@ export class Popover extends PartPrefixable(LitElement) {
         this._updatePosition();
       },
     );
+    if (!this.interactive) {
+      this.contentElement!.style.pointerEvents = 'none';
+    }
   }
 
   disconnectedCallback(): void {

@@ -160,7 +160,6 @@ importers:
       rollup-plugin-postcss: ~4.0.2
       storybook-builder-vite: ^0.1.13
       svgo: ^2.8.0
-      tippy.js: ^6.3.7
       tslib: ~2.4.0
       typescript: ~4.6.3
       vite: ^2.7.12
@@ -176,7 +175,6 @@ importers:
       lit: 2.2.2
       lit-html: 2.2.2
       lodash: 4.17.21
-      tippy.js: 6.3.7
       webpack: 5.72.0
     devDependencies:
       '@babel/core': 7.17.9
@@ -2342,6 +2340,7 @@ packages:
 
   /@popperjs/core/2.11.5:
     resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
+    dev: true
 
   /@rollup/plugin-alias/3.1.9_rollup@2.70.2:
     resolution: {integrity: sha512-QI5fsEvm9bDzt32k39wpOwZhVzRcL5ydcffUHMyLVaVaLeC70I8TJZ17F1z1eMoLu4E/UOcH9BWVkKpIKdrfiw==}
@@ -14650,12 +14649,6 @@ packages:
     dependencies:
       setimmediate: 1.0.5
     dev: true
-
-  /tippy.js/6.3.7:
-    resolution: {integrity: sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==}
-    dependencies:
-      '@popperjs/core': 2.11.5
-    dev: false
 
   /tmpl/1.0.5:
     resolution: {integrity: sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==}
