@@ -10,9 +10,9 @@
     "lint": "echo \"examples/react-ts-vite\" no-op"
   },
   "dependencies": {
-    "@contentauth/react-hooks": "*",
-    "c2pa": "*",
-    "c2pa-wc": "*",
+    "@contentauth/react": "workspace:*",
+    "c2pa": "workspace:*",
+    "c2pa-wc": "workspace:*",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },

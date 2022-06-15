@@ -1,20 +1,22 @@
-import { useState, useEffect, useRef } from 'react';
 import { useC2pa, useThumbnailUrl } from '@contentauth/react-hooks';
-import 'c2pa-wc/dist/components/Icon';
-import 'c2pa-wc/dist/components/Indicator';
-import 'c2pa-wc/dist/components/Popover';
-import 'c2pa-wc/dist/components/panels/ManifestSummary';
-import 'c2pa-wc/dist/components/panels/PanelSection';
-import { ManifestSummary } from 'c2pa-wc/dist/components/panels/ManifestSummary';
-import './App.css';
-import sampleImage from '../assets/CAICAI.jpg?url';
 import {
   C2paReadResult,
   generateVerifyUrl,
   Manifest,
   SerializableManifestData,
 } from 'c2pa';
+import 'c2pa-wc/dist/components/Icon';
+import 'c2pa-wc/dist/components/Indicator';
+import 'c2pa-wc/dist/components/panels/ManifestSummary';
+import { ManifestSummary } from 'c2pa-wc/dist/components/panels/ManifestSummary';
+import 'c2pa-wc/dist/components/panels/PanelSection';
+import 'c2pa-wc/dist/components/Popover';
+import { useEffect, useRef, useState } from 'react';
+import './App.css';
 import { Resolvers } from './main';
+
+const sampleImage =
+  'https://cdn.jsdelivr.net/gh/contentauth/c2pa-js/tools/testing/fixtures/images/CAICAI.jpg';
 
 interface ManifestInfoProps {
   manifest: Manifest<Resolvers>;
