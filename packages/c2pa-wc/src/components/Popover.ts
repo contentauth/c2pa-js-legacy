@@ -53,10 +53,10 @@ export class Popover extends PartPrefixable(LitElement) {
   shift = { padding: 10 };
 
   @property({ type: Boolean })
-  interactive = true;
+  interactive = false;
 
   @property({ type: String })
-  trigger: string = 'mouseenter/mouseleave focus/blur';
+  trigger: string = 'mouseenter:mouseleave focus:blur';
 
   @query('#arrow')
   arrowElement: HTMLElement | undefined;
@@ -117,13 +117,29 @@ export class Popover extends PartPrefixable(LitElement) {
     const triggers = this.trigger.split(/\s+/);
 
     this._eventCleanupFns = triggers.map((trigger) => {
-      const [show, hide] = trigger.split('/');
-      console.log('show, hide', show, hide);
+      const [show, hide] = trigger.split(':');
       this.triggerElement!.addEventListener(show, this._showTooltip.bind(this));
-      this.triggerElement!.addEventListener(hide, this._hideTooltip.bind(this));
+      if (this.interactive && hide === 'mouseleave') {
+        this.contentElement!.addEventListener(
+          hide,
+          this._hideTooltip.bind(this),
+        );
+      } else {
+        this.triggerElement!.addEventListener(
+          hide,
+          this._hideTooltip.bind(this),
+        );
+      }
       return () => {
         this.triggerElement!.removeEventListener(show, this._showTooltip);
-        this.triggerElement!.removeEventListener(hide, this._hideTooltip);
+        if (this.interactive && hide === 'mouseleave') {
+          this.contentElement!.addEventListener(
+            hide,
+            this._hideTooltip.bind(this),
+          );
+        } else {
+          this.triggerElement!.removeEventListener(hide, this._hideTooltip);
+        }
       };
     });
   }
@@ -167,7 +183,6 @@ export class Popover extends PartPrefixable(LitElement) {
   }
 
   firstUpdated(): void {
-    console.log('this.contentElement!', this.contentElement!);
     this._setTriggers();
     this._updateCleanupFn = autoUpdate(
       this.triggerElement!,
