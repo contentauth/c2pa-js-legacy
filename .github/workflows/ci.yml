@@ -24,7 +24,7 @@ jobs:
           body-includes: CHANGESET_MESSAGE
       - name: Check changeset status
         id: verify
-        run: rush change --verify
+        run: rush change --verify | grep 'Found change file' &> /dev/null
         continue-on-error: true
       - name: Comment on changeset success
         if: ${{ steps.verify.outcome == 'success' }}
