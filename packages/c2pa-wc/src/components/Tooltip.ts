@@ -41,7 +41,9 @@ export class Tooltip extends LitElement {
           cursor: pointer;
         }
         #content {
-          max-width: 180px;
+          max-width: 230px;
+          width: max-content;
+          padding: 5px;
         }
         #popover::part(tooltip-popover-box) {
           border-radius: var(--cai-border-radius);

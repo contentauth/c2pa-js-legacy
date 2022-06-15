@@ -77,6 +77,9 @@ export class ManifestSummary extends LitElement {
           margin-bottom: 20px;
           border-bottom: 1px solid #e1e1e1;
         }
+        #content {
+          width: 200px;
+        }
         #view-more {
           transition: background-color 150ms ease-in-out;
           background-color: transparent;
