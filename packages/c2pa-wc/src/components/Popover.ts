@@ -87,7 +87,7 @@ export class Popover extends PartPrefixable(LitElement) {
           color: var(--cai-popover-color, #222222);
           transition-property: transform, visibility, opacity;
           border-radius: 6px;
-          filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.25));
+          border: 1px solid var(--cai-popover-border-color, #ddd);
         }
         #trigger {
           cursor: pointer;
