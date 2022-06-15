@@ -1,0 +1,24 @@
+name: Update examples
+on:
+  pull_request:
+    types: [opened]
+    paths:
+      - examples/**
+
+jobs:
+  update_examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Run changed-files with defaults on the dir1
+        id: changed-examples
+        uses: tj-actions/changed-files@v23
+        with:
+          path: examples
+      - name: List all modified files in dir1
+        run: |
+          for file in ${{ steps.changed-examples.outputs.all_modified_files	 }}; do
+            echo "$file was added"
+          done
