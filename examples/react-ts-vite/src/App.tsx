@@ -31,6 +31,8 @@ function ManifestInfo({ manifest, viewMoreUrl }: ManifestInfoProps) {
   const thumbnailUrl = useThumbnailUrl(manifest?.thumbnail);
   const producer = manifest?.producer;
 
+  console.log('updated');
+
   return (
     <table className="claim-info">
       <tbody>
