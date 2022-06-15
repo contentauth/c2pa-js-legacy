@@ -116,6 +116,7 @@ importers:
       '@babel/core': ^7.16.7
       '@contentauth/config': workspace:*
       '@contentauth/testing': workspace:*
+      '@floating-ui/dom': ~0.5.3
       '@open-wc/building-rollup': ~2.0.1
       '@open-wc/testing': ~3.1.5
       '@rollup/plugin-commonjs': ~22.0.0
@@ -167,6 +168,7 @@ importers:
       web-test-runner-jasmine: ~0.0.1
       webpack: ~5.72.0
     dependencies:
+      '@floating-ui/dom': 0.5.3
       c2pa: link:../c2pa
       date-fns: 2.28.0
       debug: 4.3.4
@@ -1973,6 +1975,16 @@ packages:
 
   /@esm-bundle/react/17.0.2-fix.1:
     resolution: {integrity: sha512-AzHd8Hi5KQjwgU2e3SD1XrMm5WF8y8zsKmP9ttsyR6bzTS8TAc1mWRc8UW0Q/px4D38mcP4+ofJDAhhFiB7KXg==}
+    dev: false
+
+  /@floating-ui/core/0.7.3:
+    resolution: {integrity: sha512-buc8BXHmG9l82+OQXOFU3Kr2XQx9ys01U/Q9HMIrZ300iLc8HLMgh7dcCqgYzAzf4BkoQvDcXf5Y+CuEZ5JBYg==}
+    dev: false
+
+  /@floating-ui/dom/0.5.3:
+    resolution: {integrity: sha512-vpjWB1uC7rajvgA58uzlJZgtWqrdDQLw+XVA3w63ZTmsWwRmVd0Gl5Dy9VMAViI9cP7hBWaJt23Jy3AVgVYnoQ==}
+    dependencies:
+      '@floating-ui/core': 0.7.3
     dev: false
 
   /@gar/promisify/1.1.3:

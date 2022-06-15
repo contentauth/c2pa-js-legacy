@@ -16,7 +16,7 @@ import './App.css';
 import { Resolvers } from './main';
 
 const sampleImage =
-  'https://cdn.jsdelivr.net/gh/contentauth/c2pa-js/tools/testing/fixtures/images/CAICAI.jpg';
+  'https://media.githubusercontent.com/media/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 interface ManifestInfoProps {
   manifest: Manifest<Resolvers>;

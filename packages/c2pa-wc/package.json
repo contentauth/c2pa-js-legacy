@@ -45,7 +45,8 @@
     "tippy.js": "^6.3.7",
     "lit-html": "2",
     "webpack": "~5.72.0",
-    "debug": "~4.3.4"
+    "debug": "~4.3.4",
+    "@floating-ui/dom": "~0.5.3"
   },
   "devDependencies": {
     "@contentauth/testing": "workspace:*",

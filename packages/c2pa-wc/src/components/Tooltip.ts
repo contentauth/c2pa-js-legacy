@@ -7,12 +7,12 @@
  * it.
  */
 
-import { LitElement, html, css } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { defaultStyles } from '../styles';
-import { exportParts, importParts } from '../directives/ExportParts';
-import { Popover } from './Popover';
 import '../../assets/svg/monochrome/help.svg';
+import { exportParts, importParts } from '../directives/ExportParts';
+import { defaultStyles } from '../styles';
+import { Popover } from './Popover';
 
 declare global {
   namespace JSX {
