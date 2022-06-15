@@ -62,7 +62,6 @@ export class Tooltip extends LitElement {
     return html`
       <cai-popover
         id="popover"
-        placement="auto"
         ?interactive=${false}
         part-prefix=${Tooltip.popoverPrefix}
         exportparts=${exportParts(Popover.cssParts, Tooltip.popoverPrefix)}
