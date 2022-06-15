@@ -4,9 +4,9 @@ import workerSrc from 'c2pa/dist/c2pa.worker.js?url';
 
 const sampleImages = [
   // Image with provenance data
-  'https://cdn.jsdelivr.net/gh/contentauth/c2pa-js/tools/testing/fixtures/images/CAICAI.jpg',
+  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg',
   // Image without provenance data
-  'https://cdn.jsdelivr.net/gh/contentauth/c2pa-js/tools/testing/fixtures/images/I.jpg',
+  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/I.jpg',
 ];
 
 (async () => {

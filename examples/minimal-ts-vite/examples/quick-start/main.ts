@@ -3,7 +3,7 @@ import wasmSrc from 'c2pa/dist/assets/wasm/toolkit_bg.wasm?url';
 import workerSrc from 'c2pa/dist/c2pa.worker.js?url';
 
 const sampleImage =
-  'https://cdn.jsdelivr.net/gh/contentauth/c2pa-js/tools/testing/fixtures/images/CAICAI.jpg';
+  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 (async () => {
   // Initialize the c2pa-js SDK

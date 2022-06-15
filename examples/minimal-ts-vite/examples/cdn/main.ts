@@ -1,5 +1,5 @@
 const sampleImage =
-  'https://cdn.jsdelivr.net/gh/contentauth/c2pa-js/tools/testing/fixtures/images/CAICAI.jpg';
+  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 (async () => {
   // Information about where to fetch the library
