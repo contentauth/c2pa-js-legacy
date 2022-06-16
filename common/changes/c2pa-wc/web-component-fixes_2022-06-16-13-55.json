@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "> Simplified positioning for tooltip components due to Safari issues",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
