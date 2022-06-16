@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Updated popover to use [floating-ui](https://github.com/floating-ui/floating-ui) instead of tippy.js/popper to improve positioning",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
