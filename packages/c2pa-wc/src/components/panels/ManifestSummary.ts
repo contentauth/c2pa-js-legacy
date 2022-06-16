@@ -34,6 +34,7 @@ export type ManifestSummaryConfig = MinimumViableProvenanceConfig & {
 export class ManifestSummary extends LitElement {
   static readonly cssParts = {
     container: 'manifest-summary-container',
+    contentContainer: 'manifest-summary-content-container',
     content: 'manifest-summary-content',
     sections: 'manifest-summary-sections',
     section: 'manifest-summary-section',
@@ -69,7 +70,8 @@ export class ManifestSummary extends LitElement {
         #content-container {
           max-height: 550px;
           padding: 20px;
-          overflow: auto;
+          overflow-y: auto;
+          overflow-x: hidden;
           border-bottom: 1px solid #e1e1e1;
         }
         #view-more-container {
@@ -144,7 +146,10 @@ export class ManifestSummary extends LitElement {
     };
 
     return html`<div id="container" part=${ManifestSummary.cssParts.container}>
-      <div id="content-container">
+      <div
+        id="content-container"
+        part=${ManifestSummary.cssParts.contentContainer}
+      >
         <div slot="header">
           ${MinimumViableProvenance(
             merge(sectionProps, {
