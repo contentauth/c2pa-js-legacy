@@ -12,9 +12,7 @@ import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import '../../assets/svg/monochrome/help.svg';
-import { importParts } from '../directives/ExportParts';
 import { defaultStyles } from '../styles';
-import { Popover } from './Popover';
 
 declare global {
   namespace JSX {
@@ -26,10 +24,9 @@ declare global {
 
 @customElement('cai-tooltip')
 export class Tooltip extends LitElement {
-  static readonly popoverPrefix = 'tooltip';
-
-  static readonly cssParts = {
-    ...importParts(Popover.cssParts, Tooltip.popoverPrefix),
+  static readonly cssParts: Record<string, string> = {
+    content: 'tooltip-content',
+    trigger: 'tooltip-trigger',
   };
 
   @state()
@@ -96,6 +93,7 @@ export class Tooltip extends LitElement {
         <div
           class="trigger"
           slot="trigger"
+          part=${Tooltip.cssParts.trigger}
           @mouseenter="${this._showTooltip}"
           @mouseleave="${this._hideTooltip}"
         >
@@ -105,6 +103,7 @@ export class Tooltip extends LitElement {
         </div>
         <div
           class=${classMap(contentClassMap)}
+          part=${Tooltip.cssParts.content}
           slot="content"
           ${animate({
             keyframeOptions: {
