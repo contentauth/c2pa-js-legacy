@@ -24,9 +24,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "rollup -c rollup.config.js -w",
     "build": "rushx clean && rollup -c rollup.config.js --silent",
-    "build:watch": "rollup -c rollup.config.js -w",
     "build:release": "rushx build",
     "build:verbose": "rushx clean && rollup -c rollup.config.js",
     "build:vite": "rushx clean && vite build",
