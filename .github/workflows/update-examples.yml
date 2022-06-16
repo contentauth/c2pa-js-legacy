@@ -1,0 +1,47 @@
+name: Update examples
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - examples/**
+
+jobs:
+  update_examples:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: workspace
+          fetch-depth: 0
+      - name: Install Rush
+        run: npm install @microsoft/rush --location=global
+      - name: Install dependencies
+        working-directory: workspace
+        run: rush install
+      - name: Pack all examples
+        working-directory: workspace
+        run: |
+          for dir in examples/*; do
+            rush-pnpm pack -C $dir
+          done
+      - name: Extract all packed examples in-place
+        working-directory: workspace
+        run: |
+          find . -name '*.tgz' -exec sh -c 'tar xzvf {} -C $(dirname {}) --strip-components=1 && rm {}' \;
+      - name: Checkout example repo
+        uses: actions/checkout@v3
+        with:
+          repository: contentauth/c2pa-js-examples
+          ref: main
+          path: examples
+      - name: Merge modified examples into example directory
+        run: |
+          rsync -a workspace/examples/ examples/
+      - name: Commit examples
+        working-directory: examples
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Updated to ${{ github.repository }}@${{ github.sha }}"
+          git push
