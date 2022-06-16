@@ -49,7 +49,7 @@ export class Popover extends PartPrefixable(LitElement) {
   animationDuration = 200;
 
   @property({ type: String })
-  placement: Placement = 'left-end';
+  placement: Placement = 'left-start';
 
   @property({ type: String })
   strategy: Strategy = 'absolute';
@@ -105,7 +105,7 @@ export class Popover extends PartPrefixable(LitElement) {
     }
     // Note that autoPlacement cannot be used with flip
     if (this.flip && !this.autoPlacement) {
-      middleware.push(flip());
+      middleware.push(flip(this.flip));
     }
     if (this.offset) {
       middleware.push(offset(this.offset));
