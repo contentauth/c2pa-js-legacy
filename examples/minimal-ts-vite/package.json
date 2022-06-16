@@ -6,14 +6,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "test": "echo \"Test setup pending\" && exit 0"
+    "test": "echo \"examples/minimal-ts-vite\" no tests",
+    "lint": "echo \"examples/minimal-ts-vite\" no-op"
   },
   "devDependencies": {
-    "typescript": "^4.3.2",
-    "vite": "^2.5.4"
+    "typescript": "~4.6.3",
+    "vite": "^2.7.12"
   },
   "dependencies": {
-    "c2pa": "*",
-    "fast-glob": "^3.2.11"
+    "c2pa": "workspace:*",
+    "fast-glob": "~3.2.11"
   }
 }

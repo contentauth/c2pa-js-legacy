@@ -7,7 +7,7 @@ element.innerHTML = `Please view the console`;
 document.body.appendChild(element);
 
 const sampleImage =
-  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tests/assets/CAICAI.jpg';
+  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 (async () => {
   // Initialize the c2pa-js SDK

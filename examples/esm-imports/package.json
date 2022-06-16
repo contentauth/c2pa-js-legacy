@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": "true",
   "scripts": {
-    "dev": "serve"
+    "dev": "serve",
+    "test": "echo \"examples/esm-imports\" no tests",
+    "lint": "echo \"examples/esm-imports\" no-op",
+    "build": "echo \"examples/esm-imports\" no-op"
   },
   "dependencies": {
     "serve": "^13.0.2"

@@ -25,6 +25,7 @@ const sampleImages = [
     const filename = source.metadata.filename;
     // Note: You would normally call `dispose()` when working with a
     // component-based UI library (e.g. on component un-mount)
+    // @ts-expect-error noUnusedLocals
     const { data, dispose } = source.thumbnail.getUrl();
 
     output.push(`
