@@ -9,8 +9,9 @@ import {
   shift,
   Strategy,
 } from '@floating-ui/dom';
+import { animate } from '@lit-labs/motion';
 import { css, html, LitElement } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import '../../assets/svg/monochrome/help.svg';
 import { PartPrefixable } from '../mixins/PartPrefixable';
 import { defaultStyles } from '../styles';
@@ -35,6 +36,12 @@ export class Popover extends PartPrefixable(LitElement) {
     content: 'popover-content',
   };
 
+  @state()
+  protected _isShown = false;
+
+  @property({ type: Number })
+  animationDuration = 200;
+
   @property({ type: String })
   placement: Placement = 'right-start';
 
@@ -42,7 +49,7 @@ export class Popover extends PartPrefixable(LitElement) {
   strategy: Strategy = 'absolute';
 
   @property({ type: Boolean })
-  arrow = true;
+  arrow = false;
 
   @property({ type: Object })
   flip = null;
@@ -80,7 +87,7 @@ export class Popover extends PartPrefixable(LitElement) {
       defaultStyles,
       css`
         #content {
-          display: none;
+          opacity: 0;
           position: absolute;
           top: 0;
           left: 0;
@@ -89,6 +96,20 @@ export class Popover extends PartPrefixable(LitElement) {
           transition-property: transform, visibility, opacity;
           border-radius: 6px;
           border: 1px solid var(--cai-popover-border-color, #ddd);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        #content.shown {
+          opacity: 1;
+        }
+        #content.hidden {
+          display: none;
+        }
+        #arrow {
+          position: absolute;
+          background: var(--cai-popover-bg-color, #fff);
+          width: 16px;
+          height: 16px;
+          transform: rotate(45deg);
         }
         #trigger {
           cursor: pointer;
@@ -98,12 +119,12 @@ export class Popover extends PartPrefixable(LitElement) {
   }
 
   private _showTooltip() {
-    this.contentElement!.style.display = 'block';
+    this._isShown = true;
     this._updatePosition();
   }
 
   private _hideTooltip() {
-    this.contentElement!.style.display = '';
+    this._isShown = false;
   }
 
   private _cleanupTriggers() {
@@ -147,13 +168,6 @@ export class Popover extends PartPrefixable(LitElement) {
 
   private _getPositionConfig(): Partial<ComputePositionConfig> {
     const middleware: ComputePositionConfig['middleware'] = [];
-    if (this.arrow) {
-      middleware.push(
-        arrow({
-          element: this.arrowElement!,
-        }),
-      );
-    }
     if (this.flip) {
       middleware.push(flip(this.flip));
     }
@@ -163,6 +177,13 @@ export class Popover extends PartPrefixable(LitElement) {
     if (this.shift) {
       middleware.push(shift(this.shift));
     }
+    if (this.arrow) {
+      middleware.push(
+        arrow({
+          element: this.arrowElement!,
+        }),
+      );
+    }
     return this.modifyConfig({
       placement: this.placement,
       strategy: this.strategy,
@@ -170,17 +191,25 @@ export class Popover extends PartPrefixable(LitElement) {
     });
   }
 
-  private _updatePosition() {
-    computePosition(
+  private async _updatePosition() {
+    const { x, y, middlewareData } = await computePosition(
       this.triggerElement!,
       this.contentElement!,
       this._getPositionConfig(),
-    ).then(({ x, y }) => {
-      Object.assign(this.contentElement!.style, {
-        left: `${x}px`,
-        top: `${y}px`,
-      });
+    );
+
+    Object.assign(this.contentElement!.style, {
+      left: `${x}px`,
+      top: `${y}px`,
     });
+
+    if (this.arrow && this.arrowElement) {
+      const { x: ax, y: ay } = middlewareData.arrow!;
+      Object.assign(this.arrowElement!.style, {
+        left: ax != null ? `${ax}px` : '',
+        top: ay != null ? `${ay}px` : '',
+      });
+    }
   }
 
   firstUpdated(): void {
@@ -205,7 +234,26 @@ export class Popover extends PartPrefixable(LitElement) {
 
   render() {
     return html`<div id="element">
-      <div id="content" part=${Popover.cssParts.content}>
+      <div
+        id="content"
+        class=${this._isShown ? 'shown' : ''}
+        part=${Popover.cssParts.content}
+        ${animate({
+          keyframeOptions: {
+            duration: this.animationDuration,
+          },
+          onStart: (anim) => {
+            if (anim.element.classList.contains('shown')) {
+              anim.element.classList.remove('hidden');
+            }
+          },
+          onComplete: (anim) => {
+            if (!anim.element.classList.contains('shown')) {
+              anim.element.classList.add('hidden');
+            }
+          },
+        })}
+      >
         <slot name="content"></slot>
         ${this.arrow
           ? html`<div id="arrow" part=${Popover.cssParts.arrow}></div>`

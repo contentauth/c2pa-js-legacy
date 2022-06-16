@@ -117,6 +117,7 @@ importers:
       '@contentauth/config': workspace:*
       '@contentauth/testing': workspace:*
       '@floating-ui/dom': ~0.5.3
+      '@lit-labs/motion': ~1.0.2
       '@open-wc/building-rollup': ~2.0.1
       '@open-wc/testing': ~3.1.5
       '@rollup/plugin-commonjs': ~22.0.0
@@ -168,6 +169,7 @@ importers:
       webpack: ~5.72.0
     dependencies:
       '@floating-ui/dom': 0.5.3
+      '@lit-labs/motion': 1.0.2
       c2pa: link:../c2pa
       date-fns: 2.28.0
       debug: 4.3.4
@@ -2093,6 +2095,12 @@ packages:
       '@jridgewell/resolve-uri': 3.0.6
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
+
+  /@lit-labs/motion/1.0.2:
+    resolution: {integrity: sha512-Qv3VKJUllEkIVGFQMMbV68VJDECXutBL+NBM0ZQFFYqEmBFlZQcNxTVlC9dMhDdXeQaX5vfpNdJlP4xKM30ERQ==}
+    dependencies:
+      lit: 2.2.2
+    dev: false
 
   /@lit/reactive-element/1.3.1:
     resolution: {integrity: sha512-nOJARIr3pReqK3hfFCSW2Zg/kFcFsSAlIE7z4a0C9D2dPrgD/YSn3ZP2ET/rxKB65SXyG7jJbkynBRm+tGlacw==}

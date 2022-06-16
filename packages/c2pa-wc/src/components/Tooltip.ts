@@ -50,6 +50,7 @@ export class Tooltip extends LitElement {
           max-width: 250px;
           font-size: 13px;
           padding: 10px;
+          box-shadow: none;
         }
       `,
     ];
@@ -59,7 +60,7 @@ export class Tooltip extends LitElement {
     return html`
       <cai-popover
         id="popover"
-        placement="bottom-end"
+        placement="top-end"
         ?interactive=${false}
         part-prefix=${Tooltip.popoverPrefix}
         exportparts=${exportParts(Popover.cssParts, Tooltip.popoverPrefix)}
