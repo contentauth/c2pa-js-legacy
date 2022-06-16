@@ -28,7 +28,12 @@ export { Source, C2paSourceType } from './src/source';
 export { AssertionAccessor, ExtendedAssertions } from './src/assertions';
 export { Thumbnail } from './src/thumbnail';
 
-export type { GetManifestType, GetIngredientType } from './src/lib/types';
+export type {
+  GetManifestType,
+  GetIngredientType,
+  Serializable,
+  Disposable,
+} from './src/lib/types';
 
 import * as resolvers from './src/resolvers';
 export { resolvers };
