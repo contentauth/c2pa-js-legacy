@@ -34,6 +34,7 @@ jobs:
           repository: contentauth/c2pa-js-examples
           ref: main
           path: examples
+          token: ${{ secrets.ORG_PUBLIC_REPO_ACCESS }}
       - name: Merge modified examples into example directory
         run: |
           rsync -a workspace/examples/ examples/
