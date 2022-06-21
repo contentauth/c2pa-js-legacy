@@ -26,6 +26,9 @@ jobs:
           done
       - name: Extract all packed examples in-place
         working-directory: workspace
+        # Extract the `pnpm pack` generated tarballs (which have workspace:* links replaced with npm-resolvable versions)
+        # in-place, which overwrites the old package.json and "transforms" the example into a portable project that can
+        # be referenced outside of rush/pnpm.
         run: |
           find . -name '*.tgz' -exec sh -c 'tar xzvf {} -C $(dirname {}) --strip-components=1 && rm {}' \;
       - name: Checkout example repo
