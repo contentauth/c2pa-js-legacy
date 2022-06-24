@@ -23,7 +23,7 @@ const sampleImage =
     const { data, dispose } = source.thumbnail.getUrl();
 
     // Get properties
-    const properties: Record<string, string> = {
+    const properties: Record<string, string | undefined> = {
       title: activeManifest.title,
       format: activeManifest.format,
       label: activeManifest.label,

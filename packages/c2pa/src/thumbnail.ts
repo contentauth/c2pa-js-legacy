@@ -13,7 +13,6 @@ import { BlobUrl, createObjectUrlFromBlob } from './objectUrl';
 
 export interface Thumbnail {
   blob?: Blob;
-  label: string;
   contentType: string;
   hash?: () => Promise<string>;
   getUrl: () => BlobUrl;
@@ -24,15 +23,22 @@ export interface Thumbnail {
  *
  * @param thumbnailData Raw thumbnail data returned by the toolkit
  */
-export function createThumbnail(thumbnailData: ToolkitThumbnail): Thumbnail {
-  const blob = new Blob([Uint8Array.from(thumbnailData.data)], {
-    type: thumbnailData.content_type,
+export function createThumbnail(
+  thumbnailData: ToolkitThumbnail,
+): Thumbnail | null {
+  if (!thumbnailData) {
+    return null;
+  }
+
+  const [type, data] = thumbnailData;
+
+  const blob = new Blob([Uint8Array.from(data)], {
+    type,
   });
 
   return {
     blob,
-    label: thumbnailData.label,
-    contentType: thumbnailData.content_type,
+    contentType: type,
 
     hash: () => sha(blob),
 
@@ -47,7 +53,6 @@ export function createThumbnailFromBlob(
 ): Thumbnail {
   return {
     blob,
-    label,
     contentType,
 
     hash: () => sha(blob),
@@ -62,7 +67,6 @@ export function createThumbnailFromUrl(
   contentType: string,
 ): Thumbnail {
   return {
-    label,
     contentType,
     getUrl: () => ({
       data: { url },

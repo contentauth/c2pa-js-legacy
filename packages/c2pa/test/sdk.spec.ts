@@ -7,7 +7,7 @@ import {
 } from '../';
 
 const manifestResolvers = resolvers.createTypedResolvers({
-  customResolver: (manifest) => manifest.data.title,
+  customResolver: (manifest) => manifest.data.assertions.length,
   ...resolvers.editsAndActivity,
 });
 
@@ -39,10 +39,6 @@ describe('c2pa', function () {
         describe('activeManifest', function () {
           it('should have the correct active manifest', function (this: TestContext) {
             const activeManifest = this.result.manifestStore?.activeManifest;
-
-            expect(activeManifest?.label).toBe(
-              'adobetest:urn:uuid:825cf3cf-0127-4af3-b65c-c11d0f961e67',
-            );
 
             expect(activeManifest?.claimGenerator).toEqual({
               value: 'C2PA Testing',
@@ -92,12 +88,11 @@ describe('c2pa', function () {
             expect(activeManifest?.thumbnail).toEqual({
               blob: jasmine.any(Blob),
               contentType: 'image/jpeg',
-              label: 'c2pa.thumbnail.claim.jpeg',
               getUrl: jasmine.any(Function),
               hash: jasmine.any(Function),
             });
 
-            const thumbnail = activeManifest?.thumbnail.getUrl();
+            const thumbnail = activeManifest?.thumbnail?.getUrl();
 
             const thumbnailRes = await fetch(thumbnail!.data.url);
 
@@ -117,20 +112,13 @@ describe('c2pa', function () {
               (ingredient) => ingredient.manifest,
             );
 
-          const ingredientManifestLabels = ingredientManifests?.map(
-            (ingredientManifest) => ingredientManifest?.label,
-          );
-
-          expect(ingredientManifestLabels).toEqual([
-            'adobetest:urn:uuid:879beec2-74bb-4150-8245-9176dd6a8972',
-            'adobetest:urn:uuid:120c2204-929d-4e97-a3b7-f5ecc9408b79',
-          ]);
-
           ingredientManifests?.forEach((ingredientManifest) => {
-            expect(ingredientManifest?.parent?.label).toBe(
-              'adobetest:urn:uuid:825cf3cf-0127-4af3-b65c-c11d0f961e67',
+            expect(ingredientManifest?.parent).toBe(
+              manifestStore?.activeManifest,
             );
           });
+
+          expect(manifestStore?.activeManifest.parent).toBeUndefined();
         });
       });
 

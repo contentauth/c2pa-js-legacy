@@ -56,8 +56,8 @@ export function createManifest<T extends ManifestResolvers>(
   const ingredients = manifestData.ingredients.map((ingredientData) =>
     createIngredient(
       ingredientData,
-      ingredientData.manifestId
-        ? manifests[ingredientData.manifestId]
+      ingredientData.active_manifest
+        ? manifests[ingredientData.active_manifest]
         : undefined,
     ),
   );

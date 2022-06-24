@@ -150,7 +150,9 @@ export async function createC2pa<T extends ManifestResolvers>(
         source,
       };
     } catch (err: any) {
-      if (err?.name === 'C2pa(ProvenanceMissing)') {
+      if (
+        ['C2pa(ProvenanceMissing)', 'C2pa(JumbfNotFound)'].includes(err?.name)
+      ) {
         return { manifestStore: null, source };
       } else {
         throw err;

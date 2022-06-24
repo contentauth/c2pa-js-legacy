@@ -7,29 +7,49 @@
  * it.
  */
 
-import { Assertions as ToolkitAssertions } from '@contentauth/toolkit';
+import { ManifestAssertion, Assertion } from '@contentauth/toolkit';
 
-// Can be augmented to allow additional assertion types
+// Can be extended with module augmentation to allow consumers to define custom assertion types
 export interface ExtendedAssertions {}
-interface ManifestAssertions
-  extends ToolkitAssertions,
-    Partial<ExtendedAssertions> {}
 
-export interface AssertionData extends ToolkitAssertions {
-  [key: string]: any;
-}
+type ExtendedAssertionMap = {
+  [label in keyof ExtendedAssertions]: Assertion<
+    label,
+    ExtendedAssertions[label]
+  >;
+};
+
+type ExtendedAssertionUnion = ExtendedAssertionMap[keyof ExtendedAssertionMap];
+
+type Assertions = ExtendedAssertionUnion | ManifestAssertion;
 
 export interface AssertionAccessor {
-  data: ToolkitAssertions;
+  data: Assertion[];
 
+  /**
+   * Returns the first assertion matching the provided label, and null if no matches are found.
+   *
+   * @param label Assertion label
+   */
   get: <T extends string>(
-    label: keyof ManifestAssertions | T,
+    label: Assertions['label'] | T,
     index?: number,
-  ) => T extends keyof ManifestAssertions ? ManifestAssertions[T] : any;
+  ) =>
+    | (T extends Assertions['label']
+        ? Extract<Assertions, { label: T }>
+        : Assertion)
+    | null;
 
+  /**
+   * Returns a list of all assertions matching the provided label.
+   *
+   * @param label Assertion label
+   */
   getAll: <T extends string>(
     label: T,
-  ) => T extends keyof ManifestAssertions ? ManifestAssertions[T][] : any[];
+  ) => T extends Assertions['label']
+    ? Extract<Assertions, { label: T }>[]
+    : Assertion[];
 }
 
 /**
@@ -38,20 +58,23 @@ export interface AssertionAccessor {
  * @param assertionData Raw assertion data returned by the toolkit
  */
 export function createAssertionAccessor(
-  assertionData: AssertionData,
+  assertionData: Assertion[],
 ): AssertionAccessor {
-  return {
-    data: assertionData,
+  const sortedAssertions = assertionData.sort(
+    (a, b) => (a?.instance ?? 0) - (b?.instance ?? 0),
+  );
 
-    get: (label, index) => {
-      return assertionData[`${label as string}${index ? `__${index}` : ''}`];
+  return {
+    data: sortedAssertions,
+
+    get: (label) => {
+      return (
+        sortedAssertions.find((data) => data.label === label) ?? (null as any)
+      );
     },
 
-    // @TODO: look into "any" cast
     getAll: (label) => {
-      return Object.keys(assertionData)
-        .filter((assertionLabel) => assertionLabel.split('__')[0] === label)
-        .map((assertionLabel) => assertionData[assertionLabel]) as any;
+      return sortedAssertions.filter((data) => data.label === label) as any;
     },
   };
 }

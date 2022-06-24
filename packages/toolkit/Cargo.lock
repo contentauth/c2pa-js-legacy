@@ -33,6 +33,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "be4dc07131ffa69b8072d35f5007352af944213cde02545e2103680baed38fcd"
 
 [[package]]
+name = "atree"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "132573478eb9ff973c6f75d0ed425ac12da77d266506483345f46743ecc83a98"
+
+[[package]]
 name = "autocfg"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -162,10 +168,11 @@ checksum = "c4872d67bab6358e59559027aa3b9157c53d9358c51423c17554809a8858e0f8"
 
 [[package]]
 name = "c2pa"
-version = "0.5.2"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "957939026acf12c1cf4c95f0442ef51af8475d2346cf3167d1a73969bf14a3b7"
+checksum = "b32bc88965e2e096934deab2d930a593176183727af617c22639f8eaac3e75d6"
 dependencies = [
+ "atree",
  "base64",
  "bcder",
  "blake3",

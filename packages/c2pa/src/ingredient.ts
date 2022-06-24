@@ -8,7 +8,7 @@
  */
 import {
   Ingredient as ToolkitIngredient,
-  IngredientRelationship,
+  ValidationStatus,
 } from '@contentauth/toolkit';
 import { Manifest, ManifestResolvers } from './manifest';
 import { createThumbnail, Thumbnail } from './thumbnail';
@@ -18,16 +18,16 @@ export interface Ingredient<T extends ManifestResolvers = {}>
   extends Serializable<SerializableIngredient> {
   title?: string;
   format?: string;
-  relationship: IngredientRelationship;
+  validationStatus: ValidationStatus[];
   manifest?: Manifest<T>;
-  thumbnail: Thumbnail;
+  thumbnail: Thumbnail | null;
   data: ToolkitIngredient;
 }
 
 export interface SerializableIngredientData
-  extends Pick<Ingredient, 'title' | 'format' | 'relationship'> {
+  extends Pick<Ingredient, 'title' | 'format' | 'validationStatus'> {
   manifest?: string;
-  thumbnail: string;
+  thumbnail?: string;
 }
 
 type SerializableIngredient = Disposable<SerializableIngredientData>;
@@ -42,30 +42,28 @@ export function createIngredient<T extends ManifestResolvers>(
   ingredientData: ToolkitIngredient,
   manifest?: Manifest<T>,
 ): Ingredient<T> {
-  const { ingredient, manifestId } = ingredientData;
-
   const thumbnail = createThumbnail(ingredientData.thumbnail);
 
   return {
-    title: ingredient['dc:title'],
-    format: ingredient['dc:format'],
-    relationship: ingredient.relationship,
+    title: ingredientData.title,
+    format: ingredientData.format,
+    validationStatus: ingredientData.validation_status ?? [],
     data: ingredientData,
     thumbnail,
     manifest,
 
     asSerializable: () => {
-      const { data, dispose } = thumbnail.getUrl();
+      const thumbnailUrl = thumbnail?.getUrl();
 
       return {
         data: {
-          title: ingredient['dc:title'],
-          format: ingredient['dc:format'],
-          relationship: ingredient.relationship,
-          manifest: manifestId,
-          thumbnail: data.url,
+          title: ingredientData.title,
+          format: ingredientData.format,
+          validationStatus: ingredientData.validation_status ?? [],
+          manifest: ingredientData.active_manifest,
+          thumbnail: thumbnailUrl?.data.url,
         },
-        dispose,
+        dispose: thumbnailUrl?.dispose ?? (() => {}),
       };
     },
   };

@@ -10,7 +10,7 @@ use wasm_bindgen::prelude::*;
 pub const TS_APPEND_CONTENT: &'static str = r#"
 
 export interface ManifestStore {
-  active_manifest?: string;
+  active_manifest: string;
   manifests: Record<string, Manifest>;
   validation_status?: ValidationStatus[];
 }
@@ -27,13 +27,15 @@ export interface HashedUri {
   hash: number[];
 }
 
+export type Thumbnail = [string, number[]] | null;
+
 export interface Ingredient {
   title: string;
   format: string;
   document_id?: string;
   instance_id: string;
   provenance?: string;
-  thumbnail: [string, number[]] | null;
+  thumbnail: Thumbnail;
   hash?: string;
   is_parent?: boolean;
   active_manifest?: string;
@@ -65,6 +67,7 @@ export interface Assertion<T = string, U = unknown> {
   data: U;
   instance?: number;
   kind?: ManifestAssertionKind;
+  metadata?: Metadata;
 }
 
 export type C2paActionsAssertion = Assertion<"c2pa.actions", {
@@ -85,7 +88,7 @@ export type CreativeWorkAssertion = Assertion<"stds.schema-org.CreativeWork", {
   author: Author[];
 }>;
 
-export type ManifestAssertion = C2paActionsAssertion | C2paHashDataAssertion | CreativeWorkAssertion | Assertion;
+export type ManifestAssertion = C2paActionsAssertion | C2paHashDataAssertion | CreativeWorkAssertion;
 
 export interface Action {
   action: string;

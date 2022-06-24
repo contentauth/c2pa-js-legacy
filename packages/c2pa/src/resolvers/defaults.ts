@@ -13,30 +13,25 @@ import { createTypedResolvers } from './createTypedResolvers';
 import { createThumbnail } from '../thumbnail';
 
 export const defaultResolvers = createTypedResolvers({
-  /**
-   * This manifest's label
-   */
-  label: (manifest) => manifest.data.label,
-
-  format: (manifest) => manifest.data.format,
+  format: (manifest) => manifest.data.asset?.format,
 
   /**
    * Gets the title of the acquisition asset for this claim if it exists (e.g. filename)
    */
-  title: (manifest) => manifest.data.title,
+  title: (manifest) => manifest.data.asset?.title,
 
   /**
    * Gets the signature information (issuer, date) for this claim
    */
   signature: {
-    get: ({ data: { signature } }) => ({
-      issuer: signature.issuer,
-      date: signature.time ? parseISO(signature.time) : undefined,
-      isoDateString: signature.time,
+    get: ({ data: { signature_info } }) => ({
+      issuer: signature_info?.issuer,
+      date: signature_info?.time ? parseISO(signature_info?.time) : undefined,
+      isoDateString: signature_info?.time,
     }),
-    getSerializable: ({ data: { signature } }) => ({
-      issuer: signature.issuer,
-      isoDateString: signature.time,
+    getSerializable: ({ data: { signature_info } }) => ({
+      issuer: signature_info?.issuer,
+      isoDateString: signature_info?.time,
     }),
   },
 
@@ -44,8 +39,8 @@ export const defaultResolvers = createTypedResolvers({
    * Information identifying the software that generated this manifest
    */
   claimGenerator: (manifest) => ({
-    value: manifest.data.claimGenerator,
-    product: manifest.data.claimGenerator.split('(')[0]?.trim(),
+    value: manifest.data.claim_generator,
+    product: manifest.data.claim_generator.split('(')[0]?.trim(),
   }),
 
   /**
@@ -74,20 +69,26 @@ export const defaultResolvers = createTypedResolvers({
    * Acquisition thumbnail for this manifest
    */
   thumbnail: {
-    get: (manifest) => createThumbnail(manifest.data.thumbnail),
+    get: (manifest) =>
+      manifest.data.asset?.thumbnail
+        ? createThumbnail(manifest.data.asset.thumbnail)
+        : undefined,
     getSerializable: async (manifest, onDispose) => {
-      const { data, dispose } = createThumbnail(
-        manifest.data.thumbnail,
-      ).getUrl();
-      onDispose(dispose);
-      return data.url;
+      if (!manifest.data.asset?.thumbnail) {
+        return undefined;
+      }
+
+      const thumbnailUrl = createThumbnail(
+        manifest.data.asset.thumbnail,
+      )?.getUrl();
+
+      if (thumbnailUrl?.dispose) {
+        onDispose(thumbnailUrl.dispose);
+      }
+
+      return thumbnailUrl?.data.url;
     },
   },
-
-  /**
-   * Errors returned by the toolkit
-   */
-  errors: (manifest) => manifest.data.errors,
 });
 
 export type DefaultResolvers = typeof defaultResolvers;
@@ -100,9 +101,9 @@ interface CreativeWorkAssertionData {
 function parseCreativeWorkAssertion(
   assertion: CreativeWorkAssertion,
 ): CreativeWorkAssertionData {
-  const producer = assertion.author?.find((x) => !x.hasOwnProperty('@id'));
+  const producer = assertion.data.author?.find((x) => !x.hasOwnProperty('@id'));
 
-  const socialAccounts = assertion.author?.filter((x) =>
+  const socialAccounts = assertion.data.author?.filter((x) =>
     x.hasOwnProperty('@id'),
   );
 

@@ -77,8 +77,8 @@ async function getCategorizedActions(
   locale = 'en-US',
   iconVariant: IconVariant = 'dark',
 ): Promise<TranslatedDictionaryCategory[] | null> {
-  const dictionaryUrl = manifest.assertions.get('adobe.dictionary')?.url;
-  const actions = manifest.assertions.get('c2pa.actions')?.actions;
+  const dictionaryUrl = manifest.assertions.get('adobe.dictionary')?.data.url;
+  const actions = manifest.assertions.get('c2pa.actions')?.data.actions;
 
   if (!dictionaryUrl || !actions) return null;
 

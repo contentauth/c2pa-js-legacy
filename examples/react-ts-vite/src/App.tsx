@@ -30,7 +30,7 @@ interface WebComponentsProps {
 }
 
 function ManifestInfo({ manifest, viewMoreUrl }: ManifestInfoProps) {
-  const thumbnailUrl = useThumbnailUrl(manifest?.thumbnail);
+  const thumbnailUrl = useThumbnailUrl(manifest?.thumbnail ?? undefined);
   const producer = manifest?.producer;
 
   return (
@@ -95,7 +95,7 @@ function WebComponents({
         dispose = result.dispose;
       });
     return dispose;
-  }, [provenance.manifestStore?.activeManifest.label]);
+  }, [provenance.manifestStore?.activeManifest]);
 
   useEffect(() => {
     const summaryElement = summaryRef.current;

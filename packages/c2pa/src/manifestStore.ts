@@ -10,6 +10,7 @@
 import {
   ManifestStore as ToolkitManifestStore,
   Manifest as ToolkitManifest,
+  ValidationStatus,
 } from '@contentauth/toolkit';
 import { C2paConfig } from './c2pa';
 import {
@@ -26,6 +27,7 @@ export interface ManifestStore<T extends ManifestResolvers = {}>
   extends Serializable<Promise<SerializableManifestStore<T>>> {
   manifests: ManifestMap<T>;
   activeManifest: Manifest<T>;
+  validationStatus: ValidationStatus[];
   data: ToolkitManifestStore;
 }
 
@@ -34,6 +36,7 @@ export interface SerializableManifestStoreData<
 > {
   manifests: { [key: string]: SerializableManifestData<T> };
   activeManifest: string;
+  validationStatus: ValidationStatus[];
 }
 
 type SerializableManifestStore<T extends ManifestResolvers> = Disposable<
@@ -43,6 +46,11 @@ type SerializableManifestStore<T extends ManifestResolvers> = Disposable<
 export interface ManifestMap<T extends ManifestResolvers = {}> {
   [key: string]: Manifest<T>;
 }
+
+type ManifestStackData = {
+  data: ToolkitManifest;
+  label: string;
+};
 
 const dbg = debug('c2pa:manifestStore');
 
@@ -60,7 +68,8 @@ export function createManifestStore<T extends ManifestResolvers>(
 
   return {
     manifests,
-    activeManifest: manifests[manifestStoreData.activeManifest],
+    activeManifest: manifests[manifestStoreData.active_manifest],
+    validationStatus: manifestStoreData?.validation_status ?? [],
     data: manifestStoreData,
 
     asSerializable: async (serializeConfig) => {
@@ -78,7 +87,8 @@ export function createManifestStore<T extends ManifestResolvers>(
       return {
         data: {
           manifests: serializableManifestData,
-          activeManifest: manifestStoreData.activeManifest,
+          activeManifest: manifestStoreData.active_manifest,
+          validationStatus: manifestStoreData.validation_status ?? [],
         },
         dispose: () =>
           Object.values(serializableManifests).forEach(({ dispose }) =>
@@ -102,23 +112,34 @@ function createManifests<T extends ManifestResolvers>(
 ) {
   const {
     manifests: toolkitManifests,
-    activeManifest: toolkitActiveManifestId,
+    active_manifest: toolkitActiveManifestId,
   } = manifestStoreData;
   dbg('Received manifest store from toolkit', manifestStoreData);
 
   // Perform a post-order traversal of the manifest tree (leaves-to-root) to guarantee that a manifest's ingredient
   // manifests are already available when it is created.
-  const stack = [toolkitManifests[toolkitActiveManifestId]];
-  const postorderManifests: ToolkitManifest[] = [];
+
+  const stack: ManifestStackData[] = [
+    {
+      data: toolkitManifests[toolkitActiveManifestId],
+      label: toolkitActiveManifestId,
+    },
+  ];
+  const postorderManifests: ManifestStackData[] = [];
 
   while (stack.length) {
-    const currentManifest = stack.pop()!;
-    postorderManifests.unshift(currentManifest);
+    const current = stack.pop()!;
+    postorderManifests.unshift(current);
 
-    currentManifest?.ingredients?.forEach(({ manifestId }) => {
+    const { data: currentManifest } = current;
+
+    currentManifest?.ingredients?.forEach(({ active_manifest: manifestId }) => {
       if (manifestId) {
         if (manifestStoreData.manifests[manifestId]) {
-          stack.push(manifestStoreData.manifests[manifestId]);
+          stack.push({
+            data: manifestStoreData.manifests[manifestId],
+            label: manifestId,
+          });
         } else {
           dbg('No manifest found for id', manifestId);
         }
@@ -127,11 +148,12 @@ function createManifests<T extends ManifestResolvers>(
   }
 
   const orderedManifests = postorderManifests.reduce(
-    (manifests, manifestData) => {
+    (manifests, stackManifestData) => {
+      const { data: manifestData, label } = stackManifestData;
       dbg('Creating manifest with data', manifestData);
 
       const manifest = createManifest<T>(config, manifestData, manifests);
-      manifests[manifestData.label] = manifest;
+      manifests[label] = manifest;
       return manifests;
     },
     {} as ManifestMap<T>,
