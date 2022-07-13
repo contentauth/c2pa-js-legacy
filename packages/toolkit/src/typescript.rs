@@ -86,6 +86,7 @@ export type CreativeWorkAssertion = Assertion<"stds.schema-org.CreativeWork", {
   '@context': string;
   '@type': string;
   author: Author[];
+  url?: string;
 }>;
 
 export type ManifestAssertion = C2paActionsAssertion | C2paHashDataAssertion | CreativeWorkAssertion;
