@@ -48,7 +48,6 @@ export function createThumbnail(
 
 export function createThumbnailFromBlob(
   blob: Blob,
-  label: string,
   contentType: string,
 ): Thumbnail {
   return {
