@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add basic support for c2pa actions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
