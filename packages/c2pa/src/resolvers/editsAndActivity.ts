@@ -29,13 +29,86 @@ declare module '../assertions' {
 
 export interface TranslatedDictionaryCategory {
   id: string;
-  icon: string;
+  icon?: string;
   label: string;
   description: string;
-  [key: string]: string;
 }
 
 const UNCATEGORIZED_ID = 'UNCATEGORIZED';
+
+interface ActionDictionaryItem {
+  label: string;
+  description: string;
+}
+
+const ACTION_DICTIONARY: Record<string, ActionDictionaryItem> = {
+  'c2pa.color_adjustments': {
+    label: 'Color adjustments',
+    description: 'Changed tone, saturation, etc.',
+  },
+  'c2pa.converted': {
+    label: 'Converted asset',
+    description: 'The format of the asset was changed',
+  },
+  'c2pa.created': {
+    label: 'Secure creation',
+    description: "The asset was first created, usually the asset's origin",
+  },
+  'c2pa.cropped': {
+    label: 'Crop adjustments',
+    description: 'Outer areas of the asset were removed',
+  },
+  'c2pa.drawing': {
+    label: 'Paint tools',
+    description: 'Edited with brushes or eraser tools',
+  },
+  'c2pa.edited': {
+    label: 'Edited',
+    description: 'Changes were made to the asset',
+  },
+  'c2pa.filtered': {
+    label: 'Filter effects',
+    description: 'Changed appearances with filters, layer styles, etc.',
+  },
+  'c2pa.opened': {
+    label: 'File opened',
+    description:
+      'An existing file containing one or more assets was opened and used as the starting point for editing',
+  },
+  'c2pa.orientation': {
+    label: 'Position adjustments',
+    description: 'Changed position, orientation, or direction',
+  },
+  'c2pa.placed': {
+    label: 'Imported assets',
+    description: 'Added images, videos, etc.',
+  },
+  'c2pa.published': {
+    label: 'Published image',
+    description: 'Received and distributed image',
+  },
+  'c2pa.removed': {
+    label: 'Asset removed',
+    description: 'One or more assets were removed from the file',
+  },
+  'c2pa.repackaged': {
+    label: 'Repackaged asset',
+    description: 'Asset was repackaged without being processed',
+  },
+  'c2pa.resized': {
+    label: 'Size adjustments',
+    description: 'Changed asset dimensions',
+  },
+  'c2pa.transcoded': {
+    label: 'Processed asset',
+    description: 'Processed or compressed an asset to optimize for display',
+  },
+  'c2pa.unknown': {
+    label: 'Other changes',
+    description:
+      'Made changes not yet categorized by Content Credentials (Beta)',
+  },
+};
 
 /**
  * Uses the dictionary to translate an action name into category information
@@ -72,7 +145,32 @@ const processCategories = flow(
   sortBy((category) => category.label),
 );
 
-async function getCategorizedActions(
+function getC2paCategorizedActions(
+  manifest: BaseManifest<any>,
+): TranslatedDictionaryCategory[] | null {
+  const actions = manifest.assertions.get('c2pa.actions')?.data.actions;
+
+  if (!actions) {
+    return null;
+  }
+
+  const uniqueActionLabels = actions
+    ?.map(({ action }) => action)
+    .filter(
+      (val, idx, self) =>
+        ACTION_DICTIONARY.hasOwnProperty(val) && self.indexOf(val) === idx,
+    ) // de-dupe && only keep valid c2pa actions
+    .sort()
+    .map((action) => ({
+      id: action,
+      icon: undefined,
+      ...ACTION_DICTIONARY[action],
+    }));
+
+  return uniqueActionLabels;
+}
+
+async function getPhotoshopCategorizedActions(
   manifest: BaseManifest<any>,
   locale = 'en-US',
   iconVariant: IconVariant = 'dark',
@@ -99,6 +197,14 @@ async function getCategorizedActions(
   );
 
   return categories;
+}
+
+async function getCategorizedActions(manifest: BaseManifest<any>) {
+  if (manifest.assertions.get('adobe.dictionary')) {
+    return getPhotoshopCategorizedActions(manifest);
+  }
+
+  return getC2paCategorizedActions(manifest);
 }
 
 type IconVariant = 'light' | 'dark';
@@ -139,7 +245,7 @@ export const editsAndActivity = createTypedResolvers({
   editsAndActivity: {
     get: (manifest) => getCategorizedActions.bind(null, manifest),
     // @TODO how to handle parameterized calls?
-    getSerializable: async (manifest) => getCategorizedActions(manifest),
+    getSerializable: async (manifest) => getCategorizedActions(manifest) as any,
   },
 });
 
