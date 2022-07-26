@@ -26,10 +26,9 @@ const sampleImage =
     const properties: Record<string, string | undefined> = {
       title: activeManifest.title,
       format: activeManifest.format,
-      label: activeManifest.label,
       claimGenerator: activeManifest.claimGenerator.product,
       producer: activeManifest.producer?.name ?? 'Unknown',
-      thumbnail: `<img src:"${data.url}" class:"thumbnail" />`,
+      thumbnail: `<img src="${data.url}" class="thumbnail" />`,
       ingredients: (activeManifest.ingredients ?? [])
         .map((i) => i.title)
         .join(', '),
