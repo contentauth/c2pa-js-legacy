@@ -1,5 +1,28 @@
-# c2pa
+# C2PA JavaScript SDK
 
 This library aims to make viewing and verifying C2PA metadata in the browser as easy as possible.
 
-For more information, please view the documentation at https://js-sdk.contentauthenticity.org.
+For more information, please view the documentation at https://opensource.contentauthenticity.org/docs/js-sdk/getting-started/overview.
+
+## Getting started
+
+This monorepo is managed by [Rush](https://rushjs.io/). To get started:
+
+Install Rush:
+```js
+npm install -g @microsoft/rush
+```
+Install Rush-managed tooling and package dependencies: 
+```js
+rush install
+```
+Build all packages:
+```
+rush bulid 
+```
+
+To run an individual package's `package.json` commands, use the `rushx` command from within that package's directory, e.g.:
+```
+cd packages/c2pa
+rushx dev
+```
