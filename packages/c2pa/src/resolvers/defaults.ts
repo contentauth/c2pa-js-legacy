@@ -13,12 +13,12 @@ import { createTypedResolvers } from './createTypedResolvers';
 import { createThumbnail } from '../thumbnail';
 
 export const defaultResolvers = createTypedResolvers({
-  format: (manifest) => manifest.data.asset?.format,
+  format: (manifest) => manifest.data?.format,
 
   /**
    * Gets the title of the acquisition asset for this claim if it exists (e.g. filename)
    */
-  title: (manifest) => manifest.data.asset?.title,
+  title: (manifest) => manifest.data?.title,
 
   /**
    * Gets the signature information (issuer, date) for this claim
@@ -70,17 +70,15 @@ export const defaultResolvers = createTypedResolvers({
    */
   thumbnail: {
     get: (manifest) =>
-      manifest.data.asset?.thumbnail
-        ? createThumbnail(manifest.data.asset.thumbnail)
+      manifest.data?.thumbnail
+        ? createThumbnail(manifest.data.thumbnail)
         : undefined,
     getSerializable: async (manifest, onDispose) => {
-      if (!manifest.data.asset?.thumbnail) {
+      if (!manifest.data?.thumbnail) {
         return undefined;
       }
 
-      const thumbnailUrl = createThumbnail(
-        manifest.data.asset.thumbnail,
-      )?.getUrl();
+      const thumbnailUrl = createThumbnail(manifest.data?.thumbnail)?.getUrl();
 
       if (thumbnailUrl?.dispose) {
         onDispose(thumbnailUrl.dispose);

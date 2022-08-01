@@ -52,7 +52,10 @@ export interface Manifest {
   vendor?: string;
   claim_generator: string;
   claim_generator_hints?: Record<string, unknown>;
-  asset?: Ingredient;
+  title: string;
+  format: string;
+  instance_id: string;
+  thumbnail: Thumbnail;
   ingredients: Ingredient[];
   credentials?: Credential[];
   assertions: Assertion[];
