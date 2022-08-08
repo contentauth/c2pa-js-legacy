@@ -8,6 +8,7 @@ on:
 jobs:
   check-changeset:
     name: 'Check changeset status'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
