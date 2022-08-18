@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Update c2pa-rs to 0.12.0",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
