@@ -7,9 +7,9 @@
  * it.
  */
 
-import { InvalidInputError } from './error';
 import detectorWasm from '@contentauth/detector/pkg/detector_bg.wasm';
 import debug from 'debug';
+import { InvalidInputError } from './error';
 import { SdkWorkerPool } from './workerPool';
 
 const dbg = debug('c2pa:Validator');
@@ -20,7 +20,7 @@ const dbg = debug('c2pa:Validator');
  * @public
  */
 export class Validator {
-  static readonly VALID_MIME_TYPES = ['image/jpeg', 'image/png'];
+  static readonly VALID_MIME_TYPES = ['image/jpeg', 'image/png', 'application/x-c2pa-manifest-store'];
 
   static readonly DEFAULT_DETECTION_LENGTH = 65535;
 
