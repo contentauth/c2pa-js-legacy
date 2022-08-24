@@ -13,7 +13,6 @@ import { WorkerPoolOptions } from 'workerpool';
 import { ensureCompatibility } from './lib/browser';
 import { fetchWasm } from './lib/wasm';
 import { createWorkerPool } from './lib/workerPool';
-import { ManifestResolvers } from './manifest';
 import { createManifestStore, ManifestStore } from './manifestStore';
 import { C2paSourceType, createSource, Source } from './source';
 
@@ -21,7 +20,7 @@ const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
 
 // @TODO: should wasmSrc/workerSrc be optional here w/ an error at runtime if not provided?
-export interface C2paConfig<T extends ManifestResolvers = {}> {
+export interface C2paConfig {
   /**
    * The URL of the WebAssembly binary or a compiled WebAssembly module
    */
@@ -42,25 +41,20 @@ export interface C2paConfig<T extends ManifestResolvers = {}> {
    * Options for the asset downloader
    */
   downloaderOptions?: Partial<DownloaderOptions>;
-
-  /**
-   * A map of custom resolver functions to extend created manifests with additional properties
-   */
-  manifestResolvers?: T;
 }
 
-export interface C2pa<T extends ManifestResolvers = {}> {
+export interface C2pa {
   /**
    * Processes image data from a `Blob` as input
    * @param blob - The binary data of the image
    */
-  read(blob: Blob): Promise<C2paReadResult<T>>;
+  read(blob: Blob): Promise<C2paReadResult>;
 
   /**
    * Processes image data from a `File` as input. Useful for file uploads/drag-and-drop.
    * @param file - The binary data of the image
    */
-  read(file: File): Promise<C2paReadResult<T>>;
+  read(file: File): Promise<C2paReadResult>;
 
   /**
    * Processes image data from a URL
@@ -73,7 +67,7 @@ export interface C2pa<T extends ManifestResolvers = {}> {
    *
    * @param url - The URL of the image to process
    */
-  read(url: string): Promise<C2paReadResult<T>>;
+  read(url: string): Promise<C2paReadResult>;
 
   /**
    * Processes an image from an HTML image element (`<img />`).
@@ -83,21 +77,21 @@ export interface C2pa<T extends ManifestResolvers = {}> {
    *
    * @param element - DOM element of the image to process
    */
-  read(element: HTMLImageElement): Promise<C2paReadResult<T>>;
-  read(input: C2paSourceType): Promise<C2paReadResult<T>>;
+  read(element: HTMLImageElement): Promise<C2paReadResult>;
+  read(input: C2paSourceType): Promise<C2paReadResult>;
 
   /**
    * Convenience function to process multiple images at once
    *
    * @param inputs Array of inputs to pass to `processImage`
    */
-  readAll(inputs: C2paSourceType[]): Promise<C2paReadResult<T>[]>;
+  readAll(inputs: C2paSourceType[]): Promise<C2paReadResult[]>;
 
   dispose: () => void;
 }
 
-export interface C2paReadResult<T extends ManifestResolvers = {}> {
-  manifestStore: ManifestStore<T> | null;
+export interface C2paReadResult {
+  manifestStore: ManifestStore | null;
   source: Source;
 }
 
@@ -106,9 +100,7 @@ export interface C2paReadResult<T extends ManifestResolvers = {}> {
  *
  * @param config Configuration options for the created c2pa object
  */
-export async function createC2pa<T extends ManifestResolvers>(
-  config: C2paConfig<T>,
-): Promise<C2pa<T>> {
+export async function createC2pa(config: C2paConfig): Promise<C2pa> {
   let jobCounter = 0;
 
   dbg('Creating c2pa with config', config);
@@ -122,7 +114,7 @@ export async function createC2pa<T extends ManifestResolvers>(
       ? config.wasmSrc
       : await fetchWasm(pool, config.wasmSrc);
 
-  const read: C2pa<T>['read'] = async (input) => {
+  const read: C2pa['read'] = async (input) => {
     const jobId = ++jobCounter;
 
     dbgTask('[%s] Reading from input', jobId, input);
@@ -146,7 +138,7 @@ export async function createC2pa<T extends ManifestResolvers>(
       dbgTask('[%s] Received worker result', jobId, result);
 
       return {
-        manifestStore: createManifestStore(config, result),
+        manifestStore: createManifestStore(result),
         source,
       };
     } catch (err: any) {
@@ -160,7 +152,7 @@ export async function createC2pa<T extends ManifestResolvers>(
     }
   };
 
-  const readAll: C2pa<T>['readAll'] = async (inputs) =>
+  const readAll: C2pa['readAll'] = async (inputs) =>
     Promise.all(inputs.map((input) => read(input)));
 
   return {

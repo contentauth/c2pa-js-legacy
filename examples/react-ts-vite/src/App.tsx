@@ -1,9 +1,11 @@
-import { useC2pa, useThumbnailUrl } from '@contentauth/react';
+import { useC2pa, useThumbnailUrl, L2Image } from '@contentauth/react';
 import {
   C2paReadResult,
   generateVerifyUrl,
   Manifest,
-  SerializableManifestData,
+  selectProducer,
+  L2Manifest,
+  createL2Manifest,
 } from 'c2pa';
 import 'c2pa-wc/dist/components/Icon';
 import 'c2pa-wc/dist/components/Indicator';
@@ -13,25 +15,24 @@ import 'c2pa-wc/dist/components/panels/PanelSection';
 import 'c2pa-wc/dist/components/Popover';
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-import { Resolvers } from './main';
 
 const sampleImage =
   'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 interface ManifestInfoProps {
-  manifest: Manifest<Resolvers>;
+  manifest: Manifest;
   viewMoreUrl: string;
 }
 
 interface WebComponentsProps {
   imageUrl: string;
-  provenance: C2paReadResult<Resolvers>;
+  provenance: C2paReadResult;
   viewMoreUrl: string;
 }
 
 function ManifestInfo({ manifest, viewMoreUrl }: ManifestInfoProps) {
   const thumbnailUrl = useThumbnailUrl(manifest?.thumbnail ?? undefined);
-  const producer = manifest?.producer;
+  const producer = selectProducer(manifest);
 
   return (
     <table className="claim-info">
@@ -51,15 +52,15 @@ function ManifestInfo({ manifest, viewMoreUrl }: ManifestInfoProps) {
         ) : null}
         <tr>
           <td>Produced with</td>
-          <td>{manifest.claimGenerator.value}</td>
+          <td>{manifest.claimGenerator}</td>
         </tr>
         <tr>
           <td>Signed by</td>
-          <td>{manifest.signature.issuer}</td>
+          <td>{manifest.signatureInfo?.issuer}</td>
         </tr>
         <tr>
           <td>Signed on</td>
-          <td>{manifest.signature.date?.toLocaleString()}</td>
+          <td>{manifest.signatureInfo?.time?.toLocaleString()}</td>
         </tr>
         <tr>
           <td>Number of ingredients</td>
@@ -82,19 +83,24 @@ function WebComponents({
   provenance,
   viewMoreUrl,
 }: WebComponentsProps) {
-  const [manifest, setManifest] =
-    useState<SerializableManifestData<Resolvers> | null>(null);
+  const [manifest, setManifest] = useState<L2Manifest | null>(null);
   const summaryRef = useRef<ManifestSummary>();
 
   useEffect(() => {
-    let dispose = () => {};
-    provenance.manifestStore?.activeManifest
-      ?.asSerializable()
-      .then((result) => {
-        setManifest(result.data);
-        dispose = result.dispose;
-      });
-    return dispose;
+    let disposeFn = () => {};
+
+    if (!provenance.manifestStore?.activeManifest) {
+      return;
+    }
+
+    createL2Manifest(provenance.manifestStore?.activeManifest).then(
+      ({ manifest, dispose }) => {
+        setManifest(manifest);
+        disposeFn = dispose;
+      },
+    );
+
+    return disposeFn;
   }, [provenance.manifestStore?.activeManifest]);
 
   useEffect(() => {
@@ -126,7 +132,7 @@ function WebComponents({
 }
 
 function App() {
-  const provenance = useC2pa<Resolvers>(sampleImage);
+  const provenance = useC2pa(sampleImage);
   const viewMoreUrl = generateVerifyUrl(sampleImage);
 
   return (

@@ -11,40 +11,23 @@ import {
   ManifestStore as ToolkitManifestStore,
   Manifest as ToolkitManifest,
   ValidationStatus,
-} from '@contentauth/toolkit';
-import { C2paConfig } from './c2pa';
-import {
-  createManifest,
-  Manifest,
-  ManifestResolvers,
-  SerializableManifestData,
-} from './manifest';
-import { Disposable, Serializable } from './lib/types';
-import pProps from 'p-props';
+} from '@contentauth/toolkit/types';
+import { createManifest, Manifest } from './manifest';
 import debug from 'debug';
 
-export interface ManifestStore<T extends ManifestResolvers = {}>
-  extends Serializable<Promise<SerializableManifestStore<T>>> {
-  manifests: ManifestMap<T>;
-  activeManifest: Manifest<T>;
-  validationStatus: ValidationStatus[];
-  data: ToolkitManifestStore;
-}
+export interface ManifestStore {
+  // Map of all manifests included in the manifest store
+  manifests: ManifestMap;
 
-export interface SerializableManifestStoreData<
-  T extends ManifestResolvers = {},
-> {
-  manifests: { [key: string]: SerializableManifestData<T> };
-  activeManifest: string;
+  // The active manifest in the manifest store
+  activeManifest: Manifest;
+
+  // List of validation errors
   validationStatus: ValidationStatus[];
 }
 
-type SerializableManifestStore<T extends ManifestResolvers> = Disposable<
-  SerializableManifestStoreData<T>
->;
-
-export interface ManifestMap<T extends ManifestResolvers = {}> {
-  [key: string]: Manifest<T>;
+export interface ManifestMap {
+  [key: string]: Manifest;
 }
 
 type ManifestStackData = {
@@ -60,56 +43,25 @@ const dbg = debug('c2pa:manifestStore');
  * @param config C2pa configuration object
  * @param manifestStoreData Manifest store data returned by the toolkit
  */
-export function createManifestStore<T extends ManifestResolvers>(
-  config: C2paConfig<T>,
+export function createManifestStore(
   manifestStoreData: ToolkitManifestStore,
-): ManifestStore<T> {
-  const manifests = createManifests(config, manifestStoreData);
+): ManifestStore {
+  const manifests = createManifests(manifestStoreData);
 
   return {
     manifests,
     activeManifest: manifests[manifestStoreData.active_manifest],
     validationStatus: manifestStoreData?.validation_status ?? [],
-    data: manifestStoreData,
-
-    asSerializable: async (serializeConfig) => {
-      const serializableManifests = await pProps(manifests, (manifest) =>
-        (manifest as Manifest<T>).asSerializable(serializeConfig),
-      );
-
-      const serializableManifestData = Object.entries(
-        serializableManifests,
-      ).reduce((manifestData, [label, { data }]) => {
-        manifestData[label] = data;
-        return manifestData;
-      }, {} as SerializableManifestStoreData<T>['manifests']);
-
-      return {
-        data: {
-          manifests: serializableManifestData,
-          activeManifest: manifestStoreData.active_manifest,
-          validationStatus: manifestStoreData.validation_status ?? [],
-        },
-        dispose: () =>
-          Object.values(serializableManifests).forEach(({ dispose }) =>
-            dispose(),
-          ),
-      };
-    },
   };
 }
 
 /**
  * Ensures manifests are resolved in the correct order to build the "tree" of manifests and their ingredients.
  *
- * @param config
  * @param manifestStoreData
  * @returns
  */
-function createManifests<T extends ManifestResolvers>(
-  config: C2paConfig<T>,
-  manifestStoreData: ToolkitManifestStore,
-) {
+function createManifests(manifestStoreData: ToolkitManifestStore) {
   const {
     manifests: toolkitManifests,
     active_manifest: toolkitActiveManifestId,
@@ -152,11 +104,11 @@ function createManifests<T extends ManifestResolvers>(
       const { data: manifestData, label } = stackManifestData;
       dbg('Creating manifest with data', manifestData);
 
-      const manifest = createManifest<T>(config, manifestData, manifests);
+      const manifest = createManifest(manifestData, manifests);
       manifests[label] = manifest;
       return manifests;
     },
-    {} as ManifestMap<T>,
+    {} as ManifestMap,
   );
 
   const manifestStack = [orderedManifests[toolkitActiveManifestId]];

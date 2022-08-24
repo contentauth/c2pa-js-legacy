@@ -14,26 +14,15 @@ export {
   C2paConfig,
   C2pa,
 } from './src/c2pa';
-export {
-  ManifestStore,
-  SerializableManifestStoreData,
-} from './src/manifestStore';
-export {
-  Manifest,
-  SerializableManifestData,
-  ManifestResolvers,
-} from './src/manifest';
-export { Ingredient, SerializableIngredientData } from './src/ingredient';
+export { ManifestStore } from './src/manifestStore';
+export { Manifest } from './src/manifest';
+export { Ingredient } from './src/ingredient';
 export { Source, C2paSourceType } from './src/source';
 export { AssertionAccessor, ExtendedAssertions } from './src/assertions';
 export { Thumbnail } from './src/thumbnail';
 
-export type {
-  GetManifestType,
-  GetIngredientType,
-  Serializable,
-  Disposable,
-} from './src/lib/types';
+export { selectEditsAndActivity } from './src/selectors/selectEditsAndActivity';
+export { selectProducer } from './src/selectors/selectProducer';
+export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';
 
-import * as resolvers from './src/resolvers';
-export { resolvers };
+export { createL2Manifest, L2Manifest } from './src/createL2Manifest';

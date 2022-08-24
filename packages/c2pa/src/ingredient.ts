@@ -9,28 +9,45 @@
 import {
   Ingredient as ToolkitIngredient,
   ValidationStatus,
-} from '@contentauth/toolkit';
-import { Manifest, ManifestResolvers } from './manifest';
+  Metadata,
+} from '@contentauth/toolkit/types';
+import { Manifest } from './manifest';
 import { createThumbnail, Thumbnail } from './thumbnail';
-import { Disposable, Serializable } from './lib/types';
 
-export interface Ingredient<T extends ManifestResolvers = {}>
-  extends Serializable<SerializableIngredient> {
-  title?: string;
-  format?: string;
+export interface Ingredient {
+  // Human-readable title, generally source filename
+  title: string;
+
+  // MIME type of the asset associated with this ingredient
+  format: string;
+
+  // Document ID from `xmpMM:DocumentID` in XMP metadata
+  documentId: string | null;
+
+  // Instance ID from `xmpMM:InstanceID` in XMP metadata
+  instanceId: string;
+
+  // URI from `dcterms:provenance` in XMP metadata
+  provenance: string | null;
+
+  // Optional hash of the asset to prevent duplicates
+  hash: string | null;
+
+  // `true` if this ingredient has a 'parentOf' relationship, i.e. it is the parent ingredient of its manifest
+  isParent: boolean;
+
+  // Validation errors associated with this ingredient
   validationStatus: ValidationStatus[];
-  manifest?: Manifest<T>;
+
+  // The manifest contained within this ingredient, if applicable
+  manifest: Manifest | null;
+
+  // Tuple of the thumbnail format and image bytes, if available
   thumbnail: Thumbnail | null;
-  data: ToolkitIngredient;
-}
 
-export interface SerializableIngredientData
-  extends Pick<Ingredient, 'title' | 'format' | 'validationStatus'> {
-  manifest?: string;
-  thumbnail?: string;
+  // Additional metadata as defined by the C2PA spec
+  metadata: Metadata | null;
 }
-
-type SerializableIngredient = Disposable<SerializableIngredientData>;
 
 /**
  * Creates a facade object with convenience methods over ingredient data returned from the toolkit.
@@ -38,33 +55,22 @@ type SerializableIngredient = Disposable<SerializableIngredientData>;
  * @param ingredientData Raw ingredient data returned by the toolkit
  * @param manifest If provided, the created ingredient will link to this manifest. This should be the manifest with a label matching this ingredient's manifestId field.
  */
-export function createIngredient<T extends ManifestResolvers>(
+export function createIngredient(
   ingredientData: ToolkitIngredient,
-  manifest?: Manifest<T>,
-): Ingredient<T> {
-  const thumbnail = createThumbnail(ingredientData.thumbnail);
-
+  manifest?: Manifest,
+): Ingredient {
   return {
     title: ingredientData.title,
     format: ingredientData.format,
+    documentId: ingredientData.document_id ?? null,
+    instanceId: ingredientData.instance_id,
+    provenance: ingredientData.provenance ?? null,
+    hash: ingredientData.hash ?? null,
+    isParent: ingredientData.is_parent ?? false,
     validationStatus: ingredientData.validation_status ?? [],
-    data: ingredientData,
-    thumbnail,
-    manifest,
+    metadata: ingredientData.metadata ?? null,
+    manifest: manifest ?? null,
 
-    asSerializable: () => {
-      const thumbnailUrl = thumbnail?.getUrl();
-
-      return {
-        data: {
-          title: ingredientData.title,
-          format: ingredientData.format,
-          validationStatus: ingredientData.validation_status ?? [],
-          manifest: ingredientData.active_manifest,
-          thumbnail: thumbnailUrl?.data.url,
-        },
-        dispose: thumbnailUrl?.dispose ?? (() => {}),
-      };
-    },
+    thumbnail: createThumbnail(ingredientData.thumbnail),
   };
 }

@@ -11,4 +11,3 @@ export { C2paProvider } from './C2paProvider';
 export { useC2pa } from './useC2pa';
 export { useC2paContext } from './useC2paContext';
 export { useThumbnailUrl } from './useThumbnailUrl';
-export { useSerialized } from './useSerialized';

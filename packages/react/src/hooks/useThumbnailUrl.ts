@@ -26,8 +26,8 @@ export function useThumbnailUrl(thumbnail: Thumbnail | undefined) {
   useEffect(() => {
     let disposeFn = () => {};
     if (thumbnail) {
-      const { data, dispose } = thumbnail?.getUrl();
-      setBlobUrl(data.url);
+      const { url, dispose } = thumbnail?.getUrl();
+      setBlobUrl(url);
       disposeFn = dispose;
     }
 

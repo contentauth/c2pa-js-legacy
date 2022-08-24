@@ -1,8 +1,3 @@
-import type {
-  ManifestResolvers,
-  SerializableManifestData,
-  resolvers,
-} from 'c2pa';
 import { isValid, parseISO } from 'date-fns';
 import defaultStringMap from './ManifestSections.str.json';
 import merge from 'lodash/merge';
@@ -11,16 +6,14 @@ import { Thumbnail } from '../Thumbnail';
 import { PanelSection } from './PanelSection';
 import { exportParts } from '../../directives/ExportParts';
 import { html, TemplateResult } from 'lit';
+import { L2Manifest } from 'c2pa';
 
 export interface SectionConfig {
   stringMap: Record<string, string>;
   partMap?: Record<string, string>;
 }
-interface SectionParams<
-  Config = SectionConfig,
-  Resolvers extends ManifestResolvers = {},
-> {
-  manifest: SerializableManifestData<Resolvers>;
+interface SectionParams<Config = SectionConfig> {
+  manifest: L2Manifest;
   config: Config;
   html: typeof html;
 }
@@ -45,7 +38,7 @@ export function MinimumViableProvenance({
   html,
 }: SectionParams<MinimumViableProvenanceConfig>): TemplateResult {
   const config = merge({}, defaultConfig, customConfig);
-  const signatureDate = manifest.signature.isoDateString
+  const signatureDate = manifest.signature?.isoDateString
     ? parseISO(manifest.signature.isoDateString)
     : undefined;
   return html`
@@ -100,14 +93,14 @@ export function MinimumViableProvenance({
         >
           <cai-icon
             slot="icon"
-            source=${manifest.signature.issuer}
+            source=${manifest.signature?.issuer}
             exportparts=${exportParts(Icon.cssParts)}
           ></cai-icon>
           <span
             part="minimum-viable-provenance-signer-label"
             class="minimum-viable-provenance-signer-label"
           >
-            ${manifest.signature.issuer}
+            ${manifest.signature?.issuer}
           </span>
         </div>
         <div
@@ -182,7 +175,7 @@ export function ProducedWith({
             ${manifest.claimGenerator.product}
           </span>
         </div>
-        ${manifest.isBeta
+        ${false
           ? html`<div
               part="section-produced-with-beta"
               class="section-produced-with-beta"
@@ -199,10 +192,7 @@ export function EditsAndActivity({
   manifest,
   config: customConfig,
   html,
-}: SectionParams<
-  SectionConfig,
-  resolvers.EditsAndActivityResolver
->): TemplateResult {
+}: SectionParams<SectionConfig>): TemplateResult {
   const config = merge({}, defaultConfig, customConfig);
   const editsAndActivityData = manifest.editsAndActivity;
 
@@ -264,12 +254,14 @@ export function EditsAndActivity({
                 part="section-edits-and-activity-list-item-term"
                 class="section-edits-and-activity-list-item-term"
               >
-                <img
-                  part="section-edits-and-activity-list-item-icon"
-                  class="section-edits-and-activity-list-item-icon"
-                  src=${icon}
-                  alt=${label}
-                />
+                ${icon
+                  ? html`<img
+                      part="section-edits-and-activity-list-item-icon"
+                      class="section-edits-and-activity-list-item-icon"
+                      src=${icon}
+                      alt=${label}
+                    />`
+                  : null}
                 <span
                   part="section-edits-and-activity-list-item-label"
                   class="section-edits-and-activity-list-item-label"

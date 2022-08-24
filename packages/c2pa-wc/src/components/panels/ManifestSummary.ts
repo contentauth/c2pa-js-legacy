@@ -1,9 +1,9 @@
-import type { SerializableManifestData } from 'c2pa';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import merge from 'lodash/merge';
 import { defaultStyles } from '../../styles';
 import { defaultDateFormatter, hasChanged } from '../../utils';
+import { L2Manifest } from 'c2pa';
 import {
   AssetsUsed,
   EditsAndActivity,
@@ -111,7 +111,7 @@ export class ManifestSummary extends LitElement {
     type: Object,
     hasChanged,
   })
-  manifest: SerializableManifestData | undefined;
+  manifest: L2Manifest | undefined;
 
   @property({
     type: String,

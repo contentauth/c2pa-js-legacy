@@ -7,15 +7,20 @@
  * it.
  */
 
-import { Thumbnail as ToolkitThumbnail } from '@contentauth/toolkit';
+import { Thumbnail as ToolkitThumbnail } from '@contentauth/toolkit/types';
 import { sha } from './lib/hash';
-import { BlobUrl, createObjectUrlFromBlob } from './objectUrl';
+import { Disposable } from './lib/types';
+export interface BlobUrlData {
+  url: string;
+}
+
+type DisposableBlobUrl = Disposable<BlobUrlData>;
 
 export interface Thumbnail {
   blob?: Blob;
-  contentType: string;
+  contentType: string | undefined;
   hash?: () => Promise<string>;
-  getUrl: () => BlobUrl;
+  getUrl: () => DisposableBlobUrl;
 }
 
 /**
@@ -60,16 +65,21 @@ export function createThumbnailFromBlob(
   };
 }
 
-export function createThumbnailFromUrl(
-  url: string,
-  label: string,
-  contentType: string,
-): Thumbnail {
+export function createThumbnailFromUrl(url: string): Thumbnail {
   return {
-    contentType,
+    contentType: undefined,
     getUrl: () => ({
-      data: { url },
+      url,
       dispose: () => {},
     }),
+  };
+}
+
+function createObjectUrlFromBlob(blob: Blob): DisposableBlobUrl {
+  const url = URL.createObjectURL(blob);
+
+  return {
+    url,
+    dispose: () => URL.revokeObjectURL(url),
   };
 }

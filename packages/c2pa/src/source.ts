@@ -53,11 +53,7 @@ export async function createSource(
 
   if (!blob) {
     return {
-      thumbnail: createThumbnailFromUrl(
-        input as string,
-        inputMetadata?.filename ?? 'source',
-        '',
-      ),
+      thumbnail: createThumbnailFromUrl(input as string),
       metadata: { ...inputMetadata, ...metadata },
       type: '',
       blob: null,
@@ -69,11 +65,7 @@ export async function createSource(
     throw new InvalidMimeTypeError(blob.type);
 
   return {
-    thumbnail: createThumbnailFromBlob(
-      blob,
-      metadata?.filename ?? 'source',
-      blob.type,
-    ),
+    thumbnail: createThumbnailFromBlob(blob, blob.type),
     metadata: { ...inputMetadata, ...metadata },
     type: blob.type,
     blob: blob,

@@ -7,21 +7,19 @@
  * it.
  */
 
-import { C2paReadResult, C2paSourceType, ManifestResolvers } from 'c2pa';
+import { C2paReadResult, C2paSourceType } from 'c2pa';
 import { useEffect, useState } from 'react';
 import { useC2paContext } from './useC2paContext';
 
-export function useC2pa<T extends ManifestResolvers = {}>(
-  input: C2paSourceType | undefined,
-) {
+export function useC2pa(input: C2paSourceType | undefined) {
   const c2paContext = useC2paContext();
-  const [result, setResult] = useState<C2paReadResult<T> | undefined>();
+  const [result, setResult] = useState<C2paReadResult | undefined>();
 
   useEffect(() => {
     async function read() {
       if (c2paContext && input) {
         const readResult = await c2paContext.read(input);
-        setResult(readResult as C2paReadResult<T>);
+        setResult(readResult);
       }
     }
 

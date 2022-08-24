@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/web-components';
+import { L2Manifest } from 'c2pa';
 import { html } from 'lit';
 import {
   ManifestSummary,
@@ -13,7 +14,7 @@ import type { SerializableManifestData } from 'c2pa';
 console.log('ManifestSummary', ManifestSummary);
 
 interface ArgTypes {
-  manifest: SerializableManifestData;
+  manifest: L2Manifest;
   config?: Partial<ManifestSummaryConfig>;
   viewMoreUrl: string;
   theme?: string;

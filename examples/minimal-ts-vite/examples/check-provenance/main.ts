@@ -26,11 +26,11 @@ const sampleImages = [
     // Note: You would normally call `dispose()` when working with a
     // component-based UI library (e.g. on component un-mount)
     // @ts-expect-error noUnusedLocals
-    const { data, dispose } = source.thumbnail.getUrl();
+    const { url, dispose } = source.thumbnail.getUrl();
 
     output.push(`
       <tr>
-        <td><img src="${data.url}" class="thumbnail" /></td>
+        <td><img src="${url}" class="thumbnail" /></td>
         <td>${filename}</td>
         <td>${!!manifestStore ? 'Yes' : 'No'}</td>
       </tr>

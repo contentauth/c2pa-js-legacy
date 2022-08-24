@@ -8,10 +8,10 @@
  */
 
 import React, { createContext, useEffect, ReactNode, useState } from 'react';
-import { createC2pa, C2paConfig, ManifestResolvers, C2pa } from 'c2pa';
+import { createC2pa, C2paConfig, C2pa } from 'c2pa';
 
-export interface C2paProviderProps<T extends ManifestResolvers> {
-  config: C2paConfig<T>;
+export interface C2paProviderProps {
+  config: C2paConfig;
   children: ReactNode;
 }
 
@@ -19,10 +19,7 @@ export type C2paContextValue = C2pa | null;
 
 export const C2paContext = createContext<C2paContextValue>(null);
 
-export function C2paProvider<T extends ManifestResolvers>({
-  config,
-  children,
-}: C2paProviderProps<T>) {
+export function C2paProvider({ config, children }: C2paProviderProps) {
   const [c2paState, setC2paState] = useState<null | C2pa>(null);
 
   useEffect(() => {

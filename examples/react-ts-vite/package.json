@@ -5,9 +5,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:release": "rushx build",
-    "serve": "vite preview",
-    "test": "echo \"examples/react-ts-vite\" no tests",
-    "lint": "echo \"examples/react-ts-vite\" no-op"
+    "serve": "vite preview"
   },
   "dependencies": {
     "@contentauth/react": "workspace:*",
@@ -23,6 +21,6 @@
     "postcss": "~8.4.12",
     "postcss-nesting": "^10.0.2",
     "typescript": "~4.6.3",
-    "vite": "^2.7.12"
+    "vite": "^3.0.4"
   }
 }

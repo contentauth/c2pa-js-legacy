@@ -8,9 +8,9 @@
  */
 
 import { ManifestSummary } from 'c2pa-wc';
-import React, { useEffect, useRef } from 'react';
-import { useC2pa, useSerialized } from '../../hooks';
-import { generateVerifyUrl } from 'c2pa';
+import React, { useEffect, useRef, useState } from 'react';
+import { useC2pa } from '../../hooks';
+import { createL2Manifest, generateVerifyUrl, L2Manifest } from 'c2pa';
 import classNames from 'classnames';
 
 import styles from './L2Image.scss';
@@ -33,19 +33,36 @@ export function L2Image(props: L2ImageProps) {
     throw new Error('<L2Image> does not support srcSet. Use src instead');
   }
 
+  const [manifest, setManifest] = useState<L2Manifest | null>(null);
   const summaryRef = useRef<ManifestSummary>();
   const c2pa = useC2pa(props.src);
-  const serializedManifest = useSerialized(c2pa?.manifestStore?.activeManifest);
+
+  useEffect(() => {
+    let disposeFn = () => {};
+
+    if (!c2pa?.manifestStore?.activeManifest) {
+      return;
+    }
+
+    createL2Manifest(c2pa.manifestStore?.activeManifest).then(
+      ({ manifest: componentL2Manifest, dispose }) => {
+        setManifest(componentL2Manifest);
+        disposeFn = dispose;
+      },
+    );
+
+    return disposeFn;
+  }, [c2pa?.manifestStore?.activeManifest]);
 
   const viewMoreUrl = props.src ? generateVerifyUrl(props.src) : '';
 
   useEffect(() => {
     const summaryElement = summaryRef.current;
-    if (summaryElement && serializedManifest) {
-      summaryElement.manifest = serializedManifest;
+    if (summaryElement && manifest) {
+      summaryElement.manifest = manifest;
       summaryElement.viewMoreUrl = viewMoreUrl;
     }
-  }, [summaryRef, serializedManifest]);
+  }, [summaryRef, manifest]);
 
   return (
     <div
@@ -53,7 +70,7 @@ export function L2Image(props: L2ImageProps) {
       className={classNames([wrapperClass, styles.wrapper])}
     >
       <img {...imgProps} />
-      {serializedManifest ? (
+      {manifest ? (
         <cai-popover interactive class={wcClassName}>
           <cai-indicator slot="trigger" class={wcClassName}></cai-indicator>
           <cai-manifest-summary
