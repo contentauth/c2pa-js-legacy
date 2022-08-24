@@ -61,10 +61,6 @@ export interface Manifest {
 
 type ManifestAssertionKind = 'Cbor' | 'Json' | 'Binary' | 'Uri';
 
-// export interface AssertionData<U = unknown> {
-//   metadata?: Metadata
-// }
-
 export type AssertionData<U = unknown> = {
   metadata?: Metadata;
 } & U;
