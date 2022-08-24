@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Update to latest c2pa API",
+      "type": "major"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}

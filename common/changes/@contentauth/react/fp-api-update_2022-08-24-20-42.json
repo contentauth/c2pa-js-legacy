@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/react",
+      "comment": "Remove useSerializable hook",
+      "type": "major"
+    }
+  ],
+  "packageName": "@contentauth/react"
+}
