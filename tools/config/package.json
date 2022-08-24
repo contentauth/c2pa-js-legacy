@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "echo \"@contentauth/config\" no-op",
-    "build:release": "echo \"@contentauth/config\" no-op",
-    "build:verbose": "echo \"@contentauth/config\" no-op",
-    "test": "echo \"@contentauth/config\" no tests",
-    "lint": "echo \"@contentauth/config\" no-op"
+    "build": ""
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.20.0",

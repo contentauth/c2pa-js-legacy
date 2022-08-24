@@ -21,8 +21,6 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "dev": "npm-run-all --parallel start watch",
-    "start": "serve -l 3000 public",
-    "test": "echo \"examples/minimal-ts-rollup\" no tests",
-    "lint": "echo \"examples/minimal-ts-rollup\" no-op"
+    "start": "serve -l 3000 public"
   }
 }

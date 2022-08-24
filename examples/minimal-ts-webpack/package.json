@@ -4,9 +4,7 @@
   "private": "true",
   "scripts": {
     "dev": "webpack serve",
-    "build": "webpack",
-    "test": "echo \"examples/minimal-ts-webpack\" no tests",
-    "lint": "echo \"examples/minimal-ts-webpack\" no-op"
+    "build": "webpack"
   },
   "devDependencies": {
     "file-loader": "^6.2.0",

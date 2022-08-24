@@ -8,8 +8,7 @@
     "test": "echo \"@contentauth/testing\" no tests",
     "build": "rushx clean && rollup -c rollup.config.js --silent && tsc && cp -R ./src/esm-bundle ./dist/esm-bundle",
     "build:release": "rushx build",
-    "clean": "rimraf dist",
-    "lint": "echo \"@contentauth/testing\" no-op"
+    "clean": "rimraf dist"
   },
   "license": "MIT",
   "dependencies": {

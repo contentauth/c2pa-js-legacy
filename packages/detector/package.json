@@ -22,9 +22,7 @@
     "build": "wasm-pack --quiet build --out-name detector --release --target web && rm -f pkg/.gitignore pkg/package.json",
     "build:release": "rushx build",
     "build:verbose": "wasm-pack --verbose build --out-name detector --release --target web && rm -f pkg/.gitignore pkg/package.json",
-    "clean": "rimraf ./pkg",
-    "test": "echo \"@contentauth/detector\" no tests",
-    "lint": "echo \"@contentauth/detector\" no-op"
+    "clean": "rimraf ./pkg"
   },
   "devDependencies": {
     "nodemon": "~2.0.16",

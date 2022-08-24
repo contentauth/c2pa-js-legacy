@@ -12,7 +12,6 @@
     "build": "rushx clean && rollup -c ./rollup.config.js --silent",
     "build:release": "rushx clean && rollup -c ./rollup.config.js",
     "clean": "rimraf dist",
-    "test": "echo \"@contentauth/react\" no tests",
     "lint": "eslint ."
   },
   "repository": {

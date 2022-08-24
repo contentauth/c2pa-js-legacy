@@ -18,7 +18,8 @@
       "enableParallelism": false,
       "ignoreDependencyOrder": true,
       "allowWarningsInSuccessfulBuild": true,
-      "incremental": true
+      "incremental": true,
+      "ignoreMissingScript": true
     },
 
     {
@@ -30,7 +31,7 @@
       "enableParallelism": true,
       "allowWarningsInSuccessfulBuild": true,
       "incremental": true,
-      "ignoreMissingScript": false
+      "ignoreMissingScript": true
     },
 
     {
@@ -51,7 +52,7 @@
       "safeForSimultaneousRushProcesses": false,
       "enableParallelism": true,
       "ignoreDependencyOrder": true,
-      "ignoreMissingScript": false,
+      "ignoreMissingScript": true,
       "allowWarningsInSuccessfulBuild": false,
       "incremental": true
     },
