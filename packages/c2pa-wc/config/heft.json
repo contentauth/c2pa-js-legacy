@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/heft.schema.json",
+  "heftPlugins": [
+    {
+      "plugin": "@rushstack/heft-storybook-plugin",
+      "options": {
+        "storykitPackageName": "c2pa-wc-storykit",
+        "startupModulePath": "@storybook/web-components/bin/index.js"
+      }
+    }
+  ]
+}

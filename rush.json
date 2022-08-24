@@ -434,6 +434,11 @@
       "tags": ["tooling"]
     },
     {
+      "packageName": "c2pa-wc-storykit",
+      "projectFolder": "tools/c2pa-wc-storykit",
+      "tags": ["tooling"]
+    },
+    {
       "packageName": "esm-imports",
       "projectFolder": "examples/esm-imports",
       "tags": ["example"]

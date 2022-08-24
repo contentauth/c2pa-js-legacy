@@ -13,10 +13,9 @@
     "noUnusedParameters": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
-    "rootDir": "./src",
+    "rootDirs": ["./src", "./stories"],
     "strict": true,
     "target": "es2017"
   },
-  "include": ["**/*"],
-  "exclude": ["./dist/**/*", "./test/**/*"]
+  "exclude": ["./dist/**/*", "./test/**/*", "./stories/**/*"]
 }

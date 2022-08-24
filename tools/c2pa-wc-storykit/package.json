@@ -1,0 +1,28 @@
+{
+  "name": "c2pa-wc-storykit",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Storybook build dependencies for heft-storybook-react-tutorial",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": ""
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/web-components": "^6.5.10",
+    "@storybook/builder-vite": "~0.2.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "@babel/core": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "typescript": "~4.6.3",
+    "webpack": "~5.72.0",
+    "vite": "^3.0.4",
+    "lit-html": "^2.2.0",
+    "@storybook/preview-web": "~6.5.10",
+    "@storybook/client-api": "~6.5.10"
+  }
+}

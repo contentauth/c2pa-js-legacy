@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/web-components';
 import { html } from 'lit';
 import { Thumbnail } from '../src/components/Thumbnail';
-import '../themes/spectrum.css';
+import './themes/spectrum.css';
 
 interface ArgTypes {
   src: string;

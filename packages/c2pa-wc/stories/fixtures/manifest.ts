@@ -1,4 +1,13 @@
-import { SerializableManifestData, resolvers } from 'c2pa';
+/**
+ * Copyright 2022 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: Adobe permits you to use, modify, and distribute this file in
+ * accordance with the terms of the Adobe license agreement accompanying
+ * it.
+ */
+
+// @ts-ignore
 import thumbnailUrl from './manifest-thumbnail.jpg?url';
 
 export default {
@@ -72,4 +81,4 @@ export default {
       description: 'Changed size, orientation, direction, or position',
     },
   ],
-} as SerializableManifestData<resolvers.EditsAndActivityResolver>;
+};

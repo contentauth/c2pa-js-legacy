@@ -6,8 +6,7 @@ import {
   ManifestSummaryConfig,
 } from '../src/components/panels/ManifestSummary';
 import defaultManifest from './fixtures/manifest';
-import '../themes/spectrum.css';
-import type { SerializableManifestData } from 'c2pa';
+import './themes/spectrum.css';
 
 // For some reason, the component fails to load unless it is referenced beforehand
 // TODO: Look into why the web component needs to be referenced to work, unlike `cai-thumbnail`
@@ -21,7 +20,7 @@ interface ArgTypes {
 }
 
 export default {
-  title: 'Components/Panels/ManifestSummary',
+  title: 'Components/ManifestSummary',
   component: 'cai-manifest-summary',
   argTypes: {
     manifest: {
@@ -93,7 +92,7 @@ AppendCustomSection.args = {
     sections: (defaults) => {
       return {
         ...defaults,
-        custom1: ({ manifest, config, html }) => {
+        custom1: ({ manifest, html }) => {
           return html`
             <style>
               .custom1-label {

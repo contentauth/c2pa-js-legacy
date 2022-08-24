@@ -1,15 +1,17 @@
 const litSvg = require('../etc/rollup/plugins/lit-svg');
 
 module.exports = {
-  framework: '@storybook/web-components',
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|ts)'],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    '@storybook/addon-links',
+  stories: [
+    '../stories/**/*.stories.mdx',
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  framework: '@storybook/web-components',
   core: {
-    builder: 'storybook-builder-vite',
+    builder: '@storybook/builder-vite',
+  },
+  features: {
+    storyStoreV7: true,
   },
   async viteFinal(config) {
     config.plugins.push(litSvg());
