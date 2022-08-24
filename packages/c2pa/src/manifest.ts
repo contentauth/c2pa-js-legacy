@@ -49,7 +49,7 @@ export interface Manifest {
   // The manifest this manifest is an ingredient of, if applicable
   parent: Manifest | null;
 
-  // Tuple of the thumbnail format and image bytes, if available
+  // Thumbnail accessor, if available
   thumbnail: Thumbnail | null;
 
   // Interface providing access to assertions contained within this manifest

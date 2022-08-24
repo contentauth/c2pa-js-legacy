@@ -42,7 +42,7 @@ export interface Ingredient {
   // The manifest contained within this ingredient, if applicable
   manifest: Manifest | null;
 
-  // Tuple of the thumbnail format and image bytes, if available
+  // Thumbnail accessor, if available
   thumbnail: Thumbnail | null;
 
   // Additional metadata as defined by the C2PA spec
