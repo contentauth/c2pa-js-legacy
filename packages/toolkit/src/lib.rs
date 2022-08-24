@@ -16,7 +16,6 @@ use wasm_bindgen::prelude::*;
 
 mod error;
 mod manifest_store;
-mod typescript;
 mod util;
 
 use error::Error;

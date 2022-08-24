@@ -20,12 +20,11 @@
   ],
   "scripts": {
     "dev": "nodemon -x wasm-pack -e rs -w src -w ../../../c2pa-toolkit/lib -- build --dev --out-name toolkit --target web",
-    "build": "rushx clean && wasm-pack --quiet build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json",
+    "build": "rushx clean && wasm-pack --quiet build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json && rushx build:types",
     "build:release": "rushx build",
-    "build:verbose": "rushx clean && wasm-pack --verbose build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json",
-    "clean": "rimraf ./pkg",
-    "test": "echo \"@contentauth/toolkit\" no-op",
-    "lint": "echo \"@contentauth/toolkit\" no-op"
+    "build:verbose": "rushx clean && wasm-pack --verbose build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json && rushx build:types",
+    "build:types": "tsc",
+    "clean": "rimraf ./pkg"
   },
   "devDependencies": {
     "@contentauth/testing": "workspace:*",

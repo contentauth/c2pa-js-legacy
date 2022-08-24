@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "pkg/types",
+    "lib": ["ESNext"],
+    "emitDeclarationOnly": true,
+    "declaration": true
+  },
+  "include": ["types/**/*"],
+  "exclude": ["node_modules"]
+}

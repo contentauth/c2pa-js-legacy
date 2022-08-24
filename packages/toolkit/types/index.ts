@@ -1,13 +1,9 @@
-// Copyright 2021 Adobe
+// Copyright 2022 Adobe
 // All Rights Reserved.
 //
 // NOTICE: Adobe permits you to use, modify, and distribute this file in
 // accordance with the terms of the Adobe license agreement accompanying
 // it.
-use wasm_bindgen::prelude::*;
-
-#[wasm_bindgen(typescript_custom_section)]
-pub const TS_APPEND_CONTENT: &'static str = r#"
 
 export interface ManifestStore {
   active_manifest: string;
@@ -63,36 +59,55 @@ export interface Manifest {
   signature_info?: SignatureInfo;
 }
 
-type ManifestAssertionKind = "Cbor" | "Json" | "Binary" | "Uri";
+type ManifestAssertionKind = 'Cbor' | 'Json' | 'Binary' | 'Uri';
+
+// export interface AssertionData<U = unknown> {
+//   metadata?: Metadata
+// }
+
+export type AssertionData<U = unknown> = {
+  metadata?: Metadata;
+} & U;
 
 export interface Assertion<T = string, U = unknown> {
   label: T;
-  data: U;
+  data: AssertionData<U>;
   instance?: number;
   kind?: ManifestAssertionKind;
-  metadata?: Metadata;
 }
 
-export type C2paActionsAssertion = Assertion<"c2pa.actions", {
-  actions: Action[]
-}>;
+export type C2paActionsAssertion = Assertion<
+  'c2pa.actions',
+  {
+    actions: Action[];
+  }
+>;
 
-export type C2paHashDataAssertion = Assertion<"c2pa.hash.data", {
-  exclusions: Exclusion[];
-  name: string;
-  alg: string;
-  hash: Uint8Array;
-  pad: Uint8Array;
-}>;
+export type C2paHashDataAssertion = Assertion<
+  'c2pa.hash.data',
+  {
+    exclusions: Exclusion[];
+    name: string;
+    alg: string;
+    hash: Uint8Array;
+    pad: Uint8Array;
+  }
+>;
 
-export type CreativeWorkAssertion = Assertion<"stds.schema-org.CreativeWork", {
-  '@context': string;
-  '@type': string;
-  author: Author[];
-  url?: string;
-}>;
+export type CreativeWorkAssertion = Assertion<
+  'stds.schema-org.CreativeWork',
+  {
+    '@context': string;
+    '@type': string;
+    author: Author[];
+    url?: string;
+  }
+>;
 
-export type ManifestAssertion = C2paActionsAssertion | C2paHashDataAssertion | CreativeWorkAssertion;
+export type ManifestAssertion =
+  | C2paActionsAssertion
+  | C2paHashDataAssertion
+  | CreativeWorkAssertion;
 
 export interface Action {
   action: string;
@@ -131,7 +146,7 @@ export interface CredentialSubject {
 }
 
 export interface Proof {
-  created: Date;
+  created: string;
   proof_purpose: string;
   proof_type: string;
   proof_value: string;
@@ -185,5 +200,3 @@ export interface Actor {
   identifier?: string;
   credentials?: HashedUri[];
 }
-
-"#;
