@@ -3,12 +3,12 @@
     {
       "packageName": "c2pa",
       "comment": "Replaced resolvers with selector functions to derive more complex manifest data",
-      "type": "major"
+      "type": "minor"
     },
     {
       "packageName": "c2pa",
       "comment": "Significantly overhauled interfaces",
-      "type": "major"
+      "type": "minor"
     }
   ],
   "packageName": "c2pa"

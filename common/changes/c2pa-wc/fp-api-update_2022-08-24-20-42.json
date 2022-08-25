@@ -3,7 +3,7 @@
     {
       "packageName": "c2pa-wc",
       "comment": "Update to latest c2pa API",
-      "type": "major"
+      "type": "minor"
     }
   ],
   "packageName": "c2pa-wc"

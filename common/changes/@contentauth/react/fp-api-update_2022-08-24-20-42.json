@@ -3,7 +3,7 @@
     {
       "packageName": "@contentauth/react",
       "comment": "Remove useSerializable hook",
-      "type": "major"
+      "type": "minor"
     }
   ],
   "packageName": "@contentauth/react"

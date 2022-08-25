@@ -3,7 +3,7 @@
     {
       "packageName": "@contentauth/toolkit",
       "comment": "Extract TS types to types/ directory",
-      "type": "major"
+      "type": "minor"
     }
   ],
   "packageName": "@contentauth/toolkit"
