@@ -15,6 +15,14 @@ import {
 } from '../';
 import { Disposable } from './lib/types';
 
+declare module '../' {
+  interface ExtendedAssertions {
+    'adobe.beta': {
+      version: string;
+    };
+  }
+}
+
 export interface L2Manifest {
   ingredients: L2Ingredient[];
   format: string;
@@ -25,6 +33,7 @@ export interface L2Manifest {
   socialAccounts: L2SocialAccount[] | null;
   thumbnail: string | null;
   editsAndActivity: L2EditsAndActivity[] | null;
+  isBeta: boolean;
 }
 
 interface L2Ingredient {
@@ -132,6 +141,7 @@ export async function createL2Manifest(
       socialAccounts,
       editsAndActivity,
       thumbnail: thumbnail?.url ?? null,
+      isBeta: !!manifest.assertions.get('adobe.beta')?.[0]?.data.version,
     },
     dispose: () => {
       disposers.forEach((dispose) => dispose());

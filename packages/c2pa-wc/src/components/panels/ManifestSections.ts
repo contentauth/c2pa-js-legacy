@@ -175,7 +175,7 @@ export function ProducedWith({
             ${manifest.claimGenerator.product}
           </span>
         </div>
-        ${false
+        ${manifest.isBeta
           ? html`<div
               part="section-produced-with-beta"
               class="section-produced-with-beta"
