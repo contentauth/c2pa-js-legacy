@@ -32,7 +32,6 @@
     "test": "wtr",
     "lint": "eslint .",
     "storybook": "heft start --storybook",
-    "storybook:build": "build-storybook",
     "clean": "rimraf dist"
   },
   "dependencies": {
