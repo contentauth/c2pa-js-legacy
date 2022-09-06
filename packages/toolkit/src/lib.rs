@@ -7,7 +7,6 @@
 
 // See https://github.com/rustwasm/wasm-bindgen/issues/2774
 #![allow(clippy::unused_unit)]
-
 use log::Level;
 use serde::Serialize;
 use serde_wasm_bindgen::Serializer;
@@ -20,17 +19,18 @@ mod util;
 
 use error::Error;
 use js_sys::Error as JsSysError;
+use js_sys::Reflect;
 use manifest_store::get_manifest_store_data;
 use util::log_time;
 
 #[wasm_bindgen(typescript_custom_section)]
 pub const TS_APPEND_CONTENT: &'static str = r#"
+import { ManifestStore } from './types'
 
 export function getManifestStoreFromArrayBuffer(
     buf: ArrayBuffer,
     mimeType: string
 ): ManifestStore;
-
 "#;
 
 #[wasm_bindgen(start)]
@@ -42,9 +42,16 @@ pub fn run() {
 /// Creates a JavaScript Error with additional error info
 ///
 /// We can't use wasm-bindgen's `JsError` since it only allows you to set a single message string
+#[allow(unused_must_use)]
 fn as_js_error(err: Error) -> JsSysError {
     let js_err = JsSysError::new(&err.to_string());
     js_err.set_name(&format!("{:?}", err));
+
+    if let Error::C2pa(c2pa::Error::RemoteManifestUrl(url)) = err {
+        js_err.set_name("Toolkit(RemoteManifestUrl)");
+        Reflect::set(&js_err, &"url".into(), &url.into());
+    }
+
     js_err
 }
 

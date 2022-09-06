@@ -24,11 +24,18 @@ const CAI_BLOCK_UUID: [u8; 16] = [
     0x63, 0x32, 0x70, 0x61, 0x00, 0x11, 0x00, 0x10, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71,
 ];
 
+const DCTERMS_PROVENANCE: [u8; 18] = [
+    0x64, 0x63, 0x74, 0x65, 0x72, 0x6D, 0x73, 0x3A, 0x70, 0x72, 0x6F, 0x76, 0x65, 0x6E, 0x61, 0x6E,
+    0x63, 0x65,
+];
+
 #[wasm_bindgen]
 pub fn scan_array_buffer(buf: JsValue) -> Result<usize, JsValue> {
     let scan_bytes: serde_bytes::ByteBuf = serde_wasm_bindgen::from_value(buf)?;
 
     if let Some(pos) = find_bytes(&scan_bytes, &CAI_BLOCK_UUID) {
+        Ok(pos)
+    } else if let Some(pos) = find_bytes(&scan_bytes, &DCTERMS_PROVENANCE) {
         Ok(pos)
     } else {
         Err(JsValue::from_str("NOT_FOUND"))

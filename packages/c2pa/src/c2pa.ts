@@ -12,9 +12,10 @@ import { Downloader, DownloaderOptions } from './lib/downloader';
 import { WorkerPoolOptions } from 'workerpool';
 import { ensureCompatibility } from './lib/browser';
 import { fetchWasm } from './lib/wasm';
-import { createWorkerPool } from './lib/workerPool';
+import { createWorkerPool, SdkWorkerPool } from './lib/workerPool';
 import { createManifestStore, ManifestStore } from './manifestStore';
 import { C2paSourceType, createSource, Source } from './source';
+import { ToolkitError } from '@contentauth/toolkit/types';
 
 const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
@@ -41,6 +42,11 @@ export interface C2paConfig {
    * Options for the asset downloader
    */
   downloaderOptions?: Partial<DownloaderOptions>;
+
+  /**
+   * By default, the SDK will fetch cloud-stored (remote) manifests. Set this to false to disable this behavior.
+   */
+  fetchRemoteManifests?: boolean;
 }
 
 export interface C2pa {
@@ -142,13 +148,17 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
         source,
       };
     } catch (err: any) {
-      if (
-        ['C2pa(ProvenanceMissing)', 'C2pa(JumbfNotFound)'].includes(err?.name)
-      ) {
-        return { manifestStore: null, source };
-      } else {
-        throw err;
-      }
+      const manifestStore = await handleErrors(
+        err,
+        pool,
+        wasm,
+        config.fetchRemoteManifests,
+      );
+
+      return {
+        manifestStore,
+        source,
+      };
     }
   };
 
@@ -172,4 +182,51 @@ export function generateVerifyUrl(assetUrl: string) {
   const url = new URL('https://verify.contentauthenticity.org/inspect');
   url.searchParams.set('source', assetUrl);
   return url.toString();
+}
+
+/**
+ * Handles errors from the toolkit and fetches/processes remote manifests, if applicable.
+ *
+ * @param error Error from toolkit
+ * @param pool Worker pool to use when processing remote manifests (triggered by Toolkit(RemoteManifestUrl) error)
+ * @param wasm WASM module to use when processing remote manifests
+ * @param fetchRemote Controls remote-fetching behavior
+ * @returns A manifestStore, if applicable, null otherwise or a re-thrown error.
+ */
+function handleErrors(
+  error: ToolkitError,
+  pool: SdkWorkerPool,
+  wasm: WebAssembly.Module,
+  fetchRemote = true,
+): Promise<ManifestStore> | null {
+  switch (error.name) {
+    case 'Toolkit(RemoteManifestUrl)':
+      if (fetchRemote && error.url) {
+        return fetchRemoteManifest(error.url, pool, wasm);
+      }
+      break;
+    case 'C2pa(ProvenanceMissing)':
+    case 'C2pa(JumbfNotFound)':
+      dbg('No provenance data found');
+      break;
+    default:
+      throw error;
+  }
+
+  return null;
+}
+
+async function fetchRemoteManifest(
+  url: string,
+  pool: SdkWorkerPool,
+  wasm: WebAssembly.Module,
+): Promise<ManifestStore> {
+  dbg('Fetching remote manifest from', url);
+
+  const bytes = await fetch(url);
+  const blob = await bytes.blob();
+  const arrayBuffer = await blob.arrayBuffer();
+  const result = await pool.getReport(wasm, arrayBuffer, blob.type);
+
+  return createManifestStore(result);
 }

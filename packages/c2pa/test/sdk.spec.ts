@@ -21,7 +21,7 @@ describe('c2pa', function () {
       describe('manifestStore', function () {
         describe('validationStatus', function () {
           it('should include the correct validation errors', function (this: TestContext) {
-            expect(this.result.manifestStore.validationStatus).toEqual([
+            expect(this.result.manifestStore?.validationStatus).toEqual([
               {
                 code: 'signingCredential.invalid',
                 url: 'Cose_Sign1',
@@ -53,7 +53,7 @@ describe('c2pa', function () {
               issuer: 'Adobe, Inc.',
               time: '2022-04-20T22:44:41+00:00',
             });
-            expect(activeManifest.credentials).toEqual([
+            expect(activeManifest?.credentials).toEqual([
               {
                 '@context': ['https://www.w3.org/2018/credentials/v1'],
                 credentialSubject: {
@@ -73,12 +73,13 @@ describe('c2pa', function () {
                 type: ['VerifiableCredential'],
               },
             ]);
-            expect(activeManifest.redactions).toEqual([]);
+            expect(activeManifest?.redactions).toEqual([]);
             expect(activeManifest?.parent).toBeNull();
           });
 
           it('should contain the correct ingredients', function (this: TestContext) {
-            const { ingredients } = this.result.manifestStore?.activeManifest;
+            const ingredients =
+              this.result.manifestStore?.activeManifest?.ingredients!;
 
             expect(ingredients[0].title).toBe('CA.jpg');
             expect(ingredients[0].format).toBe('image/jpeg');
@@ -91,7 +92,7 @@ describe('c2pa', function () {
             expect(ingredients[0].isParent).toBe(true);
             expect(ingredients[0].validationStatus).toEqual([]);
             expect(ingredients[0].metadata).toBeNull();
-            expect(ingredients[0].manifest.title).toBe('CA.jpg');
+            expect(ingredients[0].manifest?.title).toBe('CA.jpg');
 
             expect(ingredients[1].title).toBe('CAI.jpg');
             expect(ingredients[1].format).toBe('image/jpeg');
@@ -104,7 +105,7 @@ describe('c2pa', function () {
             expect(ingredients[1].isParent).toBe(false);
             expect(ingredients[1].validationStatus).toEqual([]);
             expect(ingredients[1].metadata).toBeNull();
-            expect(ingredients[1].manifest.title).toBe('CAI.jpg');
+            expect(ingredients[1].manifest?.title).toBe('CAI.jpg');
           });
 
           it('should have a thumbnail that can be disposed', async function (this: TestContext) {
@@ -148,7 +149,8 @@ describe('c2pa', function () {
 
         describe('ingredients', function () {
           it('should be correct', function (this: TestContext) {
-            const { ingredients } = this.result.manifestStore?.activeManifest;
+            const ingredients =
+              this.result.manifestStore?.activeManifest?.ingredients!;
 
             expect(ingredients[0].title).toBe('CA.jpg');
             expect(ingredients[0].format).toBe('image/jpeg');
@@ -161,7 +163,7 @@ describe('c2pa', function () {
             expect(ingredients[0].isParent).toBe(true);
             expect(ingredients[0].validationStatus).toEqual([]);
             expect(ingredients[0].metadata).toBeNull();
-            expect(ingredients[0].manifest.title).toBe('CA.jpg');
+            expect(ingredients[0].manifest?.title).toBe('CA.jpg');
 
             expect(ingredients[1].title).toBe('CAI.jpg');
             expect(ingredients[1].format).toBe('image/jpeg');
@@ -174,7 +176,7 @@ describe('c2pa', function () {
             expect(ingredients[1].isParent).toBe(false);
             expect(ingredients[1].validationStatus).toEqual([]);
             expect(ingredients[1].metadata).toBeNull();
-            expect(ingredients[1].manifest.title).toBe('CAI.jpg');
+            expect(ingredients[1].manifest?.title).toBe('CAI.jpg');
           });
         });
       });
@@ -182,7 +184,8 @@ describe('c2pa', function () {
       describe('assertions', function () {
         describe('data', function () {
           it("should contain the manifest's assertions", function (this: TestContext) {
-            const { assertions } = this.result.manifestStore?.activeManifest;
+            const { assertions } = this.result.manifestStore?.activeManifest!;
+
             expect(assertions.data).toEqual([
               { label: 'adobe.beta', data: { version: '0.12.5' } },
               {
@@ -217,7 +220,7 @@ describe('c2pa', function () {
 
         describe('#get', function () {
           it('should return the requested assertion', function (this: TestContext) {
-            const { assertions } = this.result.manifestStore?.activeManifest;
+            const { assertions } = this.result.manifestStore?.activeManifest!;
             expect(assertions.get('c2pa.actions')).toEqual([
               {
                 label: 'c2pa.actions',

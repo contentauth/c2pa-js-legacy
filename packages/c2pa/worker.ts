@@ -16,7 +16,7 @@ import {
   default as initToolkit,
   getManifestStoreFromArrayBuffer,
 } from '@contentauth/toolkit';
-import { ManifestStore } from './src/manifestStore';
+import { ManifestStore } from '@contentauth/toolkit/types';
 
 export interface IScanResult {
   found: boolean;

@@ -196,3 +196,11 @@ export interface Actor {
   identifier?: string;
   credentials?: HashedUri[];
 }
+
+/**
+ * Errors
+ */
+
+export interface ToolkitError extends Error {
+  url?: string;
+}
