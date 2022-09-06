@@ -7,15 +7,13 @@
  * it.
  */
 
-import {
-  Manifest,
-  selectProducer,
-  selectEditsAndActivity,
-  selectSocialAccounts,
-} from '../';
+import { Manifest } from './manifest';
+import { selectProducer } from './selectors/selectProducer';
+import { selectEditsAndActivity } from './selectors/selectEditsAndActivity';
+import { selectSocialAccounts } from './selectors/selectSocialAccounts';
 import { Disposable } from './lib/types';
 
-declare module '../' {
+declare module './assertions' {
   interface ExtendedAssertions {
     'adobe.beta': {
       version: string;
