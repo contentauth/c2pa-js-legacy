@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/detector",
+      "comment": "Detect remote manifest URLs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/detector"
+}
