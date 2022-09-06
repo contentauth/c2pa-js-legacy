@@ -99,6 +99,7 @@
     "@storybook/client-api": "~6.5.10",
     "@rushstack/heft": "~0.47.0",
     "@rushstack/heft-storybook-plugin": "~0.1.69",
-    "c2pa-wc-storykit": "workspace:*"
+    "c2pa-wc-storykit": "workspace:*",
+    "prettier": "^2.6.2"
   }
 }

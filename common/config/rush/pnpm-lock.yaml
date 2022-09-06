@@ -233,6 +233,7 @@ importers:
       lodash: ^4.17.21
       postcss: ~8.4.12
       postcss-nested: ~5.0.6
+      prettier: ^2.6.2
       react: ^16.13.1
       react-dom: ^16.13.1
       rimraf: ^3.0.2
@@ -299,6 +300,7 @@ importers:
       jasmine-core: 4.1.1
       postcss: 8.4.14
       postcss-nested: 5.0.6_postcss@8.4.14
+      prettier: 2.7.1
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
       rimraf: 3.0.2
@@ -385,6 +387,7 @@ importers:
       '@web/test-runner-browserstack': ~0.5.0
       '@web/test-runner-core': ~0.10.26
       '@web/test-runner-puppeteer': ~0.10.5
+      debug: ~4.3.4
       deepdash-es: ~5.3.9
       jasmine-core: ~4.1.0
       nodemon: ~2.0.16
@@ -402,6 +405,7 @@ importers:
       '@web/test-runner-browserstack': 0.5.0_typescript@4.6.4
       '@web/test-runner-core': 0.10.27
       '@web/test-runner-puppeteer': 0.10.5
+      debug: 4.3.4
       deepdash-es: 5.3.9
       jasmine-core: 4.1.1
       nodemon: 2.0.18
@@ -15313,6 +15317,12 @@ packages:
 
   /prettier/2.3.0:
     resolution: {integrity: sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
