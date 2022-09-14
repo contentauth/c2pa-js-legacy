@@ -194,6 +194,7 @@ importers:
       '@rollup/plugin-node-resolve': ^13.3.0
       '@rollup/plugin-replace': ~4.0.0
       '@rollup/plugin-typescript': ~8.3.2
+      '@rollup/pluginutils': ~4.2.1
       '@rushstack/eslint-config': ~2.6.0
       '@rushstack/heft': ~0.47.0
       '@rushstack/heft-storybook-plugin': ~0.1.69
@@ -268,6 +269,7 @@ importers:
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.70.2
       '@rollup/plugin-replace': 4.0.0_rollup@2.70.2
       '@rollup/plugin-typescript': 8.3.3_20718b7758ea1ba5d2f52271e2534884
+      '@rollup/pluginutils': 4.2.1
       '@rushstack/eslint-config': 2.6.1_eslint@8.14.0+typescript@4.6.4
       '@rushstack/heft': 0.47.0
       '@rushstack/heft-storybook-plugin': 0.1.69_@rushstack+heft@0.47.0
