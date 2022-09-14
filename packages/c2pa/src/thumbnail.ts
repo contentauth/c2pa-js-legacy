@@ -7,7 +7,7 @@
  * it.
  */
 
-import { Thumbnail as ToolkitThumbnail } from '@contentauth/toolkit/types';
+import { Thumbnail as ToolkitThumbnail } from '@contentauth/toolkit';
 import { sha } from './lib/hash';
 import { Disposable } from './lib/types';
 export interface BlobUrlData {

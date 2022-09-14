@@ -7,7 +7,7 @@
  * it.
  */
 
-import { Action } from '@contentauth/toolkit/types';
+import { Action } from '@contentauth/toolkit';
 import { Manifest } from '../manifest';
 import debug from 'debug';
 import flow from 'lodash/fp/flow';

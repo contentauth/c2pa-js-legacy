@@ -20,17 +20,24 @@ mod util;
 use error::Error;
 use js_sys::Error as JsSysError;
 use js_sys::Reflect;
-use manifest_store::get_manifest_store_data;
+use manifest_store::{get_manifest_store_data, get_manifest_store_data_from_manifest_and_asset_bytes};
 use util::log_time;
 
 #[wasm_bindgen(typescript_custom_section)]
 pub const TS_APPEND_CONTENT: &'static str = r#"
 import { ManifestStore } from './types'
 
+export * from './types';
+
 export function getManifestStoreFromArrayBuffer(
     buf: ArrayBuffer,
     mimeType: string
-): ManifestStore;
+): Promise<ManifestStore>;
+
+export function getManifestStoreFromManifestAndAsset(
+    manifestBuffer: ArrayBuffer,
+    assetBuffer: ArrayBuffer
+): Promise<ManifestStore>;
 "#;
 
 #[wasm_bindgen(start)]
@@ -75,6 +82,35 @@ pub async fn get_manifest_store_from_array_buffer(
         .map_err(|_err| Error::JavaScriptConversion)
         .map_err(as_js_error)?;
     log_time("get_manifest_store_from_array_buffer::javascript_conversion");
+
+    Ok(js_value)
+}
+
+#[wasm_bindgen(js_name = getManifestStoreFromManifestAndAsset, skip_typescript)]
+pub async fn get_manifest_store_from_manifest_and_asset(
+    manifest_buffer: JsValue,
+    asset_buffer: JsValue
+) -> Result<JsValue, JsSysError> {
+    log_time("get_manifest_store_data_from_manifest_and_asset::start");
+    let manifest: serde_bytes::ByteBuf = serde_wasm_bindgen::from_value(manifest_buffer)
+        .map_err(Error::SerdeInput)
+        .map_err(as_js_error)?;
+
+    let asset: serde_bytes::ByteBuf = serde_wasm_bindgen::from_value(asset_buffer)
+        .map_err(Error::SerdeInput)
+        .map_err(as_js_error)?;
+
+    log_time("get_manifest_store_data_from_manifest_and_asset::from_bytes");
+    let result = get_manifest_store_data_from_manifest_and_asset_bytes(&manifest, &asset)
+        .await
+        .map_err(as_js_error)?;
+
+    let serializer = Serializer::new().serialize_maps_as_objects(true);
+    let js_value = result
+        .serialize(&serializer)
+        .map_err(|_err| Error::JavaScriptConversion)
+        .map_err(as_js_error)?;
+    log_time("get_manifest_store_data_from_manifest_and_asset::javascript_conversion");
 
     Ok(js_value)
 }

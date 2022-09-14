@@ -11,7 +11,7 @@ import {
   SignatureInfo,
   Manifest as ToolkitManifest,
   Credential,
-} from '@contentauth/toolkit/types';
+} from '@contentauth/toolkit';
 import { createAssertionAccessor, AssertionAccessor } from './assertions';
 import { createIngredient, Ingredient } from './ingredient';
 import { ManifestMap } from './manifestStore';

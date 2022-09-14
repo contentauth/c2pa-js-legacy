@@ -10,7 +10,7 @@ import {
   Ingredient as ToolkitIngredient,
   ValidationStatus,
   Metadata,
-} from '@contentauth/toolkit/types';
+} from '@contentauth/toolkit';
 import { Manifest } from './manifest';
 import { createThumbnail, Thumbnail } from './thumbnail';
 

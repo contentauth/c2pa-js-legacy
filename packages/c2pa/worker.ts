@@ -15,8 +15,9 @@ import {
 import {
   default as initToolkit,
   getManifestStoreFromArrayBuffer,
+  getManifestStoreFromManifestAndAsset,
+  ManifestStore,
 } from '@contentauth/toolkit';
-import { ManifestStore } from '@contentauth/toolkit/types';
 
 export interface IScanResult {
   found: boolean;
@@ -34,6 +35,14 @@ const worker = {
   ): Promise<ManifestStore> {
     await initToolkit(wasm);
     return getManifestStoreFromArrayBuffer(buffer, type);
+  },
+  async getReportFromAssetAndManifestBuffer(
+    wasm: WebAssembly.Module,
+    manifestBuffer: ArrayBuffer,
+    assetBuffer: ArrayBuffer,
+  ) {
+    await initToolkit(wasm);
+    return getManifestStoreFromManifestAndAsset(manifestBuffer, assetBuffer);
   },
   async scanInput(
     wasm: WebAssembly.Module,

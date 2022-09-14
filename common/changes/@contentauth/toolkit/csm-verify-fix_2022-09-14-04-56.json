@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Update to c2pa-rs 0.13.1, add get_manifest_store_data_from_manifest_and_asset_bytes",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

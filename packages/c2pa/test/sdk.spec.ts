@@ -245,5 +245,46 @@ describe('c2pa', function () {
         });
       });
     });
+
+    describe('cloud manifests', function () {
+      beforeAll(async function () {
+        const c2pa = await createC2pa({
+          wasmSrc: './dist/assets/wasm/toolkit_bg.wasm',
+          workerSrc: './dist/c2pa.worker.js',
+        });
+
+        this.result = await c2pa.read(
+          './node_modules/@contentauth/testing/fixtures/images/cloud.jpg',
+        );
+      });
+
+      it('should be fetched and validated', async function (this: TestContext) {
+        const c2pa = await createC2pa({
+          wasmSrc: './dist/assets/wasm/toolkit_bg.wasm',
+          workerSrc: './dist/c2pa.worker.js',
+        });
+
+        const result = await c2pa.read(
+          './node_modules/@contentauth/testing/fixtures/images/cloud.jpg',
+        );
+
+        expect(result.manifestStore).not.toBeNull();
+        expect(result.manifestStore?.validationStatus).toEqual([]);
+      });
+
+      it('should not be fetched when fetchRemoteManifests is false', async function () {
+        const c2pa = await createC2pa({
+          wasmSrc: './dist/assets/wasm/toolkit_bg.wasm',
+          workerSrc: './dist/c2pa.worker.js',
+          fetchRemoteManifests: false,
+        });
+
+        const result = await c2pa.read(
+          './node_modules/@contentauth/testing/fixtures/images/cloud.jpg',
+        );
+
+        expect(result.manifestStore).toBeNull();
+      });
+    });
   });
 });

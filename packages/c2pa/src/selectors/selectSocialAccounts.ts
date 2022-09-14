@@ -7,7 +7,7 @@
  * it.
  */
 
-import { Author } from '@contentauth/toolkit/types';
+import { Author } from '@contentauth/toolkit';
 import { Manifest } from '../manifest';
 
 /**

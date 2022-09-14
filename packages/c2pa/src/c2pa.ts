@@ -15,7 +15,7 @@ import { fetchWasm } from './lib/wasm';
 import { createWorkerPool, SdkWorkerPool } from './lib/workerPool';
 import { createManifestStore, ManifestStore } from './manifestStore';
 import { C2paSourceType, createSource, Source } from './source';
-import { ToolkitError } from '@contentauth/toolkit/types';
+import { ToolkitError } from '@contentauth/toolkit';
 
 const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
@@ -149,6 +149,7 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
       };
     } catch (err: any) {
       const manifestStore = await handleErrors(
+        source,
         err,
         pool,
         wasm,
@@ -187,6 +188,7 @@ export function generateVerifyUrl(assetUrl: string) {
 /**
  * Handles errors from the toolkit and fetches/processes remote manifests, if applicable.
  *
+ * @param source Source object representing the asset
  * @param error Error from toolkit
  * @param pool Worker pool to use when processing remote manifests (triggered by Toolkit(RemoteManifestUrl) error)
  * @param wasm WASM module to use when processing remote manifests
@@ -194,6 +196,7 @@ export function generateVerifyUrl(assetUrl: string) {
  * @returns A manifestStore, if applicable, null otherwise or a re-thrown error.
  */
 function handleErrors(
+  source: Source,
   error: ToolkitError,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
@@ -202,7 +205,7 @@ function handleErrors(
   switch (error.name) {
     case 'Toolkit(RemoteManifestUrl)':
       if (fetchRemote && error.url) {
-        return fetchRemoteManifest(error.url, pool, wasm);
+        return fetchRemoteManifest(source, error.url, pool, wasm);
       }
       break;
     case 'C2pa(ProvenanceMissing)':
@@ -217,16 +220,22 @@ function handleErrors(
 }
 
 async function fetchRemoteManifest(
+  source: Source,
   url: string,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
 ): Promise<ManifestStore> {
   dbg('Fetching remote manifest from', url);
 
-  const bytes = await fetch(url);
-  const blob = await bytes.blob();
-  const arrayBuffer = await blob.arrayBuffer();
-  const result = await pool.getReport(wasm, arrayBuffer, blob.type);
+  const manifestBytes = await fetch(url);
+  const manifestBlob = await manifestBytes.blob();
+  const manifestBuffer = await manifestBlob.arrayBuffer();
+  const sourceBuffer = await source.arrayBuffer();
+  const result = await pool.getReportFromAssetAndManifestBuffer(
+    wasm,
+    manifestBuffer,
+    sourceBuffer,
+  );
 
   return createManifestStore(result);
 }

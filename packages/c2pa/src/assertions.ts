@@ -7,7 +7,7 @@
  * it.
  */
 
-import { Assertion, ManifestAssertion } from '@contentauth/toolkit/types';
+import { Assertion, ManifestAssertion } from '@contentauth/toolkit';
 
 export interface ExtendedAssertions {}
 

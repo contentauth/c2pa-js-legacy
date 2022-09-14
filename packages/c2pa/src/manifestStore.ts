@@ -11,7 +11,7 @@ import {
   ManifestStore as ToolkitManifestStore,
   Manifest as ToolkitManifest,
   ValidationStatus,
-} from '@contentauth/toolkit/types';
+} from '@contentauth/toolkit';
 import { createManifest, Manifest } from './manifest';
 import debug from 'debug';
 
