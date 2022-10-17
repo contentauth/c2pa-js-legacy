@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/detector",
+      "comment": "Support Safari 14",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/detector"
+}
