@@ -9,26 +9,33 @@
 
 import { LitElement, html, css, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { exportParts } from '../directives/ExportParts';
 import { nothing } from 'lit-html';
-import { defaultStyles } from '../styles';
-import { classPartMap } from '../utils';
-import { Tooltip } from './Tooltip';
-import '../../assets/svg/monochrome/broken-image.svg';
-import '../../assets/svg/color/info.svg';
-import '../../assets/svg/color/alert.svg';
-import '../../assets/svg/color/missing.svg';
+import { defaultStyles } from '../../styles';
+import { classPartMap } from '../../utils';
+
+import '../Tooltip';
+
+import '../../../assets/svg/monochrome/broken-image.svg';
+import '../../../assets/svg/color/info.svg';
+import '../../../assets/svg/color/alert.svg';
+import '../../../assets/svg/color/missing.svg';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'cai-thumbnail': Thumbnail;
+  }
+
+  namespace JSX {
+    interface IntrinsicElements {
+      'cai-thumbnail': any;
+    }
+  }
+}
 
 type Badge = 'none' | 'info' | 'missing' | 'alert';
 
 @customElement('cai-thumbnail')
 export class Thumbnail extends LitElement {
-  static readonly cssParts = {
-    container: 'thumbnail-container',
-    badge: 'thumbnail-badge',
-    noImage: 'thumbnail-badge-no-image',
-  };
-
   static readonly badgeMap: Record<Badge, TemplateResult | typeof nothing> = {
     none: nothing,
     info: html`<cai-icon-info class="badge-icon"></cai-icon-info>`,
@@ -139,28 +146,21 @@ export class Thumbnail extends LitElement {
           background: url(${this.src}) var(--cai-thumbnail-bgcolor, #eaeaea);
         }
       </style>
-      <div class=${containerClasses} part=${Thumbnail.cssParts.container}>
+      <div class=${containerClasses}>
         <slot name="badge">
           ${this.badge !== 'none' && this.badgeHelpText
-            ? html`<cai-tooltip
-                class="badge-tooltip"
-                exportParts=${exportParts(Tooltip.cssParts)}
-              >
+            ? html`<cai-tooltip class="badge-tooltip">
                 <div slot="content">${this.badgeHelpText}</div>
-                <div
-                  class="included-badge"
-                  ${Thumbnail.cssParts.badge}
-                  slot="trigger"
-                >
+                <div class="included-badge" slot="trigger">
                   ${Thumbnail.badgeMap[this.badge]}
                 </div>
               </cai-tooltip>`
-            : html`<div class="badge-no-tooltip" ${Thumbnail.cssParts.badge}>
+            : html`<div class="badge-no-tooltip">
                 ${Thumbnail.badgeMap[this.badge]}
               </div>`}
         </slot>
         ${!this.src
-          ? html`<div class="no-image" ${Thumbnail.cssParts.noImage}>
+          ? html`<div class="no-image">
               <cai-icon-broken-image></cai-icon-broken-image>
             </div>`
           : nothing}

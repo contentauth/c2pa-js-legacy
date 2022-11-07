@@ -11,10 +11,16 @@ import { animate } from '@lit-labs/motion';
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import '../../assets/svg/monochrome/help.svg';
-import { defaultStyles } from '../styles';
+import '../../../assets/svg/monochrome/help.svg';
+import { defaultStyles } from '../../styles';
+
+import '../Icon';
 
 declare global {
+  interface HTMLElementTagNameMap {
+    'cai-tooltip': Tooltip;
+  }
+
   namespace JSX {
     interface IntrinsicElements {
       'cai-tooltip': any;
@@ -24,11 +30,6 @@ declare global {
 
 @customElement('cai-tooltip')
 export class Tooltip extends LitElement {
-  static readonly cssParts: Record<string, string> = {
-    content: 'tooltip-content',
-    trigger: 'tooltip-trigger',
-  };
-
   @state()
   protected _isShown = false;
 
@@ -93,9 +94,11 @@ export class Tooltip extends LitElement {
         <div
           class="trigger"
           slot="trigger"
-          part=${Tooltip.cssParts.trigger}
+          tabindex="0"
           @mouseenter="${this._showTooltip}"
           @mouseleave="${this._hideTooltip}"
+          @focus="${this._showTooltip}"
+          @blur="${this._hideTooltip}"
         >
           <slot name="trigger">
             <cai-icon-help></cai-icon-help>
@@ -103,7 +106,6 @@ export class Tooltip extends LitElement {
         </div>
         <div
           class=${classMap(contentClassMap)}
-          part=${Tooltip.cssParts.content}
           slot="content"
           ${animate({
             keyframeOptions: {

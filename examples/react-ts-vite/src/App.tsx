@@ -9,10 +9,10 @@ import {
 } from 'c2pa';
 import 'c2pa-wc/dist/components/Icon';
 import 'c2pa-wc/dist/components/Indicator';
-import 'c2pa-wc/dist/components/panels/ManifestSummary';
-import { ManifestSummary } from 'c2pa-wc/dist/components/panels/ManifestSummary';
-import 'c2pa-wc/dist/components/panels/PanelSection';
+import 'c2pa-wc/dist/components/ManifestSummary';
+import 'c2pa-wc/dist/components/PanelSection';
 import 'c2pa-wc/dist/components/Popover';
+import { ManifestSummary } from 'c2pa-wc/dist/components/ManifestSummary';
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 

@@ -16,13 +16,14 @@ export const defaultStyles = css`
     --cai-font-size-md: 0.9375rem;
     --cai-font-size-sm: 0.875rem;
     --cai-border-radius: 4px;
-    --cai-color: #2c2c2c;
+    --cai-primary-color: #2c2c2c;
+    --cai-secondary-color: #8e8e8e;
     --cai-popover-bg-color: #ffffff;
-    --cai-popover-color: var(--cai-color);
+    --cai-popover-color: var(--cai-primary-color);
 
     font-family: var(--cai-font-family);
     font-size: var(--cai-font-size-base);
-    color: var(--cai-color);
+    color: var(--cai-primary-color);
 
     text-align: left;
 
@@ -31,5 +32,11 @@ export const defaultStyles = css`
     *::after {
       box-sizing: border-box;
     }
+  }
+`;
+
+export const baseSectionStyles = css`
+  :host {
+    display: block;
   }
 `;

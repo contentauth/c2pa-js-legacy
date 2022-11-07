@@ -1,5 +1,8 @@
 {
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.stories.ts", "**/*.spec.ts"],
   "compilerOptions": {
+    "rootDir": "src",
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "experimentalDecorators": true,
@@ -13,9 +16,8 @@
     "noUnusedParameters": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
-    "rootDirs": ["./src", "./stories"],
     "strict": true,
-    "target": "es2017"
-  },
-  "exclude": ["./dist/**/*", "./test/**/*", "./stories/**/*"]
+    "target": "es2017",
+    "types": ["@types/jasmine"]
+  }
 }

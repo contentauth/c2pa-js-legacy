@@ -1,9 +1,22 @@
+/**
+ * Copyright 2022 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: Adobe permits you to use, modify, and distribute this file in
+ * accordance with the terms of the Adobe license agreement accompanying
+ * it.
+ */
+
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { defaultStyles } from '../styles';
-import '../../assets/svg/color/info.svg';
+import { defaultStyles } from '../../styles';
+import '../../../assets/svg/color/info.svg';
 
 declare global {
+  interface HTMLElementTagNameMap {
+    'cai-indicator': Indicator;
+  }
+
   namespace JSX {
     interface IntrinsicElements {
       'cai-indicator': any;

@@ -39,11 +39,10 @@ const baseConfig = createBasicConfig({
 });
 
 export default merge(baseConfig, {
-  input: fg.sync([
-    './src/**/*.ts',
-    './themes/**/*.css',
-    './assets/svg/**/*.svg',
-  ]),
+  input: fg.sync(
+    ['./src/**/*.ts', './themes/**/*.css', './assets/svg/**/*.svg'],
+    { ignore: ['**/*.spec.ts', '**/*.stories.ts'] },
+  ),
   output: {
     format: 'es',
     dir: 'dist',

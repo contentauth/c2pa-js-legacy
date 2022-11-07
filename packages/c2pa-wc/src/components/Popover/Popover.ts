@@ -1,3 +1,12 @@
+/**
+ * Copyright 2022 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: Adobe permits you to use, modify, and distribute this file in
+ * accordance with the terms of the Adobe license agreement accompanying
+ * it.
+ */
+
 import {
   arrow,
   autoPlacement,
@@ -16,11 +25,14 @@ import { css, html, LitElement, PropertyValueMap } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import '../../assets/svg/monochrome/help.svg';
-import { PartPrefixable } from '../mixins/PartPrefixable';
-import { defaultStyles } from '../styles';
+import '../../../assets/svg/monochrome/help.svg';
+import { defaultStyles } from '../../styles';
 
 declare global {
+  interface HTMLElementTagNameMap {
+    'cai-popover': Popover;
+  }
+
   namespace JSX {
     interface IntrinsicElements {
       'cai-popover': any;
@@ -29,18 +41,12 @@ declare global {
 }
 
 @customElement('cai-popover')
-export class Popover extends PartPrefixable(LitElement) {
+export class Popover extends LitElement {
   private _updateCleanupFn: Function | null = null;
 
   private _eventCleanupFns: Function[] = [];
 
   private positionConfig: Partial<ComputePositionConfig> = {};
-
-  static readonly cssParts: Record<string, string> = {
-    arrow: 'popover-arrow',
-    box: 'popover-box',
-    content: 'popover-content',
-  };
 
   @state()
   protected _isShown = false;
@@ -147,9 +153,16 @@ export class Popover extends PartPrefixable(LitElement) {
           background-color: var(--cai-popover-bg-color, #fff);
           color: var(--cai-popover-color, #222222);
           transition-property: transform, visibility, opacity;
-          border-radius: 6px;
-          border: 1px solid var(--cai-popover-border-color, #ddd);
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+          border-radius: var(--cai-popover-border-radius, 6px);
+          border-radius: var(--cai-popover-border-radius, 6px);
+          border-width: var(--cai-popover-border-radius, 1px);
+          border-style: var(--cai-popover-border-style, solid);
+          border-color: var(--cai-popover-border-color, #ddd);
+          box-shadow: var(--cai-popover-box-shadow-offset-x, 0px)
+            var(--cai-popover-box-shadow-offset-y, 0px)
+            var(--cai-popover-box-shadow-blur-radius, 20px)
+            var(--cai-popover-box-shadow-spread-radius, 0px)
+            var(--cai-popover-box-shadow-color, rgba(0, 0, 0, 0.2));
           pointer-events: none;
         }
         #content.shown {
@@ -275,7 +288,6 @@ export class Popover extends PartPrefixable(LitElement) {
         id="content"
         class=${classMap(contentClassMap)}
         style=${styleMap(contentStyleMap)}
-        part=${Popover.cssParts.content}
         ${animate({
           keyframeOptions: {
             duration: this.animationDuration,
@@ -293,11 +305,9 @@ export class Popover extends PartPrefixable(LitElement) {
         })}
       >
         <slot name="content"></slot>
-        ${this.arrow
-          ? html`<div id="arrow" part=${Popover.cssParts.arrow}></div>`
-          : null}
+        ${this.arrow ? html`<div id="arrow"></div>` : null}
       </div>
-      <div id="trigger" part=${Popover.cssParts.trigger}>
+      <div id="trigger">
         <slot name="trigger"></slot>
       </div>
     </div>`;

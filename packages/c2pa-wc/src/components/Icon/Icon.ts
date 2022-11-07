@@ -1,17 +1,31 @@
+/**
+ * Copyright 2022 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: Adobe permits you to use, modify, and distribute this file in
+ * accordance with the terms of the Adobe license agreement accompanying
+ * it.
+ */
+
 import { LitElement, html, css, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { defaultStyles } from '../styles';
-import '../../assets/svg/color/logos/adobe-stock.svg';
-import '../../assets/svg/color/logos/adobe.svg';
-import '../../assets/svg/color/logos/behance.svg';
-import '../../assets/svg/color/logos/cai.svg';
-import '../../assets/svg/color/logos/facebook.svg';
-import '../../assets/svg/color/logos/instagram.svg';
-import '../../assets/svg/color/logos/photoshop.svg';
-import '../../assets/svg/color/logos/truepic.svg';
-import '../../assets/svg/color/logos/twitter.svg';
+import { defaultStyles } from '../../styles';
+
+import '../../../assets/svg/color/logos/adobe-stock.svg';
+import '../../../assets/svg/color/logos/adobe.svg';
+import '../../../assets/svg/color/logos/behance.svg';
+import '../../../assets/svg/color/logos/cai.svg';
+import '../../../assets/svg/color/logos/facebook.svg';
+import '../../../assets/svg/color/logos/instagram.svg';
+import '../../../assets/svg/color/logos/photoshop.svg';
+import '../../../assets/svg/color/logos/truepic.svg';
+import '../../../assets/svg/color/logos/twitter.svg';
 
 declare global {
+  interface HTMLElementTagNameMap {
+    'cai-icon': Icon;
+  }
+
   namespace JSX {
     interface IntrinsicElements {
       'cai-icon': any;
@@ -64,10 +78,6 @@ export class Icon extends LitElement {
     }
   }
 
-  static readonly cssParts = {
-    container: 'icon-container',
-  };
-
   static get styles() {
     return [
       defaultStyles,
@@ -81,16 +91,13 @@ export class Icon extends LitElement {
           height: var(--cai-icon-size, 16px);
           --cai-icon-width: var(--cai-icon-size, 16px);
           --cai-icon-height: var(--cai-icon-size, 16px);
+          margin-right: var(--cai-icon-spacing, 8px);
         }
       `,
     ];
   }
 
   render() {
-    return this.icon
-      ? html`<div id="container" part=${Icon.cssParts.container}>
-          ${this.icon}
-        </div>`
-      : nothing;
+    return this.icon ? html`<div id="container">${this.icon}</div>` : nothing;
   }
 }

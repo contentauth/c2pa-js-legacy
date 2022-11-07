@@ -1,5 +1,5 @@
 {
   "minimum-viable-provenance.header": "Content Credentials",
   "minimum-viable-provenance.helpText": "Attribution and history data attached to this content",
-  "manifest-summary.viewMore": "View more"
+  "minimum-viable-provenance.invalidDate": "Invalid date"
 }

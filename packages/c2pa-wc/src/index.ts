@@ -7,15 +7,17 @@
  * it.
  */
 
-import * as manifestSections from './components/panels/ManifestSections';
-
 export * as utils from './utils';
-export { PanelSection } from './components/panels/PanelSection';
-export { Popover } from './components/Popover';
-export { ManifestSummary } from './components/panels/ManifestSummary';
-export { Indicator } from './components/Indicator';
-export { Thumbnail } from './components/Thumbnail';
-export { Tooltip } from './components/Tooltip';
-export const sections = {
-  manifest: manifestSections,
-};
+export * from './components/AssetsUsed';
+export * from './components/EditsAndActivity';
+export * from './components/Icon';
+export * from './components/Indicator';
+export * from './components/ManifestSummary';
+export * from './components/MinimumViableProvenance';
+export * from './components/PanelSection';
+export * from './components/Popover';
+export * from './components/ProducedBy';
+export * from './components/ProducedWith';
+export * from './components/SocialMedia';
+export * from './components/Thumbnail';
+export * from './components/Tooltip';
