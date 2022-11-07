@@ -5,6 +5,9 @@ import { puppeteerLauncher } from '@web/test-runner-puppeteer';
 import { browserstackLauncher } from '@web/test-runner-browserstack';
 import { jasmineTestRunnerConfig } from 'web-test-runner-jasmine';
 
+import litSvg from './etc/rollup/plugins/lit-svg.js';
+
+const litSvgPlugin = fromRollup(litSvg);
 const replacePlugin = fromRollup(rollupReplace);
 
 const IS_CI = process.argv.includes('--ci');
@@ -30,7 +33,12 @@ export default {
 
   files: ['**/*.spec.ts', '!**/node_modules/**/*'],
 
+  mimeTypes: {
+    '**/*.svg': 'js',
+  },
+
   plugins: [
+    litSvgPlugin(),
     esbuildPlugin({
       ts: true,
       tsx: true,

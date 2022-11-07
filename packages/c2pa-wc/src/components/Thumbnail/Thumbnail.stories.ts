@@ -1,7 +1,16 @@
+/**
+ * Copyright 2022 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: Adobe permits you to use, modify, and distribute this file in
+ * accordance with the terms of the Adobe license agreement accompanying
+ * it.
+ */
+
 import { Story, Meta } from '@storybook/web-components';
 import { html } from 'lit';
-import { Thumbnail } from '../src/components/Thumbnail';
-import './themes/spectrum.css';
+import { Thumbnail } from './Thumbnail';
+import '../../../storybook/themes/spectrum.css';
 
 interface ArgTypes {
   src: string;

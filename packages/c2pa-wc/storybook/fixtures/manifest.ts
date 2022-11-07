@@ -81,4 +81,5 @@ export default {
       description: 'Changed size, orientation, direction, or position',
     },
   ],
+  isBeta: false,
 };

@@ -1,0 +1,28 @@
+.theme-spectrum {
+  --cai-font-family: adobe-clean, 'Adobe Clean', Arial, Helvetica, sans-serif;
+  --cai-font-size-md: 0.875rem;
+  --cai-font-size-sm: 0.8125rem;
+  --cai-popover-bg-color: #fff;
+
+  --cai-thumbnail-size: 90px;
+
+  --cai-manifest-summary-view-more-background-color: #1473e6;
+  --cai-manifest-summary-view-more-hover-background-color: #0d66d0;
+  --cai-manifest-summary-view-more-down-background-color: #095aba;
+  --cai-manifest-summary-view-more-border-style: none;
+  --cai-manifest-summary-view-more-color: #fff;
+
+  color: #2c2c2c;
+
+  &::part(manifest-summary-view-more) {
+    border: none;
+    background-color: #1473e6;
+    color: #fff;
+  }
+  &::part(manifest-summary-view-more):hover {
+    background-color: #0d66d0;
+  }
+  &::part(manifest-summary-view-more):hover:active {
+    background-color: #095aba;
+  }
+}
