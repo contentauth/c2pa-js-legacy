@@ -72,15 +72,6 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
     return [
       defaultStyles,
       css`
-        :host {
-          --cai-manifest-summary-view-more-color: var(--cai-primary-color);
-          --cai-manifest-summary-view-more-hover-color: var(
-            --cai-manifest-summary-view-more-color
-          );
-          --cai-manifest-summary-view-more-background-color: transparent;
-          --cai-manifest-summary-view-more-hover-background-color: #eeeeee;
-        }
-
         #container {
           width: var(--cai-manifest-summary-width, 320px);
         }
