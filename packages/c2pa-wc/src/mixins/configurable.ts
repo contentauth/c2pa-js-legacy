@@ -39,6 +39,7 @@ export const Configurable = <
     protected _config: ConfigType = defaultConfig;
 
     willUpdate(changed: Map<string, any>) {
+      super.willUpdate(changed);
       if (changed.has('config')) {
         this._config = merge({}, defaultConfig, this.config);
       }
