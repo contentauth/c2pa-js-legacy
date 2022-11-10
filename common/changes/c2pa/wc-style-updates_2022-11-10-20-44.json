@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Rename createL2Manifest to createL2ManifestStore and include validation info",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}

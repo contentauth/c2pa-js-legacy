@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/react",
+      "comment": "Update to latest c2pa-js",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/react"
+}

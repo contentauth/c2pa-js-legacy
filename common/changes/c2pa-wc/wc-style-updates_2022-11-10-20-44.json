@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Export sections as individual components, use CSS vars for styling",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
