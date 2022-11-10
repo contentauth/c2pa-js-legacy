@@ -14,6 +14,7 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "useDefineForClassFields": false,
     "outDir": "./dist",
     "resolveJsonModule": true,
     "strict": true,
