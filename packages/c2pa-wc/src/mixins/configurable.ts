@@ -16,6 +16,7 @@ export declare class ConfigurableInterface<
   ConfigType extends Record<string, any>,
 > {
   config: Partial<ConfigType>;
+
   protected _config: ConfigType;
 }
 

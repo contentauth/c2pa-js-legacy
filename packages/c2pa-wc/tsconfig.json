@@ -1,6 +1,6 @@
 {
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.stories.ts", "**/*.spec.ts"],
+  "exclude": ["node_modules", "**/*.stories.ts", "**/*.spec.ts", "dist/**/*"],
   "compilerOptions": {
     "rootDir": "src",
     "allowSyntheticDefaultImports": true,

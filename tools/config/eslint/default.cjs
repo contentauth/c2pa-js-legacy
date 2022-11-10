@@ -6,7 +6,7 @@ module.exports = {
     '**/*.spec.ts',
     '**/dist/*',
     '**/fixtures/*',
-    '**/stories/*',
+    '**/*.stories.ts',
   ],
   plugins: ['@typescript-eslint'],
   env: {

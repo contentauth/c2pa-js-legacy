@@ -13,8 +13,11 @@ import { property, state } from 'lit/decorators.js';
 
 export declare class PanelSectionInterface<DataType> {
   manifestStore: L2ManifestStore | undefined;
+
   protected _data: DataType;
+
   protected _isEmpty: boolean;
+
   renderSection: (content: TemplateResult) => TemplateResult;
 }
 

@@ -12,7 +12,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { defaultStyles } from '../../styles';
 import { defaultDateFormatter, hasChanged } from '../../utils';
 import { L2ManifestStore } from 'c2pa';
-import { EditsAndActivityConfig } from '../EditsAndActivity';
+import type { EditsAndActivityConfig } from '../EditsAndActivity';
 import type { MinimumViableProvenanceConfig } from '../MinimumViableProvenance';
 import { Configurable } from '../../mixins/configurable';
 import defaultStringMap from './ManifestSummary.str.json';
