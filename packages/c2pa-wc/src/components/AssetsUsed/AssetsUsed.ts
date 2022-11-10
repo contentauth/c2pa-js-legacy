@@ -7,12 +7,13 @@
  * it.
  */
 
-import { css, html, LitElement, nothing } from 'lit';
-import { Configurable } from '../../mixins/configurable';
+import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { L2Manifest } from 'c2pa';
+import { L2ManifestStore } from 'c2pa';
 import defaultStringMap from './AssetsUsed.str.json';
 import { baseSectionStyles, defaultStyles } from '../../styles';
+import { getBadgeFromIngredient } from '../../badge';
+import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
 
 import '../Thumbnail';
 import '../PanelSection';
@@ -30,7 +31,7 @@ declare global {
 }
 
 export interface AssetsUsedConfig {
-  stringMap: typeof defaultStringMap;
+  stringMap: Record<string, string>;
 }
 
 const defaultConfig: AssetsUsedConfig = {
@@ -38,11 +39,15 @@ const defaultConfig: AssetsUsedConfig = {
 };
 
 @customElement('cai-assets-used')
-export class AssetsUsed extends Configurable(LitElement, defaultConfig) {
+export class AssetsUsed extends ConfigurablePanelSection(LitElement, {
+  dataSelector: (manifestStore) => manifestStore.ingredients,
+  isEmpty: (data) => !data.length,
+  config: defaultConfig,
+}) {
   @property({
     type: Object,
   })
-  manifest: L2Manifest | undefined;
+  manifestStore: L2ManifestStore | undefined;
 
   static get styles() {
     return [
@@ -65,23 +70,21 @@ export class AssetsUsed extends Configurable(LitElement, defaultConfig) {
   }
 
   render() {
-    return this.manifest?.ingredients.length
-      ? html` <cai-panel-section
-          header=${this._config.stringMap['assets-used.header']}
-          helpText=${this._config.stringMap['assets-used.helpText']}
-        >
-          <div class="section-assets-used">
-            ${this.manifest.ingredients?.map(
-              (ingredient) => html`
-                <cai-thumbnail
-                  class="section-assets-used-thumbnail"
-                  src=${ingredient.thumbnail}
-                  badge="none"
-                ></cai-thumbnail>
-              `,
-            )}
-          </div>
-        </cai-panel-section>`
-      : nothing;
+    return this.renderSection(html` <cai-panel-section
+      header=${this._config.stringMap['assets-used.header']}
+      helpText=${this._config.stringMap['assets-used.helpText']}
+    >
+      <div class="section-assets-used">
+        ${this._data?.map(
+          (ingredient) => html`
+            <cai-thumbnail
+              class="section-assets-used-thumbnail"
+              src=${ingredient.thumbnail}
+              badge=${getBadgeFromIngredient(ingredient)}
+            ></cai-thumbnail>
+          `,
+        )}
+      </div>
+    </cai-panel-section>`);
   }
 }

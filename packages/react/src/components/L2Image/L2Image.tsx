@@ -10,7 +10,11 @@
 import { ManifestSummary } from 'c2pa-wc';
 import React, { useEffect, useRef, useState } from 'react';
 import { useC2pa } from '../../hooks';
-import { createL2Manifest, generateVerifyUrl, L2Manifest } from 'c2pa';
+import {
+  createL2ManifestStore,
+  generateVerifyUrl,
+  L2ManifestStore,
+} from 'c2pa';
 import classNames from 'classnames';
 
 import styles from './L2Image.scss';
@@ -33,7 +37,9 @@ export function L2Image(props: L2ImageProps) {
     throw new Error('<L2Image> does not support srcSet. Use src instead');
   }
 
-  const [manifest, setManifest] = useState<L2Manifest | null>(null);
+  const [manifestStore, setManifestStore] = useState<L2ManifestStore | null>(
+    null,
+  );
   const summaryRef = useRef<ManifestSummary>();
   const c2pa = useC2pa(props.src);
 
@@ -44,9 +50,9 @@ export function L2Image(props: L2ImageProps) {
       return;
     }
 
-    createL2Manifest(c2pa.manifestStore?.activeManifest).then(
-      ({ manifest: componentL2Manifest, dispose }) => {
-        setManifest(componentL2Manifest);
+    createL2ManifestStore(c2pa.manifestStore).then(
+      ({ manifestStore: componentL2ManifestStore, dispose }) => {
+        setManifestStore(componentL2ManifestStore);
         disposeFn = dispose;
       },
     );
@@ -58,11 +64,11 @@ export function L2Image(props: L2ImageProps) {
 
   useEffect(() => {
     const summaryElement = summaryRef.current;
-    if (summaryElement && manifest) {
-      summaryElement.manifest = manifest;
+    if (summaryElement && manifestStore) {
+      summaryElement.manifestStore = manifestStore;
       summaryElement.viewMoreUrl = viewMoreUrl;
     }
-  }, [summaryRef, manifest]);
+  }, [summaryRef, manifestStore]);
 
   return (
     <div
@@ -70,7 +76,7 @@ export function L2Image(props: L2ImageProps) {
       className={classNames([wrapperClass, styles.wrapper])}
     >
       <img {...imgProps} />
-      {manifest ? (
+      {manifestStore ? (
         <cai-popover interactive class={wcClassName}>
           <cai-indicator slot="trigger" class={wcClassName}></cai-indicator>
           <cai-manifest-summary

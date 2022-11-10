@@ -7,12 +7,13 @@
  * it.
  */
 
-import { L2Manifest } from 'c2pa';
-import { css, html, LitElement, nothing } from 'lit';
+import { L2ManifestStore } from 'c2pa';
+import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Configurable } from '../../mixins/configurable';
+import { classMap } from 'lit-html/directives/class-map.js';
 import defaultStringMap from './EditsAndActivity.str.json';
 import { baseSectionStyles, defaultStyles } from '../../styles';
+import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
 
 import '../PanelSection';
 
@@ -29,7 +30,7 @@ declare global {
 }
 
 export interface EditsAndActivityConfig {
-  stringMap: typeof defaultStringMap;
+  stringMap: Record<string, string>;
   showDescriptions: boolean;
 }
 
@@ -39,11 +40,15 @@ const defaultConfig: EditsAndActivityConfig = {
 };
 
 @customElement('cai-edits-and-activity')
-export class EditsAndActivity extends Configurable(LitElement, defaultConfig) {
+export class EditsAndActivity extends ConfigurablePanelSection(LitElement, {
+  dataSelector: (manifestStore) => manifestStore.editsAndActivity,
+  isEmpty: (data) => !data?.length,
+  config: defaultConfig,
+}) {
   @property({
     type: Object,
   })
-  manifest: L2Manifest | undefined;
+  manifestStore: L2ManifestStore | undefined;
 
   static get styles() {
     return [
@@ -58,7 +63,7 @@ export class EditsAndActivity extends Configurable(LitElement, defaultConfig) {
         .section-edits-and-activity-list {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: var(--cai-edits-and-activity-item-spacing, 6px);
           list-style: none;
           padding: 0;
           margin: 0;
@@ -83,6 +88,10 @@ export class EditsAndActivity extends Configurable(LitElement, defaultConfig) {
 
         .section-edits-and-activity-list-item-description {
           color: var(--cai-secondary-color);
+          margin-left: 0px;
+        }
+
+        .section-edits-and-activity-list-item-description.has-icon {
           margin-left: 24px;
         }
       `,
@@ -90,45 +99,45 @@ export class EditsAndActivity extends Configurable(LitElement, defaultConfig) {
   }
 
   render() {
-    const editsAndActivityData = this.manifest?.editsAndActivity;
-
-    return editsAndActivityData?.length
-      ? html`
-          <cai-panel-section
-            header=${this._config.stringMap['edits-and-activity.header']}
-            helpText=${this._config.stringMap['edits-and-activity.helpText']}
-          >
-            <dl class="section-edits-and-activity-list">
-              ${editsAndActivityData?.map(
-                ({ icon, label, description }) => html`
-                  <div class="section-edits-and-activity-list-item">
-                    <dt class="section-edits-and-activity-list-item-term">
-                      ${icon
-                        ? html`<img
-                            class="section-edits-and-activity-list-item-icon"
-                            src=${icon}
-                            alt=${label}
-                          />`
-                        : null}
-                      <span class="section-edits-and-activity-list-item-label">
-                        ${label}
-                      </span>
-                    </dt>
-                    ${true
-                      ? html`
-                          <dd
-                            class="section-edits-and-activity-list-item-description"
-                          >
-                            ${description}
-                          </dd>
-                        `
-                      : null}
-                  </div>
-                `,
-              )}
-            </dl>
-          </cai-panel-section>
-        `
-      : nothing;
+    return this.renderSection(html`
+      <cai-panel-section
+        header=${this._config.stringMap['edits-and-activity.header']}
+        helpText=${this._config.stringMap['edits-and-activity.helpText']}
+      >
+        <dl class="section-edits-and-activity-list">
+          ${this._data?.map(
+            ({ icon, label, description }) => html`
+              <div class="section-edits-and-activity-list-item">
+                <dt class="section-edits-and-activity-list-item-term">
+                  ${icon
+                    ? html`<img
+                        class="section-edits-and-activity-list-item-icon"
+                        src=${icon}
+                        alt=${label}
+                      />`
+                    : null}
+                  <span class="section-edits-and-activity-list-item-label">
+                    ${label}
+                  </span>
+                </dt>
+                ${this._config.showDescriptions
+                  ? html`
+                      <dd
+                        class=${classMap({
+                          'section-edits-and-activity-list-item-description':
+                            true,
+                          'has-icon': !!icon,
+                        })}
+                      >
+                        ${description}
+                      </dd>
+                    `
+                  : null}
+              </div>
+            `,
+          )}
+        </dl>
+      </cai-panel-section>
+    `);
   }
 }

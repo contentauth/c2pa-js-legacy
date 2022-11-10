@@ -7,7 +7,7 @@
  * it.
  */
 
-import { L2Manifest } from 'c2pa';
+import { L2ManifestStore } from 'c2pa';
 import { isValid, parseISO } from 'date-fns';
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -15,6 +15,7 @@ import defaultStringMap from './MinimumViableProvenance.str.json';
 import { defaultDateFormatter } from '../../utils';
 import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
+import { getBadgeFromManifestStore } from '../../badge';
 
 import '../PanelSection';
 
@@ -31,7 +32,7 @@ declare global {
 }
 
 export interface MinimumViableProvenanceConfig {
-  stringMap: Partial<typeof defaultStringMap>;
+  stringMap: Record<string, string>;
   dateFormatter: (date: Date) => string;
 }
 
@@ -48,7 +49,7 @@ export class MinimumViableProvenance extends Configurable(
   @property({
     type: Object,
   })
-  manifest: L2Manifest | undefined;
+  manifestStore: L2ManifestStore | undefined;
 
   static get styles() {
     return [
@@ -83,8 +84,8 @@ export class MinimumViableProvenance extends Configurable(
   }
 
   render() {
-    const signatureDate = this.manifest?.signature?.isoDateString
-      ? parseISO(this.manifest?.signature.isoDateString)
+    const signatureDate = this.manifestStore?.signature?.isoDateString
+      ? parseISO(this.manifestStore?.signature.isoDateString)
       : undefined;
 
     return html` <cai-panel-section
@@ -94,15 +95,15 @@ export class MinimumViableProvenance extends Configurable(
       <div class="minimum-viable-provenance-content">
         <cai-thumbnail
           class="minimum-viable-provenance-thumbnail"
-          src=${this.manifest?.thumbnail}
-          badge="none"
+          src=${this.manifestStore?.thumbnail}
+          badge=${getBadgeFromManifestStore(this.manifestStore)}
         ></cai-thumbnail>
         <div class="minimum-viable-provenance-signer">
           <cai-icon
             slot="icon"
-            source=${this.manifest?.signature?.issuer}
+            source=${this.manifestStore?.signature?.issuer}
           ></cai-icon>
-          <span> ${this.manifest?.signature?.issuer} </span>
+          <span> ${this.manifestStore?.signature?.issuer} </span>
         </div>
         <div class="minimum-viable-provenance-date">
           ${isValid(signatureDate)

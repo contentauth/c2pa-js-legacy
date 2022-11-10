@@ -1,11 +1,11 @@
-import { useC2pa, useThumbnailUrl, L2Image } from '@contentauth/react';
+import { useC2pa, useThumbnailUrl } from '@contentauth/react';
 import {
   C2paReadResult,
   generateVerifyUrl,
   Manifest,
   selectProducer,
-  L2Manifest,
-  createL2Manifest,
+  L2ManifestStore,
+  createL2ManifestStore,
 } from 'c2pa';
 import 'c2pa-wc/dist/components/Icon';
 import 'c2pa-wc/dist/components/Indicator';
@@ -83,7 +83,9 @@ function WebComponents({
   provenance,
   viewMoreUrl,
 }: WebComponentsProps) {
-  const [manifest, setManifest] = useState<L2Manifest | null>(null);
+  const [manifestStore, setManifestStore] = useState<L2ManifestStore | null>(
+    null,
+  );
   const summaryRef = useRef<ManifestSummary>();
 
   useEffect(() => {
@@ -93,9 +95,9 @@ function WebComponents({
       return;
     }
 
-    createL2Manifest(provenance.manifestStore?.activeManifest).then(
-      ({ manifest, dispose }) => {
-        setManifest(manifest);
+    createL2ManifestStore(provenance.manifestStore).then(
+      ({ manifestStore, dispose }) => {
+        setManifestStore(manifestStore);
         disposeFn = dispose;
       },
     );
@@ -105,23 +107,24 @@ function WebComponents({
 
   useEffect(() => {
     const summaryElement = summaryRef.current;
-    if (summaryElement && manifest) {
-      summaryElement.manifest = manifest;
+    if (summaryElement && manifestStore) {
+      summaryElement.manifestStore = manifestStore;
       summaryElement.viewMoreUrl = viewMoreUrl;
     }
-  }, [summaryRef, manifest]);
+  }, [summaryRef, manifestStore]);
 
   return (
     <div className="web-components">
       <div className="wrapper">
         <img src={imageUrl} />
-        {manifest ? (
+        {manifestStore ? (
           <div>
             <cai-popover interactive class="theme-spectrum">
               <cai-indicator slot="trigger"></cai-indicator>
               <cai-manifest-summary
                 ref={summaryRef}
                 slot="content"
+                class="theme-spectrum"
               ></cai-manifest-summary>
             </cai-popover>
           </div>

@@ -11,7 +11,7 @@ import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { defaultStyles } from '../../styles';
 import { defaultDateFormatter, hasChanged } from '../../utils';
-import { L2Manifest } from 'c2pa';
+import { L2ManifestStore } from 'c2pa';
 import { EditsAndActivityConfig } from '../EditsAndActivity';
 import type { MinimumViableProvenanceConfig } from '../MinimumViableProvenance';
 import { Configurable } from '../../mixins/configurable';
@@ -39,9 +39,8 @@ declare global {
 export interface ManifestSummaryConfig
   extends Pick<MinimumViableProvenanceConfig, 'dateFormatter'>,
     Pick<EditsAndActivityConfig, 'showDescriptions'> {
-  stringMap: typeof defaultStringMap;
+  stringMap: Record<string, string>;
   sections?: {
-    minimumViableProvenance?: boolean;
     assetsUsed?: boolean;
     editsAndActivity?: boolean;
     producedBy?: boolean;
@@ -55,7 +54,6 @@ const defaultConfig: ManifestSummaryConfig = {
   dateFormatter: defaultDateFormatter,
   showDescriptions: true,
   sections: {
-    minimumViableProvenance: true,
     assetsUsed: true,
     editsAndActivity: true,
     producedBy: true,
@@ -85,11 +83,29 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
 
         #container {
           width: var(--cai-manifest-summary-width, 320px);
+          padding: var(--cai-manifest-summary-content-padding, 20px);
+        }
+
+        #header-container {
+          padding-bottom: var(--cai-manifest-summary-section-spacing, 20px);
+          margin-bottom: var(--cai-manifest-summary-section-spacing, 20px);
+          border-bottom-width: var(
+            --cai-manifest-summary-section-border-width,
+            1px
+          );
+          border-bottom-style: var(
+            --cai-manifest-summary-section-border-style,
+            solid
+          );
+          border-bottom-color: var(
+            --cai-manifest-summary-section-border-color,
+            #e1e1e1
+          );
         }
 
         #content-container {
+          padding-bottom: var(--cai-manifest-summary-section-spacing, 20px);
           max-height: var(--cai-manifest-summary-content-max-height, 550px);
-          padding: var(--cai-manifest-summary-content-padding, 20px);
           border-bottom-width: var(
             --cai-manifest-summary-content-border-bottom-width,
             1px
@@ -107,24 +123,41 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           overflow-x: hidden;
         }
 
-        #sections > *:nth-last-child(n + 2) {
-          padding-bottom: var(--cai-manifest-summary-section-spacing, 20px);
-          margin-bottom: var(--cai-manifest-summary-section-spacing, 20px);
-          border-bottom-width: var(
+        #sections > *:not(:first-child):not([empty]) {
+          padding-top: var(--cai-manifest-summary-section-spacing, 20px);
+          margin-top: var(--cai-manifest-summary-section-spacing, 20px);
+          border-top-width: var(
             --cai-manifest-summary-section-border-width,
             1px
           );
-          border-bottom-style: var(
+          border-top-style: var(
             --cai-manifest-summary-section-border-style,
             solid
           );
-          border-bottom-color: var(
+          border-top-color: var(
             --cai-manifest-summary-section-border-color,
             #e1e1e1
           );
         }
 
-        #slot-sections > ::slotted(*) {
+        #slot-sections-pre > ::slotted(*) {
+          padding-bottom: var(--cai-manifest-summary-section-spacing, 20px);
+          margin-bottom: var(--cai-manifest-summary-section-spacing, 20px);
+          border-bottom-width: var(
+            --cai-manifest-summary-section-border-width,
+            1px
+          ) !important;
+          border-bottom-style: var(
+            --cai-manifest-summary-section-border-style,
+            solid
+          ) !important;
+          border-bottom-color: var(
+            --cai-manifest-summary-section-border-color,
+            #e1e1e1
+          ) !important;
+        }
+
+        #slot-sections-post > ::slotted(*) {
           padding-top: var(--cai-manifest-summary-section-spacing, 20px);
           margin-top: var(--cai-manifest-summary-section-spacing, 20px);
           border-top-width: var(
@@ -170,7 +203,7 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
     type: Object,
     hasChanged,
   })
-  manifest: L2Manifest | undefined;
+  manifestStore: L2ManifestStore | undefined;
 
   @property({
     type: String,
@@ -179,42 +212,26 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
   viewMoreUrl = '';
 
   render() {
-    if (!this.manifest) {
+    if (!this.manifestStore) {
       return null;
     }
 
     return html`<div id="container">
       <div id="content-container">
-        <div id="sections">
+        <div id="header-container">
+          <cai-minimum-viable-provenance
+            .manifestStore=${this.manifestStore}
+            .config=${this._config}
+          ></cai-minimum-viable-provenance>
+        </div>
+        <div id="slot-sections-pre">
           <slot name="pre"></slot>
-          ${this._config?.sections?.minimumViableProvenance
-            ? html`
-                <cai-minimum-viable-provenance
-                  .manifest=${this.manifest}
-                  .config=${this._config}
-                ></cai-minimum-viable-provenance>
-              `
-            : nothing}
-          ${this._config?.sections?.assetsUsed
-            ? html`
-                <cai-assets-used
-                  .manifest=${this.manifest}
-                  .config=${this._config}
-                ></cai-assets-used>
-              `
-            : nothing}
-          ${this._config?.sections?.editsAndActivity
-            ? html`
-                <cai-edits-and-activity
-                  .manifest=${this.manifest}
-                  .config=${this._config}
-                ></cai-edits-and-activity>
-              `
-            : nothing}
+        </div>
+        <div id="sections">
           ${this._config?.sections?.producedBy
             ? html`
                 <cai-produced-by
-                  .manifest=${this.manifest}
+                  .manifestStore=${this.manifestStore}
                   .config=${this._config}
                 ></cai-produced-by>
               `
@@ -222,21 +239,37 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           ${this._config?.sections?.producedWith
             ? html`
                 <cai-produced-with
-                  .manifest=${this.manifest}
+                  .manifestStore=${this.manifestStore}
                   .config=${this._config}
                 ></cai-produced-with>
+              `
+            : nothing}
+          ${this._config?.sections?.editsAndActivity
+            ? html`
+                <cai-edits-and-activity
+                  .manifestStore=${this.manifestStore}
+                  .config=${this._config}
+                ></cai-edits-and-activity>
+              `
+            : nothing}
+          ${this._config?.sections?.assetsUsed
+            ? html`
+                <cai-assets-used
+                  .manifestStore=${this.manifestStore}
+                  .config=${this._config}
+                ></cai-assets-used>
               `
             : nothing}
           ${this._config?.sections?.socialMedia
             ? html`
                 <cai-social-media
-                  .manifest=${this.manifest}
+                  .manifestStore=${this.manifestStore}
                   .config=${this._config}
                 ></cai-social-media>
               `
             : nothing}
         </div>
-        <div id="slot-sections">
+        <div id="slot-sections-post">
           <slot></slot>
           <slot name="post"></slot>
         </div>

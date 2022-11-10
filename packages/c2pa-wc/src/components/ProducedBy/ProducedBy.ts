@@ -7,12 +7,12 @@
  * it.
  */
 
-import { L2Manifest } from 'c2pa';
+import { L2ManifestStore } from 'c2pa';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Configurable } from '../../mixins/configurable';
 import defaultStringMap from './ProducedBy.str.json';
 import { baseSectionStyles, defaultStyles } from '../../styles';
+import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
 
 import '../PanelSection';
 
@@ -29,7 +29,7 @@ declare global {
 }
 
 interface ProducedByConfig {
-  stringMap: typeof defaultStringMap;
+  stringMap: Record<string, string>;
 }
 
 const defaultConfig: ProducedByConfig = {
@@ -37,22 +37,25 @@ const defaultConfig: ProducedByConfig = {
 };
 
 @customElement('cai-produced-by')
-export class ProducedBy extends Configurable(LitElement, defaultConfig) {
+export class ProducedBy extends ConfigurablePanelSection(LitElement, {
+  dataSelector: (manifestStore) => manifestStore.producer?.name,
+  config: defaultConfig,
+}) {
   @property({
     type: Object,
   })
-  manifest: L2Manifest | undefined;
+  manifestStore: L2ManifestStore | undefined;
 
   static get styles() {
     return [defaultStyles, baseSectionStyles];
   }
 
   render() {
-    return html` <cai-panel-section
+    return this.renderSection(html` <cai-panel-section
       header=${this._config.stringMap['produced-by.header']}
       helpText=${this._config.stringMap['produced-by.helpText']}
     >
-      <div>${this.manifest?.producer?.name}</div>
-    </cai-panel-section>`;
+      <div>${this._data}</div>
+    </cai-panel-section>`);
   }
 }

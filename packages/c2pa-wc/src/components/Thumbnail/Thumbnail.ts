@@ -32,7 +32,7 @@ declare global {
   }
 }
 
-type Badge = 'none' | 'info' | 'missing' | 'alert';
+export type Badge = 'none' | 'info' | 'missing' | 'alert';
 
 @customElement('cai-thumbnail')
 export class Thumbnail extends LitElement {

@@ -7,12 +7,11 @@
  * it.
  */
 
-import { L2Manifest } from 'c2pa';
-import { css, html, LitElement, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { Configurable } from '../../mixins/configurable';
+import { css, html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import defaultStringMap from '../SocialMedia/SocialMedia.str.json';
 import { baseSectionStyles, defaultStyles } from '../../styles';
+import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
 
 import '../PanelSection';
 import '../Icon';
@@ -30,7 +29,7 @@ declare global {
 }
 
 export interface SocialMediaConfig {
-  stringMap: typeof defaultStringMap;
+  stringMap: Record<string, string>;
 }
 
 const defaultConfig: SocialMediaConfig = {
@@ -38,12 +37,11 @@ const defaultConfig: SocialMediaConfig = {
 };
 
 @customElement('cai-social-media')
-export class SocialMedia extends Configurable(LitElement, defaultConfig) {
-  @property({
-    type: Object,
-  })
-  manifest: L2Manifest | undefined;
-
+export class SocialMedia extends ConfigurablePanelSection(LitElement, {
+  dataSelector: (manifestStore) => manifestStore?.socialAccounts,
+  isEmpty: (data) => !data?.length,
+  config: defaultConfig,
+}) {
   static get styles() {
     return [
       defaultStyles,
@@ -75,28 +73,26 @@ export class SocialMedia extends Configurable(LitElement, defaultConfig) {
   }
 
   render() {
-    return this.manifest?.socialAccounts?.length
-      ? html`<cai-panel-section
-          header=${defaultConfig.stringMap['social-media.header']}
-          helpText=${defaultConfig.stringMap['social-media.helpText']}
-        >
-          <ul class="section-social-media-list">
-            ${this.manifest.socialAccounts?.map(
-              (socialAccount) => html`
-                <li class="section-social-media-list-item">
-                  <cai-icon source="${socialAccount['@id']}"></cai-icon>
-                  <a
-                    class="section-social-media-list-item-link"
-                    href=${socialAccount['@id']}
-                    target="_blank"
-                  >
-                    @${socialAccount.name}
-                  </a>
-                </li>
-              `,
-            )}
-          </ul>
-        </cai-panel-section>`
-      : nothing;
+    return this.renderSection(html`<cai-panel-section
+      header=${this._config.stringMap['social-media.header']}
+      helpText=${this._config.stringMap['social-media.helpText']}
+    >
+      <ul class="section-social-media-list">
+        ${this._data?.map(
+          (socialAccount) => html`
+            <li class="section-social-media-list-item">
+              <cai-icon source="${socialAccount['@id']}"></cai-icon>
+              <a
+                class="section-social-media-list-item-link"
+                href=${socialAccount['@id']}
+                target="_blank"
+              >
+                @${socialAccount.name}
+              </a>
+            </li>
+          `,
+        )}
+      </ul>
+    </cai-panel-section>`);
   }
 }

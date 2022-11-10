@@ -37,48 +37,25 @@
   --cai-font-size-sm: 0.8125rem;
   --cai-popover-bg-color: #fff;
 
+  --cai-thumbnail-size: 90px;
+
+  --cai-manifest-summary-view-more-background-color: #1473e6;
+  --cai-manifest-summary-view-more-hover-background-color: #0d66d0;
+  --cai-manifest-summary-view-more-down-background-color: #095aba;
+  --cai-manifest-summary-view-more-border-style: none;
+  --cai-manifest-summary-view-more-color: #fff;
+
   color: #2c2c2c;
 
-  & a {
-    color: #0d66d0;
-  }
-
-  & .sections {
-    border-top: solid 1px #d8d8d8;
-
-    & cai-panel-section {
-      border-bottom: solid 1px #d8d8d8;
-      padding: 20px 0;
-    }
-
-    & .social-media {
-      & > div {
-        display: flex;
-        margin-bottom: 5px;
-        align-items: center;
-      }
-    }
-  }
-
-  &::part(manifest-summary-container) {
-  }
-
   &::part(manifest-summary-view-more) {
+    border: none;
+    background-color: #1473e6;
+    color: #fff;
   }
-
-  &::part(section-heading-text) {
+  &::part(manifest-summary-view-more):hover {
+    background-color: #0d66d0;
   }
-
-  &::part(popover-box) {
-  }
-
-  &::part(tooltip-popover-box) {
-  }
-
-  &::part(tooltip-popover-content) {
-  }
-
-  &::part(section-produced-with-beta) {
-    color: #6e6e6e;
+  &::part(manifest-summary-view-more):hover:active {
+    background-color: #095aba;
   }
 }

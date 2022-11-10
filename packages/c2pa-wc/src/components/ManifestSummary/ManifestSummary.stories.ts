@@ -8,7 +8,7 @@
  */
 
 import { Story, Meta } from '@storybook/web-components';
-import { L2Manifest } from 'c2pa';
+import { L2ManifestStore } from 'c2pa';
 import { html } from 'lit';
 import defaultManifest from '../../../storybook/fixtures/manifest';
 import '../../../storybook/themes/spectrum.css';
@@ -18,7 +18,7 @@ import './ManifestSummary';
 import '../PanelSection';
 
 interface ArgTypes {
-  manifest: L2Manifest;
+  manifestStore: L2ManifestStore;
   config?: Partial<ManifestSummaryConfig>;
   viewMoreUrl: string;
   theme?: string;
@@ -28,7 +28,7 @@ export default {
   title: 'Components/ManifestSummary',
   component: 'cai-manifest-summary',
   argTypes: {
-    manifest: {
+    manifestStore: {
       control: {
         type: 'object',
       },
@@ -64,14 +64,14 @@ export default {
 } as Meta;
 
 const Base: Story<ArgTypes> = ({
-  manifest,
+  manifestStore,
   config,
   viewMoreUrl,
   theme,
 }: ArgTypes) => {
   return html`
     <cai-manifest-summary
-      .manifest=${manifest}
+      .manifestStore=${manifestStore}
       .config=${config}
       view-more-url=${viewMoreUrl}
       class=${theme}
@@ -81,37 +81,45 @@ const Base: Story<ArgTypes> = ({
 
 export const Default = Base.bind({});
 Default.args = {
-  manifest: defaultManifest,
+  manifestStore: defaultManifest,
 };
 
 export const Styled = Base.bind({});
 Styled.args = {
-  manifest: defaultManifest,
+  manifestStore: defaultManifest,
   theme: 'theme-spectrum',
 };
 
 export const AppendCustomSection: Story<ArgTypes> = ({
-  manifest,
+  manifestStore,
   config,
   viewMoreUrl,
   theme,
 }: ArgTypes) => {
   return html`
     <cai-manifest-summary
-      .manifest=${manifest}
+      .manifestStore=${manifestStore}
       .config=${config}
       view-more-url=${viewMoreUrl}
       class=${theme}
     >
       <cai-panel-section
+        slot="pre"
         header="Custom section"
-        helpText="This is a customs ection"
+        helpText="This is a custom section"
         >Number of ingredients:
-        ${manifest.ingredients.length}</cai-panel-section
+        ${manifestStore.ingredients.length}</cai-panel-section
+      >
+      <cai-panel-section
+        slot="post"
+        header="Custom section"
+        helpText="This is a custom section"
+        >Number of ingredients:
+        ${manifestStore.ingredients.length}</cai-panel-section
       >
     </cai-manifest-summary>
   `;
 };
 AppendCustomSection.args = {
-  manifest: defaultManifest,
+  manifestStore: defaultManifest,
 };

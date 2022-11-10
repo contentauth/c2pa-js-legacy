@@ -9,21 +9,24 @@
 
 // @ts-ignore
 import thumbnailUrl from './manifest-thumbnail.jpg?url';
+import { L2ManifestStore } from 'c2pa';
 
 export default {
   ingredients: [
     {
       title: 'CA.jpg',
       format: 'image/jpeg',
-      relationship: 'parentOf',
-      manifest: 'adobetest:urn:uuid:b546cb41-88ee-4786-8f00-b2d696a0ef79',
+      hasManifest: true,
+      error: null,
+      validationStatus: [],
       thumbnail: thumbnailUrl,
     },
     {
       title: 'CAI.jpg',
       format: 'image/jpeg',
-      relationship: 'componentOf',
-      manifest: 'adobetest:urn:uuid:a1564119-fdac-4a90-8bee-c9453d1bc111',
+      hasManifest: true,
+      error: null,
+      validationStatus: [],
       thumbnail: thumbnailUrl,
     },
   ],
@@ -81,5 +84,7 @@ export default {
       description: 'Changed size, orientation, direction, or position',
     },
   ],
+  validationStatus: [],
+  error: null,
   isBeta: false,
-};
+} as L2ManifestStore;

@@ -15,14 +15,15 @@ export {
   C2pa,
 } from './src/c2pa';
 export {
-  DisposableL2Manifest,
+  DisposableL2ManifestStore,
   L2ClaimGenerator,
   L2EditsAndActivity,
   L2Ingredient,
   L2Producer,
   L2Signature,
   L2SocialAccount,
-} from './src/createL2Manifest';
+  ErrorStatus,
+} from './src/createL2ManifestStore';
 export { DownloaderOptions } from './src/lib/downloader';
 export { ManifestStore, ManifestMap } from './src/manifestStore';
 export { Manifest } from './src/manifest';
@@ -37,4 +38,7 @@ export {
 } from './src/selectors/selectEditsAndActivity';
 export { selectProducer } from './src/selectors/selectProducer';
 export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';
-export { createL2Manifest, L2Manifest } from './src/createL2Manifest';
+export {
+  createL2ManifestStore,
+  L2ManifestStore,
+} from './src/createL2ManifestStore';
