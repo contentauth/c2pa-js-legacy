@@ -83,28 +83,10 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
 
         #container {
           width: var(--cai-manifest-summary-width, 320px);
-          padding: var(--cai-manifest-summary-content-padding, 20px);
-        }
-
-        #header-container {
-          padding-bottom: var(--cai-manifest-summary-section-spacing, 20px);
-          margin-bottom: var(--cai-manifest-summary-section-spacing, 20px);
-          border-bottom-width: var(
-            --cai-manifest-summary-section-border-width,
-            1px
-          );
-          border-bottom-style: var(
-            --cai-manifest-summary-section-border-style,
-            solid
-          );
-          border-bottom-color: var(
-            --cai-manifest-summary-section-border-color,
-            #e1e1e1
-          );
         }
 
         #content-container {
-          padding-bottom: var(--cai-manifest-summary-section-spacing, 20px);
+          padding: var(--cai-manifest-summary-content-padding, 20px);
           max-height: var(--cai-manifest-summary-content-max-height, 550px);
           border-bottom-width: var(
             --cai-manifest-summary-content-border-bottom-width,
@@ -123,41 +105,8 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           overflow-x: hidden;
         }
 
-        #sections > *:not(:first-child):not([empty]) {
-          padding-top: var(--cai-manifest-summary-section-spacing, 20px);
-          margin-top: var(--cai-manifest-summary-section-spacing, 20px);
-          border-top-width: var(
-            --cai-manifest-summary-section-border-width,
-            1px
-          );
-          border-top-style: var(
-            --cai-manifest-summary-section-border-style,
-            solid
-          );
-          border-top-color: var(
-            --cai-manifest-summary-section-border-color,
-            #e1e1e1
-          );
-        }
-
-        #slot-sections-pre > ::slotted(*) {
-          padding-bottom: var(--cai-manifest-summary-section-spacing, 20px);
-          margin-bottom: var(--cai-manifest-summary-section-spacing, 20px);
-          border-bottom-width: var(
-            --cai-manifest-summary-section-border-width,
-            1px
-          ) !important;
-          border-bottom-style: var(
-            --cai-manifest-summary-section-border-style,
-            solid
-          ) !important;
-          border-bottom-color: var(
-            --cai-manifest-summary-section-border-color,
-            #e1e1e1
-          ) !important;
-        }
-
-        #slot-sections-post > ::slotted(*) {
+        #content-container > *:not(:first-child):not([empty]),
+        ::slotted(*) {
           padding-top: var(--cai-manifest-summary-section-spacing, 20px);
           margin-top: var(--cai-manifest-summary-section-spacing, 20px);
           border-top-width: var(
@@ -218,61 +167,53 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
 
     return html`<div id="container">
       <div id="content-container">
-        <div id="header-container">
-          <cai-minimum-viable-provenance
-            .manifestStore=${this.manifestStore}
-            .config=${this._config}
-          ></cai-minimum-viable-provenance>
-        </div>
-        <div id="slot-sections-pre">
-          <slot name="pre"></slot>
-        </div>
-        <div id="sections">
-          ${this._config?.sections?.producedBy
-            ? html`
-                <cai-produced-by
-                  .manifestStore=${this.manifestStore}
-                  .config=${this._config}
-                ></cai-produced-by>
-              `
-            : nothing}
-          ${this._config?.sections?.producedWith
-            ? html`
-                <cai-produced-with
-                  .manifestStore=${this.manifestStore}
-                  .config=${this._config}
-                ></cai-produced-with>
-              `
-            : nothing}
-          ${this._config?.sections?.editsAndActivity
-            ? html`
-                <cai-edits-and-activity
-                  .manifestStore=${this.manifestStore}
-                  .config=${this._config}
-                ></cai-edits-and-activity>
-              `
-            : nothing}
-          ${this._config?.sections?.assetsUsed
-            ? html`
-                <cai-assets-used
-                  .manifestStore=${this.manifestStore}
-                  .config=${this._config}
-                ></cai-assets-used>
-              `
-            : nothing}
-          ${this._config?.sections?.socialMedia
-            ? html`
-                <cai-social-media
-                  .manifestStore=${this.manifestStore}
-                  .config=${this._config}
-                ></cai-social-media>
-              `
-            : nothing}
-        </div>
-        <div id="slot-sections-post">
-          <slot></slot>
-          <slot name="post"></slot>
-        </div>
+        <cai-minimum-viable-provenance
+          .manifestStore=${this.manifestStore}
+          .config=${this._config}
+        ></cai-minimum-viable-provenance>
+        <slot name="pre"></slot>
+        ${this._config?.sections?.producedBy
+          ? html`
+              <cai-produced-by
+                .manifestStore=${this.manifestStore}
+                .config=${this._config}
+              ></cai-produced-by>
+            `
+          : nothing}
+        ${this._config?.sections?.producedWith
+          ? html`
+              <cai-produced-with
+                .manifestStore=${this.manifestStore}
+                .config=${this._config}
+              ></cai-produced-with>
+            `
+          : nothing}
+        ${this._config?.sections?.editsAndActivity
+          ? html`
+              <cai-edits-and-activity
+                .manifestStore=${this.manifestStore}
+                .config=${this._config}
+              ></cai-edits-and-activity>
+            `
+          : nothing}
+        ${this._config?.sections?.assetsUsed
+          ? html`
+              <cai-assets-used
+                .manifestStore=${this.manifestStore}
+                .config=${this._config}
+              ></cai-assets-used>
+            `
+          : nothing}
+        ${this._config?.sections?.socialMedia
+          ? html`
+              <cai-social-media
+                .manifestStore=${this.manifestStore}
+                .config=${this._config}
+              ></cai-social-media>
+            `
+          : nothing}
+        <slot></slot>
+        <slot name="post"></slot>
       </div>
       <div id="view-more-container">
         ${this.viewMoreUrl

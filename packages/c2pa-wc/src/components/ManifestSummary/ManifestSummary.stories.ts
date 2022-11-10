@@ -108,14 +108,14 @@ export const AppendCustomSection: Story<ArgTypes> = ({
         header="Custom section"
         helpText="This is a custom section"
         >Number of ingredients:
-        ${manifestStore.ingredients.length}</cai-panel-section
+        ${manifestStore.ingredients?.length}</cai-panel-section
       >
       <cai-panel-section
         slot="post"
         header="Custom section"
         helpText="This is a custom section"
         >Number of ingredients:
-        ${manifestStore.ingredients.length}</cai-panel-section
+        ${manifestStore.ingredients?.length}</cai-panel-section
       >
     </cai-manifest-summary>
   `;
