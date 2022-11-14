@@ -44,11 +44,6 @@ export class AssetsUsed extends ConfigurablePanelSection(LitElement, {
   isEmpty: (data) => !data.length,
   config: defaultConfig,
 }) {
-  @property({
-    type: Object,
-  })
-  manifestStore: L2ManifestStore | undefined;
-
   static get styles() {
     return [
       defaultStyles,

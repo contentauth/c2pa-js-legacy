@@ -24,6 +24,4 @@ export const ConfigurablePanelSection = <
 >(
   superClass: T,
   config: ConfigurablePanelSectionConfig<DataType>,
-  // panelSectionConfig: PanelSectionConfig<DataType>,
-  // config: Record<string, any>,
 ) => Configurable(PanelSection(superClass, config), config.config);

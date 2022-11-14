@@ -42,11 +42,6 @@ export class ProducedWith extends ConfigurablePanelSection(LitElement, {
   dataSelector: (manifestStore) => manifestStore.claimGenerator,
   config: defaultConfig,
 }) {
-  @property({
-    type: Object,
-  })
-  manifestStore: L2ManifestStore | undefined;
-
   static get styles() {
     return [
       defaultStyles,

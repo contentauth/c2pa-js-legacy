@@ -154,7 +154,6 @@ export class Popover extends LitElement {
           color: var(--cai-popover-color, #222222);
           transition-property: transform, visibility, opacity;
           border-radius: var(--cai-popover-border-radius, 6px);
-          border-radius: var(--cai-popover-border-radius, 6px);
           border-width: var(--cai-popover-border-radius, 1px);
           border-style: var(--cai-popover-border-style, solid);
           border-color: var(--cai-popover-border-color, #ddd);
