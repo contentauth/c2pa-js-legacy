@@ -265,6 +265,8 @@ export class Popover extends LitElement {
         this._updatePosition();
       },
     );
+
+    this.contentElement?.classList.add('hidden');
   }
 
   disconnectedCallback(): void {
