@@ -7,14 +7,14 @@
  * it.
  */
 
-import { Action } from '@contentauth/toolkit';
-import { Manifest } from '../manifest';
+import { Action, C2paActionsAssertion } from '@contentauth/toolkit';
 import debug from 'debug';
-import flow from 'lodash/fp/flow';
 import compact from 'lodash/fp/compact';
-import uniqBy from 'lodash/fp/uniqBy';
+import flow from 'lodash/fp/flow';
 import sortBy from 'lodash/fp/sortBy';
+import uniqBy from 'lodash/fp/uniqBy';
 import { Downloader } from '../lib/downloader';
+import { Manifest } from '../manifest';
 
 const dbg = debug('c2pa:selector:editsAndActivity');
 
@@ -29,6 +29,7 @@ declare module '../assertions' {
   }
 }
 
+const DEFAULT_LOCALE = 'en-US';
 const UNCATEGORIZED_ID = 'UNCATEGORIZED';
 
 const ACTION_DICTIONARY: Record<string, ActionDictionaryItem> = {
@@ -158,7 +159,7 @@ export interface EditCategory {
  */
 export async function selectEditsAndActivity(
   manifest: Manifest,
-  locale: string = 'en-US',
+  locale: string = DEFAULT_LOCALE,
   iconVariant: IconVariant = 'dark',
 ): Promise<TranslatedDictionaryCategory[] | null> {
   const dictionaryAssertion =
@@ -180,13 +181,13 @@ export async function selectEditsAndActivity(
     );
   }
 
-  return getC2paCategorizedActions(actionAssertion.data.actions);
+  return getC2paCategorizedActions(actionAssertion, locale);
 }
 
 async function getPhotoshopCategorizedActions(
   actions: Action[],
   dictionaryUrl: string,
-  locale = 'en-US',
+  locale = DEFAULT_LOCALE,
   iconVariant: IconVariant = 'dark',
 ): Promise<TranslatedDictionaryCategory[]> {
   const dictionary = await Downloader.cachedGetJson<AdobeDictionary>(
@@ -209,8 +210,11 @@ async function getPhotoshopCategorizedActions(
 }
 
 function getC2paCategorizedActions(
-  actions: Action[],
+  actionsAssertion: C2paActionsAssertion,
+  locale: string = DEFAULT_LOCALE,
 ): TranslatedDictionaryCategory[] {
+  console.log('actionsAssertion', actionsAssertion);
+  const actions = actionsAssertion.data.actions;
   const uniqueActionLabels = actions
     ?.map(({ action }) => action)
     .filter(
@@ -223,6 +227,8 @@ function getC2paCategorizedActions(
       icon: null,
       ...ACTION_DICTIONARY[action],
     }));
+
+  console.log('uniqueActionLabels', uniqueActionLabels);
 
   return uniqueActionLabels;
 }
