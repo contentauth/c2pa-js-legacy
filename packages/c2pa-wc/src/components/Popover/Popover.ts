@@ -95,6 +95,9 @@ export class Popover extends LitElement {
   @query('#content')
   contentElement: HTMLElement | undefined;
 
+  @query('#element')
+  hostElement: HTMLElement | undefined;
+
   @query('#trigger')
   triggerElement: HTMLElement | undefined;
 
@@ -211,15 +214,7 @@ export class Popover extends LitElement {
       const [show, hide] = trigger.split(':');
       this.triggerElement!.addEventListener(show, this._showTooltip.bind(this));
       if (this.interactive && hide === 'mouseleave') {
-        this.contentElement!.addEventListener(
-          hide,
-          this._hideTooltip.bind(this),
-        );
-      } else {
-        this.triggerElement!.addEventListener(
-          hide,
-          this._hideTooltip.bind(this),
-        );
+        this.hostElement!.addEventListener(hide, this._hideTooltip.bind(this));
       }
       return () => {
         this.triggerElement!.removeEventListener(show, this._showTooltip);
