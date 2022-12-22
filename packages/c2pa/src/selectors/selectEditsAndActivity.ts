@@ -9,13 +9,14 @@
 
 import { Action, C2paActionsAssertion } from '@contentauth/toolkit';
 import debug from 'debug';
+import each from 'lodash/each';
 import compact from 'lodash/fp/compact';
 import flow from 'lodash/fp/flow';
 import sortBy from 'lodash/fp/sortBy';
 import uniqBy from 'lodash/fp/uniqBy';
-import get from 'lodash/get';
 import mapKeys from 'lodash/mapKeys';
 import merge from 'lodash/merge';
+import set from 'lodash/set';
 import * as locales from '../../i18n/index';
 import { Downloader } from '../lib/downloader';
 import { Manifest } from '../manifest';
@@ -167,7 +168,8 @@ async function getPhotoshopCategorizedActions(
   return categories;
 }
 
-interface AdobeAction extends Action {
+interface AdobeCompatAction extends Action {
+  id: string;
   parameters: {
     name: never;
     'com.adobe.icon': string;
@@ -175,43 +177,50 @@ interface AdobeAction extends Action {
   };
 }
 
-function getIconFromActionParameters(
-  actions: AdobeAction[],
-): Record<string, string> {
-  return actions.reduce((acc, { action, parameters }) => {
-    if (!acc.hasOwnProperty(action)) {
-      acc[action] = parameters?.['com.adobe.icon'];
-    }
-    return acc;
-  }, {} as Record<string, string>);
+type OverrideLocalizationMap = Record<string, any>;
+type Override = Record<string, OverrideLocalizationMap>;
+
+interface OverrideActionMap {
+  actions: OverrideLocalizationMap[];
 }
 
 function getC2paCategorizedActions(
   actionsAssertion: C2paActionsAssertion,
   locale: string = DEFAULT_LOCALE,
 ): TranslatedDictionaryCategory[] {
-  console.log('actionsAssertion', actionsAssertion);
-  const actions = actionsAssertion.data.actions;
+  const actions = actionsAssertion.data.actions as AdobeCompatAction[];
   const translations = getTranslationsForLocale(locale);
-  const overrides = actionsAssertion.data.metadata?.localizations ?? [];
-  console.log('overrides', overrides);
-  const icons = getIconFromActionParameters(actions as AdobeAction[]);
-  const uniqueActionLabels = actions
-    ?.map(({ action }) => action)
-    .filter(
-      (val, idx, self) =>
-        translations.hasOwnProperty(val) && self.indexOf(val) === idx,
-    ) // de-dupe && only keep valid c2pa actions
-    .sort()
-    .map((action) => ({
-      id: action,
-      icon: icons[action],
-      ...translations[action],
-    }));
+  const overrides = (actionsAssertion.data.metadata?.localizations ??
+    []) as Override[];
 
-  console.log('uniqueActionLabels', uniqueActionLabels);
+  const overrideObj: OverrideActionMap = { actions: [] };
+  each(overrides, (override) => {
+    each(override, (translationMap, path) => {
+      const override = translationMap[locale];
+      if (override) {
+        set(overrideObj, path, translationMap[locale]);
+      }
+    });
+  });
 
-  return uniqueActionLabels;
+  const translatedActions = actions.map((action, idx) => {
+    const actionOverrides = overrideObj.actions[idx] ?? {};
+    const actionTranslations = translations[action.action];
+    return {
+      // Include original ID
+      id: action.action,
+      // Get icon from parameters if they exist
+      icon: action.parameters?.['com.adobe.icon'],
+      // Use override if available, if not, then fall back to translation
+      label: actionOverrides.action ?? actionTranslations.label,
+      // Use override if available, if not, then fall back to translation
+      description:
+        actionOverrides?.parameters?.description ??
+        actionTranslations.description,
+    } as TranslatedDictionaryCategory;
+  });
+
+  return processCategories(translatedActions);
 }
 
 /**
