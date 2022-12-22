@@ -23,7 +23,8 @@ import { Manifest } from '../manifest';
 
 const dbg = debug('c2pa:selector:editsAndActivity');
 
-const translations = mapKeys(locales as Record<string, any>, (_, key) =>
+// Make sure we update the keys to conform to BCP 47 tags
+const bcp47Mapping = mapKeys(locales as Record<string, any>, (_, key) =>
   key.replace('_', '-'),
 );
 
@@ -94,9 +95,9 @@ export interface EditCategory {
  * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
  */
 function getTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
-  const defaultSet = (translations[DEFAULT_LOCALE]?.selectors
+  const defaultSet = (bcp47Mapping[DEFAULT_LOCALE]?.selectors
     ?.editsAndActivity ?? {}) as Record<string, ActionDictionaryItem>;
-  const requestedSet = (translations[locale]?.selectors?.editsAndActivity ??
+  const requestedSet = (bcp47Mapping[locale]?.selectors?.editsAndActivity ??
     {}) as Record<string, ActionDictionaryItem>;
 
   if (locale === DEFAULT_LOCALE) {
@@ -194,11 +195,13 @@ function getC2paCategorizedActions(
     []) as Override[];
 
   const overrideObj: OverrideActionMap = { actions: [] };
+  // The spec has an array of objects, and each object can have multiple entries
+  // of path keys to overrides, which is why we have to have a nested each.
   each(overrides, (override) => {
     each(override, (translationMap, path) => {
-      const override = translationMap[locale];
-      if (override) {
-        set(overrideObj, path, translationMap[locale]);
+      const val = translationMap[locale];
+      if (val) {
+        set(overrideObj, path, val);
       }
     });
   });
