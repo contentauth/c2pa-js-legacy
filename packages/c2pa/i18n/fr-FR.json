@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Ajustement des propriétés, comme la tonalité, la saturation, les courbes, les ombres ou les tons clairs",
+        "label": "Modifications de la couleur ou de l’exposition"
+      },
+      "c2pa.created": {
+        "description": "Création d’un nouveau fichier ou contenu",
+        "label": "Créé"
+      },
+      "c2pa.cropped": {
+        "description": "Utilisation d’outils de recadrage, réduisant ou élargissant la zone de contenu visible",
+        "label": "Modifications de recadrage"
+      },
+      "c2pa.drawing": {
+        "description": "Utilisation d’outils, comme des crayons, des pinceaux, des gommes ou des outils de forme, de tracé ou de plume",
+        "label": "Modifications du dessin"
+      },
+      "c2pa.edited": {
+        "description": "Réalisation d’autres modifications",
+        "label": "Autres modifications"
+      },
+      "c2pa.filtered": {
+        "description": "Utilisation d’outils tels que des filtres, des styles ou des effets pour modifier l’apparence",
+        "label": "Modifications du filtre ou du style"
+      },
+      "c2pa.opened": {
+        "description": "Ouverture d’un fichier préexistant",
+        "label": "Ouvert"
+      },
+      "c2pa.orientation": {
+        "description": "Changement de position ou d’orientation (rotation, renversement, etc.)",
+        "label": "Orientation Modifications de "
+      },
+      "c2pa.placed": {
+        "description": "Ajout du contenu préexistant à ce fichier",
+        "label": "Importé"
+      },
+      "c2pa.resized": {
+        "description": "Modification des dimensions ou de la taille du fichier",
+        "label": "Modifications du redimensionnement"
+      },
+      "c2pa.unknown": {
+        "description": "Réalisation d’autres modifications ou activités qui n’ont pas pu être reconnues",
+        "label": "Modifications ou activité inconnues"
+      },
+      "com.adobe.3d": {
+        "description": "Création ou modification d’objets ou de scènes 3D",
+        "label": "Modifications 3D"
+      },
+      "com.adobe.animation_video": {
+        "description": "Création ou modification de l’animation, de l’audio ou d’autres propriétés vidéo",
+        "label": "Modifications vidéo"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Composition ou réorganisation du contenu, ou modification de celui-ci avec des outils d’échantillonnage de contenu",
+        "label": "Combiné"
+      },
+      "com.adobe.text": {
+        "description": "Création ou modification du texte, notamment de la famille de polices, de la couleur ou d’autres styles",
+        "label": "Modifications du texte"
+      }
+    }
+  }
+}

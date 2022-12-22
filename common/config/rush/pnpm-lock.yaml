@@ -113,6 +113,7 @@ importers:
       '@contentauth/toolkit': workspace:*
       '@microsoft/api-extractor': ~7.31.1
       '@rollup/plugin-commonjs': ~22.0.0
+      '@rollup/plugin-json': ~4.1.0
       '@rollup/plugin-node-resolve': ^13.3.0
       '@rollup/plugin-replace': ~4.0.0
       '@rollup/plugin-strip': ~2.1.0
@@ -156,6 +157,7 @@ importers:
       '@contentauth/testing': link:../../tools/testing
       '@microsoft/api-extractor': 7.31.1
       '@rollup/plugin-commonjs': 22.0.1_rollup@2.70.2
+      '@rollup/plugin-json': 4.1.0_rollup@2.70.2
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.70.2
       '@rollup/plugin-replace': 4.0.0_rollup@2.70.2
       '@rollup/plugin-strip': 2.1.0_rollup@2.70.2

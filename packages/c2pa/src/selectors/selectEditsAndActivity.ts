@@ -13,10 +13,18 @@ import compact from 'lodash/fp/compact';
 import flow from 'lodash/fp/flow';
 import sortBy from 'lodash/fp/sortBy';
 import uniqBy from 'lodash/fp/uniqBy';
+import get from 'lodash/get';
+import mapKeys from 'lodash/mapKeys';
+import merge from 'lodash/merge';
+import * as locales from '../../i18n/index';
 import { Downloader } from '../lib/downloader';
 import { Manifest } from '../manifest';
 
 const dbg = debug('c2pa:selector:editsAndActivity');
+
+const translations = mapKeys(locales as Record<string, any>, (_, key) =>
+  key.replace('_', '-'),
+);
 
 interface AdobeDictionaryAssertionData {
   url: string;
@@ -31,75 +39,6 @@ declare module '../assertions' {
 
 const DEFAULT_LOCALE = 'en-US';
 const UNCATEGORIZED_ID = 'UNCATEGORIZED';
-
-const ACTION_DICTIONARY: Record<string, ActionDictionaryItem> = {
-  'c2pa.color_adjustments': {
-    label: 'Color adjustments',
-    description: 'Changed tone, saturation, etc.',
-  },
-  'c2pa.converted': {
-    label: 'Converted asset',
-    description: 'The format of the asset was changed',
-  },
-  'c2pa.created': {
-    label: 'Secure creation',
-    description: "The asset was first created, usually the asset's origin",
-  },
-  'c2pa.cropped': {
-    label: 'Crop adjustments',
-    description: 'Outer areas of the asset were removed',
-  },
-  'c2pa.drawing': {
-    label: 'Paint tools',
-    description: 'Edited with brushes or eraser tools',
-  },
-  'c2pa.edited': {
-    label: 'Edited',
-    description: 'Changes were made to the asset',
-  },
-  'c2pa.filtered': {
-    label: 'Filter effects',
-    description: 'Changed appearances with filters, layer styles, etc.',
-  },
-  'c2pa.opened': {
-    label: 'File opened',
-    description:
-      'An existing file containing one or more assets was opened and used as the starting point for editing',
-  },
-  'c2pa.orientation': {
-    label: 'Position adjustments',
-    description: 'Changed position, orientation, or direction',
-  },
-  'c2pa.placed': {
-    label: 'Imported assets',
-    description: 'Added images, videos, etc.',
-  },
-  'c2pa.published': {
-    label: 'Published image',
-    description: 'Received and distributed image',
-  },
-  'c2pa.removed': {
-    label: 'Asset removed',
-    description: 'One or more assets were removed from the file',
-  },
-  'c2pa.repackaged': {
-    label: 'Repackaged asset',
-    description: 'Asset was repackaged without being processed',
-  },
-  'c2pa.resized': {
-    label: 'Size adjustments',
-    description: 'Changed asset dimensions',
-  },
-  'c2pa.transcoded': {
-    label: 'Processed asset',
-    description: 'Processed or compressed an asset to optimize for display',
-  },
-  'c2pa.unknown': {
-    label: 'Other changes',
-    description:
-      'Made changes not yet categorized by Content Credentials (Beta)',
-  },
-};
 
 interface ActionDictionaryItem {
   label: string;
@@ -145,6 +84,25 @@ export interface EditCategory {
   icon: string;
   label: string;
   description: string;
+}
+
+/**
+ * Gets a list of translations for the requested locale. Any missing translations in other locales
+ * will be filled in with entries from the DEFAULT_LOCALE.
+ *
+ * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
+ */
+function getTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
+  const defaultSet = (translations[DEFAULT_LOCALE]?.selectors
+    ?.editsAndActivity ?? {}) as Record<string, ActionDictionaryItem>;
+  const requestedSet = (translations[locale]?.selectors?.editsAndActivity ??
+    {}) as Record<string, ActionDictionaryItem>;
+
+  if (locale === DEFAULT_LOCALE) {
+    return defaultSet;
+  }
+
+  return merge({}, defaultSet, requestedSet);
 }
 
 /**
@@ -209,23 +167,46 @@ async function getPhotoshopCategorizedActions(
   return categories;
 }
 
+interface AdobeAction extends Action {
+  parameters: {
+    name: never;
+    'com.adobe.icon': string;
+    description: string;
+  };
+}
+
+function getIconFromActionParameters(
+  actions: AdobeAction[],
+): Record<string, string> {
+  return actions.reduce((acc, { action, parameters }) => {
+    if (!acc.hasOwnProperty(action)) {
+      acc[action] = parameters?.['com.adobe.icon'];
+    }
+    return acc;
+  }, {} as Record<string, string>);
+}
+
 function getC2paCategorizedActions(
   actionsAssertion: C2paActionsAssertion,
   locale: string = DEFAULT_LOCALE,
 ): TranslatedDictionaryCategory[] {
   console.log('actionsAssertion', actionsAssertion);
   const actions = actionsAssertion.data.actions;
+  const translations = getTranslationsForLocale(locale);
+  const overrides = actionsAssertion.data.metadata?.localizations ?? [];
+  console.log('overrides', overrides);
+  const icons = getIconFromActionParameters(actions as AdobeAction[]);
   const uniqueActionLabels = actions
     ?.map(({ action }) => action)
     .filter(
       (val, idx, self) =>
-        ACTION_DICTIONARY.hasOwnProperty(val) && self.indexOf(val) === idx,
+        translations.hasOwnProperty(val) && self.indexOf(val) === idx,
     ) // de-dupe && only keep valid c2pa actions
     .sort()
     .map((action) => ({
       id: action,
-      icon: null,
-      ...ACTION_DICTIONARY[action],
+      icon: icons[action],
+      ...translations[action],
     }));
 
   console.log('uniqueActionLabels', uniqueActionLabels);
