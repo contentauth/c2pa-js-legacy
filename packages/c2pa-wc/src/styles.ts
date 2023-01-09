@@ -20,6 +20,7 @@ export const defaultStyles = css`
     --cai-secondary-color: #8e8e8e;
     --cai-popover-bg-color: #ffffff;
     --cai-popover-color: var(--cai-primary-color);
+    --cai-social-media-item-color: #1473e6;
 
     font-family: var(--cai-font-family);
     font-size: var(--cai-font-size-base);
