@@ -255,6 +255,7 @@ export class Popover extends LitElement {
     y: number | undefined,
     placement: Placement,
   ) {
+    const staticAxisOffset = -4;
     const base = {
       top: '',
       left: '',
@@ -267,26 +268,26 @@ export class Popover extends LitElement {
       case 'bottom':
         return {
           ...base,
-          top: '-4px',
+          top: `${staticAxisOffset}px`,
           left: x !== null ? `${x}px` : '',
         };
       case 'top':
         return {
           ...base,
           left: x !== null ? `${x}px` : '',
-          bottom: '-4px',
+          bottom: `${staticAxisOffset}px`,
         };
       case 'left':
         return {
           ...base,
           top: y !== null ? `${y}px` : '',
-          right: '-4px',
+          right: `${staticAxisOffset}px`,
         };
       case 'right':
         return {
           ...base,
           top: y !== null ? `${y}px` : '',
-          left: '-4px',
+          left: `${staticAxisOffset}px`,
         };
       default:
         return {
