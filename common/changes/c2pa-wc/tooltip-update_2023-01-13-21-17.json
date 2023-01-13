@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Update cai-tooltip to support dynamic positioning",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
