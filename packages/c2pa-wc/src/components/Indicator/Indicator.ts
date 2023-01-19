@@ -7,10 +7,10 @@
  * it.
  */
 
-import { LitElement, html, css } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { defaultStyles } from '../../styles';
 import '../../../assets/svg/color/info.svg';
+import { defaultStyles } from '../../styles';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -47,11 +47,24 @@ export class Indicator extends LitElement {
           --cai-icon-width: var(--cai-indicator-size, 24px);
           --cai-icon-height: var(--cai-indicator-size, 24px);
         }
+        .wrapper {
+          position: relative;
+        }
+        .hidden-layer {
+          position: absolute;
+          left: calc(var(--cai-popover-icon-size, 24px) * -1);
+          width: calc(var(--cai-popover-icon-width, 16px) + 10px);
+          height: calc(var(--cai-popover-icon-size, 24px) * 3);
+          top: calc(var(--cai-popover-icon-size, 24px) * -1);
+        }
       `,
     ];
   }
 
   render() {
-    return html`<cai-icon-info class="icon" />`;
+    return html`<div class="wrapper">
+      <div class="hidden-layer"></div>
+      <cai-icon-info class="icon" />
+    </div>`;
   }
 }
