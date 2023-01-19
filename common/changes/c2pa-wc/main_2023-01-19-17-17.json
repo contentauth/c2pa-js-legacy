@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Disable autoplacement in L2 popovers",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
