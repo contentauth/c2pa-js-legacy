@@ -68,7 +68,7 @@ export class PanelSection extends LitElement {
           <div class="heading-text">${this.header}</div>
           <slot name="help">
             ${this.helpText
-              ? html`<cai-tooltip>
+              ? html`<cai-tooltip autoPlacement=${false}>
                   <div slot="content">${this.helpText}</div>
                 </cai-tooltip>`
               : nothing}

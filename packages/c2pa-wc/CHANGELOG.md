@@ -1,6 +1,13 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Wed, 18 Jan 2023 18:02:12 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jan 2023 17:32:58 GMT and should not be manually modified.
+
+## 0.10.2
+Thu, 19 Jan 2023 17:32:58 GMT
+
+### Patches
+
+- Disable autoplacement in L2 popovers
 
 ## 0.10.1
 Wed, 18 Jan 2023 18:02:12 GMT

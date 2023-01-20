@@ -2,6 +2,18 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.10.2",
+      "tag": "c2pa-wc_v0.10.2",
+      "date": "Thu, 19 Jan 2023 17:32:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Disable autoplacement in L2 popovers"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.10.1",
       "tag": "c2pa-wc_v0.10.1",
       "date": "Wed, 18 Jan 2023 18:02:12 GMT",
