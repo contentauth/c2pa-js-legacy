@@ -7,15 +7,15 @@
  * it.
  */
 
+import { ToolkitError } from '@contentauth/toolkit';
 import debug from 'debug';
-import { Downloader, DownloaderOptions } from './lib/downloader';
 import { WorkerPoolOptions } from 'workerpool';
 import { ensureCompatibility } from './lib/browser';
+import { Downloader, DownloaderOptions } from './lib/downloader';
 import { fetchWasm } from './lib/wasm';
 import { createWorkerPool, SdkWorkerPool } from './lib/workerPool';
 import { createManifestStore, ManifestStore } from './manifestStore';
 import { C2paSourceType, createSource, Source } from './source';
-import { ToolkitError } from '@contentauth/toolkit';
 
 const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
@@ -224,7 +224,7 @@ function handleErrors(
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
   fetchRemote = true,
-): Promise<ManifestStore> | null {
+): Promise<ManifestStore | null> | null {
   switch (error.name) {
     case 'Toolkit(RemoteManifestUrl)':
       if (fetchRemote && error.url) {
@@ -244,21 +244,32 @@ function handleErrors(
 
 async function fetchRemoteManifest(
   source: Source,
-  url: string,
+  manifestUrl: string,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
-): Promise<ManifestStore> {
-  dbg('Fetching remote manifest from', url);
+): Promise<ManifestStore | null> {
+  try {
+    const url = new URL(manifestUrl);
+    dbg('Fetching remote manifest from', url);
 
-  const manifestBytes = await fetch(url);
-  const manifestBlob = await manifestBytes.blob();
-  const manifestBuffer = await manifestBlob.arrayBuffer();
-  const sourceBuffer = await source.arrayBuffer();
-  const result = await pool.getReportFromAssetAndManifestBuffer(
-    wasm,
-    manifestBuffer,
-    sourceBuffer,
-  );
+    const manifestBytes = await fetch(url.toString());
+    const manifestBlob = await manifestBytes.blob();
+    const manifestBuffer = await manifestBlob.arrayBuffer();
+    const sourceBuffer = await source.arrayBuffer();
+    const result = await pool.getReportFromAssetAndManifestBuffer(
+      wasm,
+      manifestBuffer,
+      sourceBuffer,
+    );
 
-  return createManifestStore(result);
+    return createManifestStore(result);
+  } catch (err) {
+    if (err instanceof TypeError) {
+      dbg('Invalid URL given, skipping remote manifest loading', manifestUrl);
+      return null;
+    }
+
+    dbg('Error loading remote manifest from', manifestUrl, err);
+    throw err;
+  }
 }

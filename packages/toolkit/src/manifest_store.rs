@@ -8,12 +8,15 @@ use crate::error::{Error, Result};
 use c2pa::ManifestStore;
 
 pub async fn get_manifest_store_data(data: &[u8], mime_type: &str) -> Result<ManifestStore> {
-    ManifestStore::from_bytes_async(mime_type, data.to_owned(), true)
+    ManifestStore::from_bytes_async(mime_type, data, true)
         .await
         .map_err(Error::from)
 }
 
-pub async fn get_manifest_store_data_from_manifest_and_asset_bytes(manifest_bytes: &[u8], asset_bytes: &[u8]) -> Result<ManifestStore> {
+pub async fn get_manifest_store_data_from_manifest_and_asset_bytes(
+    manifest_bytes: &[u8],
+    asset_bytes: &[u8],
+) -> Result<ManifestStore> {
     ManifestStore::from_manifest_and_asset_bytes_async(manifest_bytes, asset_bytes)
         .await
         .map_err(Error::from)
