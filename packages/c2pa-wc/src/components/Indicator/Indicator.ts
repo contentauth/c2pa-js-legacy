@@ -53,7 +53,7 @@ export class Indicator extends LitElement {
         .hidden-layer {
           position: absolute;
           left: calc(var(--cai-popover-icon-size, 24px) * -1);
-          width: calc(var(--cai-popover-icon-width, 16px) + 10px);
+          width: var(--cai-popover-icon-size, 24px);
           height: calc(var(--cai-popover-icon-size, 24px) * 3);
           top: calc(var(--cai-popover-icon-size, 24px) * -1);
         }
