@@ -7,12 +7,12 @@
  * it.
  */
 
+import { autoPlacement } from '@floating-ui/dom';
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import '../../../assets/svg/monochrome/help.svg';
 import { defaultStyles } from '../../styles';
-import { autoPlacement } from '@floating-ui/dom';
 
 import '../Icon';
 import '../Popover';

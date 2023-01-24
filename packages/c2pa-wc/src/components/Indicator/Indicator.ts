@@ -47,9 +47,7 @@ export class Indicator extends LitElement {
           --cai-icon-width: var(--cai-indicator-size, 24px);
           --cai-icon-height: var(--cai-indicator-size, 24px);
         }
-        .wrapper {
-          position: relative;
-        }
+
         .hidden-layer {
           position: absolute;
           left: calc(var(--cai-popover-icon-size, 24px) * -1);
@@ -62,9 +60,6 @@ export class Indicator extends LitElement {
   }
 
   render() {
-    return html`<div class="wrapper">
-      <div class="hidden-layer"></div>
-      <cai-icon-info class="icon" />
-    </div>`;
+    return html` <cai-icon-info class="icon" /> `;
   }
 }
