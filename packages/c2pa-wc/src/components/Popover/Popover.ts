@@ -215,7 +215,6 @@ export class Popover extends LitElement {
 
     this._eventCleanupFns = triggers.map((trigger) => {
       const [show, hide] = trigger.split(':');
-      console.log('show,hide', show, hide);
       this.triggerElement!.addEventListener(show, this._showTooltip.bind(this));
       if (this.interactive && hide === 'mouseleave') {
         this.hostElement!.addEventListener(hide, this._hideTooltip.bind(this));
