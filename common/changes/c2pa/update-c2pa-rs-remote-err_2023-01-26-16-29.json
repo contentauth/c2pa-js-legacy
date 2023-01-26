@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add validation for remote manifests that are not properly-formed URLs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
