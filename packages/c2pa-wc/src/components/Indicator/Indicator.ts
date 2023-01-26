@@ -52,6 +52,6 @@ export class Indicator extends LitElement {
   }
 
   render() {
-    return html`<cai-icon-info class="icon" /> `;
+    return html`<cai-icon-info class="icon" />`;
   }
 }
