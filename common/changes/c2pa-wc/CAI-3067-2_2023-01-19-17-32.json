@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "c2pa-wc",
-      "comment": "Makes sure the manifest summary close when the tooltip is exited",
+      "comment": "Makes sure the manifest summary closes when the tooltip is exited",
       "type": "patch"
     }
   ],
