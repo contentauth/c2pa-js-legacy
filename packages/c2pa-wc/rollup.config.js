@@ -20,7 +20,7 @@ import json from '@rollup/plugin-json';
 const litSvg = require('./etc/rollup/plugins/lit-svg');
 
 const developmentMode = process.env.ROLLUP_WATCH === 'true';
-const basePath = path.resolve(__dirname);
+const basePath = path.resolve(__dirname).replace(/\\/g, '/');
 const banner = `
 /*!*************************************************************************
  * Copyright 2021 Adobe
