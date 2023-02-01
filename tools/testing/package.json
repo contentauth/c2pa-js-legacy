@@ -6,7 +6,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"@contentauth/testing\" no tests",
-    "build": "rushx clean && rollup -c rollup.config.js --silent && tsc && cp -R ./src/esm-bundle ./dist/esm-bundle",
+    "build": "rushx clean && rollup -c rollup.config.js --silent && tsc && cpy ./src/esm-bundle ./dist/esm-bundle",
     "build:release": "rushx build",
     "clean": "rimraf dist"
   },
@@ -25,6 +25,7 @@
   "devDependencies": {
     "rollup": "~2.70.2",
     "rimraf": "^3.0.2",
-    "@types/react-dom": "^16.9.9"
+    "@types/react-dom": "^16.9.9",
+    "cpy-cli": "~4.2.0"
   }
 }
