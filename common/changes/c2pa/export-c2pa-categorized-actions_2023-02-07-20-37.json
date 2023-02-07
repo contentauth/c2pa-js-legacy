@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Exported `getC2paCategorizedActions` function from `selectEditsAndActivity` selector file",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
