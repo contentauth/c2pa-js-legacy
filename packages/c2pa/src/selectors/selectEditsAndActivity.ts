@@ -185,7 +185,7 @@ interface OverrideActionMap {
   actions: OverrideLocalizationMap[];
 }
 
-function getC2paCategorizedActions(
+export function getC2paCategorizedActions(
   actionsAssertion: C2paActionsAssertion,
   locale: string = DEFAULT_LOCALE,
 ): TranslatedDictionaryCategory[] {
