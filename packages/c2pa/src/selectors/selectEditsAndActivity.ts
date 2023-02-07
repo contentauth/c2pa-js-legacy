@@ -115,7 +115,7 @@ function getTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
  * @param manifest - Manifest to derive data from
  * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
  * @param iconVariant - Requests icon variant (e.g. `light`, `dark`), if available
- * @returns
+ * @returns List of translated action categories
  */
 export async function selectEditsAndActivity(
   manifest: Manifest,
@@ -185,6 +185,16 @@ interface OverrideActionMap {
   actions: OverrideLocalizationMap[];
 }
 
+/**
+ * Gets a list of action categories, derived from the provided manifest's `c2pa.action` assertion.
+ * This will also handle translations by providing a locale. This works for standard C2PA action assertion
+ * data only.
+ *
+ * @param actionsAssertion - Action assertion data
+ * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
+ * @param iconVariant - Requests icon variant (e.g. `light`, `dark`), if available
+ * @returns List of translated action categories
+ */
 export function getC2paCategorizedActions(
   actionsAssertion: C2paActionsAssertion,
   locale: string = DEFAULT_LOCALE,
