@@ -7,38 +7,37 @@
  * it.
  */
 
+export { AssertionAccessor, ExtendedAssertions } from './src/assertions';
 export {
+  C2pa,
+  C2paConfig,
+  C2paReadResult,
   createC2pa,
   generateVerifyUrl,
-  C2paReadResult,
-  C2paConfig,
-  C2pa,
 } from './src/c2pa';
 export {
+  createL2ManifestStore,
   DisposableL2ManifestStore,
+  ErrorStatus,
   L2ClaimGenerator,
   L2EditsAndActivity,
   L2Ingredient,
+  L2ManifestStore,
   L2Producer,
   L2Signature,
   L2SocialAccount,
-  ErrorStatus,
 } from './src/createL2ManifestStore';
-export { DownloaderOptions } from './src/lib/downloader';
-export { ManifestStore, ManifestMap } from './src/manifestStore';
-export { Manifest } from './src/manifest';
 export { Ingredient } from './src/ingredient';
-export { Source, C2paSourceType, SourceMetadata } from './src/source';
-export { AssertionAccessor, ExtendedAssertions } from './src/assertions';
-export { Thumbnail, DisposableBlobUrl, BlobUrlData } from './src/thumbnail';
+export { DownloaderOptions } from './src/lib/downloader';
+export { Manifest } from './src/manifest';
+export { ManifestMap, ManifestStore } from './src/manifestStore';
 export {
-  selectEditsAndActivity,
+  getC2paCategorizedActions,
   IconVariant,
+  selectEditsAndActivity,
   TranslatedDictionaryCategory,
 } from './src/selectors/selectEditsAndActivity';
 export { selectProducer } from './src/selectors/selectProducer';
 export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';
-export {
-  createL2ManifestStore,
-  L2ManifestStore,
-} from './src/createL2ManifestStore';
+export { C2paSourceType, Source, SourceMetadata } from './src/source';
+export { BlobUrlData, DisposableBlobUrl, Thumbnail } from './src/thumbnail';
