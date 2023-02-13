@@ -11,6 +11,12 @@ import ssri from 'ssri';
 
 const INTEGRITY_ALGORITHM = 'sha512';
 
+/**
+ * Runs a process using the `spawn` command.
+ * @param {string} cmd Command to run
+ * @param {string} args Arguments to pass to the command
+ * @param {*} opts Options for this script invocation
+ */
 async function runProcess(cmd, args, opts) {
   return new Promise((resolve, reject) => {
     const proc = spawn(cmd, args.split(' '), {
@@ -46,6 +52,10 @@ async function buildWasm(opts) {
   await runProcess(cmd, args, opts);
 }
 
+/**
+ * Builds TypeScript types for export
+ * @param {*} opts Options for this script invocation
+ */
 async function buildTypes(opts) {
   const tsconfigPath = join(opts.packageDir, './tsconfig.json');
 
@@ -56,6 +66,10 @@ async function buildTypes(opts) {
   );
 }
 
+/**
+ * Generates an `integrity.json` file that other modules can access, most notably for the `c2pa` package
+ * @param {*} opts Options for this script invocation
+ */
 async function generateIntegrity(opts) {
   const distDir = join(opts.packageDir, 'pkg');
   const integrityPath = join(distDir, 'integrity.json');
@@ -84,6 +98,13 @@ async function generateIntegrity(opts) {
   await writeFile(integrityPath, json);
 }
 
+/**
+ * Main entry point - this does the following:
+ * - uses wasm-pack to build the Wasm from c2pa-rs
+ * - Removes unneeded files
+ * - Builds any TypeScript types for export
+ * - Generates an `integrity.json` file to be used by the main c2pa package
+ */
 async function build() {
   const opts = {
     dev: !!process.argv.find((x) => x === '--dev'),
@@ -103,4 +124,5 @@ async function build() {
   }
 }
 
+// Kick it off
 build();
