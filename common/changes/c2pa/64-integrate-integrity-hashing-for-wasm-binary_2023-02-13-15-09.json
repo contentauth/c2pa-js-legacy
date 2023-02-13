@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Added subresource integrity integration for Wasm fetching",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}

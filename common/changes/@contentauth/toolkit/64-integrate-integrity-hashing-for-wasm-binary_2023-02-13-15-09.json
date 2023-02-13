@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Added subresource integrity JSON generation script",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}
