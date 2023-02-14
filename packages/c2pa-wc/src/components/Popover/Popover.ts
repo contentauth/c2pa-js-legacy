@@ -358,7 +358,6 @@ export class Popover extends LitElement {
       </div>
       <div id="trigger" tabindex="0">
         <div class="hidden-layer"></div>
-
         <slot name="trigger"></slot>
       </div>
     </div>`;
