@@ -7,15 +7,18 @@
  * it.
  */
 
-import { resolve } from 'path';
-import merge from 'lodash/merge';
-import nodeResolve from '@rollup/plugin-node-resolve';
+import integrity from '@contentauth/toolkit/pkg/integrity.json';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import copy from 'rollup-plugin-copy';
+import json from '@rollup/plugin-json';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import strip from '@rollup/plugin-strip';
-import { terser } from 'rollup-plugin-terser';
+import typescript from '@rollup/plugin-typescript';
 import { wasm } from '@rollup/plugin-wasm';
+import merge from 'lodash/merge';
+import { resolve } from 'path';
+import copy from 'rollup-plugin-copy';
+import { terser } from 'rollup-plugin-terser';
 
 const banner = `
 /*!*************************************************************************
@@ -54,6 +57,10 @@ const plugins = [
   }),
   commonjs(),
   typescript(),
+  json(),
+  replace({
+    'process.env.TOOLKIT_INTEGRITY': JSON.stringify(integrity),
+  }),
 ];
 
 const files = [

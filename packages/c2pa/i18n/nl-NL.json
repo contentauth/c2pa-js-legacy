@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Eigenschappen zoals tint, verzadiging, curven, schaduwen of hooglichten aangepast",
+        "label": "Kleur- of belichtingsbewerkingen"
+      },
+      "c2pa.created": {
+        "description": "Een nieuw bestand of content gemaakt",
+        "label": "Gemaakt"
+      },
+      "c2pa.cropped": {
+        "description": "Uitsnedegereedschappen gebruikt om het zichtbare deel van de content te beperken of uit te breiden",
+        "label": "Uitsnedebewerkingen"
+      },
+      "c2pa.drawing": {
+        "description": "Gereedschappen gebruikt zoals potloden, penselen, gummetjes, pennen of vorm- of padgereedschappen",
+        "label": "Tekenbewerkingen"
+      },
+      "c2pa.edited": {
+        "description": "Andere wijzigingen aangebracht",
+        "label": "Andere bewerkingen"
+      },
+      "c2pa.filtered": {
+        "description": "Gereedschappen zoals filters, stijlen of effecten gebruikt om het uiterlijk te veranderen",
+        "label": "Filter- of stijlbewerkingen"
+      },
+      "c2pa.opened": {
+        "description": "Een bestaand bestand geopend",
+        "label": "Geopend"
+      },
+      "c2pa.orientation": {
+        "description": "Positie of stand gewijzigd (gedraaid, gespiegeld etc.)",
+        "label": "Afdrukstand bewerkingen"
+      },
+      "c2pa.placed": {
+        "description": "Bestaande content aan dit bestand toegevoegd",
+        "label": "Geïmporteerd"
+      },
+      "c2pa.resized": {
+        "description": "Afmetingen of bestandsgrootte gewijzigd",
+        "label": "Formaatbewerkingen"
+      },
+      "c2pa.unknown": {
+        "description": "Andere bewerkingen of activiteiten uitgevoerd die niet konden worden herkend",
+        "label": "Onbekende bewerkingen of activiteiten"
+      },
+      "com.adobe.3d": {
+        "description": "3D-objecten of -scènes gemaakt of gewijzigd",
+        "label": "3D-bewerkingen"
+      },
+      "com.adobe.animation_video": {
+        "description": "Animatie, audio of andere video-eigenschappen gemaakt of gewijzigd",
+        "label": "Videobewerkingen"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Content samengesteld of opnieuw geordend of bewerkt met tools voor content-sampling",
+        "label": "Gecombineerd"
+      },
+      "com.adobe.text": {
+        "description": "Tekst gemaakt of gewijzigd, inclusief lettertypefamilie, kleur of andere stijlen",
+        "label": "Tekstbewerkingen"
+      }
+    }
+  }
+}

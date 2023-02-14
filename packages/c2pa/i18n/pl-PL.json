@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Zmodyfikowano właściwości, takie jak tonacja, nasycenie, krzywe, cienie lub światła",
+        "label": "Wprowadzono zmiany kolorów lub ekspozycji"
+      },
+      "c2pa.created": {
+        "description": "Utworzono nowy plik lub zawartość",
+        "label": "Utworzono"
+      },
+      "c2pa.cropped": {
+        "description": "Użyto narzędzi do kadrowania w celu zmniejszenia lub rozszerzenia widocznego obszaru zawartości",
+        "label": "Modyfikacje polegające na kadrowaniu"
+      },
+      "c2pa.drawing": {
+        "description": "Użyto takich narzędzi, jak ołówki, pędzle i gumki albo narzędzi kształtów, ścieżek lub pióra",
+        "label": "Modyfikacje rysunkowe"
+      },
+      "c2pa.edited": {
+        "description": "Wprowadzono inne zmiany",
+        "label": "Inne modyfikacje"
+      },
+      "c2pa.filtered": {
+        "description": "Użyto narzędzi, takich jak filtry, style lub efekty, aby zmienić wygląd",
+        "label": "Edycje filtrów lub stylów"
+      },
+      "c2pa.opened": {
+        "description": "Otwarto wcześniej istniejący plik",
+        "label": "Otwarto"
+      },
+      "c2pa.orientation": {
+        "description": "Zmieniono pozycję lub orientację (obrócono, odwrócono itp.)",
+        "label": "Orientacja modyfikacje"
+      },
+      "c2pa.placed": {
+        "description": "Dodano wcześniej istniejącą zawartość do tego pliku",
+        "label": "Zaimportowano"
+      },
+      "c2pa.resized": {
+        "description": "Zmieniono wymiary lub rozmiar pliku",
+        "label": "Modyfikacje polegające na zmianie rozmiaru"
+      },
+      "c2pa.unknown": {
+        "description": "Dokonano innych zmian lub wykonano operacje, których nie można rozpoznać",
+        "label": "Nieznane zmiany lub operacje"
+      },
+      "com.adobe.3d": {
+        "description": "Utworzono lub zmodyfikowano obiekty lub sceny 3D",
+        "label": "Modyfikacje 3D"
+      },
+      "com.adobe.animation_video": {
+        "description": "Utworzono lub zmodyfikowano właściwości animacji, audio lub inne elementy wideo",
+        "label": "Modyfikacje wideo"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Zmodyfikowano kolejność zawartości, połączono ją w kompozycję lub zmodyfikowano ją za pomocą narzędzi do próbkowania zawartości",
+        "label": "Połączono"
+      },
+      "com.adobe.text": {
+        "description": "Utworzono tekst lub wprowadzono w nim zmiany, w tym modyfikacje rodziny czcionek, koloru lub innych stylów",
+        "label": "Modyfikacje tekstu"
+      }
+    }
+  }
+}

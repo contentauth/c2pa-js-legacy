@@ -117,6 +117,9 @@ export class Thumbnail extends LitElement {
           --cai-icon-width: var(--cai-thumbnail-badge-icon-width, 20px);
           --cai-icon-height: var(--cai-thumbnail-badge-icon-height, 20px);
         }
+        .included-badge {
+          display: flex;
+        }
         .no-image {
           --cai-icon-width: var(
             --cai-thumbnail-no-image-icon-width,

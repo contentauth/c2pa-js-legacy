@@ -1,6 +1,54 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Tue, 29 Nov 2022 21:15:11 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 17:35:38 GMT and should not be manually modified.
+
+## 0.10.6
+Mon, 13 Feb 2023 17:35:38 GMT
+
+_Version update only_
+
+## 0.10.5
+Fri, 10 Feb 2023 17:56:22 GMT
+
+_Version update only_
+
+## 0.10.4
+Fri, 27 Jan 2023 19:03:24 GMT
+
+### Patches
+
+- Makes sure the manifest summary closes when the tooltip is exited
+
+## 0.10.3
+Thu, 26 Jan 2023 16:40:49 GMT
+
+_Version update only_
+
+## 0.10.2
+Thu, 19 Jan 2023 17:32:58 GMT
+
+### Patches
+
+- Disable autoplacement in L2 popovers
+
+## 0.10.1
+Wed, 18 Jan 2023 18:02:12 GMT
+
+_Version update only_
+
+## 0.10.0
+Fri, 13 Jan 2023 21:45:12 GMT
+
+### Minor changes
+
+- Update cai-tooltip to support dynamic positioning
+
+## 0.9.2
+Tue, 10 Jan 2023 20:51:02 GMT
+
+### Patches
+
+- Updated link color
 
 ## 0.9.1
 Tue, 29 Nov 2022 21:15:11 GMT

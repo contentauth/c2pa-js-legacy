@@ -7,10 +7,10 @@
  * it.
  */
 
-import { LitElement, html, css } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { defaultStyles } from '../../styles';
 import '../../../assets/svg/color/info.svg';
+import { defaultStyles } from '../../styles';
 
 declare global {
   interface HTMLElementTagNameMap {

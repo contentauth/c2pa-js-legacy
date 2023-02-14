@@ -55,7 +55,7 @@ export class Popover extends LitElement {
   animationDuration = 200;
 
   @property({ type: String })
-  placement: Placement = 'left-start';
+  placement: Placement = 'left';
 
   @property({ type: String })
   strategy: Strategy = 'absolute';
@@ -71,7 +71,7 @@ export class Popover extends LitElement {
   autoPlacement: Parameters<typeof autoPlacement>[0] = undefined;
 
   @property({ type: Object })
-  offset: Parameters<typeof offset>[0] = { mainAxis: 10 };
+  offset: Parameters<typeof offset>[0] = { mainAxis: 6 };
 
   @property({ type: Object })
   shift: Parameters<typeof shift>[0] = {};
@@ -94,6 +94,9 @@ export class Popover extends LitElement {
 
   @query('#content')
   contentElement: HTMLElement | undefined;
+
+  @query('#element')
+  hostElement: HTMLElement | undefined;
 
   @query('#trigger')
   triggerElement: HTMLElement | undefined;
@@ -119,15 +122,15 @@ export class Popover extends LitElement {
     if (this.shift) {
       middleware.push(shift(this.shift));
     }
+    if (this.autoPlacement) {
+      middleware.push(autoPlacement(this.autoPlacement));
+    }
     if (this.arrow) {
       middleware.push(
         arrow({
           element: this.arrowElement!,
         }),
       );
-    }
-    if (this.autoPlacement) {
-      middleware.push(autoPlacement(this.autoPlacement));
     }
 
     this.positionConfig = {
@@ -143,7 +146,6 @@ export class Popover extends LitElement {
       css`
         :host {
           position: relative;
-          z-index: 100;
         }
         #content {
           opacity: 0;
@@ -154,7 +156,7 @@ export class Popover extends LitElement {
           color: var(--cai-popover-color, #222222);
           transition-property: transform, visibility, opacity;
           border-radius: var(--cai-popover-border-radius, 6px);
-          border-width: var(--cai-popover-border-radius, 1px);
+          border-width: var(--cai-popover-border-width, 1px);
           border-style: var(--cai-popover-border-style, solid);
           border-color: var(--cai-popover-border-color, #ddd);
           box-shadow: var(--cai-popover-box-shadow-offset-x, 0px)
@@ -176,12 +178,16 @@ export class Popover extends LitElement {
         #arrow {
           position: absolute;
           background: var(--cai-popover-bg-color, #fff);
-          width: 16px;
-          height: 16px;
+          width: 8px;
+          height: 8px;
           transform: rotate(45deg);
         }
-        #trigger {
-          cursor: pointer;
+        .hidden-layer {
+          position: absolute;
+          left: calc(var(--cai-popover-icon-size, 24px) * -1);
+          width: var(--cai-popover-icon-size, 24px);
+          height: calc(var(--cai-popover-icon-size, 24px) * 3);
+          top: calc(var(--cai-popover-icon-size, 24px) * -1);
         }
       `,
     ];
@@ -211,10 +217,7 @@ export class Popover extends LitElement {
       const [show, hide] = trigger.split(':');
       this.triggerElement!.addEventListener(show, this._showTooltip.bind(this));
       if (this.interactive && hide === 'mouseleave') {
-        this.contentElement!.addEventListener(
-          hide,
-          this._hideTooltip.bind(this),
-        );
+        this.hostElement!.addEventListener(hide, this._hideTooltip.bind(this));
       } else {
         this.triggerElement!.addEventListener(
           hide,
@@ -236,7 +239,7 @@ export class Popover extends LitElement {
   }
 
   private async _updatePosition() {
-    const { x, y, middlewareData } = await computePosition(
+    const { x, y, middlewareData, placement } = await computePosition(
       this.triggerElement!,
       this.contentElement!,
       this.positionConfig,
@@ -247,12 +250,57 @@ export class Popover extends LitElement {
       top: `${y}px`,
     });
 
-    if (this.arrow && this.arrowElement) {
-      const { x: ax, y: ay } = middlewareData.arrow!;
-      Object.assign(this.arrowElement!.style, {
-        left: ax != null ? `${ax}px` : '',
-        top: ay != null ? `${ay}px` : '',
-      });
+    if (this.arrow && this.arrowElement && middlewareData.arrow) {
+      const { x: ax, y: ay } = middlewareData.arrow;
+      const style = this.computeArrowStyle(ax, ay, placement);
+      Object.assign(this.arrowElement.style, style);
+    }
+  }
+
+  private computeArrowStyle(
+    x: number | undefined,
+    y: number | undefined,
+    placement: Placement,
+  ) {
+    const staticAxisOffset = -4;
+    const base = {
+      top: '',
+      left: '',
+      bottom: '',
+      right: '',
+    };
+
+    // Split to turn left-end, left-start, etc into left
+    switch (placement.split('-')[0]) {
+      case 'bottom':
+        return {
+          ...base,
+          top: `${staticAxisOffset}px`,
+          left: x !== null ? `${x}px` : '',
+        };
+      case 'top':
+        return {
+          ...base,
+          left: x !== null ? `${x}px` : '',
+          bottom: `${staticAxisOffset}px`,
+        };
+      case 'left':
+        return {
+          ...base,
+          top: y !== null ? `${y}px` : '',
+          right: `${staticAxisOffset}px`,
+        };
+      case 'right':
+        return {
+          ...base,
+          top: y !== null ? `${y}px` : '',
+          left: `${staticAxisOffset}px`,
+        };
+      default:
+        return {
+          ...base,
+          display: 'none',
+        };
     }
   }
 
@@ -309,6 +357,8 @@ export class Popover extends LitElement {
         ${this.arrow ? html`<div id="arrow"></div>` : null}
       </div>
       <div id="trigger" tabindex="0">
+        <div class="hidden-layer"></div>
+
         <slot name="trigger"></slot>
       </div>
     </div>`;

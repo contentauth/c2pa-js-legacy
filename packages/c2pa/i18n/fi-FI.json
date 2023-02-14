@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Säädetty ominaisuuksia, kuten sävyä, kylläisyyttä, käyriä, varjoja tai kohokohtia",
+        "label": "Väreihin tai valotukseen liittyvät muokkaukset"
+      },
+      "c2pa.created": {
+        "description": "Luotu uusi tiedosto tai uutta sisältöä",
+        "label": "Luotu"
+      },
+      "c2pa.cropped": {
+        "description": "Käytetty rajaustyökaluja, vähennetty tai laajennettu näkyvää sisältöaluetta",
+        "label": "Rajaukseen liittyvät muokkaukset"
+      },
+      "c2pa.drawing": {
+        "description": "Käytetty työkaluja, kuten kyniä, siveltimiä, pyyhekumeja tai muoto-, reitti- tai kynätyökaluja",
+        "label": "Piirtämiseen liittyvät muokkaukset"
+      },
+      "c2pa.edited": {
+        "description": "Tehty muita muutoksia",
+        "label": "Muut muokkaukset"
+      },
+      "c2pa.filtered": {
+        "description": "Käytetty työkaluja, kuten ulkoasun muuttamiseen tarkoitettuja suodattimia, tyylejä tai tehosteita",
+        "label": "Suodattimeen tai tyyliin liittyvät muokkaukset"
+      },
+      "c2pa.opened": {
+        "description": "Avattu olemassa oleva tiedosto",
+        "label": "Avattu"
+      },
+      "c2pa.orientation": {
+        "description": "Muutettu paikkaa tai suuntaa (kierretty, käännetty jne.)",
+        "label": "Suuntaan liittyvät muokkaukset"
+      },
+      "c2pa.placed": {
+        "description": "Lisätty olemassa olevaa sisältöä tähän tiedostoon",
+        "label": "Tuotu"
+      },
+      "c2pa.resized": {
+        "description": "Muutettu mittasuhteita tai tiedostokokoa",
+        "label": "Koon muuttamiseen liittyvät muokkaukset"
+      },
+      "c2pa.unknown": {
+        "description": "Suoritettu muita muokkauksia tai toimintoja, joita ei tunnistettu",
+        "label": "Tuntemattomat muokkaukset tai tuntematon toiminta"
+      },
+      "com.adobe.3d": {
+        "description": "Luotu 3D-objekteja tai -tilanteita tai tehty niihin muutoksia",
+        "label": "3D-muokkaukset"
+      },
+      "com.adobe.animation_video": {
+        "description": "Luotu animaatiota, ääntä tai muita videon ominaisuuksia tai tehty niihin muutoksia",
+        "label": "Videomuokkaukset"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Koostettu tai järjestelty sisältöä tai tehty muokkauksia sisällön näytteenottotyökaluilla",
+        "label": "Yhdistetty"
+      },
+      "com.adobe.text": {
+        "description": "Luotu tekstiä tai tehty muutoksia siihen, muutettu esimerkiksi kirjasinperhettä, väriä tai muita tyylejä",
+        "label": "Tekstiin liittyvät muokkaukset"
+      }
+    }
+  }
+}

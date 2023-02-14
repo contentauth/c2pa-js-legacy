@@ -1,6 +1,34 @@
 # Change Log - c2pa
 
-This log was last generated on Tue, 15 Nov 2022 19:56:02 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 17:35:38 GMT and should not be manually modified.
+
+## 0.13.1
+Mon, 13 Feb 2023 17:35:38 GMT
+
+### Patches
+
+- Added subresource integrity integration for Wasm fetching
+
+## 0.13.0
+Fri, 10 Feb 2023 17:56:22 GMT
+
+### Minor changes
+
+- Exported `getC2paCategorizedActions` function from `selectEditsAndActivity` selector file
+
+## 0.12.2
+Thu, 26 Jan 2023 16:40:49 GMT
+
+### Patches
+
+- Add validation for remote manifests that are not properly-formed URLs
+
+## 0.12.1
+Wed, 18 Jan 2023 18:02:12 GMT
+
+### Patches
+
+- C2PA v1.2 actions compatibility changes and translations
 
 ## 0.12.0
 Tue, 15 Nov 2022 19:56:02 GMT

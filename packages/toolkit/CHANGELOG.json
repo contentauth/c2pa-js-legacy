@@ -2,6 +2,30 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.9.6",
+      "tag": "@contentauth/toolkit_v0.9.6",
+      "date": "Mon, 13 Feb 2023 17:35:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added subresource integrity JSON generation script"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.9.5",
+      "tag": "@contentauth/toolkit_v0.9.5",
+      "date": "Thu, 26 Jan 2023 16:40:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update c2pa-rs to 0.16.1"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.9.4",
       "tag": "@contentauth/toolkit_v0.9.4",
       "date": "Tue, 15 Nov 2022 19:56:02 GMT",

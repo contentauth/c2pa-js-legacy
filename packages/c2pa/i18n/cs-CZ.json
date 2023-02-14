@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Byly upraveny vlastnosti, jako je tón, sytost, křivky, stíny nebo světla",
+        "label": "Úpravy barev nebo expozice"
+      },
+      "c2pa.created": {
+        "description": "Byl vytvořen nový soubor nebo obsah",
+        "label": "Vytvořeno"
+      },
+      "c2pa.cropped": {
+        "description": "Byly použity nástroje pro oříznutí, zmenšení nebo rozšíření viditelné oblasti obsahu",
+        "label": "Úpravy oříznutí"
+      },
+      "c2pa.drawing": {
+        "description": "Byly použity nástroje, jako jsou tužky, štětce, gumy nebo nástroje tvar, cesta nebo pero",
+        "label": "Úpravy kresby"
+      },
+      "c2pa.edited": {
+        "description": "Byly provedeny další změny",
+        "label": "Další úpravy"
+      },
+      "c2pa.filtered": {
+        "description": "Byly použity nástroje, jako jsou filtry, styly nebo efekty, ke změně vzhledu",
+        "label": "Úpravy filtrů nebo stylů"
+      },
+      "c2pa.opened": {
+        "description": "Byl otevřen existující soubor",
+        "label": "Otevřeno"
+      },
+      "c2pa.orientation": {
+        "description": "Byla změněna poloha nebo orientace (otočení, převrácení atd.)",
+        "label": "Orientace úpravy"
+      },
+      "c2pa.placed": {
+        "description": "Do tohoto souboru byl přidán existující obsah",
+        "label": "Importováno"
+      },
+      "c2pa.resized": {
+        "description": "Byly změněny rozměry nebo velikost souboru",
+        "label": "Změny velikosti"
+      },
+      "c2pa.unknown": {
+        "description": "Byly provedeny další úpravy nebo aktivita, kterou nebylo možné rozpoznat",
+        "label": "Neznámé úpravy nebo aktivita"
+      },
+      "com.adobe.3d": {
+        "description": "Vytvořené nebo pozměněné 3D objekty nebo scény",
+        "label": "Úpravy ve 3D"
+      },
+      "com.adobe.animation_video": {
+        "description": "Byly provedeny změny animace, zvuku či jiných vlastností videa",
+        "label": "Úpravy videí"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Byl vytvořen nebo přeuspořádán obsah nebo byly provedeny úpravy pomocí nástrojů pro vzorkování obsahu",
+        "label": "Zkombinováno"
+      },
+      "com.adobe.text": {
+        "description": "Byly vytvořen text nebo byly provedeny změny v textu, včetně rodiny písem, barvy nebo jiných stylů",
+        "label": "Úpravy textu"
+      }
+    }
+  }
+}

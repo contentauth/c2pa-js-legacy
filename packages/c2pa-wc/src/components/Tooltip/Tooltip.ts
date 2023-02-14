@@ -7,7 +7,7 @@
  * it.
  */
 
-import { animate } from '@lit-labs/motion';
+import { autoPlacement } from '@floating-ui/dom';
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -15,6 +15,7 @@ import '../../../assets/svg/monochrome/help.svg';
 import { defaultStyles } from '../../styles';
 
 import '../Icon';
+import '../Popover';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -36,25 +37,25 @@ export class Tooltip extends LitElement {
   @property({ type: Number })
   animationDuration = 200;
 
+  @property({ type: Object })
+  autoPlacement: Parameters<typeof autoPlacement>[0] = { padding: 10 };
+
+  @property({ type: Boolean })
+  arrow = true;
+
   static get styles() {
     return [
       defaultStyles,
       css`
-        .container {
-          position: relative;
-        }
-        .trigger {
+        #trigger {
+          display: flex;
           --cai-icon-width: var(--cai-popover-icon-width, 16px);
           --cai-icon-height: var(--cai-popover-icon-height, 16px);
           --cai-icon-fill: var(--cai-popover-icon-fill, #a8a8a8);
           cursor: pointer;
         }
         .content {
-          position: absolute;
-          opacity: 0;
-          top: 0;
-          right: calc(var(--cai-popover-icon-width, 16px) + 10px);
-          min-width: 185px;
+          min-width: 165px;
           max-width: 235px;
           font-size: 13px;
           padding: 10px;
@@ -75,14 +76,6 @@ export class Tooltip extends LitElement {
     ];
   }
 
-  private _showTooltip() {
-    this._isShown = true;
-  }
-
-  private _hideTooltip() {
-    this._isShown = false;
-  }
-
   render() {
     const contentClassMap = {
       content: true,
@@ -90,42 +83,21 @@ export class Tooltip extends LitElement {
     };
 
     return html`
-      <div class="container">
-        <div
-          class="trigger"
-          slot="trigger"
-          tabindex="0"
-          @mouseenter="${this._showTooltip}"
-          @mouseleave="${this._hideTooltip}"
-          @focus="${this._showTooltip}"
-          @blur="${this._hideTooltip}"
-        >
+      <cai-popover
+        id="popover"
+        arrow=${this.arrow}
+        .autoPlacement=${this.autoPlacement}
+        ?interactive=${false}
+      >
+        <div id="trigger" slot="trigger">
           <slot name="trigger">
             <cai-icon-help></cai-icon-help>
           </slot>
         </div>
-        <div
-          class=${classMap(contentClassMap)}
-          slot="content"
-          ${animate({
-            keyframeOptions: {
-              duration: this.animationDuration,
-            },
-            onStart: (anim) => {
-              if (anim.element.classList.contains('shown')) {
-                anim.element.classList.remove('hidden');
-              }
-            },
-            onComplete: (anim) => {
-              if (!anim.element.classList.contains('shown')) {
-                anim.element.classList.add('hidden');
-              }
-            },
-          })}
-        >
+        <div class=${classMap(contentClassMap)} slot="content">
           <slot name="content"></slot>
         </div>
-      </div>
+      </cai-popover>
     `;
   }
 }

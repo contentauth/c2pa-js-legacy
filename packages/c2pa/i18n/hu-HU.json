@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Beállított olyan tulajdonságokat mint árnyalat, telítettség, görbék, árnyékok vagy csúcsfények",
+        "label": "Szín vagy expozíció szerkesztése"
+      },
+      "c2pa.created": {
+        "description": "Létrehozott egy új fájlt vagy tartalmat",
+        "label": "Létrehozva"
+      },
+      "c2pa.cropped": {
+        "description": "Használt vágóeszközöket, amelyek csökkentik vagy bővítik a tartalom látható területét",
+        "label": "Vágást használó szerkesztések"
+      },
+      "c2pa.drawing": {
+        "description": "Használt olyan eszközöket mint ceruzák, ecsetek, radírok vagy alakzat-, görbe- vagy tolleszközök",
+        "label": "Rajzolást használó szerkesztések"
+      },
+      "c2pa.edited": {
+        "description": "Egyéb módosítások végrehajtva",
+        "label": "Egyéb szerkesztések"
+      },
+      "c2pa.filtered": {
+        "description": "Használt olyan eszközöket mint szűrők, stílusok vagy effektusok a megjelenés megváltoztatására",
+        "label": "Szűrőt vagy stílust használó szerkesztések"
+      },
+      "c2pa.opened": {
+        "description": "Megnyitott egy már létező fájlt",
+        "label": "Megnyitva"
+      },
+      "c2pa.orientation": {
+        "description": "Módosította a pozíciót vagy tájolást (elforgatva, megfordítva stb.)",
+        "label": "Tájolás szerkesztések"
+      },
+      "c2pa.placed": {
+        "description": "Már létező tartalmat adott hozzá ehhez a fájlhoz",
+        "label": "Importálva"
+      },
+      "c2pa.resized": {
+        "description": "A méretek vagy a fájl mérete módosult",
+        "label": "Szerkesztések átméretezése"
+      },
+      "c2pa.unknown": {
+        "description": "Más szerkesztéseket vagy műveleteket hajtott végre, amelyeket nem lehetett felismerni",
+        "label": "Ismeretlen szerkesztések vagy tevékenység"
+      },
+      "com.adobe.3d": {
+        "description": "Létrehozott vagy módosított 3D objektumok vagy jelenetek",
+        "label": "3D szerkesztések"
+      },
+      "com.adobe.animation_video": {
+        "description": "Létrehozott vagy módosított animáció, hang vagy egyéb videó-tulajdonságok",
+        "label": "Videó szerkesztések"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Összeállított vagy átrendezett tartalom, vagy tartalom-mintavételező eszközökkel szerkesztve",
+        "label": "Összevonva"
+      },
+      "com.adobe.text": {
+        "description": "Szöveg létrehozása vagy módosítása, beleértve a betűtípust, a színt vagy más stílusokat",
+        "label": "Szöveget használó szerkesztések"
+      }
+    }
+  }
+}

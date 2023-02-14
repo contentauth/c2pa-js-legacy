@@ -22,9 +22,13 @@ export async function fetchWasm(
   pool: SdkWorkerPool,
   binaryUrl: string,
 ): Promise<WebAssembly.Module> {
-  dbg('Fetching WASM binary from url %s', binaryUrl);
+  const integrity = process.env.TOOLKIT_INTEGRITY as any;
+  const wasmIntegrity = integrity?.['toolkit_bg.wasm'];
+  dbg('Fetching WASM binary from url %s', binaryUrl, { expectedIntegrity: wasmIntegrity });
 
-  const response = await fetch(binaryUrl);
+  const response = await fetch(binaryUrl, {
+    integrity: wasmIntegrity
+  });
   const buffer = await response.arrayBuffer();
 
   dbg('Sending WASM binary buffer to worker for compilation', {

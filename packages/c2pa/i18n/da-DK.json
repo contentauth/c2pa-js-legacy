@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Justerede egenskaber såsom tone, mætning, kurver, skygger eller fremhævninger",
+        "label": "Farve- eller eksponeringsredigeringer"
+      },
+      "c2pa.created": {
+        "description": "Oprettede en ny fil eller nyt indhold",
+        "label": "Oprettede"
+      },
+      "c2pa.cropped": {
+        "description": "Brugte beskæringsværktøjer til at reducere eller udvide synligt indholdsområde",
+        "label": "Beskæring af redigeringer"
+      },
+      "c2pa.drawing": {
+        "description": "Brugte værktøjer såsom blyanter, pensler, viskelædere eller form-, sti- eller penneværktøjer",
+        "label": "Tegneredigeringer"
+      },
+      "c2pa.edited": {
+        "description": "Foretog andre ændringer",
+        "label": "Andre redigeringer"
+      },
+      "c2pa.filtered": {
+        "description": "Brugte værktøjer såsom filtre, formater eller effekter til at ændre udseende",
+        "label": "Filter- eller formatredigeringer"
+      },
+      "c2pa.opened": {
+        "description": "Åbnede en allerede eksisterende fil",
+        "label": "Åbnede"
+      },
+      "c2pa.orientation": {
+        "description": "Ændrede placering eller retning (roteret, vendt osv.)",
+        "label": "Retning redigeringer"
+      },
+      "c2pa.placed": {
+        "description": "Føjede allerede eksisterende indhold til denne fil",
+        "label": "Importerede"
+      },
+      "c2pa.resized": {
+        "description": "Ændrede dimensioner eller filstørrelse",
+        "label": "Ændring af størrelse på redigeringer"
+      },
+      "c2pa.unknown": {
+        "description": "Foretog andre redigeringer eller aktiviteter, der ikke kunne genkendes",
+        "label": "Ukendte redigeringer eller ukendt aktivitet"
+      },
+      "com.adobe.3d": {
+        "description": "Oprettede eller foretog ændringer af 3D-objekter eller -scener",
+        "label": "3D redigeringer"
+      },
+      "com.adobe.animation_video": {
+        "description": "Oprettede eller foretog ændringer af animationer, lyd eller andre videoegenskaber",
+        "label": "Videoredigeringer"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Sammensatte eller omarrangerede indhold eller redigerede med værktøjer til indholdssampling",
+        "label": "Kombinerede"
+      },
+      "com.adobe.text": {
+        "description": "Oprettede eller foretog ændringer af tekst, herunder skrifttypefamilie, farve eller andre formater",
+        "label": "Tekstredigeringer"
+      }
+    }
+  }
+}

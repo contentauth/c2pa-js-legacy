@@ -7,16 +7,26 @@
  * it.
  */
 
-import { Action } from '@contentauth/toolkit';
-import { Manifest } from '../manifest';
+import { Action, C2paActionsAssertion } from '@contentauth/toolkit';
 import debug from 'debug';
-import flow from 'lodash/fp/flow';
+import each from 'lodash/each';
 import compact from 'lodash/fp/compact';
-import uniqBy from 'lodash/fp/uniqBy';
+import flow from 'lodash/fp/flow';
 import sortBy from 'lodash/fp/sortBy';
+import uniqBy from 'lodash/fp/uniqBy';
+import mapKeys from 'lodash/mapKeys';
+import merge from 'lodash/merge';
+import set from 'lodash/set';
+import * as locales from '../../i18n/index';
 import { Downloader } from '../lib/downloader';
+import { Manifest } from '../manifest';
 
 const dbg = debug('c2pa:selector:editsAndActivity');
+
+// Make sure we update the keys to conform to BCP 47 tags
+const bcp47Mapping = mapKeys(locales as Record<string, any>, (_, key) =>
+  key.replace('_', '-'),
+);
 
 interface AdobeDictionaryAssertionData {
   url: string;
@@ -29,76 +39,8 @@ declare module '../assertions' {
   }
 }
 
+const DEFAULT_LOCALE = 'en-US';
 const UNCATEGORIZED_ID = 'UNCATEGORIZED';
-
-const ACTION_DICTIONARY: Record<string, ActionDictionaryItem> = {
-  'c2pa.color_adjustments': {
-    label: 'Color adjustments',
-    description: 'Changed tone, saturation, etc.',
-  },
-  'c2pa.converted': {
-    label: 'Converted asset',
-    description: 'The format of the asset was changed',
-  },
-  'c2pa.created': {
-    label: 'Secure creation',
-    description: "The asset was first created, usually the asset's origin",
-  },
-  'c2pa.cropped': {
-    label: 'Crop adjustments',
-    description: 'Outer areas of the asset were removed',
-  },
-  'c2pa.drawing': {
-    label: 'Paint tools',
-    description: 'Edited with brushes or eraser tools',
-  },
-  'c2pa.edited': {
-    label: 'Edited',
-    description: 'Changes were made to the asset',
-  },
-  'c2pa.filtered': {
-    label: 'Filter effects',
-    description: 'Changed appearances with filters, layer styles, etc.',
-  },
-  'c2pa.opened': {
-    label: 'File opened',
-    description:
-      'An existing file containing one or more assets was opened and used as the starting point for editing',
-  },
-  'c2pa.orientation': {
-    label: 'Position adjustments',
-    description: 'Changed position, orientation, or direction',
-  },
-  'c2pa.placed': {
-    label: 'Imported assets',
-    description: 'Added images, videos, etc.',
-  },
-  'c2pa.published': {
-    label: 'Published image',
-    description: 'Received and distributed image',
-  },
-  'c2pa.removed': {
-    label: 'Asset removed',
-    description: 'One or more assets were removed from the file',
-  },
-  'c2pa.repackaged': {
-    label: 'Repackaged asset',
-    description: 'Asset was repackaged without being processed',
-  },
-  'c2pa.resized': {
-    label: 'Size adjustments',
-    description: 'Changed asset dimensions',
-  },
-  'c2pa.transcoded': {
-    label: 'Processed asset',
-    description: 'Processed or compressed an asset to optimize for display',
-  },
-  'c2pa.unknown': {
-    label: 'Other changes',
-    description:
-      'Made changes not yet categorized by Content Credentials (Beta)',
-  },
-};
 
 interface ActionDictionaryItem {
   label: string;
@@ -147,6 +89,25 @@ export interface EditCategory {
 }
 
 /**
+ * Gets a list of translations for the requested locale. Any missing translations in other locales
+ * will be filled in with entries from the DEFAULT_LOCALE.
+ *
+ * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
+ */
+function getTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
+  const defaultSet = (bcp47Mapping[DEFAULT_LOCALE]?.selectors
+    ?.editsAndActivity ?? {}) as Record<string, ActionDictionaryItem>;
+  const requestedSet = (bcp47Mapping[locale]?.selectors?.editsAndActivity ??
+    {}) as Record<string, ActionDictionaryItem>;
+
+  if (locale === DEFAULT_LOCALE) {
+    return defaultSet;
+  }
+
+  return merge({}, defaultSet, requestedSet);
+}
+
+/**
  * Gets a list of categorized actions, derived from the provided manifest's `c2pa.action` assertion
  * and a dictionary assertion, if available. If a dictionary is incuded, this function will initiate
  * an HTTP request to fetch the dictionary data.
@@ -154,11 +115,11 @@ export interface EditCategory {
  * @param manifest - Manifest to derive data from
  * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
  * @param iconVariant - Requests icon variant (e.g. `light`, `dark`), if available
- * @returns
+ * @returns List of translated action categories
  */
 export async function selectEditsAndActivity(
   manifest: Manifest,
-  locale: string = 'en-US',
+  locale: string = DEFAULT_LOCALE,
   iconVariant: IconVariant = 'dark',
 ): Promise<TranslatedDictionaryCategory[] | null> {
   const dictionaryAssertion =
@@ -180,13 +141,13 @@ export async function selectEditsAndActivity(
     );
   }
 
-  return getC2paCategorizedActions(actionAssertion.data.actions);
+  return getC2paCategorizedActions(actionAssertion, locale);
 }
 
 async function getPhotoshopCategorizedActions(
   actions: Action[],
   dictionaryUrl: string,
-  locale = 'en-US',
+  locale = DEFAULT_LOCALE,
   iconVariant: IconVariant = 'dark',
 ): Promise<TranslatedDictionaryCategory[]> {
   const dictionary = await Downloader.cachedGetJson<AdobeDictionary>(
@@ -208,23 +169,71 @@ async function getPhotoshopCategorizedActions(
   return categories;
 }
 
-function getC2paCategorizedActions(
-  actions: Action[],
-): TranslatedDictionaryCategory[] {
-  const uniqueActionLabels = actions
-    ?.map(({ action }) => action)
-    .filter(
-      (val, idx, self) =>
-        ACTION_DICTIONARY.hasOwnProperty(val) && self.indexOf(val) === idx,
-    ) // de-dupe && only keep valid c2pa actions
-    .sort()
-    .map((action) => ({
-      id: action,
-      icon: null,
-      ...ACTION_DICTIONARY[action],
-    }));
+interface AdobeCompatAction extends Action {
+  id: string;
+  parameters: {
+    name: never;
+    'com.adobe.icon': string;
+    description: string;
+  };
+}
 
-  return uniqueActionLabels;
+type OverrideLocalizationMap = Record<string, any>;
+type Override = Record<string, OverrideLocalizationMap>;
+
+interface OverrideActionMap {
+  actions: OverrideLocalizationMap[];
+}
+
+/**
+ * Gets a list of action categories, derived from the provided manifest's `c2pa.action` assertion.
+ * This will also handle translations by providing a locale. This works for standard C2PA action assertion
+ * data only.
+ *
+ * @param actionsAssertion - Action assertion data
+ * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
+ * @param iconVariant - Requests icon variant (e.g. `light`, `dark`), if available
+ * @returns List of translated action categories
+ */
+export function getC2paCategorizedActions(
+  actionsAssertion: C2paActionsAssertion,
+  locale: string = DEFAULT_LOCALE,
+): TranslatedDictionaryCategory[] {
+  const actions = actionsAssertion.data.actions as AdobeCompatAction[];
+  const translations = getTranslationsForLocale(locale);
+  const overrides = (actionsAssertion.data.metadata?.localizations ??
+    []) as Override[];
+
+  const overrideObj: OverrideActionMap = { actions: [] };
+  // The spec has an array of objects, and each object can have multiple entries
+  // of path keys to overrides, which is why we have to have a nested each.
+  each(overrides, (override) => {
+    each(override, (translationMap, path) => {
+      const val = translationMap[locale];
+      if (val) {
+        set(overrideObj, path, val);
+      }
+    });
+  });
+
+  const translatedActions = actions.map((action, idx) => {
+    const actionOverrides = overrideObj.actions[idx] ?? {};
+    const actionTranslations = translations[action.action];
+    return {
+      // Include original ID
+      id: action.action,
+      // Get icon from parameters if they exist
+      icon: action.parameters?.['com.adobe.icon'],
+      // Use override if available, if not, then fall back to translation
+      label: actionOverrides.action ?? actionTranslations.label,
+      // Use override if available, if not, then fall back to translation
+      description:
+        actionOverrides?.parameters?.description ??
+        actionTranslations.description,
+    } as TranslatedDictionaryCategory;
+  });
+
+  return processCategories(translatedActions);
 }
 
 /**

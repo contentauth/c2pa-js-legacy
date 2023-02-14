@@ -1,0 +1,86 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Adjusted properties like tone, saturation, curves, shadows, or highlights",
+        "label": "Color or exposure edits"
+      },
+      "c2pa.converted": {
+        "description": "The format of the asset was changed",
+        "label": "Converted asset"
+      },
+      "c2pa.created": {
+        "description": "Created a new file or content",
+        "label": "Created"
+      },
+      "c2pa.cropped": {
+        "description": "Used cropping tools, reducing or expanding visible content area",
+        "label": "Cropping edits"
+      },
+      "c2pa.drawing": {
+        "description": "Used tools like pencils, brushes, erasers, or shape, path, or pen tools",
+        "label": "Drawing edits"
+      },
+      "c2pa.edited": {
+        "description": "Made other changes",
+        "label": "Other edits"
+      },
+      "c2pa.filtered": {
+        "description": "Used tools like filters, styles, or effects to change appearance",
+        "label": "Filter or style edits"
+      },
+      "c2pa.opened": {
+        "description": "Opened a pre-existing file",
+        "label": "Opened"
+      },
+      "c2pa.orientation": {
+        "description": "Changed position or orientation (rotated, flipped, etc.)",
+        "label": "Orientation edits"
+      },
+      "c2pa.placed": {
+        "description": "Added pre-existing content to this file",
+        "label": "Imported"
+      },
+      "c2pa.published": {
+        "description": "Received and distributed image",
+        "label": "Published image"
+      },
+      "c2pa.removed": {
+        "description": "One or more assets were removed from the file",
+        "label": "Asset removed"
+      },
+      "c2pa.repackaged": {
+        "description": "Asset was repackaged without being processed",
+        "label": "Repackaged asset"
+      },
+      "c2pa.resized": {
+        "description": "Changed dimensions or file size",
+        "label": "Resizing edits"
+      },
+      "c2pa.transcoded": {
+        "description": "Processed or compressed an asset to optimize for display",
+        "label": "Processed asset"
+      },
+      "c2pa.unknown": {
+        "description": "Performed other edits or activity that couldn't be recognized",
+        "label": "Unknown edits or activity"
+      },
+      "com.adobe.3d": {
+        "description": "Created or made changes to 3D objects or scenes",
+        "label": "3D edits"
+      },
+      "com.adobe.animation_video": {
+        "description": "Created or made changes to animation, audio, or other video properties",
+        "label": "Video edits"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Composited or reordered content, or edited with content-sampling tools",
+        "label": "Combined"
+      },
+      "com.adobe.text": {
+        "description": "Created or made changes to text, including font family, color, or other styles",
+        "label": "Text edits"
+      }
+    }
+  }
+}

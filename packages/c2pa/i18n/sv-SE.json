@@ -1,0 +1,66 @@
+{
+  "selectors": {
+    "editsAndActivity": {
+      "c2pa.color_adjustments": {
+        "description": "Justerade egenskaper som ton, mättnad, kurvor, skuggor och högdagrar",
+        "label": "Redigering av färg eller exponering"
+      },
+      "c2pa.created": {
+        "description": "Skapade en ny fil eller nytt innehåll",
+        "label": "Skapade"
+      },
+      "c2pa.cropped": {
+        "description": "Använde beskärningsverktyg, minskade eller utökade synligt innehållsområde",
+        "label": "Redigering av beskärning"
+      },
+      "c2pa.drawing": {
+        "description": "Använde verktyg som pennor, penslar, suddgummin eller verktygen form, bana eller penna",
+        "label": "Redigering av teckning"
+      },
+      "c2pa.edited": {
+        "description": "Gjorde andra ändringar",
+        "label": "Annan redigering"
+      },
+      "c2pa.filtered": {
+        "description": "Använde verktyg som filter, stilar eller effekter för att ändra utseende",
+        "label": "Redigering av filter eller stil"
+      },
+      "c2pa.opened": {
+        "description": "Öppnade en befintlig fil",
+        "label": "Öppnade"
+      },
+      "c2pa.orientation": {
+        "description": "Ändrade placering eller orientering (roterad, vänd osv.)",
+        "label": "Orientering redigering"
+      },
+      "c2pa.placed": {
+        "description": "Lade till befintligt innehåll i den här filen",
+        "label": "Importerade"
+      },
+      "c2pa.resized": {
+        "description": "Ändrade mått eller filstorlek",
+        "label": "Redigering av storleksändring"
+      },
+      "c2pa.unknown": {
+        "description": "Utförde andra redigeringar eller aktiviteter som inte kunde identifieras",
+        "label": "Okänd redigering eller aktivitet"
+      },
+      "com.adobe.3d": {
+        "description": "Skapade eller ändrade 3D-objekt eller 3D-scener",
+        "label": "3D-redigering"
+      },
+      "com.adobe.animation_video": {
+        "description": "Skapade eller ändrade animering, ljud eller andra videoegenskaper",
+        "label": "Videoredigeringar"
+      },
+      "com.adobe.combined_assets": {
+        "description": "Slog samman eller ordnade om innehåll eller redigerade med verktyg för innehållssampling",
+        "label": "Kombinerade"
+      },
+      "com.adobe.text": {
+        "description": "Skapade eller gjorde ändringar i text, inklusive teckensnittsfamilj, färg eller andra format",
+        "label": "Textredigeringar"
+      }
+    }
+  }
+}
