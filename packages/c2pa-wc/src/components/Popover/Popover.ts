@@ -308,7 +308,7 @@ export class Popover extends LitElement {
         <slot name="content"></slot>
         ${this.arrow ? html`<div id="arrow"></div>` : null}
       </div>
-      <div id="trigger">
+      <div id="trigger" tabindex="0">
         <slot name="trigger"></slot>
       </div>
     </div>`;

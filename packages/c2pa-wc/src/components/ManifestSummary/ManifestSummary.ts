@@ -7,22 +7,22 @@
  * it.
  */
 
+import { L2ManifestStore } from 'c2pa';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { Configurable } from '../../mixins/configurable';
 import { defaultStyles } from '../../styles';
 import { defaultDateFormatter, hasChanged } from '../../utils';
-import { L2ManifestStore } from 'c2pa';
 import type { EditsAndActivityConfig } from '../EditsAndActivity';
 import type { MinimumViableProvenanceConfig } from '../MinimumViableProvenance';
-import { Configurable } from '../../mixins/configurable';
 import defaultStringMap from './ManifestSummary.str.json';
 
 import '../AssetsUsed';
+import '../EditsAndActivity';
+import '../MinimumViableProvenance';
 import '../ProducedBy';
 import '../ProducedWith';
 import '../SocialMedia';
-import '../EditsAndActivity';
-import '../MinimumViableProvenance';
 
 declare global {
   interface HTMLElementTagNameMap {
