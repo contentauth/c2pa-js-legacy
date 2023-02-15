@@ -64,22 +64,6 @@
       "c2pa.unknown": {
         "description": "Performed other edits or activity that couldn't be recognized",
         "label": "Unknown edits or activity"
-      },
-      "com.adobe.3d": {
-        "description": "Created or made changes to 3D objects or scenes",
-        "label": "3D edits"
-      },
-      "com.adobe.animation_video": {
-        "description": "Created or made changes to animation, audio, or other video properties",
-        "label": "Video edits"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Composited or reordered content, or edited with content-sampling tools",
-        "label": "Combined"
-      },
-      "com.adobe.text": {
-        "description": "Created or made changes to text, including font family, color, or other styles",
-        "label": "Text edits"
       }
     }
   }

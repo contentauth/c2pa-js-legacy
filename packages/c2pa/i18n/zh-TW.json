@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "執行了其他無法辨識的編輯或活動",
         "label": "未知的編輯或活動"
-      },
-      "com.adobe.3d": {
-        "description": "建立或變更了 3D 物件或場景",
-        "label": "3D 編輯"
-      },
-      "com.adobe.animation_video": {
-        "description": "建立或變更了動畫、音訊或其他影片屬性",
-        "label": "影片編輯"
-      },
-      "com.adobe.combined_assets": {
-        "description": "複合或重新排序了內容，或使用內容取樣工具進行了編輯",
-        "label": "已組合"
-      },
-      "com.adobe.text": {
-        "description": "建立或變更了文字，包括字體系列、顏色或其他樣式",
-        "label": "文字編輯"
       }
     }
   }

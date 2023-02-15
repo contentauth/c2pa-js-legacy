@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "認識できない他の編集またはアクティビティを実行",
         "label": "不明な編集またはアクティビティ"
-      },
-      "com.adobe.3d": {
-        "description": "オブジェクトやシーンを作成または変更しました",
-        "label": "3D 編集"
-      },
-      "com.adobe.animation_video": {
-        "description": "アニメーション、オーディオ、その他のビデオプロパティを作成または変更",
-        "label": "ビデオ編集"
-      },
-      "com.adobe.combined_assets": {
-        "description": "コンテンツの合成または並べ替え、またはコンテンツサンプリングツールを使用して編集",
-        "label": "組み合わせ"
-      },
-      "com.adobe.text": {
-        "description": "テキストを作成または変更 (フォントファミリー、カラー、その他のスタイルを含む)",
-        "label": "テキストの編集"
       }
     }
   }

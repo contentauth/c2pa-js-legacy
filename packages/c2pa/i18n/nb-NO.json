@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Utførte andre redigeringer eller aktiviteter som ikke gjenkjennes",
         "label": "Ukjent endring eller aktivitet"
-      },
-      "com.adobe.3d": {
-        "description": "Opprettet eller gjorde endringer i 3D-objekter eller scener",
-        "label": "3D-redigeringer"
-      },
-      "com.adobe.animation_video": {
-        "description": "Opprettet eller gjorde endringer i animasjons-, lyd- eller andre videoegenskaper",
-        "label": "Videoredigeringer"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Satte sammen eller omorganiserte innhold, eller redigerte med innholdsprøveverktøy",
-        "label": "Kombinerte"
-      },
-      "com.adobe.text": {
-        "description": "Skrev eller gjorde endringer i tekst, inkludert skriftfamilie, farge eller andre stiler",
-        "label": "Tekstredigeringer"
       }
     }
   }

@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Suoritettu muita muokkauksia tai toimintoja, joita ei tunnistettu",
         "label": "Tuntemattomat muokkaukset tai tuntematon toiminta"
-      },
-      "com.adobe.3d": {
-        "description": "Luotu 3D-objekteja tai -tilanteita tai tehty niihin muutoksia",
-        "label": "3D-muokkaukset"
-      },
-      "com.adobe.animation_video": {
-        "description": "Luotu animaatiota, ääntä tai muita videon ominaisuuksia tai tehty niihin muutoksia",
-        "label": "Videomuokkaukset"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Koostettu tai järjestelty sisältöä tai tehty muokkauksia sisällön näytteenottotyökaluilla",
-        "label": "Yhdistetty"
-      },
-      "com.adobe.text": {
-        "description": "Luotu tekstiä tai tehty muutoksia siihen, muutettu esimerkiksi kirjasinperhettä, väriä tai muita tyylejä",
-        "label": "Tekstiin liittyvät muokkaukset"
       }
     }
   }

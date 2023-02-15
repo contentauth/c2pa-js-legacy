@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Sono state eseguite altre modifiche o attività che non è stato possibile riconoscere",
         "label": "Modifiche o attività sconosciute"
-      },
-      "com.adobe.3d": {
-        "description": "Creazioni o modifiche di oggetti o scene 3D",
-        "label": "Modifiche 3D"
-      },
-      "com.adobe.animation_video": {
-        "description": "Creazioni o modifiche di animazioni, audio o altre proprietà video",
-        "label": "Modifiche video"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Contenuto composto, riordinato o modificato con strumenti di campionamento del contenuto",
-        "label": "Combinato"
-      },
-      "com.adobe.text": {
-        "description": "Sono state create o apportate modifiche del testo, quali la famiglia di font, il colore o altri stili",
-        "label": "Modifiche del testo"
       }
     }
   }
