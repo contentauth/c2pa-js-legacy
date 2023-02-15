@@ -41,3 +41,10 @@ export { selectProducer } from './src/selectors/selectProducer';
 export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';
 export { C2paSourceType, Source, SourceMetadata } from './src/source';
 export { BlobUrlData, DisposableBlobUrl, Thumbnail } from './src/thumbnail';
+
+export {
+  Assertion,
+  C2paActionsAssertion,
+  C2paHashDataAssertion,
+  CreativeWorkAssertion,
+} from '@contentauth/toolkit';
