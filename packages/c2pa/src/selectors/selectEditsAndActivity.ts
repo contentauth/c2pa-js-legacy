@@ -192,7 +192,6 @@ interface OverrideActionMap {
  *
  * @param actionsAssertion - Action assertion data
  * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
- * @param iconVariant - Requests icon variant (e.g. `light`, `dark`), if available
  * @returns List of translated action categories
  */
 export function getC2paCategorizedActions(
