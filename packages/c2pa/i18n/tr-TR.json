@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Algılanamayan başka düzenlemeler veya etkinlikler gerçekleştirildi",
         "label": "Bilinmeyen düzenlemeler veya etkinlikler"
-      },
-      "com.adobe.3d": {
-        "description": "3D nesneleri veya sahneleri oluşturduğunda ya da değişiklik yaptığında",
-        "label": "3D düzenlemeleri"
-      },
-      "com.adobe.animation_video": {
-        "description": "Animasyon, ses veya başka video özellikleri oluşturuldu ya da bunlarda değişiklik yapıldı",
-        "label": "Video düzenlemeleri"
-      },
-      "com.adobe.combined_assets": {
-        "description": "İçerik birleştirildi veya yeniden sıralandı ya da içerik örnekleme araçlarıyla düzenlendi",
-        "label": "Birleştirildi"
-      },
-      "com.adobe.text": {
-        "description": "Font ailesi, renk veya diğer stiller dahil olmak üzere metin oluşturuldu ya da metinde değişiklikler yapıldı",
-        "label": "Metin düzenlemeleri"
       }
     }
   }

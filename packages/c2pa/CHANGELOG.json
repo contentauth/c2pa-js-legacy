@@ -2,6 +2,47 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.13.2",
+      "tag": "c2pa_v0.13.2",
+      "date": "Wed, 15 Feb 2023 20:44:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removed unnecessary translations, export assertion types"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.1",
+      "tag": "c2pa_v0.13.1",
+      "date": "Mon, 13 Feb 2023 17:35:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added subresource integrity integration for Wasm fetching"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.9.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.0",
+      "tag": "c2pa_v0.13.0",
+      "date": "Fri, 10 Feb 2023 17:56:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exported `getC2paCategorizedActions` function from `selectEditsAndActivity` selector file"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.12.2",
       "tag": "c2pa_v0.12.2",
       "date": "Thu, 26 Jan 2023 16:40:49 GMT",

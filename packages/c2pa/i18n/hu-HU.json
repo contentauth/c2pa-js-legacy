@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Más szerkesztéseket vagy műveleteket hajtott végre, amelyeket nem lehetett felismerni",
         "label": "Ismeretlen szerkesztések vagy tevékenység"
-      },
-      "com.adobe.3d": {
-        "description": "Létrehozott vagy módosított 3D objektumok vagy jelenetek",
-        "label": "3D szerkesztések"
-      },
-      "com.adobe.animation_video": {
-        "description": "Létrehozott vagy módosított animáció, hang vagy egyéb videó-tulajdonságok",
-        "label": "Videó szerkesztések"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Összeállított vagy átrendezett tartalom, vagy tartalom-mintavételező eszközökkel szerkesztve",
-        "label": "Összevonva"
-      },
-      "com.adobe.text": {
-        "description": "Szöveg létrehozása vagy módosítása, beleértve a betűtípust, a színt vagy más stílusokat",
-        "label": "Szöveget használó szerkesztések"
       }
     }
   }

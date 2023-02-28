@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Andere bewerkingen of activiteiten uitgevoerd die niet konden worden herkend",
         "label": "Onbekende bewerkingen of activiteiten"
-      },
-      "com.adobe.3d": {
-        "description": "3D-objecten of -scènes gemaakt of gewijzigd",
-        "label": "3D-bewerkingen"
-      },
-      "com.adobe.animation_video": {
-        "description": "Animatie, audio of andere video-eigenschappen gemaakt of gewijzigd",
-        "label": "Videobewerkingen"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Content samengesteld of opnieuw geordend of bewerkt met tools voor content-sampling",
-        "label": "Gecombineerd"
-      },
-      "com.adobe.text": {
-        "description": "Tekst gemaakt of gewijzigd, inclusief lettertypefamilie, kleur of andere stijlen",
-        "label": "Tekstbewerkingen"
       }
     }
   }

@@ -2,6 +2,69 @@
   "name": "@contentauth/react",
   "entries": [
     {
+      "version": "0.2.15",
+      "tag": "@contentauth/react_v0.2.15",
+      "date": "Wed, 15 Feb 2023 20:44:21 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.13.2`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" to `0.10.7`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa\" from `^0.13.1` to `^0.13.2`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" from `^0.10.6` to `^0.10.7`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.14",
+      "tag": "@contentauth/react_v0.2.14",
+      "date": "Mon, 13 Feb 2023 17:35:38 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" to `0.10.6`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa\" from `^0.13.0` to `^0.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" from `^0.10.5` to `^0.10.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.13",
+      "tag": "@contentauth/react_v0.2.13",
+      "date": "Fri, 10 Feb 2023 17:56:22 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.13.0`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" to `0.10.5`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa\" from `^0.12.2` to `^0.13.0`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" from `^0.10.4` to `^0.10.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.12",
       "tag": "@contentauth/react_v0.2.12",
       "date": "Fri, 27 Jan 2023 19:03:24 GMT",

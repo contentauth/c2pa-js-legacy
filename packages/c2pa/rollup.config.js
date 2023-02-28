@@ -7,9 +7,11 @@
  * it.
  */
 
+import integrity from '@contentauth/toolkit/pkg/integrity.json';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import strip from '@rollup/plugin-strip';
 import typescript from '@rollup/plugin-typescript';
 import { wasm } from '@rollup/plugin-wasm';
@@ -59,6 +61,9 @@ const plugins = [
   commonjs(),
   typescript(),
   json(),
+  replace({
+    'process.env.TOOLKIT_INTEGRITY': JSON.stringify(integrity),
+  }),
 ];
 
 const files = [

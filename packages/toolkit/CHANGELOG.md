@@ -1,6 +1,13 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Thu, 26 Jan 2023 16:40:49 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 17:35:38 GMT and should not be manually modified.
+
+## 0.9.6
+Mon, 13 Feb 2023 17:35:38 GMT
+
+### Patches
+
+- Added subresource integrity JSON generation script
 
 ## 0.9.5
 Thu, 26 Jan 2023 16:40:49 GMT

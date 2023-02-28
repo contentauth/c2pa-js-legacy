@@ -1,6 +1,6 @@
 {
   "name": "c2pa",
-  "version": "0.12.2",
+  "version": "0.13.2",
   "contributors": [
     {
       "name": "Dave Kozma",
@@ -78,8 +78,11 @@
     "@web/test-runner-puppeteer": "~0.10.5",
     "web-test-runner-jasmine": "~0.0.1",
     "@rollup/plugin-replace": "~4.0.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.1.2",
     "@microsoft/api-extractor": "~7.31.1",
-    "@rollup/plugin-json": "~4.1.0"
+    "@rollup/plugin-json": "~4.1.0",
+    "eslint-plugin-import": "^2.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0"
   }
 }

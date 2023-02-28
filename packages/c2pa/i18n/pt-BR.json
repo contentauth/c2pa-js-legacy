@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Não foi possível reconhecer outras edições ou atividades realizadas",
         "label": "Edições ou atividades desconhecidas"
-      },
-      "com.adobe.3d": {
-        "description": "Objetos ou cenas 3D criados ou modificados",
-        "label": "Edições 3D"
-      },
-      "com.adobe.animation_video": {
-        "description": "Propriedades de animação, áudio ou outras propriedades de vídeo criadas ou modificadas",
-        "label": "Edições de vídeo"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Conteúdo composto ou reordenado ou editado com ferramentas de amostragem de conteúdo",
-        "label": "Combinado"
-      },
-      "com.adobe.text": {
-        "description": "Texto criado ou modificado, incluindo família de fontes, cor ou outros estilos",
-        "label": "Edições de texto"
       }
     }
   }

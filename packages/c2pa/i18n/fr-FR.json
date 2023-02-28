@@ -44,22 +44,6 @@
       "c2pa.unknown": {
         "description": "Réalisation d’autres modifications ou activités qui n’ont pas pu être reconnues",
         "label": "Modifications ou activité inconnues"
-      },
-      "com.adobe.3d": {
-        "description": "Création ou modification d’objets ou de scènes 3D",
-        "label": "Modifications 3D"
-      },
-      "com.adobe.animation_video": {
-        "description": "Création ou modification de l’animation, de l’audio ou d’autres propriétés vidéo",
-        "label": "Modifications vidéo"
-      },
-      "com.adobe.combined_assets": {
-        "description": "Composition ou réorganisation du contenu, ou modification de celui-ci avec des outils d’échantillonnage de contenu",
-        "label": "Combiné"
-      },
-      "com.adobe.text": {
-        "description": "Création ou modification du texte, notamment de la famille de polices, de la couleur ou d’autres styles",
-        "label": "Modifications du texte"
       }
     }
   }

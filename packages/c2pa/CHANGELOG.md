@@ -1,6 +1,27 @@
 # Change Log - c2pa
 
-This log was last generated on Thu, 26 Jan 2023 16:40:49 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2023 20:44:21 GMT and should not be manually modified.
+
+## 0.13.2
+Wed, 15 Feb 2023 20:44:21 GMT
+
+### Patches
+
+- Removed unnecessary translations, export assertion types
+
+## 0.13.1
+Mon, 13 Feb 2023 17:35:38 GMT
+
+### Patches
+
+- Added subresource integrity integration for Wasm fetching
+
+## 0.13.0
+Fri, 10 Feb 2023 17:56:22 GMT
+
+### Minor changes
+
+- Exported `getC2paCategorizedActions` function from `selectEditsAndActivity` selector file
 
 ## 0.12.2
 Thu, 26 Jan 2023 16:40:49 GMT

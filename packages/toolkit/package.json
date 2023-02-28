@@ -1,6 +1,6 @@
 {
   "name": "@contentauth/toolkit",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "author": {
     "name": "Dave Kozma",
     "email": "dkozma@adobe.com"
@@ -18,31 +18,39 @@
   "files": [
     "pkg/**/*"
   ],
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
-    "dev": "nodemon -x wasm-pack -e rs -w src -w ../../../c2pa-toolkit/lib -- build --dev --out-name toolkit --target web",
-    "build": "rushx clean && wasm-pack --quiet build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json && rushx build:types",
+    "dev": "nodemon ./scripts/build.js -e rs -w src -w ../../../c2pa-toolkit/lib -- --dev --verbose",
+    "build": "rushx clean && node ./scripts/build.js",
     "build:release": "rushx build",
-    "build:verbose": "rushx clean && wasm-pack --verbose build --out-name toolkit --release --target web && rimraf pkg/.gitignore pkg/package.json && rushx build:types",
+    "build:verbose": "rushx clean && node ./scripts/build.js --verbose",
     "build:types": "tsc",
     "clean": "rimraf ./pkg"
   },
   "devDependencies": {
     "@contentauth/testing": "workspace:*",
-    "nodemon": "~2.0.16",
-    "@types/jasmine": "~4.0.3",
-    "rimraf": "^3.0.2",
-    "@web/test-runner": "~0.13.27",
-    "@web/dev-server-esbuild": "~0.3.0",
     "@rollup/plugin-replace": "~4.0.0",
-    "rollup": "~2.70.2",
+    "@types/jasmine": "~4.0.3",
+    "@web/dev-server-esbuild": "~0.3.0",
     "@web/dev-server-rollup": "~0.3.17",
     "@web/test-runner-browserstack": "~0.5.0",
+    "@web/test-runner-core": "~0.10.26",
     "@web/test-runner-puppeteer": "~0.10.5",
+    "@web/test-runner": "~0.13.27",
+    "debug": "~4.3.4",
+    "deepdash-es": "~5.3.9",
+    "jasmine-core": "~4.1.0",
+    "nodemon": "~2.0.16",
+    "rimraf": "^4.1.2",
+    "rollup": "~2.70.2",
+    "ssri": "~10.0.1",
     "typescript": "~4.6.3",
     "web-test-runner-jasmine": "~0.0.1",
-    "@web/test-runner-core": "~0.10.26",
-    "jasmine-core": "~4.1.0",
-    "deepdash-es": "~5.3.9",
-    "debug": "~4.3.4"
+    "fast-glob": "~3.2.11",
+    "pkg-dir": "~7.0.0",
+    "p-reduce": "~3.0.0",
+    "prettier": "^2.6.2"
   }
 }

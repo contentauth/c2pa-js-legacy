@@ -1,6 +1,21 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Fri, 27 Jan 2023 19:03:24 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2023 20:44:21 GMT and should not be manually modified.
+
+## 0.10.7
+Wed, 15 Feb 2023 20:44:21 GMT
+
+_Version update only_
+
+## 0.10.6
+Mon, 13 Feb 2023 17:35:38 GMT
+
+_Version update only_
+
+## 0.10.5
+Fri, 10 Feb 2023 17:56:22 GMT
+
+_Version update only_
 
 ## 0.10.4
 Fri, 27 Jan 2023 19:03:24 GMT
