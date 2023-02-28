@@ -35,7 +35,7 @@ async function runProcess(cmd, args, opts) {
       if (code === 0) {
         resolve();
       } else {
-        reject({ msg: `${cmd} existed with non-zero status code` });
+        reject({ msg: `${cmd} exited with non-zero status code` });
       }
     });
   });
