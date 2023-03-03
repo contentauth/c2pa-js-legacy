@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Replace workerpool implementation to remove insecure eval statements",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
