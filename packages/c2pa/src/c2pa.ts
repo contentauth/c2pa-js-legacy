@@ -9,9 +9,9 @@
 
 import { ToolkitError } from '@contentauth/toolkit';
 import debug from 'debug';
-import { WorkerPoolOptions } from 'workerpool';
 import { ensureCompatibility } from './lib/browser';
 import { Downloader, DownloaderOptions } from './lib/downloader';
+import { WorkerPoolConfig } from './lib/pool/workerPool';
 import { createPoolWrapper, SdkWorkerPool } from './lib/poolWrapper';
 import { fetchWasm } from './lib/wasm';
 import { createManifestStore, ManifestStore } from './manifestStore';
@@ -36,7 +36,7 @@ export interface C2paConfig {
    * Options for the web worker pool
    * @see {@link https://github.com/josdejong/workerpool#pool}
    */
-  poolOptions?: Partial<WorkerPoolOptions>;
+  poolOptions?: Partial<WorkerPoolConfig>;
 
   /**
    * Options for the asset downloader
