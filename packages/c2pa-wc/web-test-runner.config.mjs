@@ -1,11 +1,11 @@
-import { esbuildPlugin } from '@web/dev-server-esbuild';
 import rollupReplace from '@rollup/plugin-replace';
+import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
-import { puppeteerLauncher } from '@web/test-runner-puppeteer';
 import { browserstackLauncher } from '@web/test-runner-browserstack';
+import { puppeteerLauncher } from '@web/test-runner-puppeteer';
 import { jasmineTestRunnerConfig } from 'web-test-runner-jasmine';
 
-import litSvg from './etc/rollup/plugins/lit-svg.js';
+import litSvg from './etc/rollup/plugins/lit-svg.cjs';
 
 const litSvgPlugin = fromRollup(litSvg);
 const replacePlugin = fromRollup(rollupReplace);

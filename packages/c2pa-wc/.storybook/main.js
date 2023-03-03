@@ -1,4 +1,4 @@
-const litSvg = require('../etc/rollup/plugins/lit-svg');
+const litSvg = require('../etc/rollup/plugins/lit-svg.cjs');
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
