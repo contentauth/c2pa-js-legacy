@@ -21,6 +21,7 @@ async function runProcess(cmd, args, opts) {
   return new Promise((resolve, reject) => {
     const proc = spawn(cmd, args.split(' '), {
       cwd: opts.packageDir,
+      shell: opts.shell,
     });
 
     proc.stdout.on('data', (data) => {
@@ -57,13 +58,17 @@ async function buildWasm(opts) {
  * @param {*} opts Options for this script invocation
  */
 async function buildTypes(opts) {
+  // We need to the full path to `tsc` for Windows for it to resolve correctly.
+  const tscPath = join(opts.packageDir, './node_modules/.bin/tsc');
   const tsconfigPath = join(opts.packageDir, './tsconfig.json');
+  opts = {
+    ...opts,
+    // Since the `tsc` command is either a CMD or PS1 file on
+    // Windows, we must use the shell context for executing.
+    shell: true,
+  };
 
-  await runProcess(
-    './node_modules/.bin/tsc',
-    `--project ${tsconfigPath}`,
-    opts,
-  );
+  await runProcess(tscPath, `--project ${tsconfigPath}`, opts);
 }
 
 /**
