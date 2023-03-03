@@ -15,6 +15,7 @@
   "description": "CAI Web Components",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/contentauth/c2pa-js",

@@ -7,8 +7,9 @@
  * it.
  */
 
-import { Thumbnail as ToolkitThumbnail } from '@contentauth/toolkit';
+import { ResourceReference, ResourceStore } from '@contentauth/toolkit';
 import { sha } from './lib/hash';
+import { getResourceAsBlob } from './resources';
 export interface BlobUrlData {
   url: string;
 }
@@ -27,24 +28,22 @@ export interface Thumbnail {
 /**
  * Creates a facade object with convenience methods over thumbnail data returned from the toolkit.
  *
- * @param thumbnailData Raw thumbnail data returned by the toolkit
+ * @param resourceStore The resource store attached to the ResourceParent
+ * @param resourceReference The reference to the resource that provides the thumbnail data
  */
 export function createThumbnail(
-  thumbnailData: ToolkitThumbnail,
+  resourceStore: ResourceStore,
+  resourceReference: ResourceReference,
 ): Thumbnail | null {
-  if (!thumbnailData) {
+  const blob = getResourceAsBlob(resourceStore, resourceReference);
+
+  if (!blob) {
     return null;
   }
 
-  const [type, data] = thumbnailData;
-
-  const blob = new Blob([Uint8Array.from(data)], {
-    type,
-  });
-
   return {
     blob,
-    contentType: type,
+    contentType: blob.type,
 
     hash: () => sha(blob),
 

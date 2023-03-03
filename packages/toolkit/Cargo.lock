@@ -195,9 +195,9 @@ checksum = "ec8a7b6a70fde80372154c65702f00a0f56f3e1c36abbc6c440484be248856db"
 
 [[package]]
 name = "c2pa"
-version = "0.16.1"
+version = "0.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d0cf6bca507b49e93db9d29a8e886d3c4db7c28ff46283ae6bbedfc8f24289d0"
+checksum = "7eb3521acbffdbf4afa8206106400599530ae523ace8d3759b07f1d368bb8282"
 dependencies = [
  "atree",
  "base64",
@@ -238,6 +238,7 @@ dependencies = [
  "spki 0.6.0",
  "tempfile",
  "thiserror",
+ "treeline",
  "twoway",
  "ureq",
  "url",
@@ -251,7 +252,7 @@ dependencies = [
 
 [[package]]
 name = "c2pa-js-toolkit"
-version = "0.9.0"
+version = "0.18.0-1"
 dependencies = [
  "c2pa",
  "console_error_panic_hook",
@@ -1742,6 +1743,12 @@ name = "tinyvec_macros"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
+
+[[package]]
+name = "treeline"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a7f741b240f1a48843f9b8e0444fb55fb2a4ff67293b50a9179dfd5ea67f8d41"
 
 [[package]]
 name = "twoway"

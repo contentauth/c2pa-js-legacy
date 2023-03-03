@@ -5,6 +5,19 @@
 // accordance with the terms of the Adobe license agreement accompanying
 // it.
 
+export interface ResourceStore {
+  resources: Record<string, number[]>;
+}
+
+export interface ResourceParent {
+  resources: ResourceStore;
+}
+
+export interface ResourceReference {
+  content_type: string;
+  identifier: string;
+}
+
 export interface ManifestStore {
   active_manifest: string;
   manifests: Record<string, Manifest>;
@@ -23,15 +36,13 @@ export interface HashedUri {
   hash: number[];
 }
 
-export type Thumbnail = [string, number[]] | null;
-
-export interface Ingredient {
+export interface Ingredient extends ResourceParent {
   title: string;
   format: string;
   document_id?: string;
   instance_id: string;
   provenance?: string;
-  thumbnail: Thumbnail;
+  thumbnail: ResourceReference;
   hash?: string;
   is_parent?: boolean;
   active_manifest?: string;
@@ -44,18 +55,19 @@ export interface SignatureInfo {
   time?: string;
 }
 
-export interface Manifest {
+export interface Manifest extends ResourceParent {
   vendor?: string;
   claim_generator: string;
   claim_generator_hints?: Record<string, unknown>;
   title: string;
   format: string;
   instance_id: string;
-  thumbnail: Thumbnail;
+  thumbnail: ResourceReference;
   ingredients: Ingredient[];
   credentials?: Credential[];
   assertions: Assertion[];
   redactions?: string[];
+  label?: string;
   signature_info?: SignatureInfo;
 }
 
