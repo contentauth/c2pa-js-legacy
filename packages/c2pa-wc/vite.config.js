@@ -1,14 +1,14 @@
-import path from 'path';
-import { defineConfig } from 'vite';
 import { createBasicConfig } from '@open-wc/building-rollup';
-import fg from 'fast-glob';
-import merge from 'deepmerge';
-import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
-import litSvg from './etc/rollup/plugins/lit-svg';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
+import merge from 'deepmerge';
+import fg from 'fast-glob';
+import path from 'path';
+import postcss from 'rollup-plugin-postcss';
+import { defineConfig } from 'vite';
+import litSvg from './etc/rollup/plugins/lit-svg.cjs';
 
 const basePath = path.resolve(__dirname);
 const banner = `
