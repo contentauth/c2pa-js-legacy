@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Update c2pa-rs to 0.18.0, add types for ResourceStore support",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

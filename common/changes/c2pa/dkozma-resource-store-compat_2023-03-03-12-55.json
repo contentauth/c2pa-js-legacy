@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add changes to support ResourceStore from c2pa-rs 0.18.0",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}

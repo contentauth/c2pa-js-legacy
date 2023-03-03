@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Fix for ESM support (adds `type: 'module'`) in `package.json`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
