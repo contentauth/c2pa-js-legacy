@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/detector",
+      "comment": "Fix builds on Windows platforms",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/detector"
+}

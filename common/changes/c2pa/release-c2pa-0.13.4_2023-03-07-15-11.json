@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Fix builds on Windows platforms",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
