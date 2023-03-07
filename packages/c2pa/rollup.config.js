@@ -14,6 +14,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import strip from '@rollup/plugin-strip';
 import typescript from '@rollup/plugin-typescript';
+import url from '@rollup/plugin-url';
 import { wasm } from '@rollup/plugin-wasm';
 import merge from 'lodash/merge';
 import { resolve } from 'path';
@@ -61,6 +62,7 @@ const plugins = [
   replace({
     'process.env.TOOLKIT_INTEGRITY': JSON.stringify(integrity),
   }),
+  url(),
 ];
 
 const files = [

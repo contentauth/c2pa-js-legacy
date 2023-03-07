@@ -19,6 +19,7 @@ import merge from 'lodash/merge';
 import set from 'lodash/set';
 import * as locales from '../../i18n/index';
 import { Downloader } from '../lib/downloader';
+import { icons } from '../lib/icon';
 import { Manifest } from '../manifest';
 
 const dbg = debug('c2pa:selector:editsAndActivity');
@@ -218,11 +219,14 @@ export function getC2paCategorizedActions(
   const translatedActions = actions.map((action, idx) => {
     const actionOverrides = overrideObj.actions[idx] ?? {};
     const actionTranslations = translations[action.action];
+    const iconId: string = action.action;
     return {
       // Include original ID
       id: action.action,
       // Get icon from parameters if they exist
-      icon: action.parameters?.['com.adobe.icon'],
+      icon:
+        action.parameters?.['com.adobe.icon'] ??
+        icons[iconId as keyof typeof icons],
       // Use override if available, if not, then fall back to translation
       label: actionOverrides.action ?? actionTranslations.label,
       // Use override if available, if not, then fall back to translation

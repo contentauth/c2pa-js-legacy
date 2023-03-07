@@ -8,3 +8,8 @@
  */
 
 declare module '@contentauth/detector/pkg/detector_bg.wasm';
+
+declare module '*.svg' {
+  const content: string;
+  export default content;
+}
