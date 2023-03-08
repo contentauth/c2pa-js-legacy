@@ -1,3 +1,15 @@
+/**
+ * Copyright 2023 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: Adobe permits you to use, modify, and distribute this file in
+ * accordance with the terms of the Adobe license agreement accompanying
+ * it.
+ */
+
+/**
+ * imports the edits and activities icons
+ */
 import unknown from '../../assets/svg/alert-circle-dark.svg';
 import colorAdjustements from '../../assets/svg/color-palette-dark.svg';
 import cropped from '../../assets/svg/crop-dark.svg';
@@ -14,21 +26,20 @@ import placed from '../../assets/svg/save-to-light-dark.svg';
 import text from '../../assets/svg/text-dark.svg';
 import animationVideo from '../../assets/svg/video-outline-dark.svg';
 
-
-export const icons  = {
-    'c2pa.color_adjustments' : colorAdjustements,
-    'c2pa.created': created, 
-    'c2pa.cropped' : cropped, 
-    'c2pa.drawing': drawing,
-    'c2pa.edited': edited, 
-    'c2pa.filtered': filtered, 
-    'c2pa.opened': opened, 
-    'c2pa.orientation': orientation, 
-    'c2pa.placed': placed, 
-    'c2pa.resized': resized, 
-    'c2pa.unknown' : unknown,
-    'com.adobe.3d': threed,
-    'com.adobe.animation_video' : animationVideo, 
-    'com.adobe.combined_asssets' : combinedAssets, 
-    'com.adobe.text' :  text
-}
+export const icons = {
+  'c2pa.color_adjustments': colorAdjustements,
+  'c2pa.created': created,
+  'c2pa.cropped': cropped,
+  'c2pa.drawing': drawing,
+  'c2pa.edited': edited,
+  'c2pa.filtered': filtered,
+  'c2pa.opened': opened,
+  'c2pa.orientation': orientation,
+  'c2pa.placed': placed,
+  'c2pa.resized': resized,
+  'c2pa.unknown': unknown,
+  'com.adobe.3d': threed,
+  'com.adobe.animation_video': animationVideo,
+  'com.adobe.combined_asssets': combinedAssets,
+  'com.adobe.text': text,
+};
