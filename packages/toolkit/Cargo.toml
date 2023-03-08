@@ -2,7 +2,7 @@
 authors = ["Dave Kozma <dkozma@adobe.com>"]
 edition = "2018"
 name = "c2pa-js-toolkit"
-version = "0.18.0-1"
+version = "0.18.1-1"
 
 [lib]
 crate-type = ["cdylib"]
