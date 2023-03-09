@@ -9,11 +9,11 @@
 
 import { ToolkitError } from '@contentauth/toolkit';
 import debug from 'debug';
-import { WorkerPoolOptions } from 'workerpool';
 import { ensureCompatibility } from './lib/browser';
 import { Downloader, DownloaderOptions } from './lib/downloader';
+import { WorkerPoolConfig } from './lib/pool/workerPool';
+import { createPoolWrapper, SdkWorkerPool } from './lib/poolWrapper';
 import { fetchWasm } from './lib/wasm';
-import { createWorkerPool, SdkWorkerPool } from './lib/workerPool';
 import { createManifestStore, ManifestStore } from './manifestStore';
 import { C2paSourceType, createSource, Source } from './source';
 
@@ -36,7 +36,7 @@ export interface C2paConfig {
    * Options for the web worker pool
    * @see {@link https://github.com/josdejong/workerpool#pool}
    */
-  poolOptions?: Partial<WorkerPoolOptions>;
+  poolOptions?: Partial<WorkerPoolConfig>;
 
   /**
    * Options for the asset downloader
@@ -135,7 +135,11 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
   dbg('Creating c2pa with config', config);
   ensureCompatibility();
 
-  const pool = await createWorkerPool(config);
+  const pool = await createPoolWrapper({
+    scriptSrc: config.workerSrc,
+    maxWorkers: navigator.hardwareConcurrency || 4,
+  });
+
   const downloader = new Downloader(pool, config.downloaderOptions);
 
   const wasm =

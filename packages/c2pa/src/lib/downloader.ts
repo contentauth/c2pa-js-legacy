@@ -11,7 +11,7 @@ import { InvalidMimeTypeError, UrlFetchError } from './error';
 import { Validator } from './validator';
 import merge from 'lodash/merge';
 import debug from 'debug';
-import { SdkWorkerPool } from './workerPool';
+import { SdkWorkerPool } from './poolWrapper';
 
 const dbg = debug('c2pa:Downloader');
 const cacheDbg = debug('c2pa:Downloader:Cache');

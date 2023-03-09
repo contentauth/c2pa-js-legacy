@@ -7,7 +7,8 @@
  * it.
  */
 
-import workerpool from 'workerpool';
+import { setupWorker } from './src/lib/pool/worker';
+
 import {
   default as initDetector,
   scan_array_buffer,
@@ -60,4 +61,4 @@ const worker = {
 
 export type Worker = typeof worker;
 
-workerpool.worker(worker);
+setupWorker(worker);

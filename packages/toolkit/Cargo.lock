@@ -195,9 +195,9 @@ checksum = "ec8a7b6a70fde80372154c65702f00a0f56f3e1c36abbc6c440484be248856db"
 
 [[package]]
 name = "c2pa"
-version = "0.18.0"
+version = "0.18.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7eb3521acbffdbf4afa8206106400599530ae523ace8d3759b07f1d368bb8282"
+checksum = "a7c268fb39aedb19543826a1b11bc38264211a5c3a877f7756fe47c5df0fe082"
 dependencies = [
  "atree",
  "base64",
@@ -252,7 +252,7 @@ dependencies = [
 
 [[package]]
 name = "c2pa-js-toolkit"
-version = "0.18.0-1"
+version = "0.18.1-1"
 dependencies = [
  "c2pa",
  "console_error_panic_hook",
