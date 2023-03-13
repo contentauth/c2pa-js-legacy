@@ -54,7 +54,7 @@ export class Downloader {
   static #responseCache = new Map<string, any>();
 
   static #defaultOptions: DownloaderOptions = {
-    inspectSize: 65535,
+    inspectSize: 0,
   };
 
   static #defaultFetchOptions: IFetchOptions = {
