@@ -30,7 +30,10 @@ export async function createPoolWrapper(config: WorkerPoolConfig): Promise<SdkWo
   const workerBlob = new Blob([src], { type: 'application/javascript' });
   const workerUrl = URL.createObjectURL(workerBlob);
 
-  const workerPool = createWorkerPool(config)
+  const workerPool = createWorkerPool({
+    ...config,
+    scriptSrc: workerUrl,
+  })
 
   const pool: Worker = {
     compileWasm: async (...args) => workerPool.execute('compileWasm', args),
