@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Disable downloader inspection by default",
+      "type": "patch"
+    },
+    {
+      "packageName": "c2pa",
+      "comment": "Fix worker src CORS",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
