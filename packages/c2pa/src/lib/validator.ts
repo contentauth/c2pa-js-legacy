@@ -10,7 +10,7 @@
 import detectorWasm from '@contentauth/detector/pkg/detector_bg.wasm';
 import debug from 'debug';
 import { InvalidInputError } from './error';
-import { SdkWorkerPool } from './workerPool';
+import { SdkWorkerPool } from './poolWrapper';
 
 const dbg = debug('c2pa:Validator');
 

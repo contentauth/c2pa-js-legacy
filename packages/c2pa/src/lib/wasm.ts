@@ -8,7 +8,7 @@
  */
 
 import debug from 'debug';
-import { SdkWorkerPool } from './workerPool';
+import { SdkWorkerPool } from './poolWrapper';
 
 const dbg = debug('c2pa:wasm');
 
