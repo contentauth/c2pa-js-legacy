@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Added c2pa-asset-ref types to support asset reference assertions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

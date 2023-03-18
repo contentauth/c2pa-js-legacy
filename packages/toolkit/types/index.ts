@@ -111,11 +111,26 @@ export type CreativeWorkAssertion = Assertion<
     url?: string;
   }
 >;
+interface Reference {
+  uri: string;
+}
+
+interface Resource {
+  reference: Reference;
+}
+
+export declare type C2paAssetRef = Assertion<
+  'c2pa.asset-ref',
+  {
+    resources: Resource[];
+  }
+>;
 
 export type ManifestAssertion =
   | C2paActionsAssertion
   | C2paHashDataAssertion
-  | CreativeWorkAssertion;
+  | CreativeWorkAssertion
+  | C2paAssetRef;
 
 export interface Action {
   action: string;
