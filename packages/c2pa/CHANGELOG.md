@@ -1,6 +1,40 @@
 # Change Log - c2pa
 
-This log was last generated on Fri, 03 Mar 2023 16:52:27 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 23:02:41 GMT and should not be manually modified.
+
+## 0.14.3
+Tue, 14 Mar 2023 23:02:41 GMT
+
+### Patches
+
+- Use self over window to support non-browser contexts
+
+## 0.14.2
+Tue, 14 Mar 2023 16:35:49 GMT
+
+### Patches
+
+- Fix builds on Windows platforms
+
+## 0.14.1
+Mon, 13 Mar 2023 22:23:10 GMT
+
+### Patches
+
+- Disable downloader inspection by default
+- Fix worker src CORS
+
+## 0.14.0
+Thu, 09 Mar 2023 23:41:40 GMT
+
+### Minor changes
+
+- Replace workerpool implementation to remove insecure eval statements
+
+## 0.13.4
+Wed, 08 Mar 2023 01:47:53 GMT
+
+_Version update only_
 
 ## 0.13.3
 Fri, 03 Mar 2023 16:52:27 GMT

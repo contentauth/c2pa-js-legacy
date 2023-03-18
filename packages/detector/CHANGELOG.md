@@ -1,6 +1,13 @@
 # Change Log - @contentauth/detector
 
-This log was last generated on Tue, 15 Nov 2022 19:56:02 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 16:35:49 GMT and should not be manually modified.
+
+## 0.3.4
+Tue, 14 Mar 2023 16:35:49 GMT
+
+### Patches
+
+- Fix builds on Windows platforms
 
 ## 0.3.3
 Tue, 15 Nov 2022 19:56:02 GMT

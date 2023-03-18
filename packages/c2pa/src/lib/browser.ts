@@ -26,7 +26,7 @@ const WINDOW_FEATURES = [
  * @return {boolean}
  */
 export function isCompatible(): boolean {
-  return WINDOW_FEATURES.every((x) => x in window);
+  return WINDOW_FEATURES.every((x) => x in self);
 }
 
 /**

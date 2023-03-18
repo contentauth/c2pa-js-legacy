@@ -2,6 +2,30 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.9.9",
+      "tag": "@contentauth/toolkit_v0.9.9",
+      "date": "Tue, 14 Mar 2023 16:35:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix builds on Windows platforms"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.9.8",
+      "tag": "@contentauth/toolkit_v0.9.8",
+      "date": "Wed, 08 Mar 2023 01:47:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update c2pa-rs to 0.18.1"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.9.7",
       "tag": "@contentauth/toolkit_v0.9.7",
       "date": "Fri, 03 Mar 2023 16:52:27 GMT",

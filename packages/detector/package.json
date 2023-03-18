@@ -1,6 +1,6 @@
 {
   "name": "@contentauth/detector",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": {
     "name": "Dave Kozma",
     "email": "dkozma@adobe.com"
@@ -19,9 +19,9 @@
   ],
   "scripts": {
     "dev": "nodemon -x wasm-pack -e rs -w src -w -- build --dev --out-name detector --target web",
-    "build": "wasm-pack --quiet build --out-name detector --release --target web && rm -f pkg/.gitignore pkg/package.json",
+    "build": "wasm-pack --quiet build --out-name detector --release --target web && rimraf pkg/.gitignore pkg/package.json",
     "build:release": "rushx build",
-    "build:verbose": "wasm-pack --verbose build --out-name detector --release --target web && rm -f pkg/.gitignore pkg/package.json",
+    "build:verbose": "wasm-pack --verbose build --out-name detector --release --target web && rimraf pkg/.gitignore pkg/package.json",
     "clean": "rimraf ./pkg"
   },
   "devDependencies": {
