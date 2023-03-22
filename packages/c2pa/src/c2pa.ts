@@ -246,6 +246,7 @@ function handleErrors(
     if (fetchRemote && error.url) {
       return fetchRemoteManifest(source, error.url, pool, wasm);
     }
+    return null;
   }
 
   if (ignoreErrors.some((re) => re.test(error.name))) {
