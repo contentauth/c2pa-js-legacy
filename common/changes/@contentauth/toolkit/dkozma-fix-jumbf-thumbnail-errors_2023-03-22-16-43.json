@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Adds the new `--weak-refs` flag now available in [wasm-pack 0.11.0](https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#-fixes) for more reliable memory cleanup (`--reference-types` causes a memory access error in Safari, so that was not added)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

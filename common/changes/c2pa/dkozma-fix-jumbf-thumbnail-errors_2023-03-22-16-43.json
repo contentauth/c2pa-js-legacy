@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Fixes error on `read` that would get triggered if an ingredient doesn't have a thumbnail",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}

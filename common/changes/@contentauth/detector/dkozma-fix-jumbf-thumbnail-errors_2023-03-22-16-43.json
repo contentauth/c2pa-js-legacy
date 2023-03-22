@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/detector",
+      "comment": "Adds the new `--weak-refs` and `--reference-types` flags now available in [wasm-pack 0.11.0](https://github.com/rustwasm/wasm-pack/blob/mast",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/detector"
+}
