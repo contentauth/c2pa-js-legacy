@@ -235,9 +235,11 @@ function handleErrors(
         return fetchRemoteManifest(source, error.url, pool, wasm);
       }
       break;
+    // Allow these errors to still display the asset even though an embedded manifest can't be processed
     case 'C2pa(ProvenanceMissing)':
+    case 'C2pa(JumbfParseError(InvalidJumbBox))':
     case 'C2pa(JumbfNotFound)':
-      dbg('No provenance data found');
+      dbg('Missing or invalid provenance data found');
       break;
     default:
       throw error;

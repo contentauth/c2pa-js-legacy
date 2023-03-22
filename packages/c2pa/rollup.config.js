@@ -62,7 +62,10 @@ const plugins = [
   typescript(),
   json(),
   replace({
-    'process.env.TOOLKIT_INTEGRITY': JSON.stringify(integrity),
+    preventAssignment: true,
+    values: {
+      TOOLKIT_INTEGRITY: JSON.stringify(integrity),
+    },
   }),
 ];
 

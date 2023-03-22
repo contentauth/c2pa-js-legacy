@@ -46,7 +46,7 @@ async function buildWasm(opts) {
   const cmd = `wasm-pack`;
   const mode = opts.dev ? 'dev' : 'release';
   const verbosity = opts.verbose ? 'verbose' : 'quiet';
-  const args = `build --${verbosity} --out-name toolkit --${mode} --target web`;
+  const args = `build --weak-refs --${verbosity} --out-name toolkit --${mode} --target web`;
 
   opts.verbose && console.log(`Building in ${mode.toUpperCase()} mode`);
 
