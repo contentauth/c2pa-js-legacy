@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Fixes TypeScript errors by updating our `target` to `es2017` to use some newer (but widely supported) JavaScript APIs, as well as removing `process.env` in favor of a constant for the integrity logic",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
