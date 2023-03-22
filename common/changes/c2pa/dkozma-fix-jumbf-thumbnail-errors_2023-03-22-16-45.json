@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Allows assets that have invalid JUMBF box to have their sources passed through to the client during a `read` request instead instead of throwing an error so that the asset can still be displayed",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}

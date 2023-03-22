@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/detector",
+      "comment": "Remove dependency on [wee_alloc](https://github.com/rustwasm/wee_alloc) since it is unmaintained and has a reported memory leak",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/detector"
+}
