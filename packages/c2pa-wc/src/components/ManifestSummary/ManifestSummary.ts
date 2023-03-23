@@ -163,46 +163,52 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           .config=${this._config}
         ></cai-minimum-viable-provenance>
         <slot name="pre"></slot>
-        ${this._config?.sections?.producedBy
+        ${this.manifestStore.error === 'error'
           ? html`
-              <cai-produced-by
-                .manifestStore=${this.manifestStore}
-                .config=${this._config}
-              ></cai-produced-by>
+              <div>${this._config.stringMap['manifest-summary.error']}</div>
             `
-          : nothing}
-        ${this._config?.sections?.producedWith
-          ? html`
-              <cai-produced-with
-                .manifestStore=${this.manifestStore}
-                .config=${this._config}
-              ></cai-produced-with>
-            `
-          : nothing}
-        ${this._config?.sections?.editsAndActivity
-          ? html`
-              <cai-edits-and-activity
-                .manifestStore=${this.manifestStore}
-                .config=${this._config}
-              ></cai-edits-and-activity>
-            `
-          : nothing}
-        ${this._config?.sections?.assetsUsed
-          ? html`
-              <cai-assets-used
-                .manifestStore=${this.manifestStore}
-                .config=${this._config}
-              ></cai-assets-used>
-            `
-          : nothing}
-        ${this._config?.sections?.socialMedia
-          ? html`
-              <cai-social-media
-                .manifestStore=${this.manifestStore}
-                .config=${this._config}
-              ></cai-social-media>
-            `
-          : nothing}
+          : html`
+              ${this._config?.sections?.producedBy
+                ? html`
+                    <cai-produced-by
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-produced-by>
+                  `
+                : nothing}
+              ${this._config?.sections?.producedWith
+                ? html`
+                    <cai-produced-with
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-produced-with>
+                  `
+                : nothing}
+              ${this._config?.sections?.editsAndActivity
+                ? html`
+                    <cai-edits-and-activity
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-edits-and-activity>
+                  `
+                : nothing}
+              ${this._config?.sections?.assetsUsed
+                ? html`
+                    <cai-assets-used
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-assets-used>
+                  `
+                : nothing}
+              ${this._config?.sections?.socialMedia
+                ? html`
+                    <cai-social-media
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-social-media>
+                  `
+                : nothing}
+            `}
         <slot></slot>
         <slot name="post"></slot>
       </div>
