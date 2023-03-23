@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Fix `selectEditsAndActivity` issues with embedded translations introduced in [C2PA 1.2 spec](https://c2pa.org/specifications/specifications/1.2/specs/C2PA_Specification.html#_metadata_about_assertions)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
