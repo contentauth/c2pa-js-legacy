@@ -253,8 +253,7 @@ describe('selectEditsAndActivity', function () {
           expect(result?.length).toEqual(1);
 
           expect(result?.[0]?.id).toEqual(`c2pa.created`);
-          // Icon is supplied by web components in this case
-          expect(result?.[0]?.icon).toBeUndefined();
+          expect(result?.[0]?.icon).toMatch(/^data:image\/svg\+xml,/);
           expect(result?.[0]?.label).toEqual(`Created`);
           expect(result?.[0]?.description).toEqual(
             `Created a new file or content`,
@@ -267,7 +266,7 @@ describe('selectEditsAndActivity', function () {
           expect(result?.length).toEqual(1);
 
           expect(result?.[0]?.id).toEqual(`c2pa.created`);
-          expect(result?.[0]?.icon).toBeUndefined();
+          expect(result?.[0]?.icon).toMatch(/^data:image\/svg\+xml,/);
           expect(result?.[0]?.label).toEqual(`Créé`);
           expect(result?.[0]?.description).toEqual(
             `Création d’un nouveau fichier ou contenu`,
