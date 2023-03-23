@@ -31,6 +31,8 @@ const banner = `
  **************************************************************************/
 `;
 
+console.log('integrity', integrity);
+
 const outputDir = resolve(__dirname, './dist');
 const developmentMode = process.env.ROLLUP_WATCH === 'true';
 const plugins = [
