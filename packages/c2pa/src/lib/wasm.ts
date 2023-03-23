@@ -24,10 +24,12 @@ export async function fetchWasm(
 ): Promise<WebAssembly.Module> {
   const integrity = TOOLKIT_INTEGRITY;
   const wasmIntegrity = integrity?.['toolkit_bg.wasm'];
-  dbg('Fetching WASM binary from url %s', binaryUrl, { expectedIntegrity: wasmIntegrity });
+  dbg('Fetching WASM binary from url %s', binaryUrl, {
+    expectedIntegrity: wasmIntegrity,
+  });
 
   const response = await fetch(binaryUrl, {
-    integrity: wasmIntegrity
+    integrity: wasmIntegrity,
   });
   const buffer = await response.arrayBuffer();
 

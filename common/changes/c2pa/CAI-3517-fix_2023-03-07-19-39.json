@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Added new c2pa icons and mapped them to their ids",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}

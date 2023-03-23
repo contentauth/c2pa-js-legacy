@@ -118,6 +118,7 @@ importers:
       '@rollup/plugin-replace': ~5.0.2
       '@rollup/plugin-strip': ~2.1.0
       '@rollup/plugin-typescript': ~8.3.2
+      '@rollup/plugin-url': ~8.0.1
       '@rollup/plugin-wasm': ~5.1.2
       '@rushstack/eslint-config': ~2.6.0
       '@types/debug': ~4.1.7
@@ -162,6 +163,7 @@ importers:
       '@rollup/plugin-replace': 5.0.2_rollup@2.70.2
       '@rollup/plugin-strip': 2.1.0_rollup@2.70.2
       '@rollup/plugin-typescript': 8.3.3_ebyyw52y5in2luxvejy6eu2iqq
+      '@rollup/plugin-url': 8.0.1_rollup@2.70.2
       '@rollup/plugin-wasm': 5.1.2_rollup@2.70.2
       '@rushstack/eslint-config': 2.6.1_t725usgvqspm5woeqpaxbfp2qu
       '@types/debug': 4.1.7
@@ -3801,6 +3803,21 @@ packages:
       rollup: 2.70.2
       tslib: 2.4.0
       typescript: 4.6.4
+
+  /@rollup/plugin-url/8.0.1_rollup@2.70.2:
+    resolution: {integrity: sha512-8ajztphXb5e19dk3Iwjtm2eSYJR8jFQubZ8pJ1GG2MBMM7/qUedLnZAN+Vt4jqbcT/m27jfjIBocvrzV0giNRw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.0.2_rollup@2.70.2
+      make-dir: 3.1.0
+      mime: 3.0.0
+      rollup: 2.70.2
+    dev: true
 
   /@rollup/plugin-wasm/5.1.2_rollup@2.70.2:
     resolution: {integrity: sha512-eiOuMHBNY0EGTq3LCebg4IQ6/SOvKjmGetzqKajJWcbDQkrQZvHihZKKnBJYY7NuuvjNqCLdEViYr5aAZms63g==}
@@ -13826,6 +13843,12 @@ packages:
   /mime/2.6.0:
     resolution: {integrity: sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==}
     engines: {node: '>=4.0.0'}
+    hasBin: true
+    dev: true
+
+  /mime/3.0.0:
+    resolution: {integrity: sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==}
+    engines: {node: '>=10.0.0'}
     hasBin: true
     dev: true
 

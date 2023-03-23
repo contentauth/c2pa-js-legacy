@@ -7,7 +7,7 @@
  * it.
  */
 
-import { serializeError } from "./error";
+import { serializeError } from './error';
 
 export interface WorkerRequest {
   method: string;
@@ -33,16 +33,16 @@ export function setupWorker(methods: WorkerMethods) {
     const { args, method } = e.data;
     try {
       const res = await methods[method](...args);
-      
+
       postMessage({
         type: 'success',
-        data: res
+        data: res,
       } as WorkerResponse);
-    } catch(error: unknown) {
+    } catch (error: unknown) {
       postMessage({
         type: 'error',
-        error: serializeError(error as Error)
+        error: serializeError(error as Error),
       } as WorkerResponse);
     }
-  }
+  };
 }

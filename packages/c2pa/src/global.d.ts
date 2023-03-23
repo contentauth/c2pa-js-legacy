@@ -11,3 +11,8 @@ declare module '@contentauth/detector/pkg/detector_bg.wasm';
 
 // Replacement variables declared in Rollup
 declare var TOOLKIT_INTEGRITY: Record<string, string>;
+
+declare module '*.svg' {
+  const content: string;
+  export default content;
+}

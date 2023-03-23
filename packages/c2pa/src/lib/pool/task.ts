@@ -7,7 +7,7 @@
  * it.
  */
 
-import { WorkerRequest } from "./worker";
+import { WorkerRequest } from './worker';
 
 export interface Task {
   request: WorkerRequest;

@@ -7,18 +7,18 @@
  * it.
  */
 
-import { deserializeError } from "./error";
-import { WorkerRequest, WorkerResponse } from "./worker";
+import { deserializeError } from './error';
+import { WorkerRequest, WorkerResponse } from './worker';
 
 export interface WorkerManager {
   execute: (request: WorkerRequest) => Promise<unknown>;
   isWorking: () => boolean;
-  terminate: () => void; 
+  terminate: () => void;
 }
 
 /**
  * Create a wrapper responsible for managing a single worker
- * 
+ *
  * @param scriptUrl URL to worker script
  * @returns {WorkerManager}
  */
@@ -38,14 +38,14 @@ export function createWorkerManager(scriptUrl: string): WorkerManager {
           reject(deserializeError(e.data.error));
         }
         working = false;
-      }
+      };
 
       worker.onerror = function (e) {
         working = false;
         reject(e);
-      }
-    })
-  }
+      };
+    });
+  };
 
   const isWorking: WorkerManager['isWorking'] = () => working;
 
@@ -54,6 +54,6 @@ export function createWorkerManager(scriptUrl: string): WorkerManager {
   return {
     execute,
     isWorking,
-    terminate
-  }
+    terminate,
+  };
 }
