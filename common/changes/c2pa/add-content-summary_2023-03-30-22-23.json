@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add generativeInfo to createL2ManifestStore",
+      "type": "minor"
+    },
+    {
+      "packageName": "c2pa",
+      "comment": "Add selectFormattedGenerator and include in createL2ManifestStore",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}

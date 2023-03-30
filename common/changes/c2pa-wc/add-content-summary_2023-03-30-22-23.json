@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Add ContentSummary section",
+      "type": "minor"
+    },
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Display formatted generator string",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
