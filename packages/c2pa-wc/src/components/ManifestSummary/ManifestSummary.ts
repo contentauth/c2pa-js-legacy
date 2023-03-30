@@ -17,6 +17,7 @@ import type { MinimumViableProvenanceConfig } from '../MinimumViableProvenance';
 import { Configurable } from '../../mixins/configurable';
 import defaultStringMap from './ManifestSummary.str.json';
 
+import '../ContentSummary';
 import '../AssetsUsed';
 import '../ProducedBy';
 import '../ProducedWith';
@@ -46,6 +47,7 @@ export interface ManifestSummaryConfig
     producedBy?: boolean;
     producedWith?: boolean;
     socialMedia?: boolean;
+    contentSummary?: boolean;
   };
 }
 
@@ -59,6 +61,7 @@ const defaultConfig: ManifestSummaryConfig = {
     producedBy: true,
     producedWith: true,
     socialMedia: true,
+    contentSummary: true,
   },
 };
 
@@ -168,6 +171,14 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
               <div>${this._config.stringMap['manifest-summary.error']}</div>
             `
           : html`
+              ${this._config?.sections?.contentSummary
+                ? html`
+                    <cai-content-summary
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-content-summary>
+                  `
+                : nothing}
               ${this._config?.sections?.producedBy
                 ? html`
                     <cai-produced-by

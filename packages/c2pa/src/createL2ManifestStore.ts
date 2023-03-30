@@ -13,6 +13,11 @@ import { selectSocialAccounts } from './selectors/selectSocialAccounts';
 import { ManifestStore } from './manifestStore';
 import { hasErrorStatus, hasOtgpStatus } from './lib/validationStatus';
 import { ValidationStatus } from '@contentauth/toolkit';
+import { selectFormattedGenerator } from './selectors/selectFormattedGenerator';
+import {
+  GenerativeInfo,
+  selectGenerativeInfo,
+} from './selectors/selectGenerativeInfo';
 
 declare module './assertions' {
   interface ExtendedAssertions {
@@ -37,6 +42,7 @@ export interface L2ManifestStore {
   socialAccounts: L2SocialAccount[] | null;
   thumbnail: string | null;
   editsAndActivity: L2EditsAndActivity[] | null;
+  generativeInfo: GenerativeInfo | null;
   isBeta: boolean;
   error: ErrorStatus;
   validationStatus: ValidationStatus[];
@@ -147,7 +153,7 @@ export async function createL2ManifestStore(
         : null,
       claimGenerator: {
         value: activeManifest.claimGenerator,
-        product: activeManifest.claimGenerator.split('(')[0]?.trim(),
+        product: selectFormattedGenerator(activeManifest),
       },
       producer: producer
         ? {
@@ -160,6 +166,7 @@ export async function createL2ManifestStore(
       editsAndActivity,
       thumbnail: thumbnail?.url ?? null,
       isBeta: !!activeManifest.assertions.get('adobe.beta')?.[0]?.data.version,
+      generativeInfo: selectGenerativeInfo(activeManifest),
       error: getErrorStatus(manifestStore.validationStatus),
       validationStatus: manifestStore.validationStatus,
     },
