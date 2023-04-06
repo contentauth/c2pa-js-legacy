@@ -40,42 +40,34 @@ export class Icon extends LitElement {
 
   static readonly matchers = [
     {
-      name: 'photoshop',
       pattern: /photoshop/i,
       icon: html`<cai-icon-photoshop></cai-icon-photoshop>`,
     },
     {
-      name: 'adobe stock',
       pattern: /adobe\sstock/i,
       icon: html`<cai-icon-adobe-stock></cai-icon-adobe-stock>`,
     },
     {
-      name: 'adobe',
       pattern: /adobe/i,
       icon: html`<cai-icon-adobe></cai-icon-adobe>`,
     },
     {
-      name: ' behance',
       pattern: /behance\.net/i,
       icon: html`<cai-icon-behance></cai-icon-behance>`,
     },
     {
-      name: 'facebook',
       pattern: /facebook\.com/i,
       icon: html`<cai-icon-facebook></cai-icon-facebook>`,
     },
     {
-      name: 'instagram',
       pattern: /instagram\.com/i,
       icon: html`<cai-icon-instagram></cai-icon-instagram>`,
     },
     {
-      name: 'truepic',
       pattern: /truepic/i,
       icon: html`<cai-icon-truepic></cai-icon-truepic>`,
     },
     {
-      name: 'twitter',
       pattern: /twitter\.com/i,
       icon: html`<cai-icon-twitter></cai-icon-twitter>`,
     },
