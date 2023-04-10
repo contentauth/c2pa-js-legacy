@@ -8,11 +8,11 @@
  */
 
 import {
-  SignatureInfo,
-  Manifest as ToolkitManifest,
   Credential,
+  Manifest as ToolkitManifest,
+  SignatureInfo,
 } from '@contentauth/toolkit';
-import { createAssertionAccessor, AssertionAccessor } from './assertions';
+import { AssertionAccessor, createAssertionAccessor } from './assertions';
 import { createIngredient, Ingredient } from './ingredient';
 import { ManifestMap } from './manifestStore';
 import { createThumbnail, Thumbnail } from './thumbnail';
@@ -112,7 +112,7 @@ export function createManifest(
     redactions: manifestData.redactions ?? [],
     parent: null,
 
-    thumbnail: createThumbnail(manifestData.thumbnail),
+    thumbnail: createThumbnail(manifestData.resources, manifestData.thumbnail),
 
     assertions: createAssertionAccessor(manifestData.assertions),
   };

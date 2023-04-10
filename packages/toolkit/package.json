@@ -1,12 +1,12 @@
 {
   "name": "@contentauth/toolkit",
-  "version": "0.9.6",
+  "version": "0.9.8",
   "author": {
     "name": "Dave Kozma",
     "email": "dkozma@adobe.com"
   },
   "license": "MIT",
-  "description": "WebAssembly binary and bindings for the c2pa-toolkit",
+  "description": "WebAssembly binary and bindings for the c2pa-rs library",
   "type": "module",
   "main": "pkg/toolkit.js",
   "types": "pkg/toolkit.d.ts",

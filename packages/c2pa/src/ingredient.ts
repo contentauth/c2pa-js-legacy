@@ -8,8 +8,8 @@
  */
 import {
   Ingredient as ToolkitIngredient,
-  ValidationStatus,
   Metadata,
+  ValidationStatus,
 } from '@contentauth/toolkit';
 import { Manifest } from './manifest';
 import { createThumbnail, Thumbnail } from './thumbnail';
@@ -93,6 +93,9 @@ export function createIngredient(
     metadata: ingredientData.metadata ?? null,
     manifest: manifest ?? null,
 
-    thumbnail: createThumbnail(ingredientData.thumbnail),
+    thumbnail: createThumbnail(
+      ingredientData.resources,
+      ingredientData.thumbnail,
+    ),
   };
 }

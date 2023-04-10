@@ -1,6 +1,20 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Mon, 13 Feb 2023 17:35:38 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 01:47:53 GMT and should not be manually modified.
+
+## 0.9.8
+Wed, 08 Mar 2023 01:47:53 GMT
+
+### Patches
+
+- Update c2pa-rs to 0.18.1
+
+## 0.9.7
+Fri, 03 Mar 2023 16:52:27 GMT
+
+### Patches
+
+- Update c2pa-rs to 0.18.0, add types for ResourceStore support
 
 ## 0.9.6
 Mon, 13 Feb 2023 17:35:38 GMT
