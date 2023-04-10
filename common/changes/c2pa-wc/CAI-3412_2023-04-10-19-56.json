@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Adding an aria-hidden tag around svgs since logos are decorative and should be left out of the AT reading order",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
