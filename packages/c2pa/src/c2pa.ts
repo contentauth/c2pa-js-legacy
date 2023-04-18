@@ -9,11 +9,11 @@
 
 import { ToolkitError } from '@contentauth/toolkit';
 import debug from 'debug';
-import { WorkerPoolOptions } from 'workerpool';
 import { ensureCompatibility } from './lib/browser';
 import { Downloader, DownloaderOptions } from './lib/downloader';
+import { WorkerPoolConfig } from './lib/pool/workerPool';
+import { createPoolWrapper, SdkWorkerPool } from './lib/poolWrapper';
 import { fetchWasm } from './lib/wasm';
-import { createWorkerPool, SdkWorkerPool } from './lib/workerPool';
 import { createManifestStore, ManifestStore } from './manifestStore';
 import { C2paSourceType, createSource, Source } from './source';
 
@@ -36,7 +36,7 @@ export interface C2paConfig {
    * Options for the web worker pool
    * @see {@link https://github.com/josdejong/workerpool#pool}
    */
-  poolOptions?: Partial<WorkerPoolOptions>;
+  poolOptions?: Partial<WorkerPoolConfig>;
 
   /**
    * Options for the asset downloader
@@ -135,7 +135,11 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
   dbg('Creating c2pa with config', config);
   ensureCompatibility();
 
-  const pool = await createWorkerPool(config);
+  const pool = await createPoolWrapper({
+    scriptSrc: config.workerSrc,
+    maxWorkers: navigator.hardwareConcurrency || 4,
+  });
+
   const downloader = new Downloader(pool, config.downloaderOptions);
 
   const wasm =
@@ -209,6 +213,19 @@ export function generateVerifyUrl(assetUrl: string) {
 }
 
 /**
+ * Regular expression list of error names that we can ignore and still display the asset
+ * even though we can't inspect Content Credentials
+ */
+const ignoreErrors = [
+  // No embedded or remote provenance found in the asset
+  /^C2pa\(ProvenanceMissing\)$/,
+  // Could not parse JUMBF data
+  /^C2pa\(JumbfParseError\([^\)]+\)\)$/,
+  // JUMBF or required box not found
+  /^C2pa\(Jumbf(?:Box)?NotFound\)$/,
+];
+
+/**
  * Handles errors from the toolkit and fetches/processes remote manifests, if applicable.
  *
  * @param source - Source object representing the asset
@@ -225,21 +242,19 @@ function handleErrors(
   wasm: WebAssembly.Module,
   fetchRemote = true,
 ): Promise<ManifestStore | null> | null {
-  switch (error.name) {
-    case 'Toolkit(RemoteManifestUrl)':
-      if (fetchRemote && error.url) {
-        return fetchRemoteManifest(source, error.url, pool, wasm);
-      }
-      break;
-    case 'C2pa(ProvenanceMissing)':
-    case 'C2pa(JumbfNotFound)':
-      dbg('No provenance data found');
-      break;
-    default:
-      throw error;
+  if (error.name === 'Toolkit(RemoteManifestUrl)') {
+    if (fetchRemote && error.url) {
+      return fetchRemoteManifest(source, error.url, pool, wasm);
+    }
+    return null;
   }
 
-  return null;
+  if (ignoreErrors.some((re) => re.test(error.name))) {
+    dbg('Missing or invalid provenance data found', { error: error.name });
+    return null;
+  }
+
+  throw error;
 }
 
 async function fetchRemoteManifest(

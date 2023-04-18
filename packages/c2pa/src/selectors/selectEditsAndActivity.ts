@@ -19,6 +19,7 @@ import merge from 'lodash/merge';
 import set from 'lodash/set';
 import * as locales from '../../i18n/index';
 import { Downloader } from '../lib/downloader';
+import { icons } from '../lib/icon';
 import { Manifest } from '../manifest';
 
 const dbg = debug('c2pa:selector:editsAndActivity');
@@ -89,12 +90,12 @@ export interface EditCategory {
 }
 
 /**
- * Gets a list of translations for the requested locale. Any missing translations in other locales
- * will be filled in with entries from the DEFAULT_LOCALE.
+ * Gets a list of translations for the requested locale from the packaged translation maps.
+ * Any missing translations in other locales will be filled in with entries from the DEFAULT_LOCALE.
  *
  * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
  */
-function getTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
+function getPackagedTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
   const defaultSet = (bcp47Mapping[DEFAULT_LOCALE]?.selectors
     ?.editsAndActivity ?? {}) as Record<string, ActionDictionaryItem>;
   const requestedSet = (bcp47Mapping[locale]?.selectors?.editsAndActivity ??
@@ -170,7 +171,7 @@ async function getPhotoshopCategorizedActions(
 }
 
 interface AdobeCompatAction extends Action {
-  id: string;
+  action: string;
   parameters: {
     name: never;
     'com.adobe.icon': string;
@@ -199,7 +200,7 @@ export function getC2paCategorizedActions(
   locale: string = DEFAULT_LOCALE,
 ): TranslatedDictionaryCategory[] {
   const actions = actionsAssertion.data.actions as AdobeCompatAction[];
-  const translations = getTranslationsForLocale(locale);
+  const translations = getPackagedTranslationsForLocale(locale);
   const overrides = (actionsAssertion.data.metadata?.localizations ??
     []) as Override[];
 
@@ -208,7 +209,7 @@ export function getC2paCategorizedActions(
   // of path keys to overrides, which is why we have to have a nested each.
   each(overrides, (override) => {
     each(override, (translationMap, path) => {
-      const val = translationMap[locale];
+      const val = translationMap[locale] ?? translationMap[DEFAULT_LOCALE];
       if (val) {
         set(overrideObj, path, val);
       }
@@ -218,17 +219,21 @@ export function getC2paCategorizedActions(
   const translatedActions = actions.map((action, idx) => {
     const actionOverrides = overrideObj.actions[idx] ?? {};
     const actionTranslations = translations[action.action];
+    const iconId: string = action.action;
     return {
       // Include original ID
       id: action.action,
       // Get icon from parameters if they exist
-      icon: action.parameters?.['com.adobe.icon'],
+      icon:
+        action.parameters?.['com.adobe.icon'] ??
+        icons[iconId as keyof typeof icons],
       // Use override if available, if not, then fall back to translation
       label: actionOverrides.action ?? actionTranslations.label,
       // Use override if available, if not, then fall back to translation
       description:
-        actionOverrides?.parameters?.description ??
-        actionTranslations.description,
+        actionOverrides?.description ??
+        actionTranslations?.description ??
+        action.parameters.description,
     } as TranslatedDictionaryCategory;
   });
 

@@ -9,11 +9,6 @@ use std::panic;
 use twoway::find_bytes;
 use wasm_bindgen::prelude::*;
 
-extern crate wee_alloc;
-
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
 #[wasm_bindgen(start)]
 pub fn main() {
     panic::set_hook(Box::new(console_error_panic_hook::hook));

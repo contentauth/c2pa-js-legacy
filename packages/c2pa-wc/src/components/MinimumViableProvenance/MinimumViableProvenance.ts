@@ -9,13 +9,14 @@
 
 import { L2ManifestStore } from 'c2pa';
 import { isValid, parseISO } from 'date-fns';
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import defaultStringMap from './MinimumViableProvenance.str.json';
 import { defaultDateFormatter } from '../../utils';
 import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import { getBadgeFromManifestStore } from '../../badge';
+import { classMap } from 'lit-html/directives/class-map.js';
 
 import '../PanelSection';
 
@@ -75,6 +76,10 @@ export class MinimumViableProvenance extends Configurable(
         grid-template-columns: min-content max-content;
         align-items: center;
       }
+      .minimum-viable-provenance-signer.no-date {
+        grid-row: span 2;
+        height: 100%;
+      }
       .minimum-viable-provenance-date {
         grid-column: 2;
         grid-row: 2;
@@ -84,6 +89,13 @@ export class MinimumViableProvenance extends Configurable(
   }
 
   render() {
+    const hasError = this.manifestStore?.error === 'error';
+
+    const mvpClasses = {
+      'minimum-viable-provenance-signer': true,
+      'no-date': hasError,
+    };
+
     const signatureDate = this.manifestStore?.signature?.isoDateString
       ? parseISO(this.manifestStore?.signature.isoDateString)
       : undefined;
@@ -98,20 +110,24 @@ export class MinimumViableProvenance extends Configurable(
           src=${this.manifestStore?.thumbnail}
           badge=${getBadgeFromManifestStore(this.manifestStore)}
         ></cai-thumbnail>
-        <div class="minimum-viable-provenance-signer">
+        <div class=${classMap(mvpClasses)}>
           <cai-icon
             slot="icon"
             source=${this.manifestStore?.signature?.issuer}
           ></cai-icon>
           <span> ${this.manifestStore?.signature?.issuer} </span>
         </div>
-        <div class="minimum-viable-provenance-date">
-          ${isValid(signatureDate)
-            ? html`${this._config?.dateFormatter(signatureDate!)}`
-            : html`${this._config?.stringMap[
-                'minimum-viable-provenance.invalidDate'
-              ]}`}
-        </div>
+        ${!hasError
+          ? html`
+              <div class="minimum-viable-provenance-date">
+                ${isValid(signatureDate)
+                  ? html`${this._config?.dateFormatter(signatureDate!)}`
+                  : html`${this._config?.stringMap[
+                      'minimum-viable-provenance.invalidDate'
+                    ]}`}
+              </div>
+            `
+          : nothing}
       </div>
     </cai-panel-section>`;
   }

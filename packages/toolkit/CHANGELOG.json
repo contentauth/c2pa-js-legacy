@@ -2,6 +2,30 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.9.10",
+      "tag": "@contentauth/toolkit_v0.9.10",
+      "date": "Wed, 22 Mar 2023 18:52:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds the new `--weak-refs` flag now available in [wasm-pack 0.11.0](https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#-fixes) for more reliable memory cleanup (`--reference-types` causes a memory access error in Safari, so that was not added)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.9.9",
+      "tag": "@contentauth/toolkit_v0.9.9",
+      "date": "Tue, 14 Mar 2023 16:35:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix builds on Windows platforms"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.9.8",
       "tag": "@contentauth/toolkit_v0.9.8",
       "date": "Wed, 08 Mar 2023 01:47:53 GMT",

@@ -76,7 +76,7 @@ function renderElement({ prefix, isMonochrome, name, svg }) {
       }
     
       render() {
-        return html\`${svg}\`;
+        return html\`<div aria-hidden="true">${svg}</div>\`;
       }
     }
 

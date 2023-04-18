@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "c2pa": "workspace:*",
+    "c2pa-wc": "workspace:*",
     "fast-glob": "~3.2.11"
   }
 }

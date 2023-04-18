@@ -8,7 +8,7 @@
  */
 
 import debug from 'debug';
-import { SdkWorkerPool } from './workerPool';
+import { SdkWorkerPool } from './poolWrapper';
 
 const dbg = debug('c2pa:wasm');
 
@@ -22,12 +22,14 @@ export async function fetchWasm(
   pool: SdkWorkerPool,
   binaryUrl: string,
 ): Promise<WebAssembly.Module> {
-  const integrity = process.env.TOOLKIT_INTEGRITY as any;
+  const integrity = TOOLKIT_INTEGRITY;
   const wasmIntegrity = integrity?.['toolkit_bg.wasm'];
-  dbg('Fetching WASM binary from url %s', binaryUrl, { expectedIntegrity: wasmIntegrity });
+  dbg('Fetching WASM binary from url %s', binaryUrl, {
+    expectedIntegrity: wasmIntegrity,
+  });
 
   const response = await fetch(binaryUrl, {
-    integrity: wasmIntegrity
+    integrity: wasmIntegrity,
   });
   const buffer = await response.arrayBuffer();
 

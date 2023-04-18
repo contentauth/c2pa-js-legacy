@@ -1,6 +1,20 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Wed, 08 Mar 2023 01:47:53 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Mar 2023 18:52:56 GMT and should not be manually modified.
+
+## 0.9.10
+Wed, 22 Mar 2023 18:52:56 GMT
+
+### Patches
+
+- Adds the new `--weak-refs` flag now available in [wasm-pack 0.11.0](https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#-fixes) for more reliable memory cleanup (`--reference-types` causes a memory access error in Safari, so that was not added)
+
+## 0.9.9
+Tue, 14 Mar 2023 16:35:49 GMT
+
+### Patches
+
+- Fix builds on Windows platforms
 
 ## 0.9.8
 Wed, 08 Mar 2023 01:47:53 GMT

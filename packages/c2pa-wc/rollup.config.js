@@ -20,7 +20,7 @@ import postcss from 'rollup-plugin-postcss';
 const litSvg = require('./etc/rollup/plugins/lit-svg.cjs');
 
 const developmentMode = process.env.ROLLUP_WATCH === 'true';
-const basePath = path.resolve(__dirname);
+const basePath = path.resolve(__dirname).replace(/\\/g, '/');
 const banner = `
 /*!*************************************************************************
  * Copyright 2021 Adobe
@@ -50,7 +50,12 @@ export default merge(baseConfig, {
     minifyInternalExports: false,
     entryFileNames: (chunk) => {
       if (chunk.isEntry) {
-        const relPath = path.relative(basePath, chunk.facadeModuleId);
+        // It is important to convert the Window's path separator character, '\',
+        // to forward slashes instead for the directory resolution to work
+        // correctly.
+        const relPath = path
+          .relative(basePath, chunk.facadeModuleId)
+          .replace(/\\/g, '/');
         const withoutPrefix = relPath
           .replace(/^src\//, '')
           .replace(/^assets\/svg\//, 'icons/');

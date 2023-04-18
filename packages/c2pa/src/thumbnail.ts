@@ -35,6 +35,10 @@ export function createThumbnail(
   resourceStore: ResourceStore,
   resourceReference: ResourceReference,
 ): Thumbnail | null {
+  if (!resourceStore || !resourceReference) {
+    return null;
+  }
+
   const blob = getResourceAsBlob(resourceStore, resourceReference);
 
   if (!blob) {

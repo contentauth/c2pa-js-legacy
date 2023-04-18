@@ -1,6 +1,60 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Wed, 08 Mar 2023 01:47:53 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Apr 2023 20:32:47 GMT and should not be manually modified.
+
+## 0.11.1
+Tue, 11 Apr 2023 20:32:47 GMT
+
+### Patches
+
+- Adding an aria-hidden tag around svgs since logos are decorative and should be left out of the AT reading order
+
+## 0.11.0
+Fri, 31 Mar 2023 18:34:40 GMT
+
+### Minor changes
+
+- Add ContentSummary section
+- Display formatted generator string
+
+## 0.10.16
+Thu, 30 Mar 2023 16:18:58 GMT
+
+_Version update only_
+
+## 0.10.15
+Thu, 23 Mar 2023 18:22:59 GMT
+
+### Patches
+
+- Add error state to ManifestSummary and MinimumViableProvenance components
+
+## 0.10.14
+Wed, 22 Mar 2023 18:52:56 GMT
+
+_Version update only_
+
+## 0.10.13
+Tue, 14 Mar 2023 23:02:41 GMT
+
+_Version update only_
+
+## 0.10.12
+Tue, 14 Mar 2023 16:35:49 GMT
+
+### Patches
+
+- Fix builds on Windows platforms
+
+## 0.10.11
+Mon, 13 Mar 2023 22:23:10 GMT
+
+_Version update only_
+
+## 0.10.10
+Thu, 09 Mar 2023 23:41:40 GMT
+
+_Version update only_
 
 ## 0.10.9
 Wed, 08 Mar 2023 01:47:53 GMT

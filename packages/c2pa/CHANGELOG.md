@@ -1,6 +1,60 @@
 # Change Log - c2pa
 
-This log was last generated on Wed, 08 Mar 2023 01:47:53 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Mar 2023 18:34:40 GMT and should not be manually modified.
+
+## 0.15.0
+Fri, 31 Mar 2023 18:34:40 GMT
+
+### Minor changes
+
+- Add generativeInfo to createL2ManifestStore
+- Add selectFormattedGenerator and include in createL2ManifestStore
+
+## 0.14.5
+Thu, 30 Mar 2023 16:18:58 GMT
+
+### Patches
+
+- Added new c2pa icons and mapped them to their ids
+- Fix `selectEditsAndActivity` issues with embedded translations introduced in [C2PA 1.2 spec](https://c2pa.org/specifications/specifications/1.2/specs/C2PA_Specification.html#_metadata_about_assertions)
+
+## 0.14.4
+Wed, 22 Mar 2023 18:52:56 GMT
+
+### Patches
+
+- Fixes error on `read` that would get triggered if an ingredient doesn't have a thumbnail
+- Allows assets that have invalid JUMBF box to have their sources passed through to the client during a `read` request instead instead of throwing an error so that the asset can still be displayed
+- Fixes TypeScript errors by updating our `target` to `es2017` to use some newer (but widely supported) JavaScript APIs, as well as removing `process.env` in favor of a constant for the integrity logic
+
+## 0.14.3
+Tue, 14 Mar 2023 23:02:41 GMT
+
+### Patches
+
+- Use self over window to support non-browser contexts
+
+## 0.14.2
+Tue, 14 Mar 2023 16:35:49 GMT
+
+### Patches
+
+- Fix builds on Windows platforms
+
+## 0.14.1
+Mon, 13 Mar 2023 22:23:10 GMT
+
+### Patches
+
+- Disable downloader inspection by default
+- Fix worker src CORS
+
+## 0.14.0
+Thu, 09 Mar 2023 23:41:40 GMT
+
+### Minor changes
+
+- Replace workerpool implementation to remove insecure eval statements
 
 ## 0.13.4
 Wed, 08 Mar 2023 01:47:53 GMT

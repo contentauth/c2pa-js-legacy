@@ -2,6 +2,127 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.11.1",
+      "tag": "c2pa-wc_v0.11.1",
+      "date": "Tue, 11 Apr 2023 20:32:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding an aria-hidden tag around svgs since logos are decorative and should be left out of the AT reading order"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "c2pa-wc_v0.11.0",
+      "date": "Fri, 31 Mar 2023 18:34:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add ContentSummary section"
+          },
+          {
+            "comment": "Display formatted generator string"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.15.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.16",
+      "tag": "c2pa-wc_v0.10.16",
+      "date": "Thu, 30 Mar 2023 16:18:58 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.14.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.15",
+      "tag": "c2pa-wc_v0.10.15",
+      "date": "Thu, 23 Mar 2023 18:22:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add error state to ManifestSummary and MinimumViableProvenance components"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.14",
+      "tag": "c2pa-wc_v0.10.14",
+      "date": "Wed, 22 Mar 2023 18:52:56 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.14.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.13",
+      "tag": "c2pa-wc_v0.10.13",
+      "date": "Tue, 14 Mar 2023 23:02:41 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.14.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.12",
+      "tag": "c2pa-wc_v0.10.12",
+      "date": "Tue, 14 Mar 2023 16:35:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix builds on Windows platforms"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.14.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.11",
+      "tag": "c2pa-wc_v0.10.11",
+      "date": "Mon, 13 Mar 2023 22:23:10 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.14.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.10",
+      "tag": "c2pa-wc_v0.10.10",
+      "date": "Thu, 09 Mar 2023 23:41:40 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.14.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.10.9",
       "tag": "c2pa-wc_v0.10.9",
       "date": "Wed, 08 Mar 2023 01:47:53 GMT",

@@ -2,6 +2,33 @@
   "name": "@contentauth/detector",
   "entries": [
     {
+      "version": "0.3.5",
+      "tag": "@contentauth/detector_v0.3.5",
+      "date": "Wed, 22 Mar 2023 18:52:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds the new `--weak-refs` and `--reference-types` flags now available in [wasm-pack 0.11.0](https://github.com/rustwasm/wasm-pack/blob/mast"
+          },
+          {
+            "comment": "Remove dependency on [wee_alloc](https://github.com/rustwasm/wee_alloc) since it is unmaintained and has a reported memory leak"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.4",
+      "tag": "@contentauth/detector_v0.3.4",
+      "date": "Tue, 14 Mar 2023 16:35:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix builds on Windows platforms"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.3",
       "tag": "@contentauth/detector_v0.3.3",
       "date": "Tue, 15 Nov 2022 19:56:02 GMT",
