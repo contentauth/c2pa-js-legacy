@@ -7,7 +7,7 @@
  * it.
  */
 
-import { LitElement, html, css, nothing, TemplateResult } from 'lit';
+import { LitElement, TemplateResult, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { defaultStyles } from '../../styles';
 
@@ -17,6 +17,7 @@ import '../../../assets/svg/color/logos/behance.svg';
 import '../../../assets/svg/color/logos/cai.svg';
 import '../../../assets/svg/color/logos/facebook.svg';
 import '../../../assets/svg/color/logos/instagram.svg';
+import '../../../assets/svg/color/logos/lightroom.svg';
 import '../../../assets/svg/color/logos/photoshop.svg';
 import '../../../assets/svg/color/logos/truepic.svg';
 import '../../../assets/svg/color/logos/twitter.svg';
@@ -64,6 +65,10 @@ export class Icon extends LitElement {
     {
       pattern: /twitter\.com/i,
       icon: html`<cai-icon-twitter></cai-icon-twitter>`,
+    },
+    {
+      pattern: /lightroom/i,
+      icon: html`<cai-icon-lightroom></cai-icon-lightroom>`,
     },
   ];
 
