@@ -9,7 +9,7 @@
 
 import type { Manifest } from '../manifest';
 
-declare module '../../index' {
+declare module '../assertions' {
   interface ExtendedAssertions {
     'com.adobe.generative-ai': {
       description: string;
