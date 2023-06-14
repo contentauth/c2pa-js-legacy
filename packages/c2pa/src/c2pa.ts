@@ -11,11 +11,12 @@ import { ToolkitError } from '@contentauth/toolkit';
 import debug from 'debug';
 import { ensureCompatibility } from './lib/browser';
 import { Downloader, DownloaderOptions } from './lib/downloader';
+import { InvalidInputError } from './lib/error';
 import { WorkerPoolConfig } from './lib/pool/workerPool';
-import { createPoolWrapper, SdkWorkerPool } from './lib/poolWrapper';
+import { SdkWorkerPool, createPoolWrapper } from './lib/poolWrapper';
 import { fetchWasm } from './lib/wasm';
-import { createManifestStore, ManifestStore } from './manifestStore';
-import { C2paSourceType, createSource, Source } from './source';
+import { ManifestStore, createManifestStore } from './manifestStore';
+import { C2paSourceType, Source, createSource } from './source';
 
 const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
@@ -267,14 +268,18 @@ async function fetchRemoteManifest(
     const url = new URL(manifestUrl);
     dbg('Fetching remote manifest from', url);
 
+    if (!source.blob) {
+      dbg('No blob found on source, skipping remote manifest loading', source);
+      throw new InvalidInputError();
+    }
+
     const manifestBytes = await fetch(url.toString());
     const manifestBlob = await manifestBytes.blob();
     const manifestBuffer = await manifestBlob.arrayBuffer();
-    const sourceBuffer = await source.arrayBuffer();
     const result = await pool.getReportFromAssetAndManifestBuffer(
       wasm,
       manifestBuffer,
-      sourceBuffer,
+      source.blob,
     );
 
     return createManifestStore(result);

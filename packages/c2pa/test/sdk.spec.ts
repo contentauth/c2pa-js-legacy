@@ -1,4 +1,4 @@
-import { createC2pa, C2paReadResult } from '../';
+import { C2paReadResult, createC2pa } from '../';
 
 interface TestContext {
   result: C2paReadResult;
@@ -50,6 +50,8 @@ describe('c2pa', function () {
               'xmp:iid:8dc9aa07-6920-40b7-b6bc-0638b8414141',
             );
             expect(activeManifest?.signatureInfo).toEqual({
+              cert_serial_number:
+                '625534260363177462480876791874889527700529350752',
               issuer: 'Adobe, Inc.',
               time: '2022-04-20T22:44:41+00:00',
             });
@@ -187,7 +189,11 @@ describe('c2pa', function () {
             const { assertions } = this.result.manifestStore?.activeManifest!;
 
             expect(assertions.data).toEqual([
-              { label: 'adobe.beta', data: { version: '0.12.5' } },
+              {
+                label: 'adobe.beta',
+                data: { version: '0.12.5' },
+                kind: 'Json',
+              },
               {
                 label: 'stds.schema-org.CreativeWork',
                 data: {
@@ -203,16 +209,7 @@ describe('c2pa', function () {
                 data: {
                   url: 'https://cai-assertions.adobe.com/photoshop/dictionary.json',
                 },
-              },
-              {
-                label: 'c2pa.hash.data',
-                data: {
-                  alg: 'sha256',
-                  exclusions: jasmine.any(Array),
-                  hash: jasmine.any(Array),
-                  name: 'jumbf manifest',
-                  pad: jasmine.any(Array),
-                },
+                kind: 'Json',
               },
             ] as any);
           });

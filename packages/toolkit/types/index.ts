@@ -53,6 +53,7 @@ export interface Ingredient extends ResourceParent {
 export interface SignatureInfo {
   issuer?: string;
   time?: string;
+  cert_serial_number?: string;
 }
 
 export interface Manifest extends ResourceParent {

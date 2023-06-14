@@ -15,9 +15,10 @@ pub async fn get_manifest_store_data(data: &[u8], mime_type: &str) -> Result<Man
 
 pub async fn get_manifest_store_data_from_manifest_and_asset_bytes(
     manifest_bytes: &[u8],
+    format: &str,
     asset_bytes: &[u8],
 ) -> Result<ManifestStore> {
-    ManifestStore::from_manifest_and_asset_bytes_async(manifest_bytes, asset_bytes)
+    ManifestStore::from_manifest_and_asset_bytes_async(manifest_bytes, format, asset_bytes)
         .await
         .map_err(Error::from)
 }

@@ -13,7 +13,7 @@ export function getResourceAsBlob(
   store: ResourceStore,
   reference: ResourceReference,
 ) {
-  const { content_type: type, identifier } = reference;
+  const { format: type, identifier } = reference;
   const data = store.resources?.[identifier];
 
   if (data) {

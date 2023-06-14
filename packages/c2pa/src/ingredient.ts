@@ -7,12 +7,12 @@
  * it.
  */
 import {
-  Ingredient as ToolkitIngredient,
   Metadata,
+  Ingredient as ToolkitIngredient,
   ValidationStatus,
 } from '@contentauth/toolkit';
 import { Manifest } from './manifest';
-import { createThumbnail, Thumbnail } from './thumbnail';
+import { Thumbnail, createThumbnail } from './thumbnail';
 
 export interface Ingredient {
   /**
@@ -88,7 +88,7 @@ export function createIngredient(
     instanceId: ingredientData.instance_id,
     provenance: ingredientData.provenance ?? null,
     hash: ingredientData.hash ?? null,
-    isParent: ingredientData.is_parent ?? false,
+    isParent: ingredientData.relationship === 'parentOf',
     validationStatus: ingredientData.validation_status ?? [],
     metadata: ingredientData.metadata ?? null,
     manifest: manifest ?? null,
