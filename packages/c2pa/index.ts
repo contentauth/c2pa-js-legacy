@@ -47,7 +47,10 @@ export {
   parseGenerator,
   selectFormattedGenerator,
 } from './src/selectors/selectFormattedGenerator';
-export { selectGenerativeInfo } from './src/selectors/selectGenerativeInfo';
+export {
+  GenerativeInfo,
+  selectGenerativeInfo,
+} from './src/selectors/selectGenerativeInfo';
 export { selectProducer } from './src/selectors/selectProducer';
 export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';
 export { C2paSourceType, Source, SourceMetadata } from './src/source';
