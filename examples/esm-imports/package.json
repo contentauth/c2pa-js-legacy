@@ -7,6 +7,6 @@
     "build": ""
   },
   "dependencies": {
-    "serve": "^13.0.2"
+    "serve": "^13.0.4"
   }
 }

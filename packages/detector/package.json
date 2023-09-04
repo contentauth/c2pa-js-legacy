@@ -25,7 +25,7 @@
     "clean": "rimraf ./pkg"
   },
   "devDependencies": {
-    "nodemon": "~2.0.16",
-    "rimraf": "^4.1.2"
+    "nodemon": "~2.0.22",
+    "rimraf": "^4.4.1"
   }
 }

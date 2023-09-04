@@ -8,13 +8,13 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "typescript": "~4.6.3",
-    "vite": "^3.0.4",
-    "date-fns": "^2.24.0"
+    "date-fns": "^2.30.0",
+    "typescript": "4.7.4",
+    "vite": "^3.2.7"
   },
   "dependencies": {
     "c2pa": "workspace:*",
     "c2pa-wc": "workspace:*",
-    "fast-glob": "~3.2.11"
+    "fast-glob": "~3.2.12"
   }
 }

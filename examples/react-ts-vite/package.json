@@ -11,16 +11,16 @@
     "@contentauth/react": "workspace:*",
     "c2pa": "workspace:*",
     "c2pa-wc": "workspace:*",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
-    "@types/react": "^16.13.1",
-    "@types/react-dom": "^16.9.9",
-    "@vitejs/plugin-react": "^1.1.0",
-    "postcss": "~8.4.12",
-    "postcss-nesting": "^10.0.2",
-    "typescript": "~4.6.3",
-    "vite": "^3.0.4"
+    "@types/react": "^16.14.43",
+    "@types/react-dom": "^16.9.19",
+    "@vitejs/plugin-react": "^1.3.2",
+    "postcss": "~8.4.26",
+    "postcss-nesting": "^10.2.0",
+    "typescript": "4.7.4",
+    "vite": "^3.2.7"
   }
 }
