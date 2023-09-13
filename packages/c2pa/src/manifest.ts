@@ -9,13 +9,13 @@
 
 import {
   Credential,
-  Manifest as ToolkitManifest,
   SignatureInfo,
+  Manifest as ToolkitManifest,
 } from '@contentauth/toolkit';
 import { AssertionAccessor, createAssertionAccessor } from './assertions';
-import { createIngredient, Ingredient } from './ingredient';
+import { Ingredient, createIngredient } from './ingredient';
 import { ManifestMap } from './manifestStore';
-import { createThumbnail, Thumbnail } from './thumbnail';
+import { Thumbnail, createThumbnail } from './thumbnail';
 
 export interface Manifest {
   /**

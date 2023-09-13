@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es2020"
   },
   "include": ["**/*"],
   "exclude": ["dist/**/*", "test/**/*"]

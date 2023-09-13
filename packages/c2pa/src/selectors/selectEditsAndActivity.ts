@@ -7,7 +7,7 @@
  * it.
  */
 
-import { Action, C2paActionsAssertion } from '@contentauth/toolkit';
+import { ActionV1, C2paActionsAssertion } from '@contentauth/toolkit';
 import debug from 'debug';
 import each from 'lodash/each';
 import compact from 'lodash/fp/compact';
@@ -146,7 +146,7 @@ export async function selectEditsAndActivity(
 }
 
 async function getPhotoshopCategorizedActions(
-  actions: Action[],
+  actions: ActionV1[],
   dictionaryUrl: string,
   locale = DEFAULT_LOCALE,
   iconVariant: IconVariant = 'dark',
@@ -170,7 +170,7 @@ async function getPhotoshopCategorizedActions(
   return categories;
 }
 
-interface AdobeCompatAction extends Action {
+interface AdobeCompatAction extends ActionV1 {
   action: string;
   parameters: {
     name: never;

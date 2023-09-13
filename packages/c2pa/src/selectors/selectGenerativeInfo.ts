@@ -8,7 +8,7 @@
  */
 
 import type {
-  Action,
+  ActionV1,
   Assertion,
   C2paActionsAssertion,
   ManifestAssertion,
@@ -39,7 +39,7 @@ export type GenAiAssertion = ManifestAssertion | LegacyAssertion;
 
 export interface GenerativeInfo {
   assertion: GenAiAssertion;
-  action?: Action;
+  action?: ActionV1;
   type:
     | 'legacy'
     | 'trainedAlgorithmicMedia'
@@ -75,7 +75,7 @@ export function selectGenerativeInfo(manifest: Manifest): GenerativeInfo[] {
       if (assertion.label === 'c2pa.actions') {
         const { actions } = (assertion as C2paActionsAssertion).data;
         const genAiActions: GenerativeInfo[] = actions.reduce<GenerativeInfo[]>(
-          (actionAcc, action: Action) => {
+          (actionAcc, action: ActionV1) => {
             const { digitalSourceType } = action;
             if (
               digitalSourceType &&

@@ -8,12 +8,13 @@
  */
 
 import {
-  ManifestStore as ToolkitManifestStore,
   Manifest as ToolkitManifest,
+  ManifestStore as ToolkitManifestStore,
   ValidationStatus,
 } from '@contentauth/toolkit';
-import { createManifest, Manifest } from './manifest';
 import debug from 'debug';
+import traverse from 'traverse';
+import { Manifest, createManifest } from './manifest';
 
 export interface ManifestStore {
   /**
@@ -43,6 +44,36 @@ type ManifestStackData = {
 
 const dbg = debug('c2pa:manifestStore');
 
+const SERDE_ARBITRARY_PRECISION_KEY = '$serde_json::private::Number';
+
+/**
+ * Since the integration of #107 (specifically adding `arbitrary_precision`),
+ * some JSON values may have a `SERDE_ARBITRARY_PRECISION_KEY` that signals
+ * that the string value is really a number. We should either change this to a
+ * number or BigInt so that we can work with this without downstream clients
+ * having to deal with the implementation details.
+ *
+ * @param manifestStoreData
+ */
+function parseJsonTypeHints(
+  manifestStoreData: ToolkitManifestStore,
+): ToolkitManifestStore {
+  return traverse(manifestStoreData).forEach(function (x) {
+    if (
+      typeof x === 'object' &&
+      x.constructor === Object &&
+      x.hasOwnProperty(SERDE_ARBITRARY_PRECISION_KEY)
+    ) {
+      const val = x[SERDE_ARBITRARY_PRECISION_KEY];
+      if (val > Number.MAX_SAFE_INTEGER) {
+        this.update(BigInt(val));
+      } else {
+        this.update(parseInt(val, 10));
+      }
+    }
+  });
+}
+
 /**
  * Creates a facade object with convenience methods over manifest store data returned from the toolkit.
  *
@@ -52,7 +83,7 @@ const dbg = debug('c2pa:manifestStore');
 export function createManifestStore(
   manifestStoreData: ToolkitManifestStore,
 ): ManifestStore {
-  const manifests = createManifests(manifestStoreData);
+  const manifests = createManifests(parseJsonTypeHints(manifestStoreData));
 
   return {
     manifests,
