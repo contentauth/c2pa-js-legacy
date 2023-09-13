@@ -8,8 +8,8 @@
  */
 
 import { Downloader } from './lib/downloader';
-import { Validator } from './lib/validator';
 import { InvalidMimeTypeError } from './lib/error';
+import { Validator } from './lib/validator';
 import {
   createThumbnailFromBlob,
   createThumbnailFromUrl,
