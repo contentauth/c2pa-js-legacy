@@ -3,7 +3,7 @@ const sampleImage =
 
 (async () => {
   // Information about where to fetch the library
-  const version = '0.10.1';
+  const version = '0.17.2';
   const libraryUrl = `https://cdn.jsdelivr.net/npm/c2pa@${version}/+esm`;
 
   // Initialize the c2pa-js SDK
