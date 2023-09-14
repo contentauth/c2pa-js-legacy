@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add support for serde arbitrary values, additional file types, fix generative parsing bug",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}

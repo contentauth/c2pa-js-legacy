@@ -59,7 +59,7 @@ export function selectGenerativeInfo(manifest: Manifest): GenerativeInfo[] {
       if (assertion.label === 'com.adobe.generative-ai') {
         const { description, version } = (assertion as LegacyAssertion).data;
         const softwareAgent = [description, version]
-          .map((x) => x.trim())
+          .map((x) => x?.trim() ?? '')
           .join(' ');
         return [
           ...acc,
