@@ -9,7 +9,7 @@
     <div>Please view the console</div>
 
     <script type="module">
-      import { createC2pa } from 'https://cdn.jsdelivr.net/npm/c2pa@0.11.1/+esm';
+      import { createC2pa } from 'https://cdn.jsdelivr.net/npm/c2pa@0.17.2/+esm';
 
       const sampleImage =
         'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
@@ -18,9 +18,9 @@
         // Initialize the c2pa-js SDK
         const c2pa = await createC2pa({
           wasmSrc:
-            'https://cdn.jsdelivr.net/npm/c2pa@0.11.1/dist/assets/wasm/toolkit_bg.wasm',
+            'https://cdn.jsdelivr.net/npm/c2pa@0.17.2/dist/assets/wasm/toolkit_bg.wasm',
           workerSrc:
-            'https://cdn.jsdelivr.net/npm/c2pa@0.11.1/dist/c2pa.worker.min.js',
+            'https://cdn.jsdelivr.net/npm/c2pa@0.17.2/dist/c2pa.worker.min.js',
         });
 
         try {
