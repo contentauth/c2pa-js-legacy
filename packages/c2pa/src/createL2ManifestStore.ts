@@ -42,7 +42,7 @@ export interface L2ManifestStore {
   socialAccounts: L2SocialAccount[] | null;
   thumbnail: string | null;
   editsAndActivity: L2EditsAndActivity[] | null;
-  generativeInfo: GenerativeInfo | null;
+  generativeInfo: GenerativeInfo[] | null;
   isBeta: boolean;
   error: ErrorStatus;
   validationStatus: ValidationStatus[];

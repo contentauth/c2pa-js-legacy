@@ -52,8 +52,10 @@ export interface GenerativeInfo {
  *
  * @param manifest - Manifest to derive data from
  */
-export function selectGenerativeInfo(manifest: Manifest): GenerativeInfo[] {
-  return manifest.assertions.data.reduce<GenerativeInfo[]>(
+export function selectGenerativeInfo(
+  manifest: Manifest,
+): GenerativeInfo[] | null {
+  const data = manifest.assertions.data.reduce<GenerativeInfo[]>(
     (acc, assertion: Assertion<any, any>) => {
       // Check for legacy assertion
       if (assertion.label === 'com.adobe.generative-ai') {
@@ -101,4 +103,6 @@ export function selectGenerativeInfo(manifest: Manifest): GenerativeInfo[] {
     },
     [],
   );
+
+  return data.length ? data : null;
 }
