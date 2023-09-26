@@ -113,7 +113,7 @@ describe('selectGenerativeInfo', function () {
       expect(manifest).not.toBeNull();
       if (manifest) {
         const genAssertions = selectGenerativeInfo(manifest);
-        expect(genAssertions).toEqual([]);
+        expect(genAssertions).toEqual(null);
       }
     });
   });
