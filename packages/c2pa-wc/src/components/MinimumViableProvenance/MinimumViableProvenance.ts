@@ -108,7 +108,6 @@ export class MinimumViableProvenance extends Configurable(
         <cai-thumbnail
           class="minimum-viable-provenance-thumbnail"
           src=${this.manifestStore?.thumbnail}
-          badge=${getBadgeFromManifestStore(this.manifestStore)}
         ></cai-thumbnail>
         <div class=${classMap(mvpClasses)}>
           <cai-icon
