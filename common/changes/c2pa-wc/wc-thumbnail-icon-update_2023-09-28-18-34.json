@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Remove badge from minimum viable provenance thumbnail",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
