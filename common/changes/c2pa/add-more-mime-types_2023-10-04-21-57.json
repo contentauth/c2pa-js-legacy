@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add MIME type for MP3",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}

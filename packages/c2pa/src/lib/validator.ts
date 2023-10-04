@@ -25,6 +25,7 @@ export class Validator {
     'application/mp4',
     'application/x-c2pa-manifest-store',
     'audio/mp4',
+    'audio/mpeg',
     'audio/vnd.wave',
     'audio/wav',
     'audio/x-wav',
