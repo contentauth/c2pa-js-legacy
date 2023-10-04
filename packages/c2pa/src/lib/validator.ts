@@ -21,8 +21,13 @@ const dbg = debug('c2pa:Validator');
  */
 export class Validator {
   static readonly VALID_MIME_TYPES = [
+    'application/c2pa',
     'application/mp4',
     'application/x-c2pa-manifest-store',
+    'audio/mp4',
+    'audio/vnd.wave',
+    'audio/wav',
+    'audio/x-wav',
     'image/avif',
     'image/heic',
     'image/heif',
