@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Add type for claim_generator_info",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}
