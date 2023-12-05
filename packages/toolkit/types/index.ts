@@ -56,10 +56,16 @@ export interface SignatureInfo {
   cert_serial_number?: string;
 }
 
+export interface ClaimGeneratorInfo {
+  name: string;
+  version: string;
+}
+
 export interface Manifest extends ResourceParent {
   vendor?: string;
   claim_generator: string;
   claim_generator_hints?: Record<string, unknown>;
+  claim_generator_info?: ClaimGeneratorInfo[];
   title: string;
   format: string;
   instance_id: string;

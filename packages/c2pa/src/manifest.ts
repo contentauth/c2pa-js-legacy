@@ -10,6 +10,7 @@
 import {
   Credential,
   SignatureInfo,
+  ClaimGeneratorInfo,
   Manifest as ToolkitManifest,
 } from '@contentauth/toolkit';
 import { AssertionAccessor, createAssertionAccessor } from './assertions';
@@ -38,6 +39,7 @@ export interface Manifest {
    */
   claimGenerator: string;
   claimGeneratorHints: Record<string, unknown> | null;
+  claimGeneratorInfo: ClaimGeneratorInfo[];
 
   /**
    * Instance ID from `xmpMM:InstanceID` in XMP metadata.
@@ -105,6 +107,7 @@ export function createManifest(
     vendor: manifestData.vendor ?? null,
     claimGenerator: manifestData.claim_generator,
     claimGeneratorHints: manifestData.claim_generator_hints ?? null,
+    claimGeneratorInfo: manifestData.claim_generator_info ?? [],
     instanceId: manifestData.instance_id,
     signatureInfo: manifestData.signature_info ?? null,
     credentials: manifestData.credentials ?? [],
