@@ -5,10 +5,24 @@
 // accordance with the terms of the Adobe license agreement accompanying
 // it.
 use crate::error::{Error, Result};
-use c2pa::ManifestStore;
+use c2pa::{ManifestStore, ManifestStoreOptions};
+
+fn get_options() -> ManifestStoreOptions<'static> {
+    let anchors = include_bytes!("../trust/trust_anchors.pem");
+    let config = include_bytes!("../trust/store.cfg");
+
+    ManifestStoreOptions {
+        verify: true,
+        anchors: Some(anchors),
+        private_anchors: None,
+        config: Some(config),
+        data_dir: None,
+    }
+}
 
 pub async fn get_manifest_store_data(data: &[u8], mime_type: &str) -> Result<ManifestStore> {
-    ManifestStore::from_bytes_async(mime_type, data, true)
+    let options = get_options();
+    ManifestStore::from_bytes_async(mime_type, data, &options)
         .await
         .map_err(Error::from)
 }
@@ -18,9 +32,15 @@ pub async fn get_manifest_store_data_from_manifest_and_asset_bytes(
     format: &str,
     asset_bytes: &[u8],
 ) -> Result<ManifestStore> {
-    ManifestStore::from_manifest_and_asset_bytes_async(manifest_bytes, format, asset_bytes)
-        .await
-        .map_err(Error::from)
+    let options = get_options();
+    ManifestStore::from_manifest_and_asset_bytes_async(
+        manifest_bytes,
+        format,
+        asset_bytes,
+        &options,
+    )
+    .await
+    .map_err(Error::from)
 }
 
 #[cfg(test)]
