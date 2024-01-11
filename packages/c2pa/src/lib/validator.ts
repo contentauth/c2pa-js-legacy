@@ -39,6 +39,8 @@ export class Validator {
     'image/webp',
     'image/x-adobe-dng',
     'video/mp4',
+    'video/x-msvideo',
+    'application/pdf',
   ];
 
   static readonly DEFAULT_DETECTION_LENGTH = 65535;
