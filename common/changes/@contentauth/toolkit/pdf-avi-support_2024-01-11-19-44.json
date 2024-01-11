@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Update c2pa-rs version for PDF/AVI support",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

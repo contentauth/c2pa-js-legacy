@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Support AVI and PDF",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
