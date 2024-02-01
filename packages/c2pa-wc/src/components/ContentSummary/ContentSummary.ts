@@ -13,6 +13,7 @@ import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection'
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import defaultStringMap from './ContentSummary.str.json';
 
+import { GenerativeInfo } from 'c2pa';
 import '../../../assets/svg/monochrome/generic-info.svg';
 import '../Icon';
 import '../PanelSection';
@@ -37,9 +38,24 @@ const defaultConfig: ContentSummaryConfig = {
   stringMap: defaultStringMap,
 };
 
+function selectGenerativeType(generativeInfo: GenerativeInfo[]) {
+  const result =
+    // Try to see if we have any composite assertions
+    generativeInfo.find(
+      (assertion) => assertion.type === 'compositeWithTrainedAlgorithmicMedia',
+      // If not, fall back to whichever one the first item is, which should be the trained or legacy assertion
+    ) ?? generativeInfo[0];
+
+  console.log('result', result);
+  return result?.type ?? null;
+}
+
 @customElement('cai-content-summary')
 export class ContentSummary extends ConfigurablePanelSection(LitElement, {
-  dataSelector: (manifestStore) => manifestStore?.generativeInfo,
+  dataSelector: (manifestStore) =>
+    manifestStore?.generativeInfo
+      ? selectGenerativeType(manifestStore?.generativeInfo)
+      : null,
   config: defaultConfig,
 }) {
   static get styles() {
@@ -62,14 +78,20 @@ export class ContentSummary extends ConfigurablePanelSection(LitElement, {
 
   render() {
     return this.renderSection(html`<cai-panel-section
-      header=${this._config.stringMap['content-summary.header']}
       helpText=${this._config.stringMap['content-summary.helpText']}
     >
-      <div class="section-icon-content">
-        <cai-icon-generic-info></cai-icon-generic-info>
-        <span>
-          ${this._config.stringMap['content-summary.content.aiGenerated']}
-        </span>
+      <div class="section-icon-content" slot="content">
+        ${this._data === 'compositeWithTrainedAlgorithmicMedia'
+          ? html`
+              <span>
+                ${this._config.stringMap['content-summary.content.composite']}
+              </span>
+            `
+          : html`
+              <span>
+                ${this._config.stringMap['content-summary.content.aiGenerated']}
+              </span>
+            `}
       </div>
     </cai-panel-section>`);
   }

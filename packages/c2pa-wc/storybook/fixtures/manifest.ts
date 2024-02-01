@@ -8,8 +8,8 @@
  */
 
 // @ts-ignore
-import thumbnailUrl from './manifest-thumbnail.jpg?url';
 import { L2ManifestStore } from 'c2pa';
+import thumbnailUrl from './manifest-thumbnail.jpg?url';
 
 export default {
   ingredients: [
@@ -84,6 +84,43 @@ export default {
       description: 'Changed size, orientation, direction, or position',
     },
   ],
+  generativeInfo: [
+    {
+      assertion: {
+        label: 'c2pa.actions',
+        data: {
+          actions: [
+            {
+              action: 'c2pa.created',
+              digitalSourceType:
+                'https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+              softwareAgent: 'Adobe Firefly',
+            },
+          ],
+        },
+      },
+      type: 'trainedAlgorithmicMedia',
+      softwareAgent: 'Adobe Firefly',
+    },
+    {
+      assertion: {
+        label: 'c2pa.actions',
+        data: {
+          actions: [
+            {
+              action: 'c2pa.created',
+              digitalSourceType:
+                'https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+              softwareAgent: 'Adobe Firefly',
+            },
+          ],
+        },
+      },
+      type: 'compositeWithTrainedAlgorithmicMedia',
+      softwareAgent: 'Adobe Firefly',
+    },
+  ],
+
   validationStatus: [],
   error: null,
   isBeta: false,

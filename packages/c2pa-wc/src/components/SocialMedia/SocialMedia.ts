@@ -9,12 +9,12 @@
 
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import defaultStringMap from '../SocialMedia/SocialMedia.str.json';
-import { baseSectionStyles, defaultStyles } from '../../styles';
 import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
+import { baseSectionStyles, defaultStyles } from '../../styles';
+import defaultStringMap from '../SocialMedia/SocialMedia.str.json';
 
-import '../PanelSection';
 import '../Icon';
+import '../PanelSection';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -63,7 +63,6 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
         }
 
         .section-social-media-list-item-link {
-          color: var(--cai-social-media-item-color, var(--cai-primary-color));
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -74,10 +73,10 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
 
   render() {
     return this.renderSection(html`<cai-panel-section
-      header=${this._config.stringMap['social-media.header']}
       helpText=${this._config.stringMap['social-media.helpText']}
     >
-      <ul class="section-social-media-list">
+      <div slot="header">${this._config.stringMap['social-media.header']}</div>
+      <ul class="section-social-media-list" slot="content">
         ${this._data?.map(
           (socialAccount) => html`
             <li class="section-social-media-list-item">

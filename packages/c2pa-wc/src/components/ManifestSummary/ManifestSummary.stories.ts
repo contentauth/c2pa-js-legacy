@@ -7,15 +7,15 @@
  * it.
  */
 
-import { Story, Meta } from '@storybook/web-components';
+import { Meta, Story } from '@storybook/web-components';
 import { L2ManifestStore } from 'c2pa';
 import { html } from 'lit';
 import defaultManifest from '../../../storybook/fixtures/manifest';
 import '../../../storybook/themes/spectrum.css';
 
-import { ManifestSummaryConfig } from './ManifestSummary';
-import './ManifestSummary';
 import '../PanelSection';
+import './ManifestSummary';
+import { ManifestSummaryConfig } from './ManifestSummary';
 
 interface ArgTypes {
   manifestStore: L2ManifestStore;
@@ -58,7 +58,7 @@ export default {
   decorators: [
     (story) =>
       html`<div class="bg-gray-50 w-full h-screen p-8">
-        <div class="bg-white drop-shadow-xl rounded w-min">${story()}</div>
+        <div class="bg-white drop-shadow-xl rounded-lg w-min ">${story()}</div>
       </div>`,
   ],
 } as Meta;
@@ -103,18 +103,16 @@ export const AppendCustomSection: Story<ArgTypes> = ({
       view-more-url=${viewMoreUrl}
       class=${theme}
     >
-      <cai-panel-section
-        slot="pre"
-        header="Custom section"
-        helpText="This is a custom section"
-        >Number of ingredients:
+      <cai-panel-section helpText="This is a custom section">
+        <div slot="header">Custom section</div>
+        <div slot="content">pre</div>
+        Number of ingredients:
         ${manifestStore.ingredients?.length}</cai-panel-section
       >
-      <cai-panel-section
-        slot="post"
-        header="Custom section"
-        helpText="This is a custom section"
-        >Number of ingredients:
+      <cai-panel-section helpText="This is a custom section">
+        <div slot="header">Custom section</div>
+        <div slot="content">post</div>
+        Number of ingredients:
         ${manifestStore.ingredients?.length}</cai-panel-section
       >
     </cai-manifest-summary>

@@ -10,12 +10,12 @@
 import { L2ManifestStore } from 'c2pa';
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import defaultStringMap from './ProducedWith.str.json';
-import { baseSectionStyles, defaultStyles } from '../../styles';
 import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
+import { baseSectionStyles, defaultStyles } from '../../styles';
+import defaultStringMap from './ProducedWith.str.json';
 
-import '../PanelSection';
 import '../Icon';
+import '../PanelSection';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -62,10 +62,10 @@ export class ProducedWith extends ConfigurablePanelSection(LitElement, {
 
   render() {
     return this.renderSection(html` <cai-panel-section
-      header=${this._config.stringMap['produced-with.header']}
       helpText=${this._config.stringMap['produced-with.helpText']}
     >
-      <div>
+      <div slot="header">${this._config.stringMap['produced-with.header']}</div>
+      <div slot="content">
         <div class="section-produced-with-content">
           <cai-icon source="${this._data?.product}"></cai-icon>
           <span> ${this._data?.product} </span>

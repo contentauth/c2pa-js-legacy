@@ -7,4 +7,4 @@
  * it.
  */
 
-export * from './EditsAndActivity';
+export * from './HeaderSection';

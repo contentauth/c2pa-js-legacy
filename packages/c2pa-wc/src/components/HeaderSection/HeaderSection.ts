@@ -16,17 +16,17 @@ import '../Tooltip';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cai-panel-section': PanelSection;
+    'cai-header-section': PanelSection;
   }
 
   namespace JSX {
     interface IntrinsicElements {
-      'cai-panel-section': any;
+      'cai-header-section': any;
     }
   }
 }
 
-@customElement('cai-panel-section')
+@customElement('cai-header-section')
 export class PanelSection extends LitElement {
   @property({ type: String })
   header = '';
@@ -48,6 +48,7 @@ export class PanelSection extends LitElement {
         div.heading {
           display: flex;
           align-items: center;
+          justify-content: space-between;
         }
         div.heading-text {
           color: var(
@@ -65,10 +66,9 @@ export class PanelSection extends LitElement {
     return html`
       <div class="layout">
         <div class="heading">
-          <div class="heading-text"><slot name="header"></slot></div>
-          &nbsp;
-          <slot name="content"></slot>
+          <div class="heading-text">${this.header}</div>
         </div>
+        <slot></slot>
       </div>
     `;
   }

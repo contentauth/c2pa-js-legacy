@@ -10,9 +10,9 @@
 import { L2ManifestStore } from 'c2pa';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import defaultStringMap from './ProducedBy.str.json';
-import { baseSectionStyles, defaultStyles } from '../../styles';
 import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
+import { baseSectionStyles, defaultStyles } from '../../styles';
+import defaultStringMap from './ProducedBy.str.json';
 
 import '../PanelSection';
 
@@ -47,10 +47,10 @@ export class ProducedBy extends ConfigurablePanelSection(LitElement, {
 
   render() {
     return this.renderSection(html` <cai-panel-section
-      header=${this._config.stringMap['produced-by.header']}
       helpText=${this._config.stringMap['produced-by.helpText']}
     >
-      <div>${this._data}</div>
+      <div slot="header">${this._config.stringMap['produced-by.header']}</div>
+      <div slot="content">${this._data}</div>
     </cai-panel-section>`);
   }
 }
