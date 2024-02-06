@@ -128,20 +128,20 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           ) !important;
         }
 
-        #content-container > *:not(:last-child):not([empty]),
+        #content-container > *:not([empty]):not(:last-child:empty),
         ::slotted(*) {
           padding-bottom: var(--cai-manifest-summary-content-padding, 12px);
           margin-bottom: var(--cai-manifest-summary-section-spacing, 12px);
 
-          border-top-width: var(
+          border-bottom-width: var(
             --cai-manifest-summary-section-border-width,
             1px
           ) !important;
-          border-top-style: var(
+          border-bottom-style: var(
             --cai-manifest-summary-section-border-style,
             solid
           ) !important;
-          border-top-color: var(
+          border-bottom-color: var(
             --cai-manifest-summary-section-border-color,
             #e1e1e1
           ) !important;

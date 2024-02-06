@@ -19,6 +19,7 @@ export const defaultStyles = css`
     --cai-primary-color: #222222;
     --cai-secondary-color: #666666;
     --cai-button-color: #ffc840;
+    --cai-background-pill: #e5e5e5;
 
     font-family: var(--cai-font-family);
     font-size: var(--cai-font-size-base);

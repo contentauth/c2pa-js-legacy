@@ -36,6 +36,10 @@ const defaultConfig: SocialMediaConfig = {
   stringMap: defaultStringMap,
 };
 
+function truncateAdress(address: string[]) {
+  return `${address[0].slice(0, 6)}...${address[0].slice(-4)}`;
+}
+
 @customElement('cai-web3')
 export class Web3 extends ConfigurablePanelSection(LitElement, {
   dataSelector: (manifestStore) => manifestStore?.web3,
@@ -48,8 +52,9 @@ export class Web3 extends ConfigurablePanelSection(LitElement, {
       css`
         .web3-list {
           display: flex;
+
           flex-direction: column;
-          gap: 1 px;
+          gap: 7px;
           list-style: none;
           padding: 0;
           margin: 0;
@@ -57,9 +62,15 @@ export class Web3 extends ConfigurablePanelSection(LitElement, {
         }
 
         .web3-list-item {
-          padding-left: 10 px;
+          padding-left: 10px;
           display: flex;
           align-items: center;
+        }
+
+        .web3-pill {
+          background-color: #e5e5e5;
+          padding: 3px 5px 3px 5px;
+          border-radius: 20px;
         }
       `,
     ];
@@ -70,10 +81,23 @@ export class Web3 extends ConfigurablePanelSection(LitElement, {
       <div slot="header">${this._config.stringMap['web3.header']}</div>
       <div slot="content">
         <ul class="web3-list">
+          ${this._data?.ethereum
+            ? html`
+                <li class="web3-list-item">
+                  <cai-icon source="ethereum"></cai-icon>
+                  <div class="web3-pill">
+                    ${truncateAdress(this._data?.ethereum)}
+                  </div>
+                </li>
+              `
+            : nothing}
           ${this._data?.solana
             ? html`
                 <li class="web3-list-item">
-                  ${this._config.stringMap['web3.solana']}
+                  <cai-icon source="solana"></cai-icon>
+                  <div class="web3-pill">
+                    ${truncateAdress(this._data?.solana)}
+                  </div>
                 </li>
               `
             : nothing}

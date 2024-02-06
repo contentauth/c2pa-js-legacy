@@ -48,7 +48,6 @@ export class PanelSection extends LitElement {
         div.heading {
           display: flex;
           align-items: center;
-          justify-content: space-between;
         }
         div.heading-text {
           color: var(
