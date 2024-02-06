@@ -49,15 +49,16 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
       css`
         .section-social-media-list {
           display: flex;
-          flex-direction: column;
-          gap: 6px;
+          flex-direction: row;
+          gap: 1 px;
           list-style: none;
-          padding: 0;
+          padding: 0px 0px 0px 8px;
           margin: 0;
           overflow: hidden;
         }
 
         .section-social-media-list-item {
+          padding-left: 10 px;
           display: flex;
           align-items: center;
         }
@@ -80,13 +81,12 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
         ${this._data?.map(
           (socialAccount) => html`
             <li class="section-social-media-list-item">
-              <cai-icon source="${socialAccount['@id']}"></cai-icon>
               <a
                 class="section-social-media-list-item-link"
                 href=${socialAccount['@id']}
                 target="_blank"
               >
-                @${socialAccount.name}
+                <cai-icon source="${socialAccount['@id']}"></cai-icon>
               </a>
             </li>
           `,

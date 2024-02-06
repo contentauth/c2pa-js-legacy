@@ -62,6 +62,13 @@ export default {
       identifier:
         'https://cai-identity.adobe.io/identities/did:adobe:f78db44b3d758bbf1ac2b1da23d6a9bc8d4554bbc7ca6f78f5536d6cf813d218e?service=VerifiableCredentials',
     },
+    {
+      '@type': 'Person',
+      '@id': 'https://www.twitter.com/gvnpeacock',
+      name: 'gvnpeacock',
+      identifier:
+        'https://cai-identity.adobe.io/identities/did:adobe:f78db44b3d758bbf1ac2b1da23d6a9bc8d4554bbc7ca6f78f5536d6cf813d218e?service=VerifiableCredentials',
+    },
   ],
   thumbnail: thumbnailUrl,
   editsAndActivity: [
@@ -120,6 +127,10 @@ export default {
       softwareAgent: 'Adobe Firefly',
     },
   ],
+  web3: {
+    ethereum: ['0xf161c6760460e368809b74b094592ae048c5639c'],
+    solana: ['8xoTrr55FbLZ7bnoGXhXX5Yh3JWHT31MKsHNLRckn8ZA'],
+  },
 
   validationStatus: [],
   error: null,

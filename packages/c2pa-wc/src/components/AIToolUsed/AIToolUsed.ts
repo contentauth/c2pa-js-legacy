@@ -37,6 +37,7 @@ export interface AIToolUsedConfig {
 const defaultConfig: AIToolUsedConfig = {
   stringMap: defaultStringMap,
 };
+
 export function selectGenerativeSoftwareAgents(
   generativeInfo: GenerativeInfo[],
 ) {

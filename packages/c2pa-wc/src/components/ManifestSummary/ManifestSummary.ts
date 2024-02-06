@@ -16,11 +16,13 @@ import { defaultDateFormatter, hasChanged } from '../../utils';
 import type { MinimumViableProvenanceConfig } from '../MinimumViableProvenance';
 import defaultStringMap from './ManifestSummary.str.json';
 
+import '../AIToolUsed';
 import '../ContentSummary';
 import '../MinimumViableProvenance';
 import '../ProducedBy';
 import '../ProducedWith';
 import '../SocialMedia';
+import '../Web3';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -41,6 +43,8 @@ export interface ManifestSummaryConfig extends MinimumViableProvenanceConfig {
     producedWith?: boolean;
     socialMedia?: boolean;
     contentSummary?: boolean;
+    aiToolUsed?: boolean;
+    web3?: boolean;
   };
 }
 
@@ -53,6 +57,8 @@ const defaultConfig: ManifestSummaryConfig = {
     producedWith: true,
     socialMedia: true,
     contentSummary: true,
+    aiToolUsed: true,
+    web3: true,
   },
 };
 
@@ -127,15 +133,15 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           padding-bottom: var(--cai-manifest-summary-content-padding, 12px);
           margin-bottom: var(--cai-manifest-summary-section-spacing, 12px);
 
-          border-bottom-width: var(
+          border-top-width: var(
             --cai-manifest-summary-section-border-width,
             1px
           ) !important;
-          border-bottom-style: var(
+          border-top-style: var(
             --cai-manifest-summary-section-border-style,
             solid
           ) !important;
-          border-bottom-color: var(
+          border-top-color: var(
             --cai-manifest-summary-section-border-color,
             #e1e1e1
           ) !important;
@@ -157,6 +163,7 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           text-decoration: none;
           width: 100%;
           color: var(--cai-primary-color);
+          background-color: var(--cai-button-color);
         }
 
         #view-more:hover {
@@ -227,7 +234,24 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
                     ></cai-social-media>
                   `
                 : nothing}
+              ${this._config?.sections?.aiToolUsed
+                ? html`
+                    <cai-ai-tool
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-ai-tool>
+                  `
+                : nothing}
+              ${this._config?.sections?.web3
+                ? html`
+                    <cai-web3
+                      .manifestStore=${this.manifestStore}
+                      .config=${this._config}
+                    ></cai-web3>
+                  `
+                : nothing}
             `}
+
         <slot></slot>
         <slot name="post"></slot>
       </div>
