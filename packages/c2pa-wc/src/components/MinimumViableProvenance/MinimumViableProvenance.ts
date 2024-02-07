@@ -9,14 +9,13 @@
 
 import { L2ManifestStore } from 'c2pa';
 import { isValid, parseISO } from 'date-fns';
-import { css, html, LitElement, nothing } from 'lit';
+import { LitElement, css, html, nothing } from 'lit';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import defaultStringMap from './MinimumViableProvenance.str.json';
-import { defaultDateFormatter } from '../../utils';
 import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import { getBadgeFromManifestStore } from '../../badge';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { defaultDateFormatter } from '../../utils';
+import defaultStringMap from './MinimumViableProvenance.str.json';
 
 import '../PanelSection';
 
@@ -119,9 +118,10 @@ export class MinimumViableProvenance extends Configurable(
         ${!hasError
           ? html`
               <div class="minimum-viable-provenance-date">
-                ${isValid(signatureDate)
+                ${signatureDate && isValid(signatureDate)
                   ? html`${this._config?.dateFormatter(signatureDate!)}`
-                  : html`${this._config?.stringMap[
+                  : signatureDate &&
+                    html`${this._config?.stringMap[
                       'minimum-viable-provenance.invalidDate'
                     ]}`}
               </div>

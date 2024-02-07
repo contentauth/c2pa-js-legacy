@@ -8,8 +8,8 @@
  */
 
 // @ts-ignore
-import thumbnailUrl from './manifest-thumbnail.jpg?url';
 import { L2ManifestStore } from 'c2pa';
+import thumbnailUrl from './manifest-thumbnail.jpg?url';
 
 export default {
   ingredients: [
