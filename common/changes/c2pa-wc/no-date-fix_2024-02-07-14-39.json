@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Fix issue where Invalid Date would show if no signature date was found (which is optional)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
