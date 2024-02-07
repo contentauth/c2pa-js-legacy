@@ -8,3 +8,4 @@
  */
 
 export * from './Web3';
+export * from './Web3Pill';

@@ -7,17 +7,18 @@
  * it.
  */
 
-import { selectProducer } from './selectors/selectProducer';
-import { selectEditsAndActivity } from './selectors/selectEditsAndActivity';
-import { selectSocialAccounts } from './selectors/selectSocialAccounts';
-import { ManifestStore } from './manifestStore';
+import { ValidationStatus, Web3Assertion } from '@contentauth/toolkit';
 import { hasErrorStatus, hasOtgpStatus } from './lib/validationStatus';
-import { ValidationStatus } from '@contentauth/toolkit';
+import { ManifestStore } from './manifestStore';
+import { selectEditsAndActivity } from './selectors/selectEditsAndActivity';
 import { selectFormattedGenerator } from './selectors/selectFormattedGenerator';
 import {
   GenerativeInfo,
   selectGenerativeInfo,
 } from './selectors/selectGenerativeInfo';
+import { selectProducer } from './selectors/selectProducer';
+import { selectSocialAccounts } from './selectors/selectSocialAccounts';
+import { selectWeb3 } from './selectors/web3Info';
 
 declare module './assertions' {
   interface ExtendedAssertions {
@@ -43,6 +44,7 @@ export interface L2ManifestStore {
   thumbnail: string | null;
   editsAndActivity: L2EditsAndActivity[] | null;
   generativeInfo: GenerativeInfo[] | null;
+  web3: L2Web3 | null;
   isBeta: boolean;
   error: ErrorStatus;
   validationStatus: ValidationStatus[];
@@ -78,6 +80,11 @@ export interface L2SocialAccount {
   '@id': string | undefined;
   name: string;
   identifier: string;
+}
+
+export interface L2Web3 {
+  ethereum?: string[] | undefined;
+  solana?: string[] | undefined;
 }
 
 export interface L2EditsAndActivity {
@@ -167,6 +174,7 @@ export async function createL2ManifestStore(
       thumbnail: thumbnail?.url ?? null,
       isBeta: !!activeManifest.assertions.get('adobe.beta')?.[0]?.data.version,
       generativeInfo: selectGenerativeInfo(activeManifest),
+      web3: selectWeb3(activeManifest),
       error: getErrorStatus(manifestStore.validationStatus),
       validationStatus: manifestStore.validationStatus,
     },

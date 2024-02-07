@@ -165,10 +165,6 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           color: var(--cai-primary-color);
           background-color: var(--cai-button-color);
         }
-
-        #view-more:hover {
-          background-color: #eeeeee;
-        }
       `,
     ];
   }
