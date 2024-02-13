@@ -12,7 +12,6 @@ import { isValid, parseISO } from 'date-fns';
 import { LitElement, css, html, nothing } from 'lit';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { getBadgeFromManifestStore } from '../../badge';
 import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import { defaultDateFormatter } from '../../utils';
