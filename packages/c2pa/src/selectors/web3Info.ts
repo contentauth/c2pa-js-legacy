@@ -23,6 +23,6 @@
 import { L2Web3 } from '../createL2ManifestStore';
 import { Manifest } from '../manifest';
 
-export function selectWeb3(manifest: Manifest): L2Web3 {
-  return manifest.assertions.get('adobe.crypto.addresses')[0]?.data ?? {};
+export function selectWeb3(manifest: Manifest): L2Web3 | null {
+  return manifest.assertions.get('adobe.crypto.addresses')[0]?.data ?? null;
 }

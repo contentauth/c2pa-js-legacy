@@ -174,7 +174,7 @@ export async function createL2ManifestStore(
       thumbnail: thumbnail?.url ?? null,
       isBeta: !!activeManifest.assertions.get('adobe.beta')?.[0]?.data.version,
       generativeInfo: selectGenerativeInfo(activeManifest),
-      web3: selectWeb3(activeManifest),
+      web3: selectWeb3(activeManifest) ?? null,
       error: getErrorStatus(manifestStore.validationStatus),
       validationStatus: manifestStore.validationStatus,
     },
