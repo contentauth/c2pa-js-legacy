@@ -113,26 +113,10 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           overflow-x: hidden;
         }
 
-        #content-container:first-child {
-          border-bottom-width: var(
-            --cai-manifest-summary-content-border-bottom-width,
-            1px
-          ) !important;
-          border-bottom-style: var(
-            --cai-manifest-summary-content-border-bottom-style,
-            solid
-          ) !important;
-          border-bottom-color: var(
-            --cai-manifest-summary-content-border-bottom-color,
-            #e1e1e1
-          ) !important;
-        }
-
         #content-container > *:not([empty]):not(:last-child:empty),
         ::slotted(*) {
           padding-bottom: var(--cai-manifest-summary-content-padding, 12px);
           margin-bottom: var(--cai-manifest-summary-section-spacing, 12px);
-
           border-bottom-width: var(
             --cai-manifest-summary-section-border-width,
             1px
