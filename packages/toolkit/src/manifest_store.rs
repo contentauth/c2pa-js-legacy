@@ -7,21 +7,27 @@
 use crate::error::{Error, Result};
 use c2pa::{ManifestStore, ManifestStoreOptions};
 
-fn get_options() -> ManifestStoreOptions<'static> {
+fn get_options(allowed_list: Option<&str>) -> ManifestStoreOptions {
     let anchors = include_bytes!("../trust/trust_anchors.pem");
     let config = include_bytes!("../trust/store.cfg");
+    let allowed_list = allowed_list.map(|x| x.as_bytes());
 
     ManifestStoreOptions {
         verify: true,
         anchors: Some(anchors),
         private_anchors: None,
+        allowed_list,
         config: Some(config),
         data_dir: None,
     }
 }
 
-pub async fn get_manifest_store_data(data: &[u8], mime_type: &str) -> Result<ManifestStore> {
-    let options = get_options();
+pub async fn get_manifest_store_data(
+    data: &[u8],
+    mime_type: &str,
+    allowed_list: Option<&str>,
+) -> Result<ManifestStore> {
+    let options = get_options(allowed_list);
     ManifestStore::from_bytes_async(mime_type, data, &options)
         .await
         .map_err(Error::from)
@@ -31,8 +37,9 @@ pub async fn get_manifest_store_data_from_manifest_and_asset_bytes(
     manifest_bytes: &[u8],
     format: &str,
     asset_bytes: &[u8],
+    allowed_list: Option<&str>,
 ) -> Result<ManifestStore> {
-    let options = get_options();
+    let options = get_options(allowed_list);
     ManifestStore::from_manifest_and_asset_bytes_async(
         manifest_bytes,
         format,
@@ -54,7 +61,7 @@ pub mod tests {
     pub async fn test_manifest_store_data() {
         let test_asset = include_bytes!("../../../tools/testing/fixtures/images/CAICAI.jpg");
 
-        let result = get_manifest_store_data(test_asset, "image/jpeg").await;
+        let result = get_manifest_store_data(test_asset, "image/jpeg", None).await;
         assert!(result.is_ok());
     }
 }

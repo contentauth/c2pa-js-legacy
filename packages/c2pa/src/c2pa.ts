@@ -48,6 +48,20 @@ export interface C2paConfig {
    * By default, the SDK will fetch cloud-stored (remote) manifests. Set this to false to disable this behavior.
    */
   fetchRemoteManifests?: boolean;
+
+  /**
+   * A list of allowed end-entity certificates/hashes for trust checking
+   */
+  allowedList?: string;
+}
+
+export interface C2paReadOptions {
+  /**
+   * A list of allowed end-entity certificates/hashes for trust checking
+   *
+   * This will overwrite the global config
+   */
+  allowedList?: string;
 }
 
 /**
@@ -58,13 +72,13 @@ export interface C2pa {
    * Processes image data from a `Blob` as input
    * @param blob - The binary data of the image
    */
-  read(blob: Blob): Promise<C2paReadResult>;
+  read(blob: Blob, options?: C2paReadOptions): Promise<C2paReadResult>;
 
   /**
    * Processes image data from a `File` as input. Useful for file uploads/drag-and-drop.
    * @param file - The binary data of the image
    */
-  read(file: File): Promise<C2paReadResult>;
+  read(file: File, options?: C2paReadOptions): Promise<C2paReadResult>;
 
   /**
    * Processes image data from a URL
@@ -77,7 +91,7 @@ export interface C2pa {
    *
    * @param url - The URL of the image to process
    */
-  read(url: string): Promise<C2paReadResult>;
+  read(url: string, options?: C2paReadOptions): Promise<C2paReadResult>;
 
   /**
    * Processes an image from an HTML image element (`<img />`).
@@ -87,7 +101,10 @@ export interface C2pa {
    *
    * @param element - DOM element of the image to process
    */
-  read(element: HTMLImageElement): Promise<C2paReadResult>;
+  read(
+    element: HTMLImageElement,
+    options?: C2paReadOptions,
+  ): Promise<C2paReadResult>;
 
   /**
    * Process an image given a valid input. Supported types:
@@ -98,14 +115,20 @@ export interface C2pa {
    *
    * @param input - Image to process
    */
-  read(input: C2paSourceType): Promise<C2paReadResult>;
+  read(
+    input: C2paSourceType,
+    options?: C2paReadOptions,
+  ): Promise<C2paReadResult>;
 
   /**
    * Convenience function to process multiple images at once
    *
    * @param inputs - Array of inputs to pass to `processImage`
    */
-  readAll(inputs: C2paSourceType[]): Promise<C2paReadResult[]>;
+  readAll(
+    inputs: C2paSourceType[],
+    options?: C2paReadOptions,
+  ): Promise<C2paReadResult[]>;
 
   /**
    * Disposer function to clean up the underlying worker pool and any other disposable resources
@@ -148,12 +171,13 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
       ? config.wasmSrc
       : await fetchWasm(pool, config.wasmSrc);
 
-  const read: C2pa['read'] = async (input) => {
+  const read: C2pa['read'] = async (input, opts) => {
     const jobId = ++jobCounter;
 
     dbgTask('[%s] Reading from input', jobId, input);
 
     const source = await createSource(downloader, input);
+    const allowedList = opts?.allowedList ?? config.allowedList;
 
     dbgTask('[%s] Processing input', jobId, input);
 
@@ -167,7 +191,12 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
     const buffer = await source.arrayBuffer();
 
     try {
-      const result = await pool.getReport(wasm, buffer, source.type);
+      const result = await pool.getReport(
+        wasm,
+        buffer,
+        source.type,
+        allowedList,
+      );
 
       dbgTask('[%s] Received worker result', jobId, result);
 
@@ -181,7 +210,8 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
         err,
         pool,
         wasm,
-        config.fetchRemoteManifests,
+        config,
+        allowedList,
       );
 
       return {
@@ -191,8 +221,8 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
     }
   };
 
-  const readAll: C2pa['readAll'] = async (inputs) =>
-    Promise.all(inputs.map((input) => read(input)));
+  const readAll: C2pa['readAll'] = async (inputs, options) =>
+    Promise.all(inputs.map((input) => read(input, options)));
 
   return {
     read,
@@ -241,11 +271,14 @@ function handleErrors(
   error: ToolkitError,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
-  fetchRemote = true,
+  config: C2paConfig,
+  allowedList?: string,
 ): Promise<ManifestStore | null> | null {
+  const fetchRemote = config.fetchRemoteManifests ?? true;
+
   if (error.name === 'Toolkit(RemoteManifestUrl)') {
     if (fetchRemote && error.url) {
-      return fetchRemoteManifest(source, error.url, pool, wasm);
+      return fetchRemoteManifest(source, error.url, pool, wasm, allowedList);
     }
     return null;
   }
@@ -263,6 +296,7 @@ async function fetchRemoteManifest(
   manifestUrl: string,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
+  allowedList?: string,
 ): Promise<ManifestStore | null> {
   try {
     const url = new URL(manifestUrl);
@@ -280,6 +314,7 @@ async function fetchRemoteManifest(
       wasm,
       manifestBuffer,
       source.blob,
+      allowedList,
     );
 
     return createManifestStore(result);

@@ -17,6 +17,7 @@ export { AssertionAccessor, ExtendedAssertions } from './src/assertions';
 export {
   C2pa,
   C2paConfig,
+  C2paReadOptions,
   C2paReadResult,
   createC2pa,
   generateVerifyUrl,

@@ -8,8 +8,13 @@ version = "0.23.1-1"
 crate-type = ["cdylib"]
 
 [dependencies]
-c2pa = { git = "https://github.com/contentauth/c2pa-rs", branch = "trust_support", features = [
+# c2pa = { git = "https://github.com/contentauth/c2pa-rs", branch = "trust_support", features = [
+# 	"serialize_thumbnails",
+# 	"pdf",
+# ] }
+c2pa = { path = "/Users/dkozma/Projects/c2pa-rs/sdk", features = [
 	"serialize_thumbnails",
+	"pdf",
 ] }
 console_error_panic_hook = "0.1.7"
 console_log = { version = "1.0.0", features = ["color"] }
