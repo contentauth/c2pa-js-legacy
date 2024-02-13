@@ -53,7 +53,6 @@ export class ProducedWith extends ConfigurablePanelSection(LitElement, {
         }
 
         .section-produced-with-beta {
-          margin-left: 24px;
           color: var(--cai-secondary-color);
         }
       `,
@@ -64,18 +63,22 @@ export class ProducedWith extends ConfigurablePanelSection(LitElement, {
     return this.renderSection(html` <cai-panel-section
       helpText=${this._config.stringMap['produced-with.helpText']}
     >
+
       <div slot="header">${this._config.stringMap['produced-with.header']}</div>
       <div slot="content">
         <div class="section-produced-with-content">
-          <cai-icon source="${this._data?.product}"></cai-icon>
-          <span> ${this._data?.product} </span>
+          <span> ${this._data?.product}    ${
+      this.manifestStore?.isBeta
+        ? html`<span class="section-produced-with-beta">
+            ${this._config.stringMap['produced-with.beta']}
+          </span>`
+        : null
+    } </span>
+       
         </div>
-        ${this.manifestStore?.isBeta
-          ? html`<div class="section-produced-with-beta">
-              ${this._config.stringMap['produced-with.beta']}
-            </div>`
-          : null}
-      </div>
+
+      <div>
+
     </cai-panel-section>`);
   }
 }

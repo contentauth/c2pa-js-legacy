@@ -71,6 +71,7 @@ export class ContentSummary extends ConfigurablePanelSection(LitElement, {
           display: flex;
           align-items: flex-start;
           gap: var(--cai-icon-spacing, 8px);
+          margin-top: -20px;
         }
       `,
     ];

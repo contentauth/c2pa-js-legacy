@@ -45,9 +45,10 @@ export class PanelSection extends LitElement {
           grid-template-rows: auto;
           gap: var(--cai-panel-section-internal-spacing, 0.5rem);
         }
-        div.heading {
+        div.container {
           display: flex;
           align-items: flex-start;
+          flex-wrap: wrap;
         }
         div.heading-text {
           color: var(
@@ -57,6 +58,9 @@ export class PanelSection extends LitElement {
 
           font-weight: var(--cai-panel-section-heading-font-weight, bold);
         }
+        div.content {
+          flex-grow: 1;
+        }
       `,
     ];
   }
@@ -64,10 +68,10 @@ export class PanelSection extends LitElement {
   render() {
     return html`
       <div class="layout">
-        <div class="heading">
+        <div class="container">
           <div class="heading-text"><slot name="header"></slot></div>
           &nbsp;
-          <slot name="content"></slot>
+          <div class="content"><slot name="content"></slot></div>
         </div>
       </div>
     `;

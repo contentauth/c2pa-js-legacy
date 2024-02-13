@@ -38,12 +38,12 @@ export default {
     isoDateString: '[REPLACE ME]',
   },
   claimGenerator: {
-    value: 'C2PA Testing',
-    product: 'C2PA Testing',
+    value: 'Adobe Photoshop 23.3.1 Content Credentials (Beta)',
+    product: 'Adobe Photoshop 23.3.1 Content Credentials (Beta)',
   },
   producer: {
     '@type': 'Person',
-    name: 'Gavin Peacock',
+    name: 'Gavin Peacock asbadbhsavdhsavdhjadjavjdash',
     identifier:
       'did:adobe:f78db44b3d758bbf1ac2b1da23d6a9bc8d4554bbc7ca6f78f5536d6cf813d218e',
     credential: [
