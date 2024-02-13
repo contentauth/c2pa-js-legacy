@@ -1,6 +1,13 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Thu, 11 Jan 2024 20:02:01 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2024 15:56:22 GMT and should not be manually modified.
+
+## 0.11.15
+Wed, 07 Feb 2024 15:56:22 GMT
+
+### Patches
+
+- Fix issue where Invalid Date would show if no signature date was found (which is optional)
 
 ## 0.11.14
 Thu, 11 Jan 2024 20:02:01 GMT
