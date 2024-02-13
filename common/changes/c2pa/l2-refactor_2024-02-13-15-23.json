@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "web3 and gen AI support in createL2ManifestStore",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}

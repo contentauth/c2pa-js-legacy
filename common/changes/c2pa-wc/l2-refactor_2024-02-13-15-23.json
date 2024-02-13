@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "new L2 look (nutritional label) and added web3/ai tool used sections",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
