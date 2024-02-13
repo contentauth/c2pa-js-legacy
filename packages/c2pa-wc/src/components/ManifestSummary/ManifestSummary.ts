@@ -185,7 +185,6 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
     if (!this.manifestStore) {
       return null;
     }
-    console.log('this.manifestStore', this.manifestStore);
     return html`<div id="container">
       <cai-minimum-viable-provenance
         .manifestStore=${this.manifestStore}

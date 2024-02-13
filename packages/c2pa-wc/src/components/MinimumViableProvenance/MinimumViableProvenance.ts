@@ -62,8 +62,6 @@ export class MinimumViableProvenance extends Configurable(
           text-align: left;
           color: #666666;
         }
-        .minimum-viable-provenance-signer {
-        }
         div.container {
           padding: var(
             --cai-manifest-summary-content-padding,
@@ -113,21 +111,19 @@ export class MinimumViableProvenance extends Configurable(
           <div class=${classMap(mvpClasses)}>
             <span>
               ${this._config.stringMap['minimum-viable-provenance.issuedBy']}
-              ${this.manifestStore?.signature?.issuer}&nbsp;
+              ${this.manifestStore?.signature?.issuer}
+              ${!hasError
+                ? html`
+                    ${this._config.stringMap['minimum-viable-provenance.On']}
+                    ${isValid(signatureDate)
+                      ? html`${this._config?.dateFormatter(signatureDate!)}`
+                      : html`${this._config?.stringMap[
+                          'minimum-viable-provenance.invalidDate'
+                        ]}`}
+                  `
+                : nothing}
             </span>
           </div>
-          ${!hasError
-            ? html`
-                <div class="minimum-viable-provenance-date">
-                  ${this._config.stringMap['minimum-viable-provenance.On']}
-                  ${isValid(signatureDate)
-                    ? html`${this._config?.dateFormatter(signatureDate!)}`
-                    : html`${this._config?.stringMap[
-                        'minimum-viable-provenance.invalidDate'
-                      ]}`}
-                </div>
-              `
-            : nothing}
         </div>
       </div>
     `;
