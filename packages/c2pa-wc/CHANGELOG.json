@@ -2,6 +2,18 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.11.15",
+      "tag": "c2pa-wc_v0.11.15",
+      "date": "Wed, 07 Feb 2024 15:56:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue where Invalid Date would show if no signature date was found (which is optional)"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.14",
       "tag": "c2pa-wc_v0.11.14",
       "date": "Thu, 11 Jan 2024 20:02:01 GMT",
