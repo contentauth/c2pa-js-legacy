@@ -25,8 +25,6 @@ export {
   DisposableL2ManifestStore,
   ErrorStatus,
   L2ClaimGenerator,
-  L2EditsAndActivity,
-  L2Ingredient,
   L2ManifestStore,
   L2Producer,
   L2Signature,
