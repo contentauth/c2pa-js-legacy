@@ -56,7 +56,7 @@ export class Web3Pill extends LitElement {
           align-items: center;
         }
         .web3-pill {
-          background-color: #e5e5e5;
+          background-color: var(--cai-background-pill, #e5e5e5);
           padding: 3px 5px 3px 5px;
           border-radius: 20px;
           border: none;

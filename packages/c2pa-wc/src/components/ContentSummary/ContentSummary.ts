@@ -13,7 +13,7 @@ import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection'
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import defaultStringMap from './ContentSummary.str.json';
 
-import { GenerativeInfo } from 'c2pa';
+import { GenerativeInfo, selectGenerativeType } from 'c2pa';
 import '../../../assets/svg/monochrome/generic-info.svg';
 import '../Icon';
 import '../PanelSection';
@@ -37,18 +37,6 @@ export interface ContentSummaryConfig {
 const defaultConfig: ContentSummaryConfig = {
   stringMap: defaultStringMap,
 };
-
-function selectGenerativeType(generativeInfo: GenerativeInfo[]) {
-  const result =
-    // Try to see if we have any composite assertions
-    generativeInfo.find(
-      (assertion) => assertion.type === 'compositeWithTrainedAlgorithmicMedia',
-      // If not, fall back to whichever one the first item is, which should be the trained or legacy assertion
-    ) ?? generativeInfo[0];
-
-  console.log('result', result);
-  return result?.type ?? null;
-}
 
 @customElement('cai-content-summary')
 export class ContentSummary extends ConfigurablePanelSection(LitElement, {

@@ -13,7 +13,7 @@ import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection'
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import defaultStringMap from './AIToolUsed.str.json';
 
-import { GenerativeInfo } from 'c2pa';
+import { GenerativeInfo, selectGenerativeSoftwareAgents } from 'c2pa';
 import '../../../assets/svg/monochrome/generic-info.svg';
 import '../Icon';
 import '../PanelSection';
@@ -37,21 +37,6 @@ export interface AIToolUsedConfig {
 const defaultConfig: AIToolUsedConfig = {
   stringMap: defaultStringMap,
 };
-
-export function selectGenerativeSoftwareAgents(
-  generativeInfo: GenerativeInfo[],
-) {
-  const softwareAgents = [
-    ...new Set(
-      generativeInfo.map((assertion) => {
-        return assertion?.softwareAgent;
-      }),
-    ),
-  ];
-  //if there are undefined software agents remove them from the array
-
-  return softwareAgents.filter((element) => typeof element !== 'undefined');
-}
 
 @customElement('cai-ai-tool')
 export class AIToolUsed extends ConfigurablePanelSection(LitElement, {

@@ -50,15 +50,13 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
         .section-social-media-list {
           display: flex;
           flex-direction: row;
-          gap: 1 px;
           list-style: none;
-          padding: 0px 0px 0px 8px;
+          padding: 0px 0px 0px 2px;
           margin: 0;
           overflow: hidden;
         }
 
         .section-social-media-list-item {
-          padding-left: 10 px;
           display: flex;
           align-items: center;
         }

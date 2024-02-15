@@ -76,13 +76,6 @@ export class Web3 extends ConfigurablePanelSection(LitElement, {
           display: flex;
           align-items: center;
         }
-
-        .web3-pill {
-          background-color: #e5e5e5;
-          padding: 3px 5px 3px 5px;
-          border-radius: 20px;
-          border: none;
-        }
       `,
     ];
   }

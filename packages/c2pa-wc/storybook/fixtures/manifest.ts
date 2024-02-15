@@ -43,7 +43,7 @@ export default {
   },
   producer: {
     '@type': 'Person',
-    name: 'Gavin Peacock asbadbhsavdhsavdhjadjavjdash',
+    name: 'Gavin Peacock',
     identifier:
       'did:adobe:f78db44b3d758bbf1ac2b1da23d6a9bc8d4554bbc7ca6f78f5536d6cf813d218e',
     credential: [

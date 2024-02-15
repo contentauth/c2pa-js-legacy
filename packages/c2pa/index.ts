@@ -48,6 +48,8 @@ export {
 export {
   GenerativeInfo,
   selectGenerativeInfo,
+  selectGenerativeSoftwareAgents,
+  selectGenerativeType,
 } from './src/selectors/selectGenerativeInfo';
 export { selectProducer } from './src/selectors/selectProducer';
 export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';

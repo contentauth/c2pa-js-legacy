@@ -61,6 +61,9 @@ export class PanelSection extends LitElement {
         div.content {
           flex-grow: 1;
         }
+        .heading-text ::slotted(*) {
+          margin-right: 6px;
+        }
       `,
     ];
   }
@@ -70,7 +73,6 @@ export class PanelSection extends LitElement {
       <div class="layout">
         <div class="container">
           <div class="heading-text"><slot name="header"></slot></div>
-          &nbsp;
           <div class="content"><slot name="content"></slot></div>
         </div>
       </div>
