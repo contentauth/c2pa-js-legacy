@@ -62,7 +62,6 @@ export class Web3 extends ConfigurablePanelSection(LitElement, {
       css`
         .web3-list {
           display: flex;
-
           flex-direction: column;
           gap: 7px;
           list-style: none;
