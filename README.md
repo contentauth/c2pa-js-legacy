@@ -6,6 +6,18 @@ For more information, please view the documentation at https://opensource.conten
 
 ## Getting started
 
+
+### Prerequisites
+
+Install Rust and wasm-bindgen.
+
+```
+curl https://sh.rustup.rs -sSf | sh
+cargo install -f wasm-bindgen-cli
+```
+
+### Local Development
+
 This monorepo is managed by [Rush](https://rushjs.io/). To get started:
 
 Install Rush:
