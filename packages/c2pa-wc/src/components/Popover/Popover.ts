@@ -202,11 +202,47 @@ export class Popover extends LitElement {
     this._isShown = false;
   }
 
+  private _onKeyDown(e: KeyboardEvent) {
+    switch (e.key) {
+      case 'Escape':
+        if (this._isShown) {
+          e.stopPropagation();
+          e.preventDefault();
+          this._hideTooltip();
+          this.triggerElement!.focus();
+        }
+        break;
+      case 'Enter':
+      case ' ':
+        if (
+          e.target !== this.hostElement &&
+          e.composedPath().includes(this.triggerElement as EventTarget)
+        ) {
+          e.stopPropagation();
+          e.preventDefault();
+          this._onClick();
+        }
+        break;
+    }
+  }
+
+  private _onClick() {
+    if (!this._isShown) {
+      this._showTooltip();
+    } else {
+      this._hideTooltip();
+    }
+  }
+
   private _cleanupTriggers() {
     while (this._eventCleanupFns.length) {
       const cleanup = this._eventCleanupFns.shift();
       cleanup?.();
     }
+
+    this.triggerElement!.removeEventListener('click', this._onClick);
+
+    this.hostElement!.removeEventListener('keydown', this._onKeyDown, true);
   }
 
   private _setTriggers() {
@@ -215,27 +251,48 @@ export class Popover extends LitElement {
 
     this._eventCleanupFns = triggers.map((trigger) => {
       const [show, hide] = trigger.split(':');
-      this.triggerElement!.addEventListener(show, this._showTooltip.bind(this));
+      this.triggerElement!.addEventListener(
+        show,
+        this._showTooltip.bind(this),
+        show === 'focus',
+      );
       if (this.interactive && hide === 'mouseleave') {
         this.hostElement!.addEventListener(hide, this._hideTooltip.bind(this));
       } else {
         this.triggerElement!.addEventListener(
           hide,
           this._hideTooltip.bind(this),
+          hide === 'blur',
         );
       }
       return () => {
-        this.triggerElement!.removeEventListener(show, this._showTooltip);
+        this.triggerElement!.removeEventListener(
+          show,
+          this._showTooltip,
+          show === 'focus',
+        );
         if (this.interactive && hide === 'mouseleave') {
           this.contentElement!.addEventListener(
             hide,
             this._hideTooltip.bind(this),
           );
         } else {
-          this.triggerElement!.removeEventListener(hide, this._hideTooltip);
+          this.triggerElement!.removeEventListener(
+            hide,
+            this._hideTooltip,
+            hide === 'blur',
+          );
         }
       };
     });
+
+    this.triggerElement!.addEventListener('click', this._onClick.bind(this));
+
+    this.hostElement!.addEventListener(
+      'keydown',
+      this._onKeyDown.bind(this),
+      true,
+    );
   }
 
   private async _updatePosition() {

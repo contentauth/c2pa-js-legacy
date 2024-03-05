@@ -100,6 +100,7 @@ export class MinimumViableProvenance extends Configurable(
       : undefined;
 
     return html` <cai-panel-section
+      headingLevel=${2}
       header=${this._config.stringMap['minimum-viable-provenance.header']}
       helpText=${this._config.stringMap['minimum-viable-provenance.helpText']}
     >
@@ -112,6 +113,7 @@ export class MinimumViableProvenance extends Configurable(
           <cai-icon
             slot="icon"
             source=${this.manifestStore?.signature?.issuer}
+            aria-hidden="true"
           ></cai-icon>
           <span> ${this.manifestStore?.signature?.issuer} </span>
         </div>

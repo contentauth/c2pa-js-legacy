@@ -9,6 +9,7 @@
 
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import defaultStringMap from '../SocialMedia/SocialMedia.str.json';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
@@ -54,7 +55,6 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
           list-style: none;
           padding: 0;
           margin: 0;
-          overflow: hidden;
         }
 
         .section-social-media-list-item {
@@ -77,14 +77,19 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
       header=${this._config.stringMap['social-media.header']}
       helpText=${this._config.stringMap['social-media.helpText']}
     >
-      <ul class="section-social-media-list">
+      <ul
+        class="section-social-media-list"
+        aria-label=${this._config.stringMap['social-media.header']}
+      >
         ${this._data?.map(
           (socialAccount) => html`
             <li class="section-social-media-list-item">
-              <cai-icon source="${socialAccount['@id']}"></cai-icon>
+              <cai-icon
+                source=${ifDefined(socialAccount['@id'] ?? undefined)}
+              ></cai-icon>
               <a
                 class="section-social-media-list-item-link"
-                href=${socialAccount['@id']}
+                href=${ifDefined(socialAccount['@id'] ?? undefined)}
                 target="_blank"
               >
                 @${socialAccount.name}

@@ -126,13 +126,15 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           transition: all 150ms ease-in-out;
           background-color: transparent;
           border-radius: 9999px;
-          border: 2px solid #b3b3b3;
+          border: 2px solid #909090;
           padding: 8px 0;
           font-weight: bold;
           text-align: center;
           text-decoration: none;
           width: 100%;
           color: var(--cai-primary-color);
+          outline-offset: 3px;
+          outline-color: var(--cai-focus-ring-color, #1473e6);
         }
 
         #view-more:hover {

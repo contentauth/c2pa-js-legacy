@@ -42,39 +42,66 @@ export class Icon extends LitElement {
   static readonly matchers = [
     {
       pattern: /photoshop/i,
-      icon: html`<cai-icon-photoshop></cai-icon-photoshop>`,
+      icon: html`<cai-icon-photoshop
+        role="img"
+        aria-label="Photoshop"
+      ></cai-icon-photoshop>`,
     },
     {
       pattern: /adobe\sstock/i,
-      icon: html`<cai-icon-adobe-stock></cai-icon-adobe-stock>`,
+      icon: html`<cai-icon-adobe-stock
+        role="img"
+        aria-label="Adobe Stock"
+      ></cai-icon-adobe-stock>`,
     },
     {
       pattern: /adobe/i,
-      icon: html`<cai-icon-adobe></cai-icon-adobe>`,
+      icon: html`<cai-icon-adobe
+        role="img"
+        aria-label="Adobe"
+      ></cai-icon-adobe>`,
     },
     {
       pattern: /behance\.net/i,
-      icon: html`<cai-icon-behance></cai-icon-behance>`,
+      icon: html`<cai-icon-behance
+        role="img"
+        aria-label="Behance"
+      ></cai-icon-behance>`,
     },
     {
       pattern: /facebook\.com/i,
-      icon: html`<cai-icon-facebook></cai-icon-facebook>`,
+      icon: html`<cai-icon-facebook
+        role="img"
+        aria-label="Facebook"
+      ></cai-icon-facebook>`,
     },
     {
       pattern: /instagram\.com/i,
-      icon: html`<cai-icon-instagram></cai-icon-instagram>`,
+      icon: html`<cai-icon-instagram
+        role="img"
+        aria-label="Instagram"
+      ></cai-icon-instagram>`,
     },
     {
       pattern: /truepic/i,
-      icon: html`<cai-icon-truepic></cai-icon-truepic>`,
+      icon: html`<cai-icon-truepic
+        role="img"
+        aria-label="TruePic"
+      ></cai-icon-truepic>`,
     },
     {
       pattern: /twitter\.com/i,
-      icon: html`<cai-icon-twitter></cai-icon-twitter>`,
+      icon: html`<cai-icon-twitter
+        role="img"
+        aria-label="Twitter"
+      ></cai-icon-twitter>`,
     },
     {
       pattern: /lightroom/i,
-      icon: html`<cai-icon-lightroom></cai-icon-lightroom>`,
+      icon: html`<cai-icon-lightroom
+        role="img"
+        aria-label="Lightroom"
+      ></cai-icon-lightroom>`,
     },
   ];
 

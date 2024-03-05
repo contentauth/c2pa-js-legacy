@@ -17,9 +17,10 @@ export const defaultStyles = css`
     --cai-font-size-sm: 0.875rem;
     --cai-border-radius: 4px;
     --cai-primary-color: #2c2c2c;
-    --cai-secondary-color: #8e8e8e;
+    --cai-secondary-color: #6d6d6d;
     --cai-popover-bg-color: #ffffff;
     --cai-popover-color: var(--cai-primary-color);
+    --cai-focus-ring-color: #1473e6;
     --cai-social-media-item-color: #1473e6;
 
     font-family: var(--cai-font-family);

@@ -34,6 +34,9 @@ export class PanelSection extends LitElement {
   @property({ type: String })
   helpText: string | null = null;
 
+  @property({ type: String })
+  headingLevel: '1' | '2' | '3' | '4' | '5' | '6' = '3';
+
   static get styles() {
     return [
       defaultStyles,
@@ -63,19 +66,26 @@ export class PanelSection extends LitElement {
 
   render() {
     return html`
-      <div class="layout">
+      <section class="layout" aria-labelledby="heading-text-id">
         <div class="heading">
-          <div class="heading-text">${this.header}</div>
+          <div
+            class="heading-text"
+            id="heading-text-id"
+            role="heading"
+            aria-level=${this.headingLevel}
+          >
+            ${this.header}
+          </div>
           <slot name="help">
             ${this.helpText
-              ? html`<cai-tooltip autoPlacement=${false}>
+              ? html`<cai-tooltip label=${this.header} autoPlacement=${false}>
                   <div slot="content">${this.helpText}</div>
                 </cai-tooltip>`
               : nothing}
           </slot>
         </div>
         <slot></slot>
-      </div>
+      </section>
     `;
   }
 }
