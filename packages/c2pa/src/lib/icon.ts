@@ -17,6 +17,7 @@ import drawing from '../../assets/svg/draw-dark.svg';
 import edited from '../../assets/svg/edit-in-light-dark.svg';
 import opened from '../../assets/svg/import-dark.svg';
 import combinedAssets from '../../assets/svg/layers-dark.svg';
+import metadata from '../../assets/svg/metadata.svg';
 import created from '../../assets/svg/new-item-dark.svg';
 import threed from '../../assets/svg/orbit-dark.svg';
 import filtered from '../../assets/svg/properties-dark.svg';
@@ -38,6 +39,7 @@ export const icons = {
   'c2pa.placed': placed,
   'c2pa.resized': resized,
   'c2pa.unknown': unknown,
+  'c2pa.edited.metadata': metadata,
   'com.adobe.3d': threed,
   'com.adobe.animation_video': animationVideo,
   'com.adobe.combined_asssets': combinedAssets,

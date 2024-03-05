@@ -64,6 +64,10 @@
       "c2pa.unknown": {
         "description": "Performed other edits or activity that couldn't be recognized",
         "label": "Unknown edits or activity"
+      },
+      "c2pa.edited.metadata": {
+        "description": "Made changes to file metadata",
+        "label": "Metadata changes"
       }
     }
   }
