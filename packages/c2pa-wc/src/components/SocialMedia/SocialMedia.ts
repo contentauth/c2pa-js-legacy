@@ -48,6 +48,7 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
       baseSectionStyles,
       css`
         .section-social-media-list {
+          --cai-icon-size: 16px;
           display: flex;
           flex-direction: row;
           list-style: none;

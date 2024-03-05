@@ -113,12 +113,12 @@ export class MinimumViableProvenance extends Configurable(
               ${this.manifestStore?.signature?.issuer}
               ${!hasError
                 ? html`
-                    ${this._config.stringMap['minimum-viable-provenance.On']}
-                    ${isValid(signatureDate)
-                      ? html`${this._config?.dateFormatter(signatureDate!)}`
-                      : html`${this._config?.stringMap[
-                          'minimum-viable-provenance.invalidDate'
-                        ]}`}
+                    ${signatureDate && isValid(signatureDate)
+                      ? html`${this._config.stringMap[
+                          'minimum-viable-provenance.on'
+                        ]}
+                        ${this._config?.dateFormatter(signatureDate!)}`
+                      : nothing}
                   `
                 : nothing}
             </span>

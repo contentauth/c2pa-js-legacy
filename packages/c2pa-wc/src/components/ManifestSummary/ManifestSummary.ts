@@ -9,7 +9,9 @@
 
 import { L2ManifestStore } from 'c2pa';
 import { css, html, LitElement, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit-html/directives/class-map.js';
+import { customElement, property, state } from 'lit/decorators.js';
+import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 import { Configurable } from '../../mixins/configurable';
 import { defaultStyles } from '../../styles';
 import { defaultDateFormatter, hasChanged } from '../../utils';
@@ -113,22 +115,27 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           overflow-x: hidden;
         }
 
-        #content-container > *:not([empty]):not(:last-child:empty),
-        ::slotted(*) {
-          padding-bottom: var(--cai-manifest-summary-content-padding, 12px);
-          margin-bottom: var(--cai-manifest-summary-section-spacing, 12px);
-          border-bottom-width: var(
+        #content-container > * {
+          padding-top: var(--cai-manifest-summary-content-padding, 12px);
+          margin-top: var(--cai-manifest-summary-section-spacing, 12px);
+          border-top-width: var(
             --cai-manifest-summary-section-border-width,
             1px
-          ) !important;
-          border-bottom-style: var(
+          );
+          border-top-style: var(
             --cai-manifest-summary-section-border-style,
             solid
-          ) !important;
-          border-bottom-color: var(
+          );
+          border-top-color: var(
             --cai-manifest-summary-section-border-color,
             #e1e1e1
-          ) !important;
+          );
+        }
+
+        #content-container > *:first-child {
+          padding-top: 0;
+          margin-top: 0;
+          border: none;
         }
 
         #view-more-container {
@@ -149,6 +156,10 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           color: var(--cai-primary-color);
           background-color: var(--cai-button-color);
         }
+
+        .empty {
+          display: none;
+        }
       `,
     ];
   }
@@ -165,6 +176,22 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
   })
   viewMoreUrl = '';
 
+  private _postRef: Ref<HTMLSlotElement> = createRef();
+
+  @state()
+  private _isPostEmpty = false;
+
+  private _checkPostEmpty() {
+    const refVal = this._postRef.value;
+    if (refVal) {
+      this._isPostEmpty = refVal.assignedNodes({ flatten: true }).length === 0;
+    }
+  }
+
+  firstUpdated(): void {
+    this._checkPostEmpty();
+  }
+
   render() {
     if (!this.manifestStore) {
       return null;
@@ -175,7 +202,6 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
         .config=${this._config}
       ></cai-minimum-viable-provenance>
       <div id="content-container">
-        <slot name="pre"></slot>
         ${this.manifestStore.error === 'error'
           ? html`
               <div>${this._config.stringMap['manifest-summary.error']}</div>
@@ -230,9 +256,12 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
                   `
                 : nothing}
             `}
-
-        <slot></slot>
-        <slot name="post"></slot>
+        <slot
+          ${ref(this._postRef)}
+          class=${classMap({ empty: this._isPostEmpty })}
+          name="post"
+          @slotchange=${() => this._checkPostEmpty()}
+        ></slot>
       </div>
       <div id="view-more-container">
         ${this.viewMoreUrl
