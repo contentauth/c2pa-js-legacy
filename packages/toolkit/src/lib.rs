@@ -34,14 +34,14 @@ export * from './types';
 export function getManifestStoreFromArrayBuffer(
     buf: ArrayBuffer,
     mimeType: string,
-    allowedList?: string
+    settings?: string
 ): Promise<ManifestStore>;
 
 export function getManifestStoreFromManifestAndAsset(
     manifestBuffer: ArrayBuffer,
     assetBuffer: ArrayBuffer,
     mimeType: string,
-    allowedList?: string
+    settings?: string
 ): Promise<ManifestStore>;
 "#;
 
@@ -71,14 +71,14 @@ fn as_js_error(err: Error) -> JsSysError {
 pub async fn get_manifest_store_from_array_buffer(
     buf: JsValue,
     mime_type: String,
-    allowed_list: Option<String>,
+    settings: Option<String>,
 ) -> Result<JsValue, JsSysError> {
     log_time("get_manifest_store_from_array_buffer::start");
     let asset: serde_bytes::ByteBuf = serde_wasm_bindgen::from_value(buf)
         .map_err(Error::SerdeInput)
         .map_err(as_js_error)?;
     log_time("get_manifest_store_from_array_buffer::from_bytes");
-    let result = get_manifest_store_data(&asset, &mime_type, allowed_list.as_deref())
+    let result = get_manifest_store_data(&asset, &mime_type, settings.as_deref())
         .await
         .map_err(as_js_error)?;
     log_time("get_manifest_store_from_array_buffer::get_result");
@@ -97,7 +97,7 @@ pub async fn get_manifest_store_from_manifest_and_asset(
     manifest_buffer: JsValue,
     asset_buffer: JsValue,
     mime_type: String,
-    allowed_list: Option<String>,
+    settings: Option<String>,
 ) -> Result<JsValue, JsSysError> {
     log_time("get_manifest_store_data_from_manifest_and_asset::start");
     let manifest: serde_bytes::ByteBuf = serde_wasm_bindgen::from_value(manifest_buffer)
@@ -113,7 +113,7 @@ pub async fn get_manifest_store_from_manifest_and_asset(
         &manifest,
         &mime_type,
         &asset,
-        allowed_list.as_deref(),
+        settings.as_deref(),
     )
     .await
     .map_err(as_js_error)?;

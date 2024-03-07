@@ -5,30 +5,17 @@
 // accordance with the terms of the Adobe license agreement accompanying
 // it.
 use crate::error::{Error, Result};
-use c2pa::{ManifestStore, ManifestStoreOptions};
-
-fn get_options(allowed_list: Option<&str>) -> ManifestStoreOptions {
-    let anchors = include_bytes!("../trust/trust_anchors.pem");
-    let config = include_bytes!("../trust/store.cfg");
-    let allowed_list = allowed_list.map(|x| x.as_bytes());
-
-    ManifestStoreOptions {
-        verify: true,
-        anchors: Some(anchors),
-        private_anchors: None,
-        allowed_list,
-        config: Some(config),
-        data_dir: None,
-    }
-}
+use c2pa::{settings, ManifestStore};
 
 pub async fn get_manifest_store_data(
     data: &[u8],
     mime_type: &str,
-    allowed_list: Option<&str>,
+    settings: Option<&str>,
 ) -> Result<ManifestStore> {
-    let options = get_options(allowed_list);
-    ManifestStore::from_bytes_async(mime_type, data, &options)
+    if let Some(settings) = settings {
+        settings::load_settings_from_str(settings, "json").map_err(Error::from)?;
+    }
+    ManifestStore::from_bytes_async(mime_type, data, true)
         .await
         .map_err(Error::from)
 }
@@ -37,17 +24,14 @@ pub async fn get_manifest_store_data_from_manifest_and_asset_bytes(
     manifest_bytes: &[u8],
     format: &str,
     asset_bytes: &[u8],
-    allowed_list: Option<&str>,
+    settings: Option<&str>,
 ) -> Result<ManifestStore> {
-    let options = get_options(allowed_list);
-    ManifestStore::from_manifest_and_asset_bytes_async(
-        manifest_bytes,
-        format,
-        asset_bytes,
-        &options,
-    )
-    .await
-    .map_err(Error::from)
+    if let Some(settings) = settings {
+        settings::load_settings_from_str(settings, "json").map_err(Error::from)?;
+    }
+    ManifestStore::from_manifest_and_asset_bytes_async(manifest_bytes, format, asset_bytes)
+        .await
+        .map_err(Error::from)
 }
 
 #[cfg(test)]
