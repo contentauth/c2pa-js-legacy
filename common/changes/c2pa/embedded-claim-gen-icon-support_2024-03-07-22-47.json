@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add embedded icon support in claim_generator_info",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
