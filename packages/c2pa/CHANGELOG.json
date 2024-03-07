@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.17.8",
+      "tag": "c2pa_v0.17.8",
+      "date": "Fri, 16 Feb 2024 16:46:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added string and icon for c2pa.edited.metadata action"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.7",
       "tag": "c2pa_v0.17.7",
       "date": "Thu, 11 Jan 2024 20:02:01 GMT",
