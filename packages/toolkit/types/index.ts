@@ -14,7 +14,7 @@ export interface ResourceParent {
 }
 
 export interface ResourceReference {
-  content_type: string;
+  format: string;
   identifier: string;
 }
 

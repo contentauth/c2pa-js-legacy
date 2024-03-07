@@ -35,6 +35,7 @@ const worker = {
     type: string,
     settings?: string,
   ): Promise<ManifestStore> {
+    console.log('getReport settings', settings);
     await initToolkit(wasm);
     return getManifestStoreFromArrayBuffer(buffer, type, settings);
   },
@@ -44,6 +45,7 @@ const worker = {
     asset: Blob,
     settings?: string,
   ) {
+    console.log('settings2', settings);
     await initToolkit(wasm);
     const assetBuffer = await asset.arrayBuffer();
     return getManifestStoreFromManifestAndAsset(

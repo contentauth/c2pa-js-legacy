@@ -34,8 +34,16 @@ export interface ToolkitTrustSettings {
   allowedList?: string;
 }
 
+export interface ToolkitVerifySettings {
+  verifyAfterSign?: boolean;
+  verifyTrust?: boolean;
+  ocspFetch?: boolean;
+  remoteManifestFetch?: boolean;
+}
+
 export interface ToolkitSettings {
-  trust: ToolkitTrustSettings;
+  trust?: ToolkitTrustSettings;
+  verify?: ToolkitVerifySettings;
 }
 
 // @TODO: should wasmSrc/workerSrc be optional here w/ an error at runtime if not provided?
@@ -70,11 +78,6 @@ export interface C2paConfig {
 }
 
 export interface C2paReadOptions {
-  /**
-   * A list of allowed end-entity certificates/hashes for trust checking
-   *
-   * This will overwrite the global config
-   */
   settings?: ToolkitSettings;
 }
 
@@ -173,7 +176,9 @@ function formatSettings(settings: ToolkitSettings | null | undefined) {
     (acc, sectionVals, sectionName) => {
       return {
         ...acc,
-        [snakeCase(sectionName)]: mapKeys(sectionVals, snakeCase),
+        [snakeCase(sectionName)]: mapKeys(sectionVals, (_, val) =>
+          snakeCase(val),
+        ),
       };
     },
     {},
@@ -213,7 +218,9 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
     const source = await createSource(downloader, input);
     const settings = formatSettings(opts?.settings ?? config.settings);
 
-    dbgTask('[%s] Processing input', jobId, input);
+    dbgTask('[%s] Processing input', jobId, input, {
+      settings: settings && JSON.parse(settings),
+    });
 
     if (!source.blob) {
       return {
