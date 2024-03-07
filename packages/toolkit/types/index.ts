@@ -59,6 +59,7 @@ export interface SignatureInfo {
 export interface ClaimGeneratorInfo {
   name: string;
   version: string;
+  icon?: ResourceReference;
 }
 
 export interface Manifest extends ResourceParent {
