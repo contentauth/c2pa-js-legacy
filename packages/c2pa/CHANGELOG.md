@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Thu, 11 Jan 2024 20:02:01 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Feb 2024 16:46:52 GMT and should not be manually modified.
+
+## 0.17.8
+Fri, 16 Feb 2024 16:46:52 GMT
+
+### Patches
+
+- added string and icon for c2pa.edited.metadata action
 
 ## 0.17.7
 Thu, 11 Jan 2024 20:02:01 GMT

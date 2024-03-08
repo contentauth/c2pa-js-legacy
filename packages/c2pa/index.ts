@@ -19,6 +19,7 @@ export {
   C2paConfig,
   C2paReadOptions,
   C2paReadResult,
+  ToolkitSettings,
   createC2pa,
   generateVerifyUrl,
 } from './src/c2pa';

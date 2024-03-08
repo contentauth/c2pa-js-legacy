@@ -9,6 +9,7 @@
 
 import { ToolkitError } from '@contentauth/toolkit';
 import debug from 'debug';
+import { mapKeys, reduce, snakeCase } from 'lodash';
 import { ensureCompatibility } from './lib/browser';
 import { Downloader, DownloaderOptions } from './lib/downloader';
 import { InvalidInputError } from './lib/error';
@@ -20,6 +21,30 @@ import { C2paSourceType, Source, createSource } from './source';
 
 const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
+
+export interface ToolkitTrustSettings {
+  /**
+   * A list of allowed trust anchors
+   */
+  trustAnchors?: string;
+  trustConfig?: string;
+  /**
+   * A list of allowed end-entity certificates/hashes for trust checking
+   */
+  allowedList?: string;
+}
+
+export interface ToolkitVerifySettings {
+  verifyAfterSign?: boolean;
+  verifyTrust?: boolean;
+  ocspFetch?: boolean;
+  remoteManifestFetch?: boolean;
+}
+
+export interface ToolkitSettings {
+  trust?: ToolkitTrustSettings;
+  verify?: ToolkitVerifySettings;
+}
 
 // @TODO: should wasmSrc/workerSrc be optional here w/ an error at runtime if not provided?
 export interface C2paConfig {
@@ -49,19 +74,11 @@ export interface C2paConfig {
    */
   fetchRemoteManifests?: boolean;
 
-  /**
-   * A list of allowed end-entity certificates/hashes for trust checking
-   */
-  allowedList?: string;
+  settings?: ToolkitSettings;
 }
 
 export interface C2paReadOptions {
-  /**
-   * A list of allowed end-entity certificates/hashes for trust checking
-   *
-   * This will overwrite the global config
-   */
-  allowedList?: string;
+  settings?: ToolkitSettings;
 }
 
 /**
@@ -148,6 +165,28 @@ export interface C2paReadResult {
   source: Source;
 }
 
+// Make sure we format the settings in a way that Rust expects them
+function formatSettings(settings: ToolkitSettings | null | undefined) {
+  if (!settings) {
+    return undefined;
+  }
+
+  const formatted = reduce(
+    settings,
+    (acc, sectionVals, sectionName) => {
+      return {
+        ...acc,
+        [snakeCase(sectionName)]: mapKeys(sectionVals, (_, val) =>
+          snakeCase(val),
+        ),
+      };
+    },
+    {},
+  );
+
+  return JSON.stringify(formatted);
+}
+
 /**
  * Creates a c2pa object that can be used to read c2pa metadata from an image.
  *
@@ -177,9 +216,11 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
     dbgTask('[%s] Reading from input', jobId, input);
 
     const source = await createSource(downloader, input);
-    const allowedList = opts?.allowedList ?? config.allowedList;
+    const settings = formatSettings(opts?.settings ?? config.settings);
 
-    dbgTask('[%s] Processing input', jobId, input);
+    dbgTask('[%s] Processing input', jobId, input, {
+      settings: settings && JSON.parse(settings),
+    });
 
     if (!source.blob) {
       return {
@@ -191,12 +232,7 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
     const buffer = await source.arrayBuffer();
 
     try {
-      const result = await pool.getReport(
-        wasm,
-        buffer,
-        source.type,
-        allowedList,
-      );
+      const result = await pool.getReport(wasm, buffer, source.type, settings);
 
       dbgTask('[%s] Received worker result', jobId, result);
 
@@ -211,7 +247,7 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
         pool,
         wasm,
         config,
-        allowedList,
+        settings,
       );
 
       return {
@@ -272,13 +308,13 @@ function handleErrors(
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
   config: C2paConfig,
-  allowedList?: string,
+  settings?: string,
 ): Promise<ManifestStore | null> | null {
   const fetchRemote = config.fetchRemoteManifests ?? true;
 
   if (error.name === 'Toolkit(RemoteManifestUrl)') {
     if (fetchRemote && error.url) {
-      return fetchRemoteManifest(source, error.url, pool, wasm, allowedList);
+      return fetchRemoteManifest(source, error.url, pool, wasm, settings);
     }
     return null;
   }
@@ -296,7 +332,7 @@ async function fetchRemoteManifest(
   manifestUrl: string,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
-  allowedList?: string,
+  settings?: string,
 ): Promise<ManifestStore | null> {
   try {
     const url = new URL(manifestUrl);
@@ -314,7 +350,7 @@ async function fetchRemoteManifest(
       wasm,
       manifestBuffer,
       source.blob,
-      allowedList,
+      settings,
     );
 
     return createManifestStore(result);

@@ -14,7 +14,7 @@ export interface ResourceParent {
 }
 
 export interface ResourceReference {
-  content_type: string;
+  format: string;
   identifier: string;
 }
 
@@ -59,6 +59,7 @@ export interface SignatureInfo {
 export interface ClaimGeneratorInfo {
   name: string;
   version: string;
+  icon?: ResourceReference;
 }
 
 export interface Manifest extends ResourceParent {

@@ -17,6 +17,10 @@
         "description": "Used cropping tools, reducing or expanding visible content area",
         "label": "Cropping edits"
       },
+      "c2pa.deleted": {
+        "description": "Deleted visual areas or durations of content",
+        "label": "Deleted content"
+      },
       "c2pa.drawing": {
         "description": "Used tools like pencils, brushes, erasers, or shape, path, or pen tools",
         "label": "Drawing edits"
@@ -64,6 +68,10 @@
       "c2pa.unknown": {
         "description": "Performed other edits or activity that couldn't be recognized",
         "label": "Unknown edits or activity"
+      },
+      "c2pa.edited.metadata": {
+        "description": "Made changes to file metadata",
+        "label": "Metadata changes"
       }
     }
   }

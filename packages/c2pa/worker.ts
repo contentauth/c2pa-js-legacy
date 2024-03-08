@@ -33,16 +33,16 @@ const worker = {
     wasm: WebAssembly.Module,
     buffer: ArrayBuffer,
     type: string,
-    allowedList?: string,
+    settings?: string,
   ): Promise<ManifestStore> {
     await initToolkit(wasm);
-    return getManifestStoreFromArrayBuffer(buffer, type, allowedList);
+    return getManifestStoreFromArrayBuffer(buffer, type, settings);
   },
   async getReportFromAssetAndManifestBuffer(
     wasm: WebAssembly.Module,
     manifestBuffer: ArrayBuffer,
     asset: Blob,
-    allowedList?: string,
+    settings?: string,
   ) {
     await initToolkit(wasm);
     const assetBuffer = await asset.arrayBuffer();
@@ -50,7 +50,7 @@ const worker = {
       manifestBuffer,
       assetBuffer,
       asset.type,
-      allowedList,
+      settings,
     );
   },
   async scanInput(

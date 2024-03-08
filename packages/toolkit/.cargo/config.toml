@@ -1,0 +1,11 @@
+# TODO: Enable `trim-paths` once it arrives in stable
+
+# cargo-features = ["trim-paths"]
+
+# [unstable]
+# trim-paths = true
+
+[profile.release]
+lto = true
+opt-level = "s"
+# trim-paths = ["diagnostics", "object"]
