@@ -7,23 +7,23 @@
  * it.
  */
 
+import { L2ManifestStore } from 'c2pa';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { Configurable } from '../../mixins/configurable';
 import { defaultStyles } from '../../styles';
 import { defaultDateFormatter, hasChanged } from '../../utils';
-import { L2ManifestStore } from 'c2pa';
 import type { EditsAndActivityConfig } from '../EditsAndActivity';
 import type { MinimumViableProvenanceConfig } from '../MinimumViableProvenance';
-import { Configurable } from '../../mixins/configurable';
 import defaultStringMap from './ManifestSummary.str.json';
 
 import '../ContentSummary';
 import '../AssetsUsed';
+import '../EditsAndActivity';
+import '../MinimumViableProvenance';
 import '../ProducedBy';
 import '../ProducedWith';
 import '../SocialMedia';
-import '../EditsAndActivity';
-import '../MinimumViableProvenance';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -159,8 +159,8 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
       return null;
     }
 
-    return html`<div id="container">
-      <div id="content-container">
+    return html`<div id="container" tabindex="0">
+      <div id="content-container" tabindex="0">
         <cai-minimum-viable-provenance
           .manifestStore=${this.manifestStore}
           .config=${this._config}

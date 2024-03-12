@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "making L2 keyboard focusable",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}

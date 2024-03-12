@@ -83,6 +83,9 @@ export class Popover extends LitElement {
   @property({ type: Boolean })
   interactive = false;
 
+  @property({ type: Boolean })
+  tab = false;
+
   @property({ type: String })
   trigger: string = 'mouseenter:mouseleave focus:blur';
 
@@ -327,6 +330,7 @@ export class Popover extends LitElement {
     const contentClassMap = {
       shown: this._isShown,
       interactive: this.interactive,
+      tab: this.tab,
     };
     const contentStyleMap = {
       'z-index': this.zIndex.toString(),
@@ -356,7 +360,8 @@ export class Popover extends LitElement {
         <slot name="content"></slot>
         ${this.arrow ? html`<div id="arrow"></div>` : null}
       </div>
-      <div id="trigger">
+
+      <div id="trigger" ${this.tab && `tabindex="0"`}>
         <div class="hidden-layer"></div>
         <slot name="trigger"></slot>
       </div>
