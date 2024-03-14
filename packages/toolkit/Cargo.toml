@@ -2,14 +2,13 @@
 authors = ["Dave Kozma <dkozma@adobe.com>"]
 edition = "2018"
 name = "c2pa-js-toolkit"
-version = "0.29.0-1"
-version = "0.29.0-1"
+version = "0.31.0-1"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-c2pa = { version = "0.29.0", features = ["serialize_thumbnails", "pdf"] }
+c2pa = { version = "0.31.0", features = ["serialize_thumbnails", "pdf"] }
 console_error_panic_hook = "0.1.7"
 console_log = { version = "1.0.0", features = ["color"] }
 log = "0.4.14"
