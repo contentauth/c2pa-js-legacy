@@ -12,6 +12,9 @@ import { nothing } from 'lit-html';
 import { customElement, property } from 'lit/decorators.js';
 import { prop } from 'lodash/fp';
 import { baseSectionStyles, defaultStyles } from '../../styles';
+import defaultStringMap from './Web3.str.json';
+
+const HIDE_DELAY = 800;
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -60,6 +63,7 @@ export class Web3Pill extends LitElement {
           padding: 3px 5px 3px 5px;
           border-radius: 20px;
           border: none;
+          cursor: pointer;
         }
         .web3-copied {
           padding-left: 5px;
@@ -80,7 +84,9 @@ export class Web3Pill extends LitElement {
           ${truncateAdress(this.address)}
         </button>
         ${!this.hidden
-          ? html` <div class="web3-copied">Copied!</div> `
+          ? html`
+              <div class="web3-copied">${defaultStringMap['web3.copied']}</div>
+            `
           : nothing}
       </li>
     `;
@@ -91,6 +97,6 @@ export class Web3Pill extends LitElement {
     this.hidden = false;
     setTimeout(() => {
       this.hidden = true;
-    }, 800);
+    }, HIDE_DELAY);
   };
 }

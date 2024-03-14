@@ -67,7 +67,7 @@ export class ProducedWith extends ConfigurablePanelSection(LitElement, {
       <div slot="header">${this._config.stringMap['produced-with.header']}</div>
       <div slot="content">
         <div class="section-produced-with-content">
-          <span> ${this._data?.product}    ${
+          <span> ${this._data?.product ?? ''}    ${
       this.manifestStore?.isBeta
         ? html`<span class="section-produced-with-beta">
             ${this._config.stringMap['produced-with.beta']}
