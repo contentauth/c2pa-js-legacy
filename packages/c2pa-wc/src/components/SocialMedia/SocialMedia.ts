@@ -7,12 +7,14 @@
  * it.
  */
 
+import { L2SocialAccount } from 'c2pa';
 import { css, html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
+import { customElement, property } from 'lit/decorators.js';
+import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import defaultStringMap from '../SocialMedia/SocialMedia.str.json';
 
+import { hasChanged } from '../../utils';
 import '../Icon';
 import '../PanelSection';
 
@@ -37,11 +39,7 @@ const defaultConfig: SocialMediaConfig = {
 };
 
 @customElement('cai-social-media')
-export class SocialMedia extends ConfigurablePanelSection(LitElement, {
-  dataSelector: (manifestStore) => manifestStore?.socialAccounts,
-  isEmpty: (data) => !data?.length,
-  config: defaultConfig,
-}) {
+export class SocialMedia extends Configurable(LitElement, defaultConfig) {
   static get styles() {
     return [
       defaultStyles,
@@ -71,13 +69,19 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
     ];
   }
 
+  @property({
+    type: Object,
+    hasChanged,
+  })
+  data: L2SocialAccount[] | undefined;
+
   render() {
-    return this.renderSection(html`<cai-panel-section
+    return html`<cai-panel-section
       helpText=${this._config.stringMap['social-media.helpText']}
     >
       <div slot="header">${this._config.stringMap['social-media.header']}</div>
       <ul class="section-social-media-list" slot="content">
-        ${this._data?.map(
+        ${this.data?.map(
           (socialAccount) => html`
             <li class="section-social-media-list-item">
               <a
@@ -91,6 +95,6 @@ export class SocialMedia extends ConfigurablePanelSection(LitElement, {
           `,
         )}
       </ul>
-    </cai-panel-section>`);
+    </cai-panel-section>`;
   }
 }

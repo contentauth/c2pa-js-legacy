@@ -28,7 +28,7 @@ declare global {
   }
 }
 
-function truncateAdress(address: string) {
+function truncateAddress(address: string) {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }
 
@@ -81,7 +81,7 @@ export class Web3Pill extends LitElement {
           class="web3-pill"
           @click=${this.handleClick.bind(this, this.address)}
         >
-          ${truncateAdress(this.address)}
+          ${truncateAddress(this.address)}
         </button>
         ${!this.hidden
           ? html`

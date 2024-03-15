@@ -7,12 +7,14 @@
  * it.
  */
 
+import { L2Web3 } from 'c2pa/dist/src/createL2ManifestStore';
 import { css, html, LitElement, nothing } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
+import { customElement, property } from 'lit/decorators.js';
+import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import defaultStringMap from './Web3.str.json';
 
+import { hasChanged } from '../../utils';
 import '../Icon';
 import '../PanelSection';
 import './Web3Pill';
@@ -39,22 +41,8 @@ const defaultConfig: Web3Config = {
   stringMap: defaultStringMap,
 };
 
-function truncateAdress(address: string[]) {
-  return `${address[0].slice(0, 6)}...${address[0].slice(-4)}`;
-}
-
-function handleClick(map: {}, address: string) {
-  navigator.clipboard.writeText(address);
-  hidden = false;
-  setTimeout(() => {
-    hidden = true;
-  }, 800);
-}
 @customElement('cai-web3')
-export class Web3 extends ConfigurablePanelSection(LitElement, {
-  dataSelector: (manifestStore) => manifestStore?.web3,
-  config: defaultConfig,
-}) {
+export class Web3 extends Configurable(LitElement, defaultConfig) {
   static get styles() {
     return [
       defaultStyles,
@@ -79,26 +67,32 @@ export class Web3 extends ConfigurablePanelSection(LitElement, {
     ];
   }
 
+  @property({
+    type: Object,
+    hasChanged,
+  })
+  data: L2Web3 | undefined;
+
   render() {
-    return this.renderSection(html`<cai-panel-section>
+    return html`<cai-panel-section>
       <div slot="header">${this._config.stringMap['web3.header']}</div>
       <div slot="content">
         <ul class="web3-list">
-          ${this._data?.solana
+          ${this.data?.solana && this.data?.solana.length > 0
             ? html`
                 <cai-web3-pill
                   key="solana"
-                  address=${this._data?.solana}
+                  address=${this.data?.solana}
                   hidden="false"
                 >
                 </cai-web3-pill>
               `
             : nothing}
-          ${this._data?.ethereum
+          ${this.data?.ethereum && this.data?.ethereum.length > 0
             ? html`
                 <cai-web3-pill
                   key="ethereum"
-                  address=${this._data?.ethereum}
+                  address=${this.data?.ethereum}
                   hidden="false"
                 >
                 </cai-web3-pill>
@@ -106,6 +100,6 @@ export class Web3 extends ConfigurablePanelSection(LitElement, {
             : nothing}
         </ul>
       </div>
-    </cai-panel-section>`);
+    </cai-panel-section>`;
   }
 }

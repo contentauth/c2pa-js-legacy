@@ -8,13 +8,14 @@
  */
 
 import { css, html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
+import { customElement, property } from 'lit/decorators.js';
+import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import defaultStringMap from './ContentSummary.str.json';
 
 import { GenerativeInfo, selectGenerativeType } from 'c2pa';
 import '../../../assets/svg/monochrome/generic-info.svg';
+import { hasChanged } from '../../utils';
 import '../Icon';
 import '../PanelSection';
 
@@ -39,13 +40,7 @@ const defaultConfig: ContentSummaryConfig = {
 };
 
 @customElement('cai-content-summary')
-export class ContentSummary extends ConfigurablePanelSection(LitElement, {
-  dataSelector: (manifestStore) =>
-    manifestStore?.generativeInfo
-      ? selectGenerativeType(manifestStore?.generativeInfo)
-      : null,
-  config: defaultConfig,
-}) {
+export class ContentSummary extends Configurable(LitElement, defaultConfig) {
   static get styles() {
     return [
       defaultStyles,
@@ -64,12 +59,18 @@ export class ContentSummary extends ConfigurablePanelSection(LitElement, {
     ];
   }
 
+  @property({
+    type: Object,
+    hasChanged,
+  })
+  data: string | undefined;
+
   render() {
-    return this.renderSection(html`<cai-panel-section
+    return html`<cai-panel-section
       helpText=${this._config.stringMap['content-summary.helpText']}
     >
       <div class="section-icon-content" slot="content">
-        ${this._data === 'compositeWithTrainedAlgorithmicMedia'
+        ${this.data === 'compositeWithTrainedAlgorithmicMedia'
           ? html`
               <span>
                 ${this._config.stringMap['content-summary.content.composite']}
@@ -81,6 +82,6 @@ export class ContentSummary extends ConfigurablePanelSection(LitElement, {
               </span>
             `}
       </div>
-    </cai-panel-section>`);
+    </cai-panel-section>`;
   }
 }

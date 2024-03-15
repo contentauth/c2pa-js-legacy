@@ -62,13 +62,6 @@ export default {
       identifier:
         'https://cai-identity.adobe.io/identities/did:adobe:f78db44b3d758bbf1ac2b1da23d6a9bc8d4554bbc7ca6f78f5536d6cf813d218e?service=VerifiableCredentials',
     },
-    {
-      '@type': 'Person',
-      '@id': 'https://www.twitter.com/gvnpeacock',
-      name: 'gvnpeacock',
-      identifier:
-        'https://cai-identity.adobe.io/identities/did:adobe:f78db44b3d758bbf1ac2b1da23d6a9bc8d4554bbc7ca6f78f5536d6cf813d218e?service=VerifiableCredentials',
-    },
   ],
   thumbnail: thumbnailUrl,
   editsAndActivity: [

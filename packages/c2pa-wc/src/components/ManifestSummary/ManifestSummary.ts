@@ -7,8 +7,12 @@
  * it.
  */
 
-import { L2ManifestStore } from 'c2pa';
-import { css, html, LitElement, nothing } from 'lit';
+import {
+  L2ManifestStore,
+  selectGenerativeSoftwareAgents,
+  selectGenerativeType,
+} from 'c2pa';
+import { LitElement, css, html, nothing } from 'lit';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
@@ -114,8 +118,12 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           overflow-y: auto;
           overflow-x: hidden;
         }
-
-        #content-container > * {
+        #content-container> *::(first-child) {
+          padding-top: 0;
+          margin-top: 0;
+          border: none;
+        }
+        #content-container > *:not(:first-child):not([empty]) {
           padding-top: var(--cai-manifest-summary-content-padding, 12px);
           margin-top: var(--cai-manifest-summary-section-spacing, 12px);
           border-top-width: var(
@@ -130,12 +138,6 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
             --cai-manifest-summary-section-border-color,
             #e1e1e1
           );
-        }
-
-        #content-container > *:first-child {
-          padding-top: 0;
-          margin-top: 0;
-          border: none;
         }
 
         #view-more-container {
@@ -196,6 +198,21 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
     if (!this.manifestStore) {
       return null;
     }
+
+    const dataSelectors = {
+      contentSummary: this.manifestStore?.generativeInfo
+        ? selectGenerativeType(this.manifestStore?.generativeInfo)
+        : null,
+      producedBy: this.manifestStore?.producer?.name,
+      producedWith: this.manifestStore?.claimGenerator,
+      socialMedia: this.manifestStore?.socialAccounts,
+      aiToolUsed: this.manifestStore?.generativeInfo
+        ? selectGenerativeSoftwareAgents(this.manifestStore?.generativeInfo)
+        : null,
+      web3: this.manifestStore?.web3,
+    };
+
+    console.log('allo', this.manifestStore);
     return html`<div id="container">
       <cai-minimum-viable-provenance
         .manifestStore=${this.manifestStore}
@@ -207,50 +224,51 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
               <div>${this._config.stringMap['manifest-summary.error']}</div>
             `
           : html`
-              ${this._config?.sections?.contentSummary
+              ${dataSelectors.contentSummary
                 ? html`
                     <cai-content-summary
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.contentSummary}
                       .config=${this._config}
                     ></cai-content-summary>
                   `
                 : nothing}
-              ${this._config?.sections?.producedBy
+              ${dataSelectors.producedBy
                 ? html`
                     <cai-produced-by
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.producedBy}
                       .config=${this._config}
                     ></cai-produced-by>
                   `
                 : nothing}
-              ${this._config?.sections?.producedWith
+              ${dataSelectors.producedWith
                 ? html`
                     <cai-produced-with
+                      .data=${dataSelectors.producedWith}
                       .manifestStore=${this.manifestStore}
                       .config=${this._config}
                     ></cai-produced-with>
                   `
                 : nothing}
-              ${this._config?.sections?.socialMedia
+              ${dataSelectors.socialMedia
                 ? html`
                     <cai-social-media
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.socialMedia}
                       .config=${this._config}
                     ></cai-social-media>
                   `
                 : nothing}
-              ${this._config?.sections?.aiToolUsed
+              ${dataSelectors.aiToolUsed
                 ? html`
                     <cai-ai-tool
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.aiToolUsed}
                       .config=${this._config}
                     ></cai-ai-tool>
                   `
                 : nothing}
-              ${this._config?.sections?.web3
+              ${dataSelectors.web3
                 ? html`
                     <cai-web3
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.web3}
                       .config=${this._config}
                     ></cai-web3>
                   `
