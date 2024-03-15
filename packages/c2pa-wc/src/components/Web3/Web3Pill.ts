@@ -10,7 +10,6 @@
 import { LitElement, css, html } from 'lit';
 import { nothing } from 'lit-html';
 import { customElement, property } from 'lit/decorators.js';
-import { prop } from 'lodash/fp';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import defaultStringMap from './Web3.str.json';
 

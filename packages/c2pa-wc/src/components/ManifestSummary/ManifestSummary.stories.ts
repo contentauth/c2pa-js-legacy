@@ -103,17 +103,6 @@ export const AppendCustomSection: Story<ArgTypes> = ({
       view-more-url=${viewMoreUrl}
       class=${theme}
     >
-      <cai-panel-section helpText="This is a custom section">
-        <div slot="header">Custom section</div>
-        <div slot="content">pre</div>
-        Number of ingredients:
-        ${manifestStore.ingredients?.length}</cai-panel-section
-      >
-      <cai-panel-section helpText="This is a custom section">
-        <div slot="header">Custom section</div>
-        <div slot="content">post</div>
-        Number of ingredients:
-        ${manifestStore.ingredients?.length}</cai-panel-section
       >
     </cai-manifest-summary>
   `;

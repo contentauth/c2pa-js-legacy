@@ -9,15 +9,13 @@
 
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import '../../../assets/svg/monochrome/generic-info.svg';
 import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from './ContentSummary.str.json';
-
-import { GenerativeInfo, selectGenerativeType } from 'c2pa';
-import '../../../assets/svg/monochrome/generic-info.svg';
 import { hasChanged } from '../../utils';
 import '../Icon';
 import '../PanelSection';
+import defaultStringMap from './ContentSummary.str.json';
 
 declare global {
   interface HTMLElementTagNameMap {

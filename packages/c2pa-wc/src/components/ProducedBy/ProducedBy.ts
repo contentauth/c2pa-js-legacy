@@ -6,8 +6,6 @@
  * accordance with the terms of the Adobe license agreement accompanying
  * it.
  */
-
-import { L2ManifestStore } from 'c2pa';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Configurable } from '../../mixins/configurable';

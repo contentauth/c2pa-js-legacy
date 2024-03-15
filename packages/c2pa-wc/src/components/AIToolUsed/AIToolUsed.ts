@@ -9,14 +9,14 @@
 
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import '../../../assets/svg/monochrome/generic-info.svg';
 import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from './AIToolUsed.str.json';
-
-import '../../../assets/svg/monochrome/generic-info.svg';
 import { hasChanged } from '../../utils';
+
 import '../Icon';
 import '../PanelSection';
+import defaultStringMap from './AIToolUsed.str.json';
 
 declare global {
   interface HTMLElementTagNameMap {

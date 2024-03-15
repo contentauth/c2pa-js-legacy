@@ -8,7 +8,6 @@
  */
 
 import { LitElement, css, html } from 'lit';
-import { nothing } from 'lit-html';
 import { customElement, property } from 'lit/decorators.js';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 
