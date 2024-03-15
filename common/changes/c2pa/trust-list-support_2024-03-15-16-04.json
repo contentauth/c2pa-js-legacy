@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add settings and trust list support",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
