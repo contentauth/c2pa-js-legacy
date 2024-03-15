@@ -2,6 +2,23 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.17.9",
+      "tag": "c2pa_v0.17.9",
+      "date": "Thu, 07 Mar 2024 22:56:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add embedded icon support in claim_generator_info"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.10.6`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.8",
       "tag": "c2pa_v0.17.8",
       "date": "Fri, 16 Feb 2024 16:46:52 GMT",

@@ -14,8 +14,12 @@ console_log = { version = "1.0.0", features = ["color"] }
 log = "0.4.14"
 js-sys = "0.3.69"
 serde = { version = "1.0.197", features = ["derive"] }
+js-sys = "0.3.69"
+serde = { version = "1.0.197", features = ["derive"] }
 serde_cbor = "0.11.2"
 serde_json = { version = "1.0.103", features = ["arbitrary_precision"] }
+serde-wasm-bindgen = "0.6.5"
+serde_bytes = "0.11.14"
 serde-wasm-bindgen = "0.6.5"
 serde_bytes = "0.11.14"
 serde_derive = "1.0.126"
@@ -23,10 +27,14 @@ serde-transcode = "1.1.1"
 thiserror = "1.0.20"
 wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
 wasm-bindgen-futures = "0.4.42"
+wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4.42"
 
 [dependencies.web-sys]
+version = "0.3.69"
 version = "0.3.69"
 features = ['console', 'Window', 'Performance']
 
 [dev-dependencies]
+wasm-bindgen-test = "0.3.42"
 wasm-bindgen-test = "0.3.42"

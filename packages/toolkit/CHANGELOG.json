@@ -2,6 +2,18 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.10.6",
+      "tag": "@contentauth/toolkit_v0.10.6",
+      "date": "Thu, 07 Mar 2024 22:56:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update dependencies"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.10.5",
       "tag": "@contentauth/toolkit_v0.10.5",
       "date": "Thu, 11 Jan 2024 20:02:01 GMT",

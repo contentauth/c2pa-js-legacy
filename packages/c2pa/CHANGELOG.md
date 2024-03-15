@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Fri, 16 Feb 2024 16:46:52 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2024 22:56:51 GMT and should not be manually modified.
+
+## 0.17.9
+Thu, 07 Mar 2024 22:56:51 GMT
+
+### Patches
+
+- Add embedded icon support in claim_generator_info
 
 ## 0.17.8
 Fri, 16 Feb 2024 16:46:52 GMT
