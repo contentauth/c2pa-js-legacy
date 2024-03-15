@@ -212,7 +212,6 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
       web3: this.manifestStore?.web3,
     };
 
-    console.log('allo', this.manifestStore);
     return html`<div id="container">
       <cai-minimum-viable-provenance
         .manifestStore=${this.manifestStore}
