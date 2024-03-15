@@ -21,21 +21,20 @@ export interface SdkWorkerPool extends Worker {
 export async function createPoolWrapper(
   config: WorkerPoolConfig,
 ): Promise<SdkWorkerPool> {
-  const res = await fetch(config.scriptSrc);
+  const res = await fetch(config.scriptSrc, {
+    method: 'HEAD',
+  });
 
   if (!res.ok) throw new InvalidWorkerSourceError(config.scriptSrc, res);
 
-  const src = await res.text();
   // @TODO: check subresource integrity
-  dbg('Fetched worker from %s (%d bytes)', config.scriptSrc, src.length);
+  dbg(
+    'Fetched worker from %s (%d bytes)',
+    config.scriptSrc,
+    res.headers.get('Content-Length'),
+  );
 
-  const workerBlob = new Blob([src], { type: 'application/javascript' });
-  const workerUrl = URL.createObjectURL(workerBlob);
-
-  const workerPool = createWorkerPool({
-    ...config,
-    scriptSrc: workerUrl,
-  });
+  const workerPool = createWorkerPool(config);
 
   const pool: Worker = {
     compileWasm: async (...args) => workerPool.execute('compileWasm', args),
@@ -48,7 +47,6 @@ export async function createPoolWrapper(
   return {
     ...pool,
     dispose: () => {
-      URL.revokeObjectURL(workerUrl);
       return workerPool.terminate();
     },
   };

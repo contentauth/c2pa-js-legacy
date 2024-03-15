@@ -22,8 +22,11 @@ export interface WorkerManager {
  * @param scriptUrl URL to worker script
  * @returns {WorkerManager}
  */
-export function createWorkerManager(scriptUrl: string): WorkerManager {
-  const worker = new Worker(scriptUrl);
+export function createWorkerManager(
+  scriptUrl: string,
+  options?: WorkerOptions,
+): WorkerManager {
+  const worker = new Worker(scriptUrl, options);
   let working = false;
 
   const execute: WorkerManager['execute'] = async (request) => {
