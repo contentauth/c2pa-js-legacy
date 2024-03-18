@@ -7,7 +7,7 @@
  * it.
  */
 
-import { L2Web3 } from 'c2pa/dist/src/createL2ManifestStore';
+import { L2Web3 } from 'c2pa';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Configurable } from '../../mixins/configurable';

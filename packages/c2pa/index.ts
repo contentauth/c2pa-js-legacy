@@ -29,6 +29,7 @@ export {
   L2Producer,
   L2Signature,
   L2SocialAccount,
+  L2Web3,
   createL2ManifestStore,
 } from './src/createL2ManifestStore';
 export { Ingredient } from './src/ingredient';

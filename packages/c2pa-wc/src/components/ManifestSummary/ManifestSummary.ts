@@ -44,28 +44,11 @@ declare global {
 
 export interface ManifestSummaryConfig extends MinimumViableProvenanceConfig {
   stringMap: Record<string, string>;
-  sections?: {
-    producedBy?: boolean;
-    producedWith?: boolean;
-    socialMedia?: boolean;
-    contentSummary?: boolean;
-    aiToolUsed?: boolean;
-    web3?: boolean;
-  };
 }
 
 const defaultConfig: ManifestSummaryConfig = {
   stringMap: defaultStringMap,
   dateFormatter: defaultDateFormatter,
-
-  sections: {
-    producedBy: true,
-    producedWith: true,
-    socialMedia: true,
-    contentSummary: true,
-    aiToolUsed: true,
-    web3: true,
-  },
 };
 
 @customElement('cai-manifest-summary')
@@ -211,6 +194,8 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
         : null,
       web3: this.manifestStore?.web3,
     };
+
+    console.log('viewMoreUrl', this.viewMoreUrl);
 
     return html`<div id="container">
       <cai-minimum-viable-provenance
