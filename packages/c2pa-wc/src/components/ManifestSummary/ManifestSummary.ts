@@ -77,6 +77,9 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
       css`
         #container {
           width: var(--cai-manifest-summary-width, 320px);
+          display: flex;
+          flex-direction: column;
+          max-height: calc(100vh);
         }
 
         #content-container {
@@ -97,6 +100,8 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
 
           overflow-y: auto;
           overflow-x: hidden;
+          flex-grow: 1;
+          flex-shrink: 1;
         }
 
         #content-container > *:not(:first-child):not([empty]),
