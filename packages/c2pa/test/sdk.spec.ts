@@ -220,7 +220,6 @@ describe('c2pa', function () {
               {
                 label: 'adobe.beta',
                 data: { version: '0.12.5' },
-                kind: 'Json',
               },
               {
                 label: 'stds.schema-org.CreativeWork',
@@ -231,13 +230,15 @@ describe('c2pa', function () {
                 },
                 kind: 'Json',
               },
-              { label: 'c2pa.actions', data: { actions: jasmine.any(Array) } },
+              {
+                label: 'c2pa.actions',
+                data: { actions: jasmine.any(Array) },
+              },
               {
                 label: 'adobe.dictionary',
                 data: {
                   url: 'https://cai-assertions.adobe.com/photoshop/dictionary.json',
                 },
-                kind: 'Json',
               },
             ] as any);
           });
