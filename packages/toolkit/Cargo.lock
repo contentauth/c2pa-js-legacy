@@ -279,9 +279,9 @@ checksum = "a2bd12c1caf447e69cd4528f47f94d203fd2582878ecb9e9465484c4148a8223"
 
 [[package]]
 name = "c2pa"
-version = "0.31.0"
+version = "0.31.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "791ceece48e06f605c6c37eb541b9051e8d1aef8b61431d577566a03ef773033"
+checksum = "5d0120b1e3bc7e8fd2b269420199db6ff776279a976af8a439e11b4fffe1c209"
 dependencies = [
  "asn1-rs",
  "async-generic",
@@ -429,8 +429,6 @@ version = "0.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7328b20597b53c2454f0b1919720c25c7339051c02b72b7e05409e00b14132be"
 dependencies = [
- "async-trait",
- "convert_case",
  "json5",
  "lazy_static",
  "nom",
@@ -440,7 +438,6 @@ dependencies = [
  "serde",
  "serde_json",
  "toml",
- "yaml-rust",
 ]
 
 [[package]]
@@ -515,15 +512,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "78ff10625fd0ac447827aa30ea8b861fead473bb60aeb73af6c1c58caf0d1299"
 dependencies = [
  "custom_derive",
-]
-
-[[package]]
-name = "convert_case"
-version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec182b0ca2f35d8fc196cf3404988fd8b8c739a4d270ff118a398feb0cbec1ca"
-dependencies = [
- "unicode-segmentation",
 ]
 
 [[package]]
@@ -2255,12 +2243,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "unicode-segmentation"
-version = "1.11.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d4c87d22b6e3f4a18d4d40ef354e97c90fcb14dd91d7dc0aa9d8a1172ebf7202"
-
-[[package]]
 name = "unicode-xid"
 version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2601,15 +2583,6 @@ dependencies = [
  "rusticata-macros",
  "thiserror",
  "time",
-]
-
-[[package]]
-name = "yaml-rust"
-version = "0.4.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "56c1936c4cc7a1c9ab21a1ebb602eb942ba868cbd44a99cb7cdc5892335e1c85"
-dependencies = [
- "linked-hash-map",
 ]
 
 [[package]]

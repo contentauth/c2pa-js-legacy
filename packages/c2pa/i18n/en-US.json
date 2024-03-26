@@ -25,6 +25,10 @@
         "description": "Used tools like pencils, brushes, erasers, or shape, path, or pen tools",
         "label": "Drawing edits"
       },
+      "c2pa.dubbed": {
+        "description": "Replaced audio",
+        "label": "Dubbed"
+      },
       "c2pa.edited": {
         "description": "Made other changes",
         "label": "Other edits"
@@ -64,6 +68,10 @@
       "c2pa.transcoded": {
         "description": "Processed or compressed an asset to optimize for display",
         "label": "Processed asset"
+      },
+      "c2pa.translated": {
+        "description": "Translated content",
+        "label": "Translated"
       },
       "c2pa.unknown": {
         "description": "Performed other edits or activity that couldn't be recognized",
