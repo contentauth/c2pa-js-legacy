@@ -9,6 +9,7 @@
 
 import { ToolkitError } from '@contentauth/toolkit';
 import debug from 'debug';
+import { mapKeys, reduce, snakeCase } from 'lodash';
 import { ensureCompatibility } from './lib/browser';
 import { Downloader, DownloaderOptions } from './lib/downloader';
 import { InvalidInputError } from './lib/error';
@@ -20,6 +21,30 @@ import { C2paSourceType, Source, createSource } from './source';
 
 const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
+
+export interface ToolkitTrustSettings {
+  /**
+   * A list of allowed trust anchors
+   */
+  trustAnchors?: string;
+  trustConfig?: string;
+  /**
+   * A list of allowed end-entity certificates/hashes for trust checking
+   */
+  allowedList?: string;
+}
+
+export interface ToolkitVerifySettings {
+  verifyAfterSign?: boolean;
+  verifyTrust?: boolean;
+  ocspFetch?: boolean;
+  remoteManifestFetch?: boolean;
+}
+
+export interface ToolkitSettings {
+  trust?: ToolkitTrustSettings;
+  verify?: ToolkitVerifySettings;
+}
 
 // @TODO: should wasmSrc/workerSrc be optional here w/ an error at runtime if not provided?
 export interface C2paConfig {
@@ -48,6 +73,12 @@ export interface C2paConfig {
    * By default, the SDK will fetch cloud-stored (remote) manifests. Set this to false to disable this behavior.
    */
   fetchRemoteManifests?: boolean;
+
+  settings?: ToolkitSettings;
+}
+
+export interface C2paReadOptions {
+  settings?: ToolkitSettings;
 }
 
 /**
@@ -58,13 +89,13 @@ export interface C2pa {
    * Processes image data from a `Blob` as input
    * @param blob - The binary data of the image
    */
-  read(blob: Blob): Promise<C2paReadResult>;
+  read(blob: Blob, options?: C2paReadOptions): Promise<C2paReadResult>;
 
   /**
    * Processes image data from a `File` as input. Useful for file uploads/drag-and-drop.
    * @param file - The binary data of the image
    */
-  read(file: File): Promise<C2paReadResult>;
+  read(file: File, options?: C2paReadOptions): Promise<C2paReadResult>;
 
   /**
    * Processes image data from a URL
@@ -77,7 +108,7 @@ export interface C2pa {
    *
    * @param url - The URL of the image to process
    */
-  read(url: string): Promise<C2paReadResult>;
+  read(url: string, options?: C2paReadOptions): Promise<C2paReadResult>;
 
   /**
    * Processes an image from an HTML image element (`<img />`).
@@ -87,7 +118,10 @@ export interface C2pa {
    *
    * @param element - DOM element of the image to process
    */
-  read(element: HTMLImageElement): Promise<C2paReadResult>;
+  read(
+    element: HTMLImageElement,
+    options?: C2paReadOptions,
+  ): Promise<C2paReadResult>;
 
   /**
    * Process an image given a valid input. Supported types:
@@ -98,14 +132,20 @@ export interface C2pa {
    *
    * @param input - Image to process
    */
-  read(input: C2paSourceType): Promise<C2paReadResult>;
+  read(
+    input: C2paSourceType,
+    options?: C2paReadOptions,
+  ): Promise<C2paReadResult>;
 
   /**
    * Convenience function to process multiple images at once
    *
    * @param inputs - Array of inputs to pass to `processImage`
    */
-  readAll(inputs: C2paSourceType[]): Promise<C2paReadResult[]>;
+  readAll(
+    inputs: C2paSourceType[],
+    options?: C2paReadOptions,
+  ): Promise<C2paReadResult[]>;
 
   /**
    * Disposer function to clean up the underlying worker pool and any other disposable resources
@@ -123,6 +163,28 @@ export interface C2paReadResult {
    * Source asset provided to `c2pa.read()`
    */
   source: Source;
+}
+
+// Make sure we format the settings in a way that Rust expects them
+function formatSettings(settings: ToolkitSettings | null | undefined) {
+  if (!settings) {
+    return undefined;
+  }
+
+  const formatted = reduce(
+    settings,
+    (acc, sectionVals, sectionName) => {
+      return {
+        ...acc,
+        [snakeCase(sectionName)]: mapKeys(sectionVals, (_, val) =>
+          snakeCase(val),
+        ),
+      };
+    },
+    {},
+  );
+
+  return JSON.stringify(formatted);
 }
 
 /**
@@ -148,14 +210,17 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
       ? config.wasmSrc
       : await fetchWasm(pool, config.wasmSrc);
 
-  const read: C2pa['read'] = async (input) => {
+  const read: C2pa['read'] = async (input, opts) => {
     const jobId = ++jobCounter;
 
     dbgTask('[%s] Reading from input', jobId, input);
 
     const source = await createSource(downloader, input);
+    const settings = formatSettings(opts?.settings ?? config.settings);
 
-    dbgTask('[%s] Processing input', jobId, input);
+    dbgTask('[%s] Processing input', jobId, input, {
+      settings: settings && JSON.parse(settings),
+    });
 
     if (!source.blob) {
       return {
@@ -167,7 +232,7 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
     const buffer = await source.arrayBuffer();
 
     try {
-      const result = await pool.getReport(wasm, buffer, source.type);
+      const result = await pool.getReport(wasm, buffer, source.type, settings);
 
       dbgTask('[%s] Received worker result', jobId, result);
 
@@ -181,7 +246,8 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
         err,
         pool,
         wasm,
-        config.fetchRemoteManifests,
+        config,
+        settings,
       );
 
       return {
@@ -191,8 +257,8 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
     }
   };
 
-  const readAll: C2pa['readAll'] = async (inputs) =>
-    Promise.all(inputs.map((input) => read(input)));
+  const readAll: C2pa['readAll'] = async (inputs, options) =>
+    Promise.all(inputs.map((input) => read(input, options)));
 
   return {
     read,
@@ -210,6 +276,7 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
 export function generateVerifyUrl(assetUrl: string) {
   const url = new URL('https://verify.contentauthenticity.org/inspect');
   url.searchParams.set('source', assetUrl);
+  console.log('source', assetUrl);
   return url.toString();
 }
 
@@ -241,11 +308,14 @@ function handleErrors(
   error: ToolkitError,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
-  fetchRemote = true,
+  config: C2paConfig,
+  settings?: string,
 ): Promise<ManifestStore | null> | null {
+  const fetchRemote = config.fetchRemoteManifests ?? true;
+
   if (error.name === 'Toolkit(RemoteManifestUrl)') {
     if (fetchRemote && error.url) {
-      return fetchRemoteManifest(source, error.url, pool, wasm);
+      return fetchRemoteManifest(source, error.url, pool, wasm, settings);
     }
     return null;
   }
@@ -263,6 +333,7 @@ async function fetchRemoteManifest(
   manifestUrl: string,
   pool: SdkWorkerPool,
   wasm: WebAssembly.Module,
+  settings?: string,
 ): Promise<ManifestStore | null> {
   try {
     const url = new URL(manifestUrl);
@@ -280,6 +351,7 @@ async function fetchRemoteManifest(
       wasm,
       manifestBuffer,
       source.blob,
+      settings,
     );
 
     return createManifestStore(result);

@@ -106,3 +106,38 @@ export function selectGenerativeInfo(
 
   return data.length ? data : null;
 }
+
+/**
+ * Returns a set of software agents
+ * @param generativeInfo - generative info from manifest
+ */
+export function selectGenerativeSoftwareAgents(
+  generativeInfo: GenerativeInfo[],
+) {
+  const softwareAgents = [
+    ...new Set(
+      generativeInfo.map((assertion) => {
+        return assertion?.softwareAgent;
+      }),
+    ),
+  ];
+  //if there are undefined software agents remove them from the array
+
+  return softwareAgents.filter((element) => typeof element !== 'undefined');
+}
+
+/**
+ * Returns the generative type (trained , legacy or composite)
+ * @param generativeInfo - generative info from manifest
+ */
+
+export function selectGenerativeType(generativeInfo: GenerativeInfo[]) {
+  const result =
+    // Try to see if we have any composite assertions
+    generativeInfo.find(
+      (assertion) => assertion.type === 'compositeWithTrainedAlgorithmicMedia',
+      // If not, fall back to whichever one the first item is, which should be the trained or legacy assertion
+    ) ?? generativeInfo[0];
+
+  return result?.type ?? null;
+}

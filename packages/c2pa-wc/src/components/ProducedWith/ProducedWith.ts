@@ -7,15 +7,16 @@
  * it.
  */
 
-import { L2ManifestStore } from 'c2pa';
-import { css, html, LitElement } from 'lit';
+import { L2ClaimGenerator, L2ManifestStore } from 'c2pa';
+import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import defaultStringMap from './ProducedWith.str.json';
+import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
+import defaultStringMap from './ProducedWith.str.json';
 
-import '../PanelSection';
+import { hasChanged } from '../../utils';
 import '../Icon';
+import '../PanelSection';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -38,10 +39,7 @@ const defaultConfig: ProducedWithConfig = {
 };
 
 @customElement('cai-produced-with')
-export class ProducedWith extends ConfigurablePanelSection(LitElement, {
-  dataSelector: (manifestStore) => manifestStore.claimGenerator,
-  config: defaultConfig,
-}) {
+export class ProducedWith extends Configurable(LitElement, defaultConfig) {
   static get styles() {
     return [
       defaultStyles,
@@ -53,29 +51,41 @@ export class ProducedWith extends ConfigurablePanelSection(LitElement, {
         }
 
         .section-produced-with-beta {
-          margin-left: 24px;
           color: var(--cai-secondary-color);
         }
       `,
     ];
   }
 
+  @property({
+    type: Object,
+    hasChanged,
+  })
+  data: L2ClaimGenerator | undefined;
+
+  @property({
+    type: Object,
+    hasChanged,
+  })
+  manifestStore: L2ManifestStore | undefined;
+
   render() {
-    return this.renderSection(html` <cai-panel-section
-      header=${this._config.stringMap['produced-with.header']}
+    return html` <cai-panel-section
       helpText=${this._config.stringMap['produced-with.helpText']}
     >
-      <div>
+      <div slot="header">${this._config.stringMap['produced-with.header']}</div>
+      <div slot="content">
         <div class="section-produced-with-content">
-          <cai-icon source="${this._data?.product}"></cai-icon>
-          <span> ${this._data?.product} </span>
+          <span> ${this.data?.product ?? ''}    
+          ${
+            this.manifestStore?.isBeta
+              ? html`<span class="section-produced-with-beta">
+                  ${this._config.stringMap['produced-with.beta']}
+                </span>`
+              : null
+          } </span>
         </div>
-        ${this.manifestStore?.isBeta
-          ? html`<div class="section-produced-with-beta">
-              ${this._config.stringMap['produced-with.beta']}
-            </div>`
-          : null}
-      </div>
-    </cai-panel-section>`);
+      <div>
+    </cai-panel-section>`;
   }
 }

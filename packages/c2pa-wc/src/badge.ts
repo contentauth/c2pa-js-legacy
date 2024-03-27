@@ -7,7 +7,7 @@
  * it.
  */
 
-import { L2Ingredient, L2ManifestStore } from 'c2pa';
+import { L2ManifestStore } from 'c2pa';
 import { Badge } from './components/Thumbnail';
 
 export function getBadgeFromManifestStore(
@@ -18,21 +18,6 @@ export function getBadgeFromManifestStore(
   }
 
   switch (manifestStore.error) {
-    case 'otgp':
-      return 'missing';
-    case 'error':
-      return 'alert';
-    default:
-      return 'info';
-  }
-}
-
-export function getBadgeFromIngredient(ingredient: L2Ingredient): Badge {
-  if (!ingredient.hasManifest) {
-    return 'none';
-  }
-
-  switch (ingredient.error) {
     case 'otgp':
       return 'missing';
     case 'error':

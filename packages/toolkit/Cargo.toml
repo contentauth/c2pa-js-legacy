@@ -2,35 +2,31 @@
 authors = ["Dave Kozma <dkozma@adobe.com>"]
 edition = "2018"
 name = "c2pa-js-toolkit"
-version = "0.23.1-1"
+version = "0.31.1-1"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-c2pa = { version = "0.28.4", features = ["serialize_thumbnails", "pdf"] }
+c2pa = { version = "0.31.1", features = ["serialize_thumbnails", "pdf"] }
 console_error_panic_hook = "0.1.7"
 console_log = { version = "1.0.0", features = ["color"] }
+js-sys = "0.3.69"
 log = "0.4.14"
-js-sys = "0.3.56"
-serde = { version = "1.0.127", features = ["derive"] }
+serde = { version = "1.0.197", features = ["derive"] }
+serde_bytes = "0.11.14"
 serde_cbor = "0.11.2"
-serde_json = { version = "1.0.103", features = ["arbitrary_precision"] }
-serde-wasm-bindgen = "0.6.0"
-serde_bytes = "0.11.5"
 serde_derive = "1.0.126"
+serde_json = { version = "1.0.103", features = ["arbitrary_precision"] }
 serde-transcode = "1.1.1"
+serde-wasm-bindgen = "0.6.5"
 thiserror = "1.0.20"
-wasm-bindgen = { version = "0.2.83", features = ["serde-serialize"] }
-wasm-bindgen-futures = "0.4.29"
+wasm-bindgen = { version = "0.2.92", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4.42"
 
 [dependencies.web-sys]
-version = "0.3.56"
+version = "0.3.69"
 features = ['console', 'Window', 'Performance']
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.29"
-
-[profile.release]
-lto = true
-opt-level = "s"
+wasm-bindgen-test = "0.3.42"

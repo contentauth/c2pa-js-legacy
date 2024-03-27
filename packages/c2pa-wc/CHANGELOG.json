@@ -2,6 +2,59 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.12.1",
+      "tag": "c2pa-wc_v0.12.1",
+      "date": "Tue, 26 Mar 2024 21:30:40 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.19.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.12.0",
+      "tag": "c2pa-wc_v0.12.0",
+      "date": "Tue, 19 Mar 2024 18:41:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "new L2 look (nutritional label) and added web3/ai tool used sections"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.19.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.18",
+      "tag": "c2pa-wc_v0.11.18",
+      "date": "Mon, 18 Mar 2024 21:08:16 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.18.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.17",
+      "tag": "c2pa-wc_v0.11.17",
+      "date": "Thu, 07 Mar 2024 22:56:51 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.17.9`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.16",
       "tag": "c2pa-wc_v0.11.16",
       "date": "Fri, 16 Feb 2024 16:46:52 GMT",

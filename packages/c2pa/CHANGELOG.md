@@ -1,6 +1,34 @@
 # Change Log - c2pa
 
-This log was last generated on Fri, 16 Feb 2024 16:46:52 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Mar 2024 21:30:40 GMT and should not be manually modified.
+
+## 0.19.1
+Tue, 26 Mar 2024 21:30:40 GMT
+
+### Patches
+
+- Add dubbed and translated action support
+
+## 0.19.0
+Tue, 19 Mar 2024 18:41:20 GMT
+
+### Minor changes
+
+- web3 and gen AI support in createL2ManifestStore
+
+## 0.18.0
+Mon, 18 Mar 2024 21:08:16 GMT
+
+### Minor changes
+
+- Add settings and trust list support
+
+## 0.17.9
+Thu, 07 Mar 2024 22:56:51 GMT
+
+### Patches
+
+- Add embedded icon support in claim_generator_info
 
 ## 0.17.8
 Fri, 16 Feb 2024 16:46:52 GMT

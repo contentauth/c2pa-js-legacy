@@ -1,5 +1,7 @@
 {
   "minimum-viable-provenance.header": "Content Credentials",
   "minimum-viable-provenance.helpText": "Attribution and history data attached to this content",
-  "minimum-viable-provenance.invalidDate": "Invalid date"
+  "minimum-viable-provenance.invalidDate": "Invalid date",
+  "minimum-viable-provenance.issuedBy": "Issued by",
+  "minimum-viable-provenance.on": "on"
 }

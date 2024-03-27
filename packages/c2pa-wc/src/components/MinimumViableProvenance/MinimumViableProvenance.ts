@@ -56,33 +56,33 @@ export class MinimumViableProvenance extends Configurable(
       defaultStyles,
       baseSectionStyles,
       css`
-      .minimum-viable-provenance-content {
-        --cai-thumbnail-size: 48px;
-        display: grid;
-        grid-template-columns: 48px auto;
-        grid-gap: 2px 10px;
-        text-align: left;
-      }
-      .minimum-viable-provenance-thumbnail {
-        grid-column: 1;
-        grid-row: 1 / 3;
-      }
-      .minimum-viable-provenance-signer {
-        grid-column: 2;
-        grid-row: 1;
-        align-self: flex-end;
-        display: grid;
-        grid-template-columns: min-content max-content;
-        align-items: center;
-      }
-      .minimum-viable-provenance-signer.no-date {
-        grid-row: span 2;
-        height: 100%;
-      }
-      .minimum-viable-provenance-date {
-        grid-column: 2;
-        grid-row: 2;
-        color: var(--cai-secondary-color, #6e6e6e);
+        .minimum-viable-provenance-content {
+          display: flex;
+          text-align: left;
+          color: #666666;
+        }
+        div.container {
+          padding: var(
+            --cai-manifest-summary-content-padding,
+            12px 16px 12px 16px
+          );
+        }
+        .minimum-viable-provenance-signer.no-date {
+          height: 100%;
+        }
+        div.heading {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        div.heading-text {
+          color: var(
+            --cai-panel-section-heading-color,
+            var(--cai-primary-color)
+          );
+          font-size: 18px;
+          font-weight: var(--cai-panel-section-heading-font-weight, bold);
+        }
       `,
     ];
   }
@@ -99,37 +99,32 @@ export class MinimumViableProvenance extends Configurable(
       ? parseISO(this.manifestStore?.signature.isoDateString)
       : undefined;
 
-    return html` <cai-panel-section
-      headingLevel=${2}
-      header=${this._config.stringMap['minimum-viable-provenance.header']}
-      helpText=${this._config.stringMap['minimum-viable-provenance.helpText']}
-    >
-      <div class="minimum-viable-provenance-content">
-        <cai-thumbnail
-          class="minimum-viable-provenance-thumbnail"
-          src=${this.manifestStore?.thumbnail}
-        ></cai-thumbnail>
-        <div class=${classMap(mvpClasses)}>
-          <cai-icon
-            slot="icon"
-            source=${this.manifestStore?.signature?.issuer}
-            aria-hidden="true"
-          ></cai-icon>
-          <span> ${this.manifestStore?.signature?.issuer} </span>
+    return html`
+      <div class="container">
+        <div class="heading">
+          <div class="heading-text" role="heading" aria-level="2">
+            ${this._config.stringMap['minimum-viable-provenance.header']}
+          </div>
         </div>
-        ${!hasError
-          ? html`
-              <div class="minimum-viable-provenance-date">
-                ${signatureDate && isValid(signatureDate)
-                  ? html`${this._config?.dateFormatter(signatureDate!)}`
-                  : signatureDate &&
-                    html`${this._config?.stringMap[
-                      'minimum-viable-provenance.invalidDate'
-                    ]}`}
-              </div>
-            `
-          : nothing}
+        <div class="minimum-viable-provenance-content">
+          <div class=${classMap(mvpClasses)}>
+            <span>
+              ${this._config.stringMap['minimum-viable-provenance.issuedBy']}
+              ${this.manifestStore?.signature?.issuer}
+              ${!hasError
+                ? html`
+                    ${signatureDate && isValid(signatureDate)
+                      ? html`${this._config.stringMap[
+                          'minimum-viable-provenance.on'
+                        ]}
+                        ${this._config?.dateFormatter(signatureDate!)}`
+                      : nothing}
+                  `
+                : nothing}
+            </span>
+          </div>
+        </div>
       </div>
-    </cai-panel-section>`;
+    `;
   }
 }

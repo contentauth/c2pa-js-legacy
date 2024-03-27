@@ -1,6 +1,28 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Fri, 16 Feb 2024 16:46:52 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Mar 2024 21:30:40 GMT and should not be manually modified.
+
+## 0.12.1
+Tue, 26 Mar 2024 21:30:40 GMT
+
+_Version update only_
+
+## 0.12.0
+Tue, 19 Mar 2024 18:41:20 GMT
+
+### Minor changes
+
+- new L2 look (nutritional label) and added web3/ai tool used sections
+
+## 0.11.18
+Mon, 18 Mar 2024 21:08:16 GMT
+
+_Version update only_
+
+## 0.11.17
+Thu, 07 Mar 2024 22:56:51 GMT
+
+_Version update only_
 
 ## 0.11.16
 Fri, 16 Feb 2024 16:46:52 GMT

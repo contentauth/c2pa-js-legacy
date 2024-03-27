@@ -15,26 +15,23 @@ import '../Tooltip';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cai-panel-section': PanelSection;
+    'cai-header-section': PanelSection;
   }
 
   namespace JSX {
     interface IntrinsicElements {
-      'cai-panel-section': any;
+      'cai-header-section': any;
     }
   }
 }
 
-@customElement('cai-panel-section')
+@customElement('cai-header-section')
 export class PanelSection extends LitElement {
   @property({ type: String })
   header = '';
 
   @property({ type: String })
   helpText: string | null = null;
-
-  @property({ type: String })
-  headingLevel: '1' | '2' | '3' | '4' | '5' | '6' = '3';
 
   static get styles() {
     return [
@@ -47,10 +44,9 @@ export class PanelSection extends LitElement {
           grid-template-rows: auto;
           gap: var(--cai-panel-section-internal-spacing, 0.5rem);
         }
-        div.container {
+        div.heading {
           display: flex;
-          align-items: flex-start;
-          flex-wrap: wrap;
+          align-items: center;
         }
         div.heading-text {
           color: var(
@@ -60,12 +56,6 @@ export class PanelSection extends LitElement {
 
           font-weight: var(--cai-panel-section-heading-font-weight, bold);
         }
-        div.content {
-          flex-grow: 1;
-        }
-        .heading-text ::slotted(*) {
-          margin-right: 6px;
-        }
       `,
     ];
   }
@@ -73,10 +63,10 @@ export class PanelSection extends LitElement {
   render() {
     return html`
       <div class="layout">
-        <div class="container">
-          <div class="heading-text"><slot name="header"></slot></div>
-          <div class="content"><slot name="content"></slot></div>
+        <div class="heading">
+          <div class="heading-text">${this.header}</div>
         </div>
+        <slot></slot>
       </div>
     `;
   }
