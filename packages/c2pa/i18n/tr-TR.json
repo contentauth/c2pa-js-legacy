@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Ton, doygunluk, eğriler, gölgeler veya vurgular gibi ayarlanmış özellikler",
-        "label": "Renk veya pozlama düzenlemeleri"
-      },
-      "c2pa.created": {
-        "description": "Yeni bir dosya veya içerik oluşturuldu",
-        "label": "Oluşturuldu"
-      },
-      "c2pa.cropped": {
-        "description": "Kırpma araçları kullanılarak görünür içerik alanı küçültüldü veya genişletildi",
-        "label": "Kırpma düzenlemeleri"
-      },
-      "c2pa.drawing": {
-        "description": "Kurşun kalem, fırça, silgi veya şekil, yol ya da kalem araçları gibi araçlar kullanıldı",
-        "label": "Çizim düzenlemeleri"
-      },
-      "c2pa.edited": {
-        "description": "Diğer değişiklikler yapıldı",
-        "label": "Diğer düzenlemeler"
-      },
-      "c2pa.filtered": {
-        "description": "Görünümü değiştirmek için filtre, stil veya efekt gibi araçlar kullanıldı",
-        "label": "Filtre veya stil düzenlemeleri"
-      },
-      "c2pa.opened": {
-        "description": "Mevcut bir dosya açıldı",
-        "label": "Açıldı"
-      },
-      "c2pa.orientation": {
-        "description": "Konum veya yönlendirme değiştirildi (döndürüldü, ters çevrildi vb.)",
-        "label": "Yönlendirme düzenlemeleri"
-      },
-      "c2pa.placed": {
-        "description": "Mevcut içerik bu dosyaya eklendi",
-        "label": "İçe aktarıldı"
-      },
-      "c2pa.resized": {
-        "description": "Boyutlar veya dosya boyutu değiştirildi",
-        "label": "Yeniden boyutlandırma düzenlemeleri"
-      },
-      "c2pa.unknown": {
-        "description": "Algılanamayan başka düzenlemeler veya etkinlikler gerçekleştirildi",
-        "label": "Bilinmeyen düzenlemeler veya etkinlikler"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Ton, doygunluk, eğriler, gölgeler veya vurgular gibi ayarlanmış özellikler",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Renk veya pozlama düzenlemeleri",
+  "selectors.editsAndActivity.c2pa.created.description": "Yeni bir dosya veya içerik oluşturuldu",
+  "selectors.editsAndActivity.c2pa.created.label": "Oluşturuldu",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Kırpma araçları kullanılarak görünür içerik alanı küçültüldü veya genişletildi",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Kırpma düzenlemeleri",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Kurşun kalem, fırça, silgi veya şekil, yol ya da kalem araçları gibi araçlar kullanıldı",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Çizim düzenlemeleri",
+  "selectors.editsAndActivity.c2pa.edited.description": "Diğer değişiklikler yapıldı",
+  "selectors.editsAndActivity.c2pa.edited.label": "Diğer düzenlemeler",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Görünümü değiştirmek için filtre, stil veya efekt gibi araçlar kullanıldı",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Filtre veya stil düzenlemeleri",
+  "selectors.editsAndActivity.c2pa.opened.description": "Mevcut bir dosya açıldı",
+  "selectors.editsAndActivity.c2pa.opened.label": "Açıldı",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Konum veya yönlendirme değiştirildi (döndürüldü, ters çevrildi vb.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Yönlendirme düzenlemeleri",
+  "selectors.editsAndActivity.c2pa.placed.description": "Mevcut içerik bu dosyaya eklendi",
+  "selectors.editsAndActivity.c2pa.placed.label": "İçe aktarıldı",
+  "selectors.editsAndActivity.c2pa.resized.description": "Boyutlar veya dosya boyutu değiştirildi",
+  "selectors.editsAndActivity.c2pa.resized.label": "Yeniden boyutlandırma düzenlemeleri",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Algılanamayan başka düzenlemeler veya etkinlikler gerçekleştirildi",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Bilinmeyen düzenlemeler veya etkinlikler"
 }

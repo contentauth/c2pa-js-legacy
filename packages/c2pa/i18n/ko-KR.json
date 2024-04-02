@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "톤, 채도, 곡선, 그림자 또는 하이라이트와 같은 조정된 속성",
-        "label": "색상 또는 노출 편집"
-      },
-      "c2pa.created": {
-        "description": "새 파일 또는 콘텐츠 생성됨",
-        "label": "생성됨"
-      },
-      "c2pa.cropped": {
-        "description": "사용된 자르기 도구, 보이는 콘텐츠 영역 축소 또는 확장",
-        "label": "자르기 편집"
-      },
-      "c2pa.drawing": {
-        "description": "연필, 브러시, 지우개 또는 모양, 경로 또는 펜 도구와 같은 사용된 도구",
-        "label": "그리기 편집"
-      },
-      "c2pa.edited": {
-        "description": "기타 변경 사항 적용됨",
-        "label": "기타 편집"
-      },
-      "c2pa.filtered": {
-        "description": "필터, 스타일 또는 효과와 같은 모양 변경에 사용된 도구",
-        "label": "필터 또는 스타일 편집"
-      },
-      "c2pa.opened": {
-        "description": "기존 파일 열림",
-        "label": "열림"
-      },
-      "c2pa.orientation": {
-        "description": "변경된 위치 또는 방향 (회전, 반전 등)",
-        "label": "방향 편집"
-      },
-      "c2pa.placed": {
-        "description": "이 파일에 기존 콘텐츠 추가됨",
-        "label": "가져옴"
-      },
-      "c2pa.resized": {
-        "description": "변경된 치수 또는 파일 크기",
-        "label": "크기 조정 편집"
-      },
-      "c2pa.unknown": {
-        "description": "수행되었으나 인식할 수 없는 기타 편집 또는 활동",
-        "label": "알 수 없는 편집 또는 활동"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "톤, 채도, 곡선, 그림자 또는 하이라이트와 같은 조정된 속성",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "색상 또는 노출 편집",
+  "selectors.editsAndActivity.c2pa.created.description": "새 파일 또는 콘텐츠 생성됨",
+  "selectors.editsAndActivity.c2pa.created.label": "생성됨",
+  "selectors.editsAndActivity.c2pa.cropped.description": "사용된 자르기 도구, 보이는 콘텐츠 영역 축소 또는 확장",
+  "selectors.editsAndActivity.c2pa.cropped.label": "자르기 편집",
+  "selectors.editsAndActivity.c2pa.drawing.description": "연필, 브러시, 지우개 또는 모양, 경로 또는 펜 도구와 같은 사용된 도구",
+  "selectors.editsAndActivity.c2pa.drawing.label": "그리기 편집",
+  "selectors.editsAndActivity.c2pa.edited.description": "기타 변경 사항 적용됨",
+  "selectors.editsAndActivity.c2pa.edited.label": "기타 편집",
+  "selectors.editsAndActivity.c2pa.filtered.description": "필터, 스타일 또는 효과와 같은 모양 변경에 사용된 도구",
+  "selectors.editsAndActivity.c2pa.filtered.label": "필터 또는 스타일 편집",
+  "selectors.editsAndActivity.c2pa.opened.description": "기존 파일 열림",
+  "selectors.editsAndActivity.c2pa.opened.label": "열림",
+  "selectors.editsAndActivity.c2pa.orientation.description": "변경된 위치 또는 방향 (회전, 반전 등)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "방향 편집",
+  "selectors.editsAndActivity.c2pa.placed.description": "이 파일에 기존 콘텐츠 추가됨",
+  "selectors.editsAndActivity.c2pa.placed.label": "가져옴",
+  "selectors.editsAndActivity.c2pa.resized.description": "변경된 치수 또는 파일 크기",
+  "selectors.editsAndActivity.c2pa.resized.label": "크기 조정 편집",
+  "selectors.editsAndActivity.c2pa.unknown.description": "수행되었으나 인식할 수 없는 기타 편집 또는 활동",
+  "selectors.editsAndActivity.c2pa.unknown.label": "알 수 없는 편집 또는 활동"
 }

@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Ajustement des propriétés, comme la tonalité, la saturation, les courbes, les ombres ou les tons clairs",
-        "label": "Modifications de la couleur ou de l’exposition"
-      },
-      "c2pa.created": {
-        "description": "Création d’un nouveau fichier ou contenu",
-        "label": "Créé"
-      },
-      "c2pa.cropped": {
-        "description": "Utilisation d’outils de recadrage, réduisant ou élargissant la zone de contenu visible",
-        "label": "Modifications de recadrage"
-      },
-      "c2pa.drawing": {
-        "description": "Utilisation d’outils, comme des crayons, des pinceaux, des gommes ou des outils de forme, de tracé ou de plume",
-        "label": "Modifications du dessin"
-      },
-      "c2pa.edited": {
-        "description": "Réalisation d’autres modifications",
-        "label": "Autres modifications"
-      },
-      "c2pa.filtered": {
-        "description": "Utilisation d’outils tels que des filtres, des styles ou des effets pour modifier l’apparence",
-        "label": "Modifications du filtre ou du style"
-      },
-      "c2pa.opened": {
-        "description": "Ouverture d’un fichier préexistant",
-        "label": "Ouvert"
-      },
-      "c2pa.orientation": {
-        "description": "Changement de position ou d’orientation (rotation, renversement, etc.)",
-        "label": "Orientation Modifications de "
-      },
-      "c2pa.placed": {
-        "description": "Ajout du contenu préexistant à ce fichier",
-        "label": "Importé"
-      },
-      "c2pa.resized": {
-        "description": "Modification des dimensions ou de la taille du fichier",
-        "label": "Modifications du redimensionnement"
-      },
-      "c2pa.unknown": {
-        "description": "Réalisation d’autres modifications ou activités qui n’ont pas pu être reconnues",
-        "label": "Modifications ou activité inconnues"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Ajustement des propriétés, comme la tonalité, la saturation, les courbes, les ombres ou les tons clairs",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Modifications de la couleur ou de l’exposition",
+  "selectors.editsAndActivity.c2pa.created.description": "Création d’un nouveau fichier ou contenu",
+  "selectors.editsAndActivity.c2pa.created.label": "Créé",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Utilisation d’outils de recadrage, réduisant ou élargissant la zone de contenu visible",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Modifications de recadrage",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Utilisation d’outils, comme des crayons, des pinceaux, des gommes ou des outils de forme, de tracé ou de plume",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Modifications du dessin",
+  "selectors.editsAndActivity.c2pa.edited.description": "Réalisation d’autres modifications",
+  "selectors.editsAndActivity.c2pa.edited.label": "Autres modifications",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Utilisation d’outils tels que des filtres, des styles ou des effets pour modifier l’apparence",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Modifications du filtre ou du style",
+  "selectors.editsAndActivity.c2pa.opened.description": "Ouverture d’un fichier préexistant",
+  "selectors.editsAndActivity.c2pa.opened.label": "Ouvert",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Changement de position ou d’orientation (rotation, renversement, etc.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Orientation Modifications de ",
+  "selectors.editsAndActivity.c2pa.placed.description": "Ajout du contenu préexistant à ce fichier",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importé",
+  "selectors.editsAndActivity.c2pa.resized.description": "Modification des dimensions ou de la taille du fichier",
+  "selectors.editsAndActivity.c2pa.resized.label": "Modifications du redimensionnement",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Réalisation d’autres modifications ou activités qui n’ont pas pu être reconnues",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Modifications ou activité inconnues"
 }

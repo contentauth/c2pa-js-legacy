@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Byly upraveny vlastnosti, jako je tón, sytost, křivky, stíny nebo světla",
-        "label": "Úpravy barev nebo expozice"
-      },
-      "c2pa.created": {
-        "description": "Byl vytvořen nový soubor nebo obsah",
-        "label": "Vytvořeno"
-      },
-      "c2pa.cropped": {
-        "description": "Byly použity nástroje pro oříznutí, zmenšení nebo rozšíření viditelné oblasti obsahu",
-        "label": "Úpravy oříznutí"
-      },
-      "c2pa.drawing": {
-        "description": "Byly použity nástroje, jako jsou tužky, štětce, gumy nebo nástroje tvar, cesta nebo pero",
-        "label": "Úpravy kresby"
-      },
-      "c2pa.edited": {
-        "description": "Byly provedeny další změny",
-        "label": "Další úpravy"
-      },
-      "c2pa.filtered": {
-        "description": "Byly použity nástroje, jako jsou filtry, styly nebo efekty, ke změně vzhledu",
-        "label": "Úpravy filtrů nebo stylů"
-      },
-      "c2pa.opened": {
-        "description": "Byl otevřen existující soubor",
-        "label": "Otevřeno"
-      },
-      "c2pa.orientation": {
-        "description": "Byla změněna poloha nebo orientace (otočení, převrácení atd.)",
-        "label": "Orientace úpravy"
-      },
-      "c2pa.placed": {
-        "description": "Do tohoto souboru byl přidán existující obsah",
-        "label": "Importováno"
-      },
-      "c2pa.resized": {
-        "description": "Byly změněny rozměry nebo velikost souboru",
-        "label": "Změny velikosti"
-      },
-      "c2pa.unknown": {
-        "description": "Byly provedeny další úpravy nebo aktivita, kterou nebylo možné rozpoznat",
-        "label": "Neznámé úpravy nebo aktivita"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Byly upraveny vlastnosti, jako je tón, sytost, křivky, stíny nebo světla",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Úpravy barev nebo expozice",
+  "selectors.editsAndActivity.c2pa.created.description": "Byl vytvořen nový soubor nebo obsah",
+  "selectors.editsAndActivity.c2pa.created.label": "Vytvořeno",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Byly použity nástroje pro oříznutí, zmenšení nebo rozšíření viditelné oblasti obsahu",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Úpravy oříznutí",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Byly použity nástroje, jako jsou tužky, štětce, gumy nebo nástroje tvar, cesta nebo pero",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Úpravy kresby",
+  "selectors.editsAndActivity.c2pa.edited.description": "Byly provedeny další změny",
+  "selectors.editsAndActivity.c2pa.edited.label": "Další úpravy",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Byly použity nástroje, jako jsou filtry, styly nebo efekty, ke změně vzhledu",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Úpravy filtrů nebo stylů",
+  "selectors.editsAndActivity.c2pa.opened.description": "Byl otevřen existující soubor",
+  "selectors.editsAndActivity.c2pa.opened.label": "Otevřeno",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Byla změněna poloha nebo orientace (otočení, převrácení atd.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Orientace úpravy",
+  "selectors.editsAndActivity.c2pa.placed.description": "Do tohoto souboru byl přidán existující obsah",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importováno",
+  "selectors.editsAndActivity.c2pa.resized.description": "Byly změněny rozměry nebo velikost souboru",
+  "selectors.editsAndActivity.c2pa.resized.label": "Změny velikosti",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Byly provedeny další úpravy nebo aktivita, kterou nebylo možné rozpoznat",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Neznámé úpravy nebo aktivita"
 }

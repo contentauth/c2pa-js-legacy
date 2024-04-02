@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "調整了屬性，如色調、飽和度、曲線、陰影或亮部",
-        "label": "顏色或曝光編輯"
-      },
-      "c2pa.created": {
-        "description": "建立了新檔案或內容",
-        "label": "已建立"
-      },
-      "c2pa.cropped": {
-        "description": "使用了裁切工具，縮減或擴大可見內容區域",
-        "label": "裁切編輯"
-      },
-      "c2pa.drawing": {
-        "description": "使用了鉛筆、筆刷、橡皮擦等工具，或是形狀、路徑或鋼筆工具",
-        "label": "繪圖編輯"
-      },
-      "c2pa.edited": {
-        "description": "進行了其他變更",
-        "label": "其他編輯"
-      },
-      "c2pa.filtered": {
-        "description": "使用了濾鏡、風格或效果等工具來變更外觀",
-        "label": "濾鏡或風格編輯"
-      },
-      "c2pa.opened": {
-        "description": "開啟了已存在的檔案",
-        "label": "已開啟"
-      },
-      "c2pa.orientation": {
-        "description": "變更了位置或方向 (旋轉、翻轉等)",
-        "label": "方向編輯"
-      },
-      "c2pa.placed": {
-        "description": "對此檔案新增了已存在的內容",
-        "label": "已讀入"
-      },
-      "c2pa.resized": {
-        "description": "變更了尺寸或檔案大小",
-        "label": "調整大小編輯"
-      },
-      "c2pa.unknown": {
-        "description": "執行了其他無法辨識的編輯或活動",
-        "label": "未知的編輯或活動"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "調整了屬性，如色調、飽和度、曲線、陰影或亮部",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "顏色或曝光編輯",
+  "selectors.editsAndActivity.c2pa.created.description": "建立了新檔案或內容",
+  "selectors.editsAndActivity.c2pa.created.label": "已建立",
+  "selectors.editsAndActivity.c2pa.cropped.description": "使用了裁切工具，縮減或擴大可見內容區域",
+  "selectors.editsAndActivity.c2pa.cropped.label": "裁切編輯",
+  "selectors.editsAndActivity.c2pa.drawing.description": "使用了鉛筆、筆刷、橡皮擦等工具，或是形狀、路徑或鋼筆工具",
+  "selectors.editsAndActivity.c2pa.drawing.label": "繪圖編輯",
+  "selectors.editsAndActivity.c2pa.edited.description": "進行了其他變更",
+  "selectors.editsAndActivity.c2pa.edited.label": "其他編輯",
+  "selectors.editsAndActivity.c2pa.filtered.description": "使用了濾鏡、風格或效果等工具來變更外觀",
+  "selectors.editsAndActivity.c2pa.filtered.label": "濾鏡或風格編輯",
+  "selectors.editsAndActivity.c2pa.opened.description": "開啟了已存在的檔案",
+  "selectors.editsAndActivity.c2pa.opened.label": "已開啟",
+  "selectors.editsAndActivity.c2pa.orientation.description": "變更了位置或方向 (旋轉、翻轉等)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "方向編輯",
+  "selectors.editsAndActivity.c2pa.placed.description": "對此檔案新增了已存在的內容",
+  "selectors.editsAndActivity.c2pa.placed.label": "已讀入",
+  "selectors.editsAndActivity.c2pa.resized.description": "變更了尺寸或檔案大小",
+  "selectors.editsAndActivity.c2pa.resized.label": "調整大小編輯",
+  "selectors.editsAndActivity.c2pa.unknown.description": "執行了其他無法辨識的編輯或活動",
+  "selectors.editsAndActivity.c2pa.unknown.label": "未知的編輯或活動"
 }

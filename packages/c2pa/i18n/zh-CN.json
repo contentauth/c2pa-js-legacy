@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "调整后的属性，如色调、饱和度、曲线、阴影或高光",
-        "label": "颜色或曝光度编辑"
-      },
-      "c2pa.created": {
-        "description": "已创建新文件或内容",
-        "label": "已创建"
-      },
-      "c2pa.cropped": {
-        "description": "已使用的裁切工具（用于减少或扩大可见内容区域）",
-        "label": "裁切编辑"
-      },
-      "c2pa.drawing": {
-        "description": "已使用的工具，如铅笔、画笔、橡皮擦、形状、路径或钢笔工具",
-        "label": "绘图编辑"
-      },
-      "c2pa.edited": {
-        "description": "已执行其他更改",
-        "label": "其他编辑"
-      },
-      "c2pa.filtered": {
-        "description": "已使用滤镜、样式或效果等工具来更改外观",
-        "label": "滤镜或样式编辑"
-      },
-      "c2pa.opened": {
-        "description": "已打开一个预先存在的文件",
-        "label": "已打开"
-      },
-      "c2pa.orientation": {
-        "description": "已改变位置或方向（旋转、翻转等）",
-        "label": "方向 编辑"
-      },
-      "c2pa.placed": {
-        "description": "已向此文件添加预先存在的内容",
-        "label": "已导入"
-      },
-      "c2pa.resized": {
-        "description": "已更改尺寸或文件大小",
-        "label": "调整编辑大小"
-      },
-      "c2pa.unknown": {
-        "description": "已执行其他无法识别的编辑或活动",
-        "label": "未知的编辑或活动"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "调整后的属性，如色调、饱和度、曲线、阴影或高光",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "颜色或曝光度编辑",
+  "selectors.editsAndActivity.c2pa.created.description": "已创建新文件或内容",
+  "selectors.editsAndActivity.c2pa.created.label": "已创建",
+  "selectors.editsAndActivity.c2pa.cropped.description": "已使用的裁切工具（用于减少或扩大可见内容区域）",
+  "selectors.editsAndActivity.c2pa.cropped.label": "裁切编辑",
+  "selectors.editsAndActivity.c2pa.drawing.description": "已使用的工具，如铅笔、画笔、橡皮擦、形状、路径或钢笔工具",
+  "selectors.editsAndActivity.c2pa.drawing.label": "绘图编辑",
+  "selectors.editsAndActivity.c2pa.edited.description": "已执行其他更改",
+  "selectors.editsAndActivity.c2pa.edited.label": "其他编辑",
+  "selectors.editsAndActivity.c2pa.filtered.description": "已使用滤镜、样式或效果等工具来更改外观",
+  "selectors.editsAndActivity.c2pa.filtered.label": "滤镜或样式编辑",
+  "selectors.editsAndActivity.c2pa.opened.description": "已打开一个预先存在的文件",
+  "selectors.editsAndActivity.c2pa.opened.label": "已打开",
+  "selectors.editsAndActivity.c2pa.orientation.description": "已改变位置或方向（旋转、翻转等）",
+  "selectors.editsAndActivity.c2pa.orientation.label": "方向 编辑",
+  "selectors.editsAndActivity.c2pa.placed.description": "已向此文件添加预先存在的内容",
+  "selectors.editsAndActivity.c2pa.placed.label": "已导入",
+  "selectors.editsAndActivity.c2pa.resized.description": "已更改尺寸或文件大小",
+  "selectors.editsAndActivity.c2pa.resized.label": "调整编辑大小",
+  "selectors.editsAndActivity.c2pa.unknown.description": "已执行其他无法识别的编辑或活动",
+  "selectors.editsAndActivity.c2pa.unknown.label": "未知的编辑或活动"
 }

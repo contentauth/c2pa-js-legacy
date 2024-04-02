@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Измененные свойства, например тон, насыщенность, кривые, тени или блики.",
-        "label": "Редактирование цвета или экспозиции"
-      },
-      "c2pa.created": {
-        "description": "Создан новый файл или контент",
-        "label": "Создано"
-      },
-      "c2pa.cropped": {
-        "description": "Используемые инструменты обрезки, уменьшение или расширение видимой области содержимого",
-        "label": "Редактирование обрезки"
-      },
-      "c2pa.drawing": {
-        "description": "Используемые инструменты, например карандаши, кисти, ластики или другие инструменты (форма, контур или перо)",
-        "label": "Редактирование чертежа"
-      },
-      "c2pa.edited": {
-        "description": "Внесены другие изменения",
-        "label": "Другие изменения"
-      },
-      "c2pa.filtered": {
-        "description": "Используемые инструменты для изменения внешнего вида, например фильтры, стили или эффекты",
-        "label": "Редактирование фильтров или стилей"
-      },
-      "c2pa.opened": {
-        "description": "Открыт ранее созданный файл",
-        "label": "Открыто"
-      },
-      "c2pa.orientation": {
-        "description": "Изменено положение или ориентация (повернуто, перевернуто и т. д.)",
-        "label": "Ориентация правки"
-      },
-      "c2pa.placed": {
-        "description": "В этот файл добавлен уже существующий контент",
-        "label": "Импортировано"
-      },
-      "c2pa.resized": {
-        "description": "Изменены размеры изображения или размер файла",
-        "label": "Изменение размеров"
-      },
-      "c2pa.unknown": {
-        "description": "Внесены другие правки или выполнены иные действия, которые не удалось распознать",
-        "label": "Неизвестные изменения или действия"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Измененные свойства, например тон, насыщенность, кривые, тени или блики.",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Редактирование цвета или экспозиции",
+  "selectors.editsAndActivity.c2pa.created.description": "Создан новый файл или контент",
+  "selectors.editsAndActivity.c2pa.created.label": "Создано",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Используемые инструменты обрезки, уменьшение или расширение видимой области содержимого",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Редактирование обрезки",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Используемые инструменты, например карандаши, кисти, ластики или другие инструменты (форма, контур или перо)",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Редактирование чертежа",
+  "selectors.editsAndActivity.c2pa.edited.description": "Внесены другие изменения",
+  "selectors.editsAndActivity.c2pa.edited.label": "Другие изменения",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Используемые инструменты для изменения внешнего вида, например фильтры, стили или эффекты",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Редактирование фильтров или стилей",
+  "selectors.editsAndActivity.c2pa.opened.description": "Открыт ранее созданный файл",
+  "selectors.editsAndActivity.c2pa.opened.label": "Открыто",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Изменено положение или ориентация (повернуто, перевернуто и т. д.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Ориентация правки",
+  "selectors.editsAndActivity.c2pa.placed.description": "В этот файл добавлен уже существующий контент",
+  "selectors.editsAndActivity.c2pa.placed.label": "Импортировано",
+  "selectors.editsAndActivity.c2pa.resized.description": "Изменены размеры изображения или размер файла",
+  "selectors.editsAndActivity.c2pa.resized.label": "Изменение размеров",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Внесены другие правки или выполнены иные действия, которые не удалось распознать",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Неизвестные изменения или действия"
 }
