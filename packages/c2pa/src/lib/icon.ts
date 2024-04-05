@@ -27,6 +27,8 @@ import orientation from '../../assets/svg/rotate-left-outline-dark.svg';
 import placed from '../../assets/svg/save-to-light-dark.svg';
 import text from '../../assets/svg/text-dark.svg';
 import animationVideo from '../../assets/svg/video-outline-dark.svg';
+import microphone from '../../assets/svg/microphone-dark.svg';
+import translated from '../../assets/svg/translated-dark.svg';
 
 export const icons = {
   'c2pa.color_adjustments': colorAdjustements,
@@ -42,6 +44,8 @@ export const icons = {
   'c2pa.resized': resized,
   'c2pa.unknown': unknown,
   'c2pa.edited.metadata': metadata,
+  'c2pa.translated': translated,
+  'c2pa.dubbed': microphone,
   'com.adobe.3d': threed,
   'com.adobe.animation_video': animationVideo,
   'com.adobe.combined_asssets': combinedAssets,
