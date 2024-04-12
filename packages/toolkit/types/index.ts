@@ -144,7 +144,7 @@ export type ManifestAssertion =
 
 export interface ActionV2 {
   action: string;
-  softwareAgent?: GeneratorInfoMap | string;
+  softwareAgent?: GeneratorInfoMap;
   description?: string;
   digitalSourceType?: string;
   when?: string;
@@ -164,7 +164,7 @@ interface Change {
   [key: string]: any;
 }
 
-interface GeneratorInfoMap {
+export interface GeneratorInfoMap {
   name: string;
   version: string;
   [key: string]: any;
