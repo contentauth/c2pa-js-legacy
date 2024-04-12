@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Expose `GeneratorInfoMap`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

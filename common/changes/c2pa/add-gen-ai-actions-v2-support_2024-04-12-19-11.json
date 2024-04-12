@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add support for V2 Actions when using `selectGenerativeInfo`",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
