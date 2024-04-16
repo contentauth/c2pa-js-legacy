@@ -43,6 +43,7 @@ export {
   TranslatedDictionaryCategory,
   getC2paCategorizedActions,
   selectEditsAndActivity,
+  registerLocaleForEditsAndActivities,
 } from './src/selectors/selectEditsAndActivity';
 export {
   parseGenerator,

@@ -48,11 +48,6 @@ declare module '../assertions' {
 const DEFAULT_LOCALE = 'en-US';
 const UNCATEGORIZED_ID = 'UNCATEGORIZED';
 
-interface ActionDictionaryItem {
-  label: string;
-  description: string;
-}
-
 export interface TranslatedDictionaryCategory {
   id: string;
   icon: string | null;
@@ -101,16 +96,38 @@ export interface EditCategory {
  * @param locale - BCP-47 locale code (e.g. `en-US`, `fr-FR`) to request localized strings, if available
  */
 function getPackagedTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
-  const defaultSet = (bcp47Mapping[DEFAULT_LOCALE]?.selectors
-    ?.editsAndActivity ?? {}) as Record<string, ActionDictionaryItem>;
-  const requestedSet = (bcp47Mapping[locale]?.selectors?.editsAndActivity ??
-    {}) as Record<string, ActionDictionaryItem>;
+  const defaultSet = parseLocaleFile(bcp47Mapping[DEFAULT_LOCALE]);
+  const requestedSet = parseLocaleFile(bcp47Mapping[locale]);
 
   if (locale === DEFAULT_LOCALE) {
     return defaultSet;
   }
 
   return merge({}, defaultSet, requestedSet);
+}
+
+function parseLocaleFile(data: Record<string, string>) {
+  const map: Record<string, Record<string, string>> = {};
+
+  Object.entries(data).forEach(([key, value]) => {
+    const stringParts = key.split('.');
+    // Discard "selectors.editsAndActivity"
+    const actionNameAndStringType = stringParts.slice(2);
+    // Combine "c2pa" with the action name (e.g. "c2pa.placed")
+    const actionName = actionNameAndStringType.slice(0, 2).join('.');
+    // Get the type of string (e.g. "label", "description")
+    const [type] = actionNameAndStringType.slice(-1);
+
+    if (!map[actionName]) {
+      map[actionName] = {
+        [type]: value,
+      };
+    } else {
+      map[actionName][type] = value;
+    }
+  });
+
+  return map;
 }
 
 /**
@@ -281,4 +298,11 @@ function translateActionName(
     };
   }
   return null;
+}
+
+export function registerLocaleForEditsAndActivities(
+  bcp47: string,
+  data: Record<string, string>,
+) {
+  bcp47Mapping[bcp47] = data;
 }
