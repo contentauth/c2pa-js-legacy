@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Add i18n registration API, remove stringMap from component config",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}

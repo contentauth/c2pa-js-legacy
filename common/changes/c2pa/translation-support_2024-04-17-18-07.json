@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add i18n registration API for selectEditsAndActivity",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
