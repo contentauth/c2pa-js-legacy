@@ -10,12 +10,12 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '../../../assets/svg/monochrome/generic-info.svg';
-import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import { hasChanged } from '../../utils';
+import { Localizable } from '../../mixins/localizable';
+
 import '../Icon';
 import '../PanelSection';
-import defaultStringMap from './ContentSummary.str.json';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -33,12 +33,8 @@ export interface ContentSummaryConfig {
   stringMap: Record<string, string>;
 }
 
-const defaultConfig: ContentSummaryConfig = {
-  stringMap: defaultStringMap,
-};
-
 @customElement('cai-content-summary')
-export class ContentSummary extends Configurable(LitElement, defaultConfig) {
+export class ContentSummary extends Localizable(LitElement) {
   static get styles() {
     return [
       defaultStyles,
@@ -65,18 +61,18 @@ export class ContentSummary extends Configurable(LitElement, defaultConfig) {
 
   render() {
     return html`<cai-panel-section
-      helpText=${this._config.stringMap['content-summary.helpText']}
+      helpText=${this.strings['content-summary.helpText']}
     >
       <div class="section-icon-content" slot="content">
         ${this.data === 'compositeWithTrainedAlgorithmicMedia'
           ? html`
               <span>
-                ${this._config.stringMap['content-summary.content.composite']}
+                ${this.strings['content-summary.content.composite']}
               </span>
             `
           : html`
               <span>
-                ${this._config.stringMap['content-summary.content.aiGenerated']}
+                ${this.strings['content-summary.content.aiGenerated']}
               </span>
             `}
       </div>

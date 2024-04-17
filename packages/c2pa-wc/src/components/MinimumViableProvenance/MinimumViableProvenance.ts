@@ -15,7 +15,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import { defaultDateFormatter } from '../../utils';
-import defaultStringMap from './MinimumViableProvenance.str.json';
+import { Localizable } from '../../mixins/localizable';
 
 import '../PanelSection';
 
@@ -32,18 +32,16 @@ declare global {
 }
 
 export interface MinimumViableProvenanceConfig {
-  stringMap: Record<string, string>;
   dateFormatter: (date: Date) => string;
 }
 
 const defaultConfig: MinimumViableProvenanceConfig = {
-  stringMap: defaultStringMap,
   dateFormatter: defaultDateFormatter,
 };
 
 @customElement('cai-minimum-viable-provenance')
 export class MinimumViableProvenance extends Configurable(
-  LitElement,
+  Localizable(LitElement),
   defaultConfig,
 ) {
   @property({
@@ -103,20 +101,18 @@ export class MinimumViableProvenance extends Configurable(
       <div class="container">
         <div class="heading">
           <div class="heading-text">
-            ${this._config.stringMap['minimum-viable-provenance.header']}
+            ${this.strings['minimum-viable-provenance.header']}
           </div>
         </div>
         <div class="minimum-viable-provenance-content">
           <div class=${classMap(mvpClasses)}>
             <span>
-              ${this._config.stringMap['minimum-viable-provenance.issuedBy']}
+              ${this.strings['minimum-viable-provenance.issuedBy']}
               ${this.manifestStore?.signature?.issuer}
               ${!hasError
                 ? html`
                     ${signatureDate && isValid(signatureDate)
-                      ? html`${this._config.stringMap[
-                          'minimum-viable-provenance.on'
-                        ]}
+                      ? html`${this.strings['minimum-viable-provenance.on']}
                         ${this._config?.dateFormatter(signatureDate!)}`
                       : nothing}
                   `

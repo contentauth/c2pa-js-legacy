@@ -11,7 +11,7 @@ import { LitElement, css, html } from 'lit';
 import { nothing } from 'lit-html';
 import { customElement, property } from 'lit/decorators.js';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from './Web3.str.json';
+import { Localizable } from '../../mixins/localizable';
 
 const HIDE_DELAY = 800;
 
@@ -32,7 +32,7 @@ function truncateAddress(address: string) {
 }
 
 @customElement('cai-web3-pill')
-export class Web3Pill extends LitElement {
+export class Web3Pill extends Localizable(LitElement) {
   @property({ type: String })
   key = '';
 
@@ -84,7 +84,7 @@ export class Web3Pill extends LitElement {
         </button>
         ${!this.hidden
           ? html`
-              <div class="web3-copied">${defaultStringMap['web3.copied']}</div>
+              <div class="web3-copied">${this.strings['web3.copied']}</div>
             `
           : nothing}
       </li>

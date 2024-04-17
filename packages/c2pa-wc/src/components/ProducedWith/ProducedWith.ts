@@ -10,9 +10,8 @@
 import { L2ClaimGenerator, L2ManifestStore } from 'c2pa';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from './ProducedWith.str.json';
+import { Localizable } from '../../mixins/localizable';
 
 import { hasChanged } from '../../utils';
 import '../Icon';
@@ -34,12 +33,8 @@ export interface ProducedWithConfig {
   stringMap: Record<string, string>;
 }
 
-const defaultConfig: ProducedWithConfig = {
-  stringMap: defaultStringMap,
-};
-
 @customElement('cai-produced-with')
-export class ProducedWith extends Configurable(LitElement, defaultConfig) {
+export class ProducedWith extends Localizable(LitElement) {
   static get styles() {
     return [
       defaultStyles,
@@ -71,16 +66,16 @@ export class ProducedWith extends Configurable(LitElement, defaultConfig) {
 
   render() {
     return html` <cai-panel-section
-      helpText=${this._config.stringMap['produced-with.helpText']}
+      helpText=${this.strings['produced-with.helpText']}
     >
-      <div slot="header">${this._config.stringMap['produced-with.header']}</div>
+      <div slot="header">${this.strings['produced-with.header']}</div>
       <div slot="content">
         <div class="section-produced-with-content">
           <span> ${this.data?.product ?? ''}    
           ${
             this.manifestStore?.isBeta
               ? html`<span class="section-produced-with-beta">
-                  ${this._config.stringMap['produced-with.beta']}
+                  ${this.strings['produced-with.beta']}
                 </span>`
               : null
           } </span>
