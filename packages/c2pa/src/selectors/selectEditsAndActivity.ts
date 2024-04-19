@@ -335,6 +335,16 @@ export function registerLocaleForEditsAndActivities(
   bcp47Mapping[bcp47] = data;
 }
 
+/**
+ * Implements the fallback logic for selecting between two values that may or may not be fallbacks -
+ * e.g., a string for a requested locale that was not found in the map.
+ *
+ * This function will prioritize:
+ * 1. value1 if it is defined and not a fallback
+ * 2. value2 if it is defined and not a fallback
+ * 3. value1 if it is defined
+ * 4. value2 if it is defined
+ */
 function selectPriorityValueWithFallback(
   value1: ValueWithFallback,
   value2: ValueWithFallback,
