@@ -98,7 +98,6 @@ export interface EditCategory {
 function getPackagedTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
   const defaultSet = parseLocaleFile(bcp47Mapping[DEFAULT_LOCALE]);
   const requestedSet = parseLocaleFile(bcp47Mapping[locale]);
-
   if (locale === DEFAULT_LOCALE) {
     return defaultSet;
   }
@@ -106,8 +105,20 @@ function getPackagedTranslationsForLocale(locale: string = DEFAULT_LOCALE) {
   return merge({}, defaultSet, requestedSet);
 }
 
-function parseLocaleFile(data: Record<string, string>) {
-  const map: Record<string, Record<string, string>> = {};
+interface ValueWithFallback {
+  value: string;
+  isFallback: boolean;
+}
+
+function parseLocaleFile(
+  data: Record<string, string> | undefined,
+  markAsFallback = false,
+) {
+  if (!data) {
+    return {};
+  }
+
+  const map: Record<string, Record<string, ValueWithFallback>> = {};
 
   Object.entries(data).forEach(([key, value]) => {
     const stringParts = key.split('.');
@@ -120,10 +131,16 @@ function parseLocaleFile(data: Record<string, string>) {
 
     if (!map[actionName]) {
       map[actionName] = {
-        [type]: value,
+        [type]: {
+          value,
+          isFallback: markAsFallback,
+        },
       };
     } else {
-      map[actionName][type] = value;
+      map[actionName][type] = {
+        value,
+        isFallback: markAsFallback,
+      };
     }
   });
 
@@ -204,7 +221,7 @@ interface AdobeCompatAction extends ActionV1 {
   };
 }
 
-type OverrideLocalizationMap = Record<string, any>;
+type OverrideLocalizationMap = Record<string, ValueWithFallback>;
 type Override = Record<string, OverrideLocalizationMap>;
 
 interface OverrideActionMap {
@@ -228,15 +245,21 @@ export function getC2paCategorizedActions(
   const translations = getPackagedTranslationsForLocale(locale);
   const overrides = (actionsAssertion.data.metadata?.localizations ??
     []) as Override[];
-
   const overrideObj: OverrideActionMap = { actions: [] };
   // The spec has an array of objects, and each object can have multiple entries
   // of path keys to overrides, which is why we have to have a nested each.
   each(overrides, (override) => {
     each(override, (translationMap, path) => {
-      const val = translationMap[locale] ?? translationMap[DEFAULT_LOCALE];
-      if (val) {
-        set(overrideObj, path, val);
+      if (translationMap[locale]) {
+        set(overrideObj, path, {
+          value: translationMap[locale],
+          isFallback: false,
+        });
+      } else if (translationMap[DEFAULT_LOCALE]) {
+        set(overrideObj, path, {
+          value: translationMap[DEFAULT_LOCALE],
+          isFallback: true,
+        });
       }
     });
   });
@@ -244,6 +267,7 @@ export function getC2paCategorizedActions(
   const translatedActions = actions.map((action, idx) => {
     const actionOverrides = overrideObj.actions[idx] ?? {};
     const actionTranslations = translations[action.action];
+
     const iconId: string = action.action;
     return {
       // Include original ID
@@ -253,12 +277,16 @@ export function getC2paCategorizedActions(
         action.parameters?.['com.adobe.icon'] ??
         icons[iconId as keyof typeof icons],
       // Use override if available, if not, then fall back to translation
-      label: actionOverrides.action ?? actionTranslations.label,
+      label: selectPriorityValueWithFallback(
+        actionOverrides?.action,
+        actionTranslations?.label,
+      ),
       // Use override if available, if not, then fall back to translation
       description:
-        actionOverrides?.description ??
-        actionTranslations?.description ??
-        action.parameters.description,
+        selectPriorityValueWithFallback(
+          actionOverrides?.description,
+          actionTranslations?.description,
+        ) ?? action.parameters.description,
     } as TranslatedDictionaryCategory;
   });
 
@@ -305,4 +333,16 @@ export function registerLocaleForEditsAndActivities(
   data: Record<string, string>,
 ) {
   bcp47Mapping[bcp47] = data;
+}
+
+function selectPriorityValueWithFallback(
+  value1: ValueWithFallback,
+  value2: ValueWithFallback,
+): string | null {
+  return [
+    !value1?.isFallback ? value1?.value : null,
+    !value2?.isFallback ? value2?.value : null,
+    value1?.value ?? null,
+    value2?.value ?? null,
+  ].filter((val) => !!val)[0];
 }

@@ -1,4 +1,9 @@
-import { createC2pa, Manifest, selectEditsAndActivity } from '../../';
+import {
+  createC2pa,
+  Manifest,
+  registerLocaleForEditsAndActivities,
+  selectEditsAndActivity,
+} from '../../';
 
 interface TestContext {
   manifest: Manifest;
@@ -229,6 +234,78 @@ describe('selectEditsAndActivity', function () {
           expect(result?.[6]?.description).toEqual(
             `Created or made changes to animation, audio, or other video properties`,
           );
+        });
+
+        it('should handle translations with a registered locale correctly', async function (this: TestContext) {
+          registerLocaleForEditsAndActivities('ef-GH', {
+            'selectors.editsAndActivity.c2pa.drawing.description': 'foo',
+            'selectors.editsAndActivity.c2pa.drawing.label': 'foo',
+            'selectors.editsAndActivity.c2pa.filtered.description': 'foo',
+            'selectors.editsAndActivity.c2pa.filtered.label': 'foo',
+            'selectors.editsAndActivity.c2pa.placed.description': 'foo',
+            'selectors.editsAndActivity.c2pa.placed.label': 'foo',
+            'selectors.editsAndActivity.c2pa.orientation.description': 'foo',
+            'selectors.editsAndActivity.c2pa.orientation.label': 'foo',
+            'selectors.editsAndActivity.c2pa.unknown.description': 'foo',
+            'selectors.editsAndActivity.c2pa.unknown.label': 'foo',
+          });
+
+          const result = await selectEditsAndActivity(this.manifest, 'ef-GH');
+
+          expect(result?.length).toEqual(7);
+
+          expect(result?.[0]?.id).toEqual(`com.adobe.text`);
+          expect(result?.[0]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/text-dark.svg`,
+          );
+          expect(result?.[0]?.label).toEqual(`Text edits`);
+          expect(result?.[0]?.description).toEqual(
+            `Created or made changes to text, including font family, color, or other styles`,
+          );
+
+          expect(result?.[1]?.id).toEqual(`com.adobe.animation_video`);
+          expect(result?.[1]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/video-outline-dark.svg`,
+          );
+          expect(result?.[1]?.label).toEqual(`Video edits`);
+          expect(result?.[1]?.description).toEqual(
+            `Created or made changes to animation, audio, or other video properties`,
+          );
+
+          expect(result?.[2]?.id).toEqual(`c2pa.unknown`);
+          expect(result?.[2]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/alert-circle-dark.svg`,
+          );
+          expect(result?.[2]?.label).toEqual(`foo`);
+          expect(result?.[2]?.description).toEqual(`foo`);
+
+          expect(result?.[3]?.id).toEqual(`c2pa.placed`);
+          expect(result?.[3]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/save-to-light-dark.svg`,
+          );
+          expect(result?.[3]?.label).toEqual(`foo`);
+          expect(result?.[3]?.description).toEqual(`foo`);
+
+          expect(result?.[4]?.id).toEqual(`c2pa.drawing`);
+          expect(result?.[4]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/draw-dark.svg`,
+          );
+          expect(result?.[4]?.label).toEqual(`foo`);
+          expect(result?.[4]?.description).toEqual(`foo`);
+
+          expect(result?.[5]?.id).toEqual(`c2pa.filtered`);
+          expect(result?.[5]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/properties-dark.svg`,
+          );
+          expect(result?.[5]?.label).toEqual(`foo`);
+          expect(result?.[5]?.description).toEqual(`foo`);
+
+          expect(result?.[6]?.id).toEqual(`c2pa.orientation`);
+          expect(result?.[6]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/rotate-left-outline-dark.svg`,
+          );
+          expect(result?.[6]?.label).toEqual(`foo`);
+          expect(result?.[6]?.description).toEqual(`foo`);
         });
       });
     });
