@@ -7,23 +7,28 @@
  * it.
  */
 
-import { css, html, LitElement, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import {
+  L2ManifestStore,
+  selectGenerativeSoftwareAgents,
+  selectGenerativeType,
+} from 'c2pa';
+import { LitElement, css, html, nothing } from 'lit';
+import { classMap } from 'lit-html/directives/class-map.js';
+import { customElement, property, state } from 'lit/decorators.js';
+import { createRef, ref, type Ref } from 'lit/directives/ref.js';
+import { Configurable } from '../../mixins/configurable';
 import { defaultStyles } from '../../styles';
 import { defaultDateFormatter, hasChanged } from '../../utils';
-import { L2ManifestStore } from 'c2pa';
-import type { EditsAndActivityConfig } from '../EditsAndActivity';
 import type { MinimumViableProvenanceConfig } from '../MinimumViableProvenance';
-import { Configurable } from '../../mixins/configurable';
-import defaultStringMap from './ManifestSummary.str.json';
+import { Localizable } from '../../mixins/localizable';
 
+import '../AIToolUsed';
 import '../ContentSummary';
-import '../AssetsUsed';
+import '../MinimumViableProvenance';
 import '../ProducedBy';
 import '../ProducedWith';
 import '../SocialMedia';
-import '../EditsAndActivity';
-import '../MinimumViableProvenance';
+import '../Web3';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -37,36 +42,15 @@ declare global {
   }
 }
 
-export interface ManifestSummaryConfig
-  extends Pick<MinimumViableProvenanceConfig, 'dateFormatter'>,
-    Pick<EditsAndActivityConfig, 'showDescriptions'> {
-  stringMap: Record<string, string>;
-  sections?: {
-    assetsUsed?: boolean;
-    editsAndActivity?: boolean;
-    producedBy?: boolean;
-    producedWith?: boolean;
-    socialMedia?: boolean;
-    contentSummary?: boolean;
-  };
-}
-
-const defaultConfig: ManifestSummaryConfig = {
-  stringMap: defaultStringMap,
+const defaultConfig: MinimumViableProvenanceConfig = {
   dateFormatter: defaultDateFormatter,
-  showDescriptions: true,
-  sections: {
-    assetsUsed: true,
-    editsAndActivity: true,
-    producedBy: true,
-    producedWith: true,
-    socialMedia: true,
-    contentSummary: true,
-  },
 };
 
 @customElement('cai-manifest-summary')
-export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
+export class ManifestSummary extends Configurable(
+  Localizable(LitElement),
+  defaultConfig,
+) {
   static readonly cssParts = {
     viewMore: 'manifest-summary-view-more',
   };
@@ -76,11 +60,15 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
       defaultStyles,
       css`
         #container {
-          width: var(--cai-manifest-summary-width, 320px);
+          width: var(--cai-manifest-summary-width, 256px);
+          border-radius: 8px;
         }
 
         #content-container {
-          padding: var(--cai-manifest-summary-content-padding, 20px);
+          padding: var(
+            --cai-manifest-summary-content-padding,
+            12px 16px 12px 16px
+          );
           max-height: var(--cai-manifest-summary-content-max-height, 550px);
           border-bottom-width: var(
             --cai-manifest-summary-content-border-bottom-width,
@@ -95,26 +83,42 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
             #e1e1e1
           );
 
+          border-top-width: var(
+            --cai-manifest-summary-content-border-bottom-width,
+            1px
+          );
+          border-top-style: var(
+            --cai-manifest-summary-content-border-bottom-style,
+            solid
+          );
+          border-top-color: var(
+            --cai-manifest-summary-content-border-bottom-color,
+            #e1e1e1
+          );
+
           overflow-y: auto;
           overflow-x: hidden;
         }
-
-        #content-container > *:not(:first-child):not([empty]),
-        ::slotted(*) {
-          padding-top: var(--cai-manifest-summary-section-spacing, 20px);
-          margin-top: var(--cai-manifest-summary-section-spacing, 20px);
+        #content-container> *::(first-child) {
+          padding-top: 0;
+          margin-top: 0;
+          border: none;
+        }
+        #content-container > *:not(:first-child):not([empty]) {
+          padding-top: var(--cai-manifest-summary-content-padding, 12px);
+          margin-top: var(--cai-manifest-summary-section-spacing, 12px);
           border-top-width: var(
             --cai-manifest-summary-section-border-width,
             1px
-          ) !important;
+          );
           border-top-style: var(
             --cai-manifest-summary-section-border-style,
             solid
-          ) !important;
+          );
           border-top-color: var(
             --cai-manifest-summary-section-border-color,
             #e1e1e1
-          ) !important;
+          );
         }
 
         #view-more-container {
@@ -126,17 +130,18 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
           transition: all 150ms ease-in-out;
           background-color: transparent;
           border-radius: 9999px;
-          border: 2px solid #b3b3b3;
+          border: 2px solid var(--cai-button-color);
           padding: 8px 0;
           font-weight: bold;
           text-align: center;
           text-decoration: none;
           width: 100%;
           color: var(--cai-primary-color);
+          background-color: var(--cai-button-color);
         }
 
-        #view-more:hover {
-          background-color: #eeeeee;
+        .empty {
+          display: none;
         }
       `,
     ];
@@ -154,74 +159,111 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
   })
   viewMoreUrl = '';
 
+  private _postRef: Ref<HTMLSlotElement> = createRef();
+
+  @state()
+  private _isPostEmpty = false;
+
+  private _checkPostEmpty() {
+    const refVal = this._postRef.value;
+    if (refVal) {
+      this._isPostEmpty = refVal.assignedNodes({ flatten: true }).length === 0;
+    }
+  }
+
+  firstUpdated(): void {
+    this._checkPostEmpty();
+  }
+
   render() {
     if (!this.manifestStore) {
       return null;
     }
 
+    const dataSelectors = {
+      contentSummary: this.manifestStore?.generativeInfo
+        ? selectGenerativeType(this.manifestStore?.generativeInfo)
+        : null,
+      producedBy: this.manifestStore?.producer?.name,
+      producedWith: this.manifestStore?.claimGenerator,
+      socialMedia: this.manifestStore?.socialAccounts,
+      aiToolUsed: this.manifestStore?.generativeInfo
+        ? selectGenerativeSoftwareAgents(this.manifestStore?.generativeInfo)
+        : null,
+      web3: this.manifestStore?.web3,
+    };
+
     return html`<div id="container">
+      <cai-minimum-viable-provenance
+        .manifestStore=${this.manifestStore}
+        .config=${this._config}
+        locale=${this.locale}
+      ></cai-minimum-viable-provenance>
       <div id="content-container">
-        <cai-minimum-viable-provenance
-          .manifestStore=${this.manifestStore}
-          .config=${this._config}
-        ></cai-minimum-viable-provenance>
-        <slot name="pre"></slot>
         ${this.manifestStore.error === 'error'
-          ? html`
-              <div>${this._config.stringMap['manifest-summary.error']}</div>
-            `
+          ? html` <div>${this.strings['manifest-summary.error']}</div> `
           : html`
-              ${this._config?.sections?.contentSummary
+              ${dataSelectors.contentSummary
                 ? html`
                     <cai-content-summary
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.contentSummary}
                       .config=${this._config}
+                      locale=${this.locale}
                     ></cai-content-summary>
                   `
                 : nothing}
-              ${this._config?.sections?.producedBy
+              ${dataSelectors.producedBy
                 ? html`
                     <cai-produced-by
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.producedBy}
                       .config=${this._config}
+                      locale=${this.locale}
                     ></cai-produced-by>
                   `
                 : nothing}
-              ${this._config?.sections?.producedWith
+              ${dataSelectors.producedWith
                 ? html`
                     <cai-produced-with
+                      .data=${dataSelectors.producedWith}
                       .manifestStore=${this.manifestStore}
                       .config=${this._config}
+                      locale=${this.locale}
                     ></cai-produced-with>
                   `
                 : nothing}
-              ${this._config?.sections?.editsAndActivity
-                ? html`
-                    <cai-edits-and-activity
-                      .manifestStore=${this.manifestStore}
-                      .config=${this._config}
-                    ></cai-edits-and-activity>
-                  `
-                : nothing}
-              ${this._config?.sections?.assetsUsed
-                ? html`
-                    <cai-assets-used
-                      .manifestStore=${this.manifestStore}
-                      .config=${this._config}
-                    ></cai-assets-used>
-                  `
-                : nothing}
-              ${this._config?.sections?.socialMedia
+              ${dataSelectors.socialMedia
                 ? html`
                     <cai-social-media
-                      .manifestStore=${this.manifestStore}
+                      .data=${dataSelectors.socialMedia}
                       .config=${this._config}
+                      locale=${this.locale}
                     ></cai-social-media>
                   `
                 : nothing}
+              ${dataSelectors.aiToolUsed
+                ? html`
+                    <cai-ai-tool
+                      .data=${dataSelectors.aiToolUsed}
+                      locale=${this.locale}
+                    ></cai-ai-tool>
+                  `
+                : nothing}
+              ${dataSelectors.web3
+                ? html`
+                    <cai-web3
+                      .data=${dataSelectors.web3}
+                      .config=${this._config}
+                      locale=${this.locale}
+                    ></cai-web3>
+                  `
+                : nothing}
             `}
-        <slot></slot>
-        <slot name="post"></slot>
+        <slot
+          ${ref(this._postRef)}
+          class=${classMap({ empty: this._isPostEmpty })}
+          name="post"
+          @slotchange=${() => this._checkPostEmpty()}
+        ></slot>
       </div>
       <div id="view-more-container">
         ${this.viewMoreUrl
@@ -232,7 +274,7 @@ export class ManifestSummary extends Configurable(LitElement, defaultConfig) {
                 href=${this.viewMoreUrl}
                 target="_blank"
               >
-                ${this._config.stringMap['manifest-summary.viewMore']}
+                ${this.strings['manifest-summary.viewMore']}
               </a>
             `
           : nothing}

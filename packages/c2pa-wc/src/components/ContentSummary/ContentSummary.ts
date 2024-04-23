@@ -8,12 +8,12 @@
  */
 
 import { css, html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import { ConfigurablePanelSection } from '../../mixins/configurablePanelSection';
-import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from './ContentSummary.str.json';
-
+import { customElement, property } from 'lit/decorators.js';
 import '../../../assets/svg/monochrome/generic-info.svg';
+import { baseSectionStyles, defaultStyles } from '../../styles';
+import { hasChanged } from '../../utils';
+import { Localizable } from '../../mixins/localizable';
+
 import '../Icon';
 import '../PanelSection';
 
@@ -33,15 +33,8 @@ export interface ContentSummaryConfig {
   stringMap: Record<string, string>;
 }
 
-const defaultConfig: ContentSummaryConfig = {
-  stringMap: defaultStringMap,
-};
-
 @customElement('cai-content-summary')
-export class ContentSummary extends ConfigurablePanelSection(LitElement, {
-  dataSelector: (manifestStore) => manifestStore?.generativeInfo,
-  config: defaultConfig,
-}) {
+export class ContentSummary extends Localizable(LitElement) {
   static get styles() {
     return [
       defaultStyles,
@@ -60,17 +53,29 @@ export class ContentSummary extends ConfigurablePanelSection(LitElement, {
     ];
   }
 
+  @property({
+    type: Object,
+    hasChanged,
+  })
+  data: string | undefined;
+
   render() {
-    return this.renderSection(html`<cai-panel-section
-      header=${this._config.stringMap['content-summary.header']}
-      helpText=${this._config.stringMap['content-summary.helpText']}
+    return html`<cai-panel-section
+      helpText=${this.strings['content-summary.helpText']}
     >
-      <div class="section-icon-content">
-        <cai-icon-generic-info></cai-icon-generic-info>
-        <span>
-          ${this._config.stringMap['content-summary.content.aiGenerated']}
-        </span>
+      <div class="section-icon-content" slot="content">
+        ${this.data === 'compositeWithTrainedAlgorithmicMedia'
+          ? html`
+              <span>
+                ${this.strings['content-summary.content.composite']}
+              </span>
+            `
+          : html`
+              <span>
+                ${this.strings['content-summary.content.aiGenerated']}
+              </span>
+            `}
       </div>
-    </cai-panel-section>`);
+    </cai-panel-section>`;
   }
 }

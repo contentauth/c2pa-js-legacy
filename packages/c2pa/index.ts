@@ -17,7 +17,9 @@ export { AssertionAccessor, ExtendedAssertions } from './src/assertions';
 export {
   C2pa,
   C2paConfig,
+  C2paReadOptions,
   C2paReadResult,
+  ToolkitSettings,
   createC2pa,
   generateVerifyUrl,
 } from './src/c2pa';
@@ -25,12 +27,11 @@ export {
   DisposableL2ManifestStore,
   ErrorStatus,
   L2ClaimGenerator,
-  L2EditsAndActivity,
-  L2Ingredient,
   L2ManifestStore,
   L2Producer,
   L2Signature,
   L2SocialAccount,
+  L2Web3,
   createL2ManifestStore,
 } from './src/createL2ManifestStore';
 export { Ingredient } from './src/ingredient';
@@ -42,6 +43,7 @@ export {
   TranslatedDictionaryCategory,
   getC2paCategorizedActions,
   selectEditsAndActivity,
+  registerLocaleForEditsAndActivities,
 } from './src/selectors/selectEditsAndActivity';
 export {
   parseGenerator,
@@ -50,6 +52,8 @@ export {
 export {
   GenerativeInfo,
   selectGenerativeInfo,
+  selectGenerativeSoftwareAgents,
+  selectGenerativeType,
 } from './src/selectors/selectGenerativeInfo';
 export { selectProducer } from './src/selectors/selectProducer';
 export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';

@@ -2,6 +2,66 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.11.4",
+      "tag": "@contentauth/toolkit_v0.11.4",
+      "date": "Fri, 12 Apr 2024 19:34:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Expose `GeneratorInfoMap`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.3",
+      "tag": "@contentauth/toolkit_v0.11.3",
+      "date": "Fri, 05 Apr 2024 18:04:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add types for c2pa.actions.v2"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.2",
+      "tag": "@contentauth/toolkit_v0.11.2",
+      "date": "Fri, 05 Apr 2024 16:07:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update c2pa-rs to 0.31.3"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.1",
+      "tag": "@contentauth/toolkit_v0.11.1",
+      "date": "Tue, 26 Mar 2024 21:30:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update c2pa-rs to 0.31.1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "@contentauth/toolkit_v0.11.0",
+      "date": "Mon, 18 Mar 2024 21:08:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update to c2pa-rs 0.31.0, add settings support"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.10.6",
       "tag": "@contentauth/toolkit_v0.10.6",
       "date": "Thu, 07 Mar 2024 22:56:51 GMT",

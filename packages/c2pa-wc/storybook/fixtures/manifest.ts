@@ -38,8 +38,8 @@ export default {
     isoDateString: '[REPLACE ME]',
   },
   claimGenerator: {
-    value: 'C2PA Testing',
-    product: 'C2PA Testing',
+    value: 'Adobe Photoshop 23.3.1 Content Credentials (Beta)',
+    product: 'Adobe Photoshop 23.3.1 Content Credentials (Beta)',
   },
   producer: {
     '@type': 'Person',
@@ -84,6 +84,47 @@ export default {
       description: 'Changed size, orientation, direction, or position',
     },
   ],
+  generativeInfo: [
+    {
+      assertion: {
+        label: 'c2pa.actions',
+        data: {
+          actions: [
+            {
+              action: 'c2pa.created',
+              digitalSourceType:
+                'https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+              softwareAgent: 'Adobe Firefly',
+            },
+          ],
+        },
+      },
+      type: 'trainedAlgorithmicMedia',
+      softwareAgent: 'Adobe Firefly',
+    },
+    {
+      assertion: {
+        label: 'c2pa.actions',
+        data: {
+          actions: [
+            {
+              action: 'c2pa.created',
+              digitalSourceType:
+                'https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+              softwareAgent: 'Adobe Firefly',
+            },
+          ],
+        },
+      },
+      type: 'compositeWithTrainedAlgorithmicMedia',
+      softwareAgent: 'Adobe Firefly',
+    },
+  ],
+  web3: {
+    ethereum: ['0xf161c6760460e368809b74b094592ae048c5639c'],
+    solana: ['8xoTrr55FbLZ7bnoGXhXX5Yh3JWHT31MKsHNLRckn8ZA'],
+  },
+
   validationStatus: [],
   error: null,
   isBeta: false,

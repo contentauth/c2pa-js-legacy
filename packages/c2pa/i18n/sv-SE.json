@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Justerade egenskaper som ton, mättnad, kurvor, skuggor och högdagrar",
-        "label": "Redigering av färg eller exponering"
-      },
-      "c2pa.created": {
-        "description": "Skapade en ny fil eller nytt innehåll",
-        "label": "Skapade"
-      },
-      "c2pa.cropped": {
-        "description": "Använde beskärningsverktyg, minskade eller utökade synligt innehållsområde",
-        "label": "Redigering av beskärning"
-      },
-      "c2pa.drawing": {
-        "description": "Använde verktyg som pennor, penslar, suddgummin eller verktygen form, bana eller penna",
-        "label": "Redigering av teckning"
-      },
-      "c2pa.edited": {
-        "description": "Gjorde andra ändringar",
-        "label": "Annan redigering"
-      },
-      "c2pa.filtered": {
-        "description": "Använde verktyg som filter, stilar eller effekter för att ändra utseende",
-        "label": "Redigering av filter eller stil"
-      },
-      "c2pa.opened": {
-        "description": "Öppnade en befintlig fil",
-        "label": "Öppnade"
-      },
-      "c2pa.orientation": {
-        "description": "Ändrade placering eller orientering (roterad, vänd osv.)",
-        "label": "Orientering redigering"
-      },
-      "c2pa.placed": {
-        "description": "Lade till befintligt innehåll i den här filen",
-        "label": "Importerade"
-      },
-      "c2pa.resized": {
-        "description": "Ändrade mått eller filstorlek",
-        "label": "Redigering av storleksändring"
-      },
-      "c2pa.unknown": {
-        "description": "Utförde andra redigeringar eller aktiviteter som inte kunde identifieras",
-        "label": "Okänd redigering eller aktivitet"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Justerade egenskaper som ton, mättnad, kurvor, skuggor och högdagrar",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Redigering av färg eller exponering",
+  "selectors.editsAndActivity.c2pa.created.description": "Skapade en ny fil eller nytt innehåll",
+  "selectors.editsAndActivity.c2pa.created.label": "Skapade",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Använde beskärningsverktyg, minskade eller utökade synligt innehållsområde",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Redigering av beskärning",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Använde verktyg som pennor, penslar, suddgummin eller verktygen form, bana eller penna",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Redigering av teckning",
+  "selectors.editsAndActivity.c2pa.edited.description": "Gjorde andra ändringar",
+  "selectors.editsAndActivity.c2pa.edited.label": "Annan redigering",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Använde verktyg som filter, stilar eller effekter för att ändra utseende",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Redigering av filter eller stil",
+  "selectors.editsAndActivity.c2pa.opened.description": "Öppnade en befintlig fil",
+  "selectors.editsAndActivity.c2pa.opened.label": "Öppnade",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Ändrade placering eller orientering (roterad, vänd osv.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Orientering redigering",
+  "selectors.editsAndActivity.c2pa.placed.description": "Lade till befintligt innehåll i den här filen",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importerade",
+  "selectors.editsAndActivity.c2pa.resized.description": "Ändrade mått eller filstorlek",
+  "selectors.editsAndActivity.c2pa.resized.label": "Redigering av storleksändring",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Utförde andra redigeringar eller aktiviteter som inte kunde identifieras",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Okänd redigering eller aktivitet"
 }

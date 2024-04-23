@@ -7,8 +7,8 @@
  * it.
  */
 
-import { flow, pickBy, keys, join, negate } from 'lodash/fp';
 import deepEqual from 'fast-deep-equal';
+import { flow, join, keys, negate, pickBy } from 'lodash/fp';
 
 /**
  * Converts an object of keys and values (where the values are truthy values or functions
@@ -27,10 +27,8 @@ export const hasChanged = negate(deepEqual);
 export function defaultDateFormatter(date: Date) {
   const df = new Intl.DateTimeFormat('default', {
     year: 'numeric',
-    month: 'numeric',
+    month: 'short',
     day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
   });
   return df.format(date);
 }

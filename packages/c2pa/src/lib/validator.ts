@@ -23,6 +23,7 @@ export class Validator {
   static readonly VALID_MIME_TYPES = [
     'application/c2pa',
     'application/mp4',
+    'application/pdf',
     'application/x-c2pa-manifest-store',
     'audio/mp4',
     'audio/mpeg',
@@ -38,9 +39,10 @@ export class Validator {
     'image/tiff',
     'image/webp',
     'image/x-adobe-dng',
+    'image/x-sony-arw',
     'video/mp4',
+    'video/quicktime',
     'video/x-msvideo',
-    'application/pdf',
   ];
 
   static readonly DEFAULT_DETECTION_LENGTH = 65535;

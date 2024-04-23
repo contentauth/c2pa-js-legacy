@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Proprietà regolate come tono, saturazione, curve, ombre o luci",
-        "label": "Modifiche del colore o dell'esposizione"
-      },
-      "c2pa.created": {
-        "description": "È stato creato un nuovo file o contenuto",
-        "label": "Creato"
-      },
-      "c2pa.cropped": {
-        "description": "Strumenti di ritaglio utilizzati, riducendo o espandendo l'area del contenuto visibile",
-        "label": "Modifiche di ritaglio"
-      },
-      "c2pa.drawing": {
-        "description": "Strumenti usati come matite, pennelli, gomme o strumenti forma, tracciato o penna",
-        "label": "Modifiche del disegno"
-      },
-      "c2pa.edited": {
-        "description": "Sono state apportate altre modifiche",
-        "label": "Altre modifiche"
-      },
-      "c2pa.filtered": {
-        "description": "Strumenti utilizzati come filtri, stili o effetti per modificare l'aspetto",
-        "label": "Modifiche di filtro o stile"
-      },
-      "c2pa.opened": {
-        "description": "È stato aperto un file preesistente",
-        "label": "Aperto"
-      },
-      "c2pa.orientation": {
-        "description": "Posizione o orientamento modificati (ruotati, capovolti e così via)",
-        "label": "Orientamento modifiche"
-      },
-      "c2pa.placed": {
-        "description": "Aggiunto contenuto preesistente a questo file",
-        "label": "Importato"
-      },
-      "c2pa.resized": {
-        "description": "Dimensioni o grandezza del file modificate",
-        "label": "Modifiche del ridimensionamento"
-      },
-      "c2pa.unknown": {
-        "description": "Sono state eseguite altre modifiche o attività che non è stato possibile riconoscere",
-        "label": "Modifiche o attività sconosciute"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Proprietà regolate come tono, saturazione, curve, ombre o luci",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Modifiche del colore o dell'esposizione",
+  "selectors.editsAndActivity.c2pa.created.description": "È stato creato un nuovo file o contenuto",
+  "selectors.editsAndActivity.c2pa.created.label": "Creato",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Strumenti di ritaglio utilizzati, riducendo o espandendo l'area del contenuto visibile",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Modifiche di ritaglio",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Strumenti usati come matite, pennelli, gomme o strumenti forma, tracciato o penna",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Modifiche del disegno",
+  "selectors.editsAndActivity.c2pa.edited.description": "Sono state apportate altre modifiche",
+  "selectors.editsAndActivity.c2pa.edited.label": "Altre modifiche",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Strumenti utilizzati come filtri, stili o effetti per modificare l'aspetto",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Modifiche di filtro o stile",
+  "selectors.editsAndActivity.c2pa.opened.description": "È stato aperto un file preesistente",
+  "selectors.editsAndActivity.c2pa.opened.label": "Aperto",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Posizione o orientamento modificati (ruotati, capovolti e così via)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Orientamento modifiche",
+  "selectors.editsAndActivity.c2pa.placed.description": "Aggiunto contenuto preesistente a questo file",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importato",
+  "selectors.editsAndActivity.c2pa.resized.description": "Dimensioni o grandezza del file modificate",
+  "selectors.editsAndActivity.c2pa.resized.label": "Modifiche del ridimensionamento",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Sono state eseguite altre modifiche o attività che non è stato possibile riconoscere",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Modifiche o attività sconosciute"
 }

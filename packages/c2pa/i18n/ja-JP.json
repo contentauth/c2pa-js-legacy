@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "トーン、彩度、カーブ、シャドウ、ハイライトなどのプロパティを調整",
-        "label": "カラーまたは露出の編集"
-      },
-      "c2pa.created": {
-        "description": "新しいファイルまたはコンテンツを作成",
-        "label": "作成済み"
-      },
-      "c2pa.cropped": {
-        "description": "切り抜きツールを使用、表示されているコンテンツ領域の縮小または拡大",
-        "label": "切り抜きの編集"
-      },
-      "c2pa.drawing": {
-        "description": "鉛筆、ブラシ、消しゴム、シェイプ、パス、ペンツールなどのツールを使用",
-        "label": "描画の編集"
-      },
-      "c2pa.edited": {
-        "description": "その他の変更",
-        "label": "その他の編集"
-      },
-      "c2pa.filtered": {
-        "description": "フィルター、スタイル、効果などのツールを使用して外観を変更",
-        "label": "フィルターまたはスタイルの編集"
-      },
-      "c2pa.opened": {
-        "description": "既存のファイルを開いた",
-        "label": "開いた"
-      },
-      "c2pa.orientation": {
-        "description": "位置または方向を変更 (回転、反転など)",
-        "label": "画像方向編集"
-      },
-      "c2pa.placed": {
-        "description": "このファイルに既存のコンテンツを追加",
-        "label": "読み込み済み"
-      },
-      "c2pa.resized": {
-        "description": "寸法またはファイルサイズを変更",
-        "label": "サイズ変更の編集"
-      },
-      "c2pa.unknown": {
-        "description": "認識できない他の編集またはアクティビティを実行",
-        "label": "不明な編集またはアクティビティ"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "トーン、彩度、カーブ、シャドウ、ハイライトなどのプロパティを調整",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "カラーまたは露出の編集",
+  "selectors.editsAndActivity.c2pa.created.description": "新しいファイルまたはコンテンツを作成",
+  "selectors.editsAndActivity.c2pa.created.label": "作成済み",
+  "selectors.editsAndActivity.c2pa.cropped.description": "切り抜きツールを使用、表示されているコンテンツ領域の縮小または拡大",
+  "selectors.editsAndActivity.c2pa.cropped.label": "切り抜きの編集",
+  "selectors.editsAndActivity.c2pa.drawing.description": "鉛筆、ブラシ、消しゴム、シェイプ、パス、ペンツールなどのツールを使用",
+  "selectors.editsAndActivity.c2pa.drawing.label": "描画の編集",
+  "selectors.editsAndActivity.c2pa.edited.description": "その他の変更",
+  "selectors.editsAndActivity.c2pa.edited.label": "その他の編集",
+  "selectors.editsAndActivity.c2pa.filtered.description": "フィルター、スタイル、効果などのツールを使用して外観を変更",
+  "selectors.editsAndActivity.c2pa.filtered.label": "フィルターまたはスタイルの編集",
+  "selectors.editsAndActivity.c2pa.opened.description": "既存のファイルを開いた",
+  "selectors.editsAndActivity.c2pa.opened.label": "開いた",
+  "selectors.editsAndActivity.c2pa.orientation.description": "位置または方向を変更 (回転、反転など)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "画像方向編集",
+  "selectors.editsAndActivity.c2pa.placed.description": "このファイルに既存のコンテンツを追加",
+  "selectors.editsAndActivity.c2pa.placed.label": "読み込み済み",
+  "selectors.editsAndActivity.c2pa.resized.description": "寸法またはファイルサイズを変更",
+  "selectors.editsAndActivity.c2pa.resized.label": "サイズ変更の編集",
+  "selectors.editsAndActivity.c2pa.unknown.description": "認識できない他の編集またはアクティビティを実行",
+  "selectors.editsAndActivity.c2pa.unknown.label": "不明な編集またはアクティビティ"
 }

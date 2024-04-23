@@ -7,9 +7,8 @@
  * it.
  */
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { nothing } from 'lit-html';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 
 import '../Tooltip';
@@ -45,17 +44,24 @@ export class PanelSection extends LitElement {
           grid-template-rows: auto;
           gap: var(--cai-panel-section-internal-spacing, 0.5rem);
         }
-        div.heading {
+        div.container {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
         }
         div.heading-text {
           color: var(
             --cai-panel-section-heading-color,
             var(--cai-primary-color)
           );
+
           font-weight: var(--cai-panel-section-heading-font-weight, bold);
+        }
+        div.content {
+          flex-grow: 1;
+        }
+        .heading-text ::slotted(*) {
+          margin-right: 6px;
         }
       `,
     ];
@@ -64,17 +70,10 @@ export class PanelSection extends LitElement {
   render() {
     return html`
       <div class="layout">
-        <div class="heading">
-          <div class="heading-text">${this.header}</div>
-          <slot name="help">
-            ${this.helpText
-              ? html`<cai-tooltip autoPlacement=${false}>
-                  <div slot="content">${this.helpText}</div>
-                </cai-tooltip>`
-              : nothing}
-          </slot>
+        <div class="container">
+          <div class="heading-text"><slot name="header"></slot></div>
+          <div class="content"><slot name="content"></slot></div>
         </div>
-        <slot></slot>
       </div>
     `;
   }

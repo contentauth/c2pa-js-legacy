@@ -11,8 +11,11 @@ import type {
   ActionV1,
   Assertion,
   C2paActionsAssertion,
+  C2paActionsAssertionV2,
+  GeneratorInfoMap,
   ManifestAssertion,
 } from '@contentauth/toolkit';
+import { ActionV2 } from '@contentauth/toolkit';
 import type { Manifest } from '../manifest';
 
 const genAiDigitalSourceTypes = [
@@ -39,12 +42,12 @@ export type GenAiAssertion = ManifestAssertion | LegacyAssertion;
 
 export interface GenerativeInfo {
   assertion: GenAiAssertion;
-  action?: ActionV1;
+  action?: ActionV1 | ActionV2;
   type:
     | 'legacy'
     | 'trainedAlgorithmicMedia'
     | 'compositeWithTrainedAlgorithmicMedia';
-  softwareAgent: string;
+  softwareAgent: GeneratorInfoMap;
 }
 
 /**
@@ -68,7 +71,7 @@ export function selectGenerativeInfo(
           {
             assertion,
             type: 'legacy',
-            softwareAgent: softwareAgent,
+            softwareAgent: { name: softwareAgent },
           },
         ];
       }
@@ -78,7 +81,7 @@ export function selectGenerativeInfo(
         const { actions } = (assertion as C2paActionsAssertion).data;
         const genAiActions: GenerativeInfo[] = actions.reduce<GenerativeInfo[]>(
           (actionAcc, action: ActionV1) => {
-            const { digitalSourceType } = action;
+            const { digitalSourceType, softwareAgent } = action;
             if (
               digitalSourceType &&
               genAiDigitalSourceTypes.includes(digitalSourceType)
@@ -87,7 +90,33 @@ export function selectGenerativeInfo(
                 assertion,
                 action: action,
                 type: formatGenAiDigitalSourceTypes(digitalSourceType),
-                softwareAgent: action.softwareAgent,
+                softwareAgent: { name: softwareAgent },
+              } as GenerativeInfo);
+            }
+
+            return actionAcc;
+          },
+          [],
+        );
+
+        return [...acc, ...genAiActions];
+      }
+
+      // Check for actions v2 assertion
+      if (assertion.label === 'c2pa.actions.v2') {
+        const { actions } = (assertion as C2paActionsAssertionV2).data;
+        const genAiActions: GenerativeInfo[] = actions.reduce<GenerativeInfo[]>(
+          (actionAcc, action: ActionV2) => {
+            const { digitalSourceType, softwareAgent } = action;
+            if (
+              digitalSourceType &&
+              genAiDigitalSourceTypes.includes(digitalSourceType)
+            ) {
+              actionAcc.push({
+                assertion,
+                action: action,
+                type: formatGenAiDigitalSourceTypes(digitalSourceType),
+                softwareAgent,
               } as GenerativeInfo);
             }
 
@@ -105,4 +134,39 @@ export function selectGenerativeInfo(
   );
 
   return data.length ? data : null;
+}
+
+/**
+ * Returns a set of software agents
+ * @param generativeInfo - generative info from manifest
+ */
+export function selectGenerativeSoftwareAgents(
+  generativeInfo: GenerativeInfo[],
+) {
+  const softwareAgents = [
+    ...new Set(
+      generativeInfo.map((assertion) => {
+        return assertion?.softwareAgent?.name ?? assertion?.softwareAgent;
+      }),
+    ),
+  ];
+  //if there are undefined software agents remove them from the array
+
+  return softwareAgents.filter((element) => typeof element !== 'undefined');
+}
+
+/**
+ * Returns the generative type (trained , legacy or composite)
+ * @param generativeInfo - generative info from manifest
+ */
+
+export function selectGenerativeType(generativeInfo: GenerativeInfo[]) {
+  const result =
+    // Try to see if we have any composite assertions
+    generativeInfo.find(
+      (assertion) => assertion.type === 'compositeWithTrainedAlgorithmicMedia',
+      // If not, fall back to whichever one the first item is, which should be the trained or legacy assertion
+    ) ?? generativeInfo[0];
+
+  return result?.type ?? null;
 }

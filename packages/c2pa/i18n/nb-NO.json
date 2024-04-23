@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Justerte egenskaper som tone, metning, kurver, skygger eller høylys",
-        "label": "Farge- eller eksponeringsredigeringer"
-      },
-      "c2pa.created": {
-        "description": "Opprettet en ny fil eller nytt innhold",
-        "label": "Opprettet"
-      },
-      "c2pa.cropped": {
-        "description": "Brukte beskjæringsverktøy for å redusere eller utvide synlig innholdsområde",
-        "label": "Beskjæringsredigeringer"
-      },
-      "c2pa.drawing": {
-        "description": "Brukte verktøy som blyanter, pensler, viskelær eller form-, bane- eller pennverktøy",
-        "label": "Tegneredigeringer"
-      },
-      "c2pa.edited": {
-        "description": "Gjorde andre endringer",
-        "label": "Andre redigeringer"
-      },
-      "c2pa.filtered": {
-        "description": "Brukte verktøy som filtre, stiler eller effekter for å endre utseende",
-        "label": "Filter- eller stilredigeringer"
-      },
-      "c2pa.opened": {
-        "description": "Åpnet en eksisterende fil",
-        "label": "Åpnet"
-      },
-      "c2pa.orientation": {
-        "description": "Endret posisjon eller retning (rotert, snudd osv.)",
-        "label": "Retnings- redigeringer"
-      },
-      "c2pa.placed": {
-        "description": "La til eksisterende innhold i denne filen",
-        "label": "Importert"
-      },
-      "c2pa.resized": {
-        "description": "Endret dimensjoner eller filstørrelse",
-        "label": "Størrelsesendringer"
-      },
-      "c2pa.unknown": {
-        "description": "Utførte andre redigeringer eller aktiviteter som ikke gjenkjennes",
-        "label": "Ukjent endring eller aktivitet"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Justerte egenskaper som tone, metning, kurver, skygger eller høylys",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Farge- eller eksponeringsredigeringer",
+  "selectors.editsAndActivity.c2pa.created.description": "Opprettet en ny fil eller nytt innhold",
+  "selectors.editsAndActivity.c2pa.created.label": "Opprettet",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Brukte beskjæringsverktøy for å redusere eller utvide synlig innholdsområde",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Beskjæringsredigeringer",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Brukte verktøy som blyanter, pensler, viskelær eller form-, bane- eller pennverktøy",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Tegneredigeringer",
+  "selectors.editsAndActivity.c2pa.edited.description": "Gjorde andre endringer",
+  "selectors.editsAndActivity.c2pa.edited.label": "Andre redigeringer",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Brukte verktøy som filtre, stiler eller effekter for å endre utseende",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Filter- eller stilredigeringer",
+  "selectors.editsAndActivity.c2pa.opened.description": "Åpnet en eksisterende fil",
+  "selectors.editsAndActivity.c2pa.opened.label": "Åpnet",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Endret posisjon eller retning (rotert, snudd osv.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Retnings- redigeringer",
+  "selectors.editsAndActivity.c2pa.placed.description": "La til eksisterende innhold i denne filen",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importert",
+  "selectors.editsAndActivity.c2pa.resized.description": "Endret dimensjoner eller filstørrelse",
+  "selectors.editsAndActivity.c2pa.resized.label": "Størrelsesendringer",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Utførte andre redigeringer eller aktiviteter som ikke gjenkjennes",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Ukjent endring eller aktivitet"
 }

@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Se han ajustado propiedades como el tono, la saturación, las curvas, las sombras o las luces",
-        "label": "Ediciones de color o exposición"
-      },
-      "c2pa.created": {
-        "description": "Se ha creado un nuevo archivo o contenido",
-        "label": "Fecha de creación"
-      },
-      "c2pa.cropped": {
-        "description": "Se han usado herramientas de recorte, lo que reduce o expande el área de contenido visible",
-        "label": "Ediciones de recorte"
-      },
-      "c2pa.drawing": {
-        "description": "Se han usado herramientas como lápices, pinceles, borradores o herramientas de formas, trazados o bolígrafos",
-        "label": "Ediciones de dibujo"
-      },
-      "c2pa.edited": {
-        "description": "Se han hecho otros cambios",
-        "label": "Otras ediciones"
-      },
-      "c2pa.filtered": {
-        "description": "Se han usado herramientas como filtros, estilos o efectos para cambiar la apariencia",
-        "label": "Ediciones de filtro o estilo"
-      },
-      "c2pa.opened": {
-        "description": "Se ha abierto un archivo preexistente",
-        "label": "Abierto"
-      },
-      "c2pa.orientation": {
-        "description": "Se ha cambiado la posición u orientación (girado, volteado, etc.)",
-        "label": "Ediciones de orientación"
-      },
-      "c2pa.placed": {
-        "description": "Se ha añadido contenido preexistente a este archivo",
-        "label": "Importado"
-      },
-      "c2pa.resized": {
-        "description": "Se han modificado las dimensiones o el tamaño del archivo",
-        "label": "Ediciones de cambio de tamaño"
-      },
-      "c2pa.unknown": {
-        "description": "Se han realizado otras ediciones o actividades que no se han podido reconocer",
-        "label": "Ediciones o actividad desconocidas"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Se han ajustado propiedades como el tono, la saturación, las curvas, las sombras o las luces",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Ediciones de color o exposición",
+  "selectors.editsAndActivity.c2pa.created.description": "Se ha creado un nuevo archivo o contenido",
+  "selectors.editsAndActivity.c2pa.created.label": "Fecha de creación",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Se han usado herramientas de recorte, lo que reduce o expande el área de contenido visible",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Ediciones de recorte",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Se han usado herramientas como lápices, pinceles, borradores o herramientas de formas, trazados o bolígrafos",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Ediciones de dibujo",
+  "selectors.editsAndActivity.c2pa.edited.description": "Se han hecho otros cambios",
+  "selectors.editsAndActivity.c2pa.edited.label": "Otras ediciones",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Se han usado herramientas como filtros, estilos o efectos para cambiar la apariencia",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Ediciones de filtro o estilo",
+  "selectors.editsAndActivity.c2pa.opened.description": "Se ha abierto un archivo preexistente",
+  "selectors.editsAndActivity.c2pa.opened.label": "Abierto",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Se ha cambiado la posición u orientación (girado, volteado, etc.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Ediciones de orientación",
+  "selectors.editsAndActivity.c2pa.placed.description": "Se ha añadido contenido preexistente a este archivo",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importado",
+  "selectors.editsAndActivity.c2pa.resized.description": "Se han modificado las dimensiones o el tamaño del archivo",
+  "selectors.editsAndActivity.c2pa.resized.label": "Ediciones de cambio de tamaño",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Se han realizado otras ediciones o actividades que no se han podido reconocer",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Ediciones o actividad desconocidas"
 }
