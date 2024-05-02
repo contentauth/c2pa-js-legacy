@@ -1,86 +1,42 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Adjusted properties like tone, saturation, curves, shadows, or highlights",
-        "label": "Color or exposure edits"
-      },
-      "c2pa.converted": {
-        "description": "The format of the asset was changed",
-        "label": "Converted asset"
-      },
-      "c2pa.created": {
-        "description": "Created a new file or content",
-        "label": "Created"
-      },
-      "c2pa.cropped": {
-        "description": "Used cropping tools, reducing or expanding visible content area",
-        "label": "Cropping edits"
-      },
-      "c2pa.deleted": {
-        "description": "Deleted visual areas or durations of content",
-        "label": "Deleted content"
-      },
-      "c2pa.drawing": {
-        "description": "Used tools like pencils, brushes, erasers, or shape, path, or pen tools",
-        "label": "Drawing edits"
-      },
-      "c2pa.dubbed": {
-        "description": "Replaced audio",
-        "label": "Dubbed"
-      },
-      "c2pa.edited": {
-        "description": "Made other changes",
-        "label": "Other edits"
-      },
-      "c2pa.filtered": {
-        "description": "Used tools like filters, styles, or effects to change appearance",
-        "label": "Filter or style edits"
-      },
-      "c2pa.opened": {
-        "description": "Opened a pre-existing file",
-        "label": "Opened"
-      },
-      "c2pa.orientation": {
-        "description": "Changed position or orientation (rotated, flipped, etc.)",
-        "label": "Orientation edits"
-      },
-      "c2pa.placed": {
-        "description": "Added pre-existing content to this file",
-        "label": "Imported"
-      },
-      "c2pa.published": {
-        "description": "Received and distributed image",
-        "label": "Published image"
-      },
-      "c2pa.removed": {
-        "description": "One or more assets were removed from the file",
-        "label": "Asset removed"
-      },
-      "c2pa.repackaged": {
-        "description": "Asset was repackaged without being processed",
-        "label": "Repackaged asset"
-      },
-      "c2pa.resized": {
-        "description": "Changed dimensions or file size",
-        "label": "Resizing edits"
-      },
-      "c2pa.transcoded": {
-        "description": "Processed or compressed an asset to optimize for display",
-        "label": "Processed asset"
-      },
-      "c2pa.translated": {
-        "description": "Translated content",
-        "label": "Translated"
-      },
-      "c2pa.unknown": {
-        "description": "Performed other edits or activity that couldn't be recognized",
-        "label": "Unknown edits or activity"
-      },
-      "c2pa.edited.metadata": {
-        "description": "Made changes to file metadata",
-        "label": "Metadata changes"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Adjusted properties like tone, saturation, curves, shadows, or highlights",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Color or exposure edits",
+  "selectors.editsAndActivity.c2pa.converted.description": "The format of the asset was changed",
+  "selectors.editsAndActivity.c2pa.converted.label": "Converted asset",
+  "selectors.editsAndActivity.c2pa.created.description": "Created a new file or content",
+  "selectors.editsAndActivity.c2pa.created.label": "Created",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Used cropping tools, reducing or expanding visible content area",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Cropping edits",
+  "selectors.editsAndActivity.c2pa.deleted.description": "Deleted visual areas or durations of content",
+  "selectors.editsAndActivity.c2pa.deleted.label": "Deleted content",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Used tools like pencils, brushes, erasers, or shape, path, or pen tools",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Drawing edits",
+  "selectors.editsAndActivity.c2pa.dubbed.description": "Replaced audio",
+  "selectors.editsAndActivity.c2pa.dubbed.label": "Dubbed",
+  "selectors.editsAndActivity.c2pa.edited.description": "Made other changes",
+  "selectors.editsAndActivity.c2pa.edited.label": "Other edits",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Used tools like filters, styles, or effects to change appearance",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Filter or style edits",
+  "selectors.editsAndActivity.c2pa.opened.description": "Opened a pre-existing file",
+  "selectors.editsAndActivity.c2pa.opened.label": "Opened",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Changed position or orientation (rotated, flipped, etc.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Orientation edits",
+  "selectors.editsAndActivity.c2pa.placed.description": "Added pre-existing content to this file",
+  "selectors.editsAndActivity.c2pa.placed.label": "Imported",
+  "selectors.editsAndActivity.c2pa.published.description": "Received and distributed image",
+  "selectors.editsAndActivity.c2pa.published.label": "Published image",
+  "selectors.editsAndActivity.c2pa.removed.description": "One or more assets were removed from the file",
+  "selectors.editsAndActivity.c2pa.removed.label": "Asset removed",
+  "selectors.editsAndActivity.c2pa.repackaged.description": "Asset was repackaged without being processed",
+  "selectors.editsAndActivity.c2pa.repackaged.label": "Repackaged asset",
+  "selectors.editsAndActivity.c2pa.resized.description": "Changed dimensions or file size",
+  "selectors.editsAndActivity.c2pa.resized.label": "Resizing edits",
+  "selectors.editsAndActivity.c2pa.transcoded.description": "Processed or compressed an asset to optimize for display",
+  "selectors.editsAndActivity.c2pa.transcoded.label": "Processed asset",
+  "selectors.editsAndActivity.c2pa.translated.description": "Translated content",
+  "selectors.editsAndActivity.c2pa.translated.label": "Translated",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Performed other edits or activity that couldn't be recognized",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Unknown edits or activity",
+  "selectors.editsAndActivity.c2pa.edited.metadata.description": "Made changes to file metadata",
+  "selectors.editsAndActivity.c2pa.edited.metadata.label": "Metadata changes"
 }

@@ -8,9 +8,8 @@
  */
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from './ProducedBy.str.json';
+import { Localizable } from '../../mixins/localizable';
 
 import { hasChanged } from '../../utils';
 import '../PanelSection';
@@ -27,16 +26,8 @@ declare global {
   }
 }
 
-interface ProducedByConfig {
-  stringMap: Record<string, string>;
-}
-
-const defaultConfig: ProducedByConfig = {
-  stringMap: defaultStringMap,
-};
-
 @customElement('cai-produced-by')
-export class ProducedBy extends Configurable(LitElement, defaultConfig) {
+export class ProducedBy extends Localizable(LitElement) {
   static get styles() {
     return [defaultStyles, baseSectionStyles];
   }
@@ -49,9 +40,9 @@ export class ProducedBy extends Configurable(LitElement, defaultConfig) {
 
   render() {
     return html` <cai-panel-section
-      helpText=${this._config.stringMap['produced-by.helpText']}
+      helpText=${this.strings['produced-by.helpText']}
     >
-      <div slot="header">${this._config.stringMap['produced-by.header']}</div>
+      <div slot="header">${this.strings['produced-by.header']}</div>
       <div slot="content">${this.data}</div>
     </cai-panel-section>`;
   }

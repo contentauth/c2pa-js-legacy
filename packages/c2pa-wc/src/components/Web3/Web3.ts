@@ -10,9 +10,8 @@
 import { L2Web3 } from 'c2pa';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from './Web3.str.json';
+import { Localizable } from '../../mixins/localizable';
 
 import { hasChanged } from '../../utils';
 import '../Icon';
@@ -33,16 +32,8 @@ declare global {
   }
 }
 
-export interface Web3Config {
-  stringMap: Record<string, string>;
-}
-
-const defaultConfig: Web3Config = {
-  stringMap: defaultStringMap,
-};
-
 @customElement('cai-web3')
-export class Web3 extends Configurable(LitElement, defaultConfig) {
+export class Web3 extends Localizable(LitElement) {
   static get styles() {
     return [
       defaultStyles,
@@ -75,7 +66,7 @@ export class Web3 extends Configurable(LitElement, defaultConfig) {
 
   render() {
     return html`<cai-panel-section>
-      <div slot="header">${this._config.stringMap['web3.header']}</div>
+      <div slot="header">${this.strings['web3.header']}</div>
       <div slot="content">
         <ul class="web3-list">
           ${this.data?.solana && this.data?.solana.length > 0
@@ -84,6 +75,7 @@ export class Web3 extends Configurable(LitElement, defaultConfig) {
                   key="solana"
                   address=${this.data?.solana}
                   hidden="false"
+                  locale=${this.locale}
                 >
                 </cai-web3-pill>
               `
@@ -94,6 +86,7 @@ export class Web3 extends Configurable(LitElement, defaultConfig) {
                   key="ethereum"
                   address=${this.data?.ethereum}
                   hidden="false"
+                  locale=${this.locale}
                 >
                 </cai-web3-pill>
               `

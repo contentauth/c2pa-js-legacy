@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Beállított olyan tulajdonságokat mint árnyalat, telítettség, görbék, árnyékok vagy csúcsfények",
-        "label": "Szín vagy expozíció szerkesztése"
-      },
-      "c2pa.created": {
-        "description": "Létrehozott egy új fájlt vagy tartalmat",
-        "label": "Létrehozva"
-      },
-      "c2pa.cropped": {
-        "description": "Használt vágóeszközöket, amelyek csökkentik vagy bővítik a tartalom látható területét",
-        "label": "Vágást használó szerkesztések"
-      },
-      "c2pa.drawing": {
-        "description": "Használt olyan eszközöket mint ceruzák, ecsetek, radírok vagy alakzat-, görbe- vagy tolleszközök",
-        "label": "Rajzolást használó szerkesztések"
-      },
-      "c2pa.edited": {
-        "description": "Egyéb módosítások végrehajtva",
-        "label": "Egyéb szerkesztések"
-      },
-      "c2pa.filtered": {
-        "description": "Használt olyan eszközöket mint szűrők, stílusok vagy effektusok a megjelenés megváltoztatására",
-        "label": "Szűrőt vagy stílust használó szerkesztések"
-      },
-      "c2pa.opened": {
-        "description": "Megnyitott egy már létező fájlt",
-        "label": "Megnyitva"
-      },
-      "c2pa.orientation": {
-        "description": "Módosította a pozíciót vagy tájolást (elforgatva, megfordítva stb.)",
-        "label": "Tájolás szerkesztések"
-      },
-      "c2pa.placed": {
-        "description": "Már létező tartalmat adott hozzá ehhez a fájlhoz",
-        "label": "Importálva"
-      },
-      "c2pa.resized": {
-        "description": "A méretek vagy a fájl mérete módosult",
-        "label": "Szerkesztések átméretezése"
-      },
-      "c2pa.unknown": {
-        "description": "Más szerkesztéseket vagy műveleteket hajtott végre, amelyeket nem lehetett felismerni",
-        "label": "Ismeretlen szerkesztések vagy tevékenység"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Beállított olyan tulajdonságokat mint árnyalat, telítettség, görbék, árnyékok vagy csúcsfények",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Szín vagy expozíció szerkesztése",
+  "selectors.editsAndActivity.c2pa.created.description": "Létrehozott egy új fájlt vagy tartalmat",
+  "selectors.editsAndActivity.c2pa.created.label": "Létrehozva",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Használt vágóeszközöket, amelyek csökkentik vagy bővítik a tartalom látható területét",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Vágást használó szerkesztések",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Használt olyan eszközöket mint ceruzák, ecsetek, radírok vagy alakzat-, görbe- vagy tolleszközök",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Rajzolást használó szerkesztések",
+  "selectors.editsAndActivity.c2pa.edited.description": "Egyéb módosítások végrehajtva",
+  "selectors.editsAndActivity.c2pa.edited.label": "Egyéb szerkesztések",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Használt olyan eszközöket mint szűrők, stílusok vagy effektusok a megjelenés megváltoztatására",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Szűrőt vagy stílust használó szerkesztések",
+  "selectors.editsAndActivity.c2pa.opened.description": "Megnyitott egy már létező fájlt",
+  "selectors.editsAndActivity.c2pa.opened.label": "Megnyitva",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Módosította a pozíciót vagy tájolást (elforgatva, megfordítva stb.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Tájolás szerkesztések",
+  "selectors.editsAndActivity.c2pa.placed.description": "Már létező tartalmat adott hozzá ehhez a fájlhoz",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importálva",
+  "selectors.editsAndActivity.c2pa.resized.description": "A méretek vagy a fájl mérete módosult",
+  "selectors.editsAndActivity.c2pa.resized.label": "Szerkesztések átméretezése",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Más szerkesztéseket vagy műveleteket hajtott végre, amelyeket nem lehetett felismerni",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Ismeretlen szerkesztések vagy tevékenység"
 }

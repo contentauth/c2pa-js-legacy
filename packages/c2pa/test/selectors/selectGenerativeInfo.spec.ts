@@ -32,7 +32,7 @@ describe('selectGenerativeInfo', function () {
               softwareAgent: 'Adobe Firefly',
             },
             type: 'trainedAlgorithmicMedia',
-            softwareAgent: 'Adobe Firefly',
+            softwareAgent: { name: 'Adobe Firefly' },
           },
           {
             assertion: { label: 'c2pa.actions', data: jasmine.any(Object) },
@@ -44,7 +44,7 @@ describe('selectGenerativeInfo', function () {
               softwareAgent: 'Adobe Firefly',
             },
             type: 'trainedAlgorithmicMedia',
-            softwareAgent: 'Adobe Firefly',
+            softwareAgent: { name: 'Adobe Firefly' },
           },
           {
             assertion: {
@@ -59,7 +59,7 @@ describe('selectGenerativeInfo', function () {
               softwareAgent: 'Adobe Firefly',
             },
             type: 'trainedAlgorithmicMedia',
-            softwareAgent: 'Adobe Firefly',
+            softwareAgent: { name: 'Adobe Firefly' },
           },
         ]);
       }
@@ -114,6 +114,30 @@ describe('selectGenerativeInfo', function () {
       if (manifest) {
         const genAssertions = selectGenerativeInfo(manifest);
         expect(genAssertions).toEqual(null);
+      }
+    });
+
+    it('should find gen AI assertions using v2 actions', async function (this: TestContext) {
+      const result = await this.c2pa.read(
+        './node_modules/@contentauth/testing/fixtures/images/genai-actions-v2.jpg',
+      );
+      const manifest = result.manifestStore?.activeManifest;
+      expect(manifest).not.toBeNull();
+      if (manifest) {
+        const genAssertions = selectGenerativeInfo(manifest);
+        expect(genAssertions).toEqual([
+          {
+            assertion: { label: 'c2pa.actions.v2', data: jasmine.any(Object) },
+            action: {
+              action: 'c2pa.edited',
+              digitalSourceType:
+                'http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia',
+              softwareAgent: { name: 'Adobe Firefly' },
+            },
+            type: 'compositeWithTrainedAlgorithmicMedia',
+            softwareAgent: { name: 'Adobe Firefly' },
+          },
+        ]);
       }
     });
   });

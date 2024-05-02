@@ -2,6 +2,81 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.21.0",
+      "tag": "c2pa_v0.21.0",
+      "date": "Mon, 22 Apr 2024 15:46:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add i18n registration API for selectEditsAndActivity"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.0",
+      "tag": "c2pa_v0.20.0",
+      "date": "Fri, 12 Apr 2024 19:34:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for V2 Actions when using `selectGenerativeInfo`"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.11.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.4",
+      "tag": "c2pa_v0.19.4",
+      "date": "Fri, 05 Apr 2024 19:04:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add icons for actions.v2"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.3",
+      "tag": "c2pa_v0.19.3",
+      "date": "Fri, 05 Apr 2024 18:04:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add support for c2pa.actions.v2 in selectEditsAndActivity"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.11.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.2",
+      "tag": "c2pa_v0.19.2",
+      "date": "Fri, 05 Apr 2024 16:07:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add MOV support"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.11.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.19.1",
       "tag": "c2pa_v0.19.1",
       "date": "Tue, 26 Mar 2024 21:30:40 GMT",

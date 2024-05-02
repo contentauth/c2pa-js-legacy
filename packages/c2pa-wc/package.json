@@ -1,6 +1,6 @@
 {
   "name": "c2pa-wc",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "contributors": [
     {
       "name": "Dave Kozma",
@@ -29,7 +29,6 @@
     "build": "rushx clean && rollup -c rollup.config.js --silent",
     "build:release": "rushx build",
     "build:verbose": "rushx clean && rollup -c rollup.config.js",
-    "build:vite": "rushx clean && vite build",
     "test": "wtr",
     "lint": "eslint .",
     "storybook": "heft start --storybook",
@@ -42,7 +41,7 @@
     "lit": "^2.0.2",
     "lodash": "^4.17.21",
     "lit-html": "^2.2.0",
-    "webpack": "~5.72.0",
+    "webpack": "~5.91.0",
     "debug": "~4.3.4",
     "@floating-ui/dom": "~0.5.3",
     "@lit-labs/motion": "~1.0.2"

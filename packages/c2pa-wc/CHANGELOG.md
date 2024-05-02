@@ -1,6 +1,33 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Tue, 26 Mar 2024 21:30:40 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 15:46:27 GMT and should not be manually modified.
+
+## 0.13.0
+Mon, 22 Apr 2024 15:46:27 GMT
+
+### Minor changes
+
+- Add i18n registration API, remove stringMap from component config
+
+## 0.12.5
+Fri, 12 Apr 2024 19:34:30 GMT
+
+_Version update only_
+
+## 0.12.4
+Fri, 05 Apr 2024 19:04:44 GMT
+
+_Version update only_
+
+## 0.12.3
+Fri, 05 Apr 2024 18:04:37 GMT
+
+_Version update only_
+
+## 0.12.2
+Fri, 05 Apr 2024 16:07:54 GMT
+
+_Version update only_
 
 ## 0.12.1
 Tue, 26 Mar 2024 21:30:40 GMT

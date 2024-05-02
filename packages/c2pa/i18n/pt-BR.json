@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Propriedades como tom, saturação, curvas, sombras ou realces ajustadas",
-        "label": "Edições de cor ou exposição"
-      },
-      "c2pa.created": {
-        "description": "Arquivo ou conteúdo criado",
-        "label": "Criado"
-      },
-      "c2pa.cropped": {
-        "description": "Ferramentas de corte usadas, reduzindo ou expandindo a área de conteúdo visível",
-        "label": "Edições de corte"
-      },
-      "c2pa.drawing": {
-        "description": "Ferramentas como lápis, pincéis, borrachas ou ferramentas de forma, caminho ou caneta usadas",
-        "label": "Edições de desenho"
-      },
-      "c2pa.edited": {
-        "description": "Outras alterações feitas",
-        "label": "Outras edições"
-      },
-      "c2pa.filtered": {
-        "description": "Ferramentas como filtros, estilos ou efeitos usadas para alterar a aparência",
-        "label": "Edições de filtro ou estilo"
-      },
-      "c2pa.opened": {
-        "description": "Arquivo pré-existente aberto",
-        "label": "Aberto"
-      },
-      "c2pa.orientation": {
-        "description": "Posição ou orientação alterada (girado, invertido etc.)",
-        "label": "Edições de orientação"
-      },
-      "c2pa.placed": {
-        "description": "Conteúdo pré-existente adicionado a este arquivo",
-        "label": "Importado"
-      },
-      "c2pa.resized": {
-        "description": "Dimensões ou tamanho do arquivo alterados",
-        "label": "Edições de redimensionamento"
-      },
-      "c2pa.unknown": {
-        "description": "Não foi possível reconhecer outras edições ou atividades realizadas",
-        "label": "Edições ou atividades desconhecidas"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Propriedades como tom, saturação, curvas, sombras ou realces ajustadas",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Edições de cor ou exposição",
+  "selectors.editsAndActivity.c2pa.created.description": "Arquivo ou conteúdo criado",
+  "selectors.editsAndActivity.c2pa.created.label": "Criado",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Ferramentas de corte usadas, reduzindo ou expandindo a área de conteúdo visível",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Edições de corte",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Ferramentas como lápis, pincéis, borrachas ou ferramentas de forma, caminho ou caneta usadas",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Edições de desenho",
+  "selectors.editsAndActivity.c2pa.edited.description": "Outras alterações feitas",
+  "selectors.editsAndActivity.c2pa.edited.label": "Outras edições",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Ferramentas como filtros, estilos ou efeitos usadas para alterar a aparência",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Edições de filtro ou estilo",
+  "selectors.editsAndActivity.c2pa.opened.description": "Arquivo pré-existente aberto",
+  "selectors.editsAndActivity.c2pa.opened.label": "Aberto",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Posição ou orientação alterada (girado, invertido etc.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Edições de orientação",
+  "selectors.editsAndActivity.c2pa.placed.description": "Conteúdo pré-existente adicionado a este arquivo",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importado",
+  "selectors.editsAndActivity.c2pa.resized.description": "Dimensões ou tamanho do arquivo alterados",
+  "selectors.editsAndActivity.c2pa.resized.label": "Edições de redimensionamento",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Não foi possível reconhecer outras edições ou atividades realizadas",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Edições ou atividades desconhecidas"
 }

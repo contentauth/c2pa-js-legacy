@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Säädetty ominaisuuksia, kuten sävyä, kylläisyyttä, käyriä, varjoja tai kohokohtia",
-        "label": "Väreihin tai valotukseen liittyvät muokkaukset"
-      },
-      "c2pa.created": {
-        "description": "Luotu uusi tiedosto tai uutta sisältöä",
-        "label": "Luotu"
-      },
-      "c2pa.cropped": {
-        "description": "Käytetty rajaustyökaluja, vähennetty tai laajennettu näkyvää sisältöaluetta",
-        "label": "Rajaukseen liittyvät muokkaukset"
-      },
-      "c2pa.drawing": {
-        "description": "Käytetty työkaluja, kuten kyniä, siveltimiä, pyyhekumeja tai muoto-, reitti- tai kynätyökaluja",
-        "label": "Piirtämiseen liittyvät muokkaukset"
-      },
-      "c2pa.edited": {
-        "description": "Tehty muita muutoksia",
-        "label": "Muut muokkaukset"
-      },
-      "c2pa.filtered": {
-        "description": "Käytetty työkaluja, kuten ulkoasun muuttamiseen tarkoitettuja suodattimia, tyylejä tai tehosteita",
-        "label": "Suodattimeen tai tyyliin liittyvät muokkaukset"
-      },
-      "c2pa.opened": {
-        "description": "Avattu olemassa oleva tiedosto",
-        "label": "Avattu"
-      },
-      "c2pa.orientation": {
-        "description": "Muutettu paikkaa tai suuntaa (kierretty, käännetty jne.)",
-        "label": "Suuntaan liittyvät muokkaukset"
-      },
-      "c2pa.placed": {
-        "description": "Lisätty olemassa olevaa sisältöä tähän tiedostoon",
-        "label": "Tuotu"
-      },
-      "c2pa.resized": {
-        "description": "Muutettu mittasuhteita tai tiedostokokoa",
-        "label": "Koon muuttamiseen liittyvät muokkaukset"
-      },
-      "c2pa.unknown": {
-        "description": "Suoritettu muita muokkauksia tai toimintoja, joita ei tunnistettu",
-        "label": "Tuntemattomat muokkaukset tai tuntematon toiminta"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Säädetty ominaisuuksia, kuten sävyä, kylläisyyttä, käyriä, varjoja tai kohokohtia",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Väreihin tai valotukseen liittyvät muokkaukset",
+  "selectors.editsAndActivity.c2pa.created.description": "Luotu uusi tiedosto tai uutta sisältöä",
+  "selectors.editsAndActivity.c2pa.created.label": "Luotu",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Käytetty rajaustyökaluja, vähennetty tai laajennettu näkyvää sisältöaluetta",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Rajaukseen liittyvät muokkaukset",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Käytetty työkaluja, kuten kyniä, siveltimiä, pyyhekumeja tai muoto-, reitti- tai kynätyökaluja",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Piirtämiseen liittyvät muokkaukset",
+  "selectors.editsAndActivity.c2pa.edited.description": "Tehty muita muutoksia",
+  "selectors.editsAndActivity.c2pa.edited.label": "Muut muokkaukset",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Käytetty työkaluja, kuten ulkoasun muuttamiseen tarkoitettuja suodattimia, tyylejä tai tehosteita",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Suodattimeen tai tyyliin liittyvät muokkaukset",
+  "selectors.editsAndActivity.c2pa.opened.description": "Avattu olemassa oleva tiedosto",
+  "selectors.editsAndActivity.c2pa.opened.label": "Avattu",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Muutettu paikkaa tai suuntaa (kierretty, käännetty jne.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Suuntaan liittyvät muokkaukset",
+  "selectors.editsAndActivity.c2pa.placed.description": "Lisätty olemassa olevaa sisältöä tähän tiedostoon",
+  "selectors.editsAndActivity.c2pa.placed.label": "Tuotu",
+  "selectors.editsAndActivity.c2pa.resized.description": "Muutettu mittasuhteita tai tiedostokokoa",
+  "selectors.editsAndActivity.c2pa.resized.label": "Koon muuttamiseen liittyvät muokkaukset",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Suoritettu muita muokkauksia tai toimintoja, joita ei tunnistettu",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Tuntemattomat muokkaukset tai tuntematon toiminta"
 }

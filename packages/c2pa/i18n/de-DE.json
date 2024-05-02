@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Angepasste Eigenschaften wie Farbton, Sättigung, Kurven, Schatten oder Glanzlichter",
-        "label": "Änderung von Farbe oder Belichtung"
-      },
-      "c2pa.created": {
-        "description": "Neue Datei oder neuen Inhalt erstellt",
-        "label": "Erstellt"
-      },
-      "c2pa.cropped": {
-        "description": "Verwendete Zuschneidewerkzeuge, Verkleinerung oder Erweiterung des sichtbaren Inhaltsbereichs",
-        "label": "Zuschneiden von Änderungen"
-      },
-      "c2pa.drawing": {
-        "description": "Verwendete Werkzeuge wie Stifte, Pinsel, Radierer oder Form-, Pfad- oder Zeichenstift-Werkzeuge",
-        "label": "Zeichnungsänderungen"
-      },
-      "c2pa.edited": {
-        "description": "Vorgenommene sonstige Änderungen",
-        "label": "Sonstige Änderungen"
-      },
-      "c2pa.filtered": {
-        "description": "Verwendete Tools wie Filter, Stile, Formate oder Effekte, die das Erscheinungsbild ändern",
-        "label": "Änderungen filtern oder gestalten"
-      },
-      "c2pa.opened": {
-        "description": "Vorhandene Datei geöffnet",
-        "label": "Geöffnet"
-      },
-      "c2pa.orientation": {
-        "description": "Position oder Ausrichtung geändert (gedreht, gespiegelt usw.)",
-        "label": "Ausrichtung Änderungen"
-      },
-      "c2pa.placed": {
-        "description": "Vorhandenen Inhalt zu dieser Datei hinzugefügt",
-        "label": "Importiert"
-      },
-      "c2pa.resized": {
-        "description": "Geänderte Abmessungen oder Dateigröße",
-        "label": "Größenänderungen"
-      },
-      "c2pa.unknown": {
-        "description": "Andere Änderungen oder Aktivitäten durchgeführt, die nicht erkannt werden konnten",
-        "label": "Unbekannte Änderungen oder Aktivitäten"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Angepasste Eigenschaften wie Farbton, Sättigung, Kurven, Schatten oder Glanzlichter",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Änderung von Farbe oder Belichtung",
+  "selectors.editsAndActivity.c2pa.created.description": "Neue Datei oder neuen Inhalt erstellt",
+  "selectors.editsAndActivity.c2pa.created.label": "Erstellt",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Verwendete Zuschneidewerkzeuge, Verkleinerung oder Erweiterung des sichtbaren Inhaltsbereichs",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Zuschneiden von Änderungen",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Verwendete Werkzeuge wie Stifte, Pinsel, Radierer oder Form-, Pfad- oder Zeichenstift-Werkzeuge",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Zeichnungsänderungen",
+  "selectors.editsAndActivity.c2pa.edited.description": "Vorgenommene sonstige Änderungen",
+  "selectors.editsAndActivity.c2pa.edited.label": "Sonstige Änderungen",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Verwendete Tools wie Filter, Stile, Formate oder Effekte, die das Erscheinungsbild ändern",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Änderungen filtern oder gestalten",
+  "selectors.editsAndActivity.c2pa.opened.description": "Vorhandene Datei geöffnet",
+  "selectors.editsAndActivity.c2pa.opened.label": "Geöffnet",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Position oder Ausrichtung geändert (gedreht, gespiegelt usw.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Ausrichtung Änderungen",
+  "selectors.editsAndActivity.c2pa.placed.description": "Vorhandenen Inhalt zu dieser Datei hinzugefügt",
+  "selectors.editsAndActivity.c2pa.placed.label": "Importiert",
+  "selectors.editsAndActivity.c2pa.resized.description": "Geänderte Abmessungen oder Dateigröße",
+  "selectors.editsAndActivity.c2pa.resized.label": "Größenänderungen",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Andere Änderungen oder Aktivitäten durchgeführt, die nicht erkannt werden konnten",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Unbekannte Änderungen oder Aktivitäten"
 }

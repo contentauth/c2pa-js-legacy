@@ -19,3 +19,5 @@ export * from './components/SocialMedia';
 export * from './components/Thumbnail';
 export * from './components/Tooltip';
 export * as utils from './utils';
+
+export { registerLocale } from './i18n';

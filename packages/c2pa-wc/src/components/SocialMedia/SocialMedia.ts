@@ -12,9 +12,8 @@ import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Configurable } from '../../mixins/configurable';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import defaultStringMap from '../SocialMedia/SocialMedia.str.json';
 import { baseSectionStyles, defaultStyles } from '../../styles';
-import defaultStringMap from '../SocialMedia/SocialMedia.str.json';
+import { Localizable } from '../../mixins/localizable';
 
 import { hasChanged } from '../../utils';
 import '../Icon';
@@ -32,16 +31,8 @@ declare global {
   }
 }
 
-export interface SocialMediaConfig {
-  stringMap: Record<string, string>;
-}
-
-const defaultConfig: SocialMediaConfig = {
-  stringMap: defaultStringMap,
-};
-
 @customElement('cai-social-media')
-export class SocialMedia extends Configurable(LitElement, defaultConfig) {
+export class SocialMedia extends Localizable(LitElement) {
   static get styles() {
     return [
       defaultStyles,
@@ -78,10 +69,10 @@ export class SocialMedia extends Configurable(LitElement, defaultConfig) {
 
   render() {
     return html`<cai-panel-section
-      helpText=${this._config.stringMap['social-media.helpText']}
+      helpText=${this.strings['social-media.helpText']}
     >
-      <div slot="header">${this._config.stringMap['social-media.header']}</div>
-      <ul class="section-social-media-list" slot="content" aria-label=${this._config.stringMap['social-media.header']}>
+      <div slot="header">${this.strings['social-media.header']}</div>
+      <ul class="section-social-media-list" slot="content" aria-label=${this.strings['social-media.header']}>
         ${this.data?.map(
           (socialAccount) => html`
             <li class="section-social-media-list-item">

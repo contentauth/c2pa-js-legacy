@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Eigenschappen zoals tint, verzadiging, curven, schaduwen of hooglichten aangepast",
-        "label": "Kleur- of belichtingsbewerkingen"
-      },
-      "c2pa.created": {
-        "description": "Een nieuw bestand of content gemaakt",
-        "label": "Gemaakt"
-      },
-      "c2pa.cropped": {
-        "description": "Uitsnedegereedschappen gebruikt om het zichtbare deel van de content te beperken of uit te breiden",
-        "label": "Uitsnedebewerkingen"
-      },
-      "c2pa.drawing": {
-        "description": "Gereedschappen gebruikt zoals potloden, penselen, gummetjes, pennen of vorm- of padgereedschappen",
-        "label": "Tekenbewerkingen"
-      },
-      "c2pa.edited": {
-        "description": "Andere wijzigingen aangebracht",
-        "label": "Andere bewerkingen"
-      },
-      "c2pa.filtered": {
-        "description": "Gereedschappen zoals filters, stijlen of effecten gebruikt om het uiterlijk te veranderen",
-        "label": "Filter- of stijlbewerkingen"
-      },
-      "c2pa.opened": {
-        "description": "Een bestaand bestand geopend",
-        "label": "Geopend"
-      },
-      "c2pa.orientation": {
-        "description": "Positie of stand gewijzigd (gedraaid, gespiegeld etc.)",
-        "label": "Afdrukstand bewerkingen"
-      },
-      "c2pa.placed": {
-        "description": "Bestaande content aan dit bestand toegevoegd",
-        "label": "Geïmporteerd"
-      },
-      "c2pa.resized": {
-        "description": "Afmetingen of bestandsgrootte gewijzigd",
-        "label": "Formaatbewerkingen"
-      },
-      "c2pa.unknown": {
-        "description": "Andere bewerkingen of activiteiten uitgevoerd die niet konden worden herkend",
-        "label": "Onbekende bewerkingen of activiteiten"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Eigenschappen zoals tint, verzadiging, curven, schaduwen of hooglichten aangepast",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Kleur- of belichtingsbewerkingen",
+  "selectors.editsAndActivity.c2pa.created.description": "Een nieuw bestand of content gemaakt",
+  "selectors.editsAndActivity.c2pa.created.label": "Gemaakt",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Uitsnedegereedschappen gebruikt om het zichtbare deel van de content te beperken of uit te breiden",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Uitsnedebewerkingen",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Gereedschappen gebruikt zoals potloden, penselen, gummetjes, pennen of vorm- of padgereedschappen",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Tekenbewerkingen",
+  "selectors.editsAndActivity.c2pa.edited.description": "Andere wijzigingen aangebracht",
+  "selectors.editsAndActivity.c2pa.edited.label": "Andere bewerkingen",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Gereedschappen zoals filters, stijlen of effecten gebruikt om het uiterlijk te veranderen",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Filter- of stijlbewerkingen",
+  "selectors.editsAndActivity.c2pa.opened.description": "Een bestaand bestand geopend",
+  "selectors.editsAndActivity.c2pa.opened.label": "Geopend",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Positie of stand gewijzigd (gedraaid, gespiegeld etc.)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Afdrukstand bewerkingen",
+  "selectors.editsAndActivity.c2pa.placed.description": "Bestaande content aan dit bestand toegevoegd",
+  "selectors.editsAndActivity.c2pa.placed.label": "Geïmporteerd",
+  "selectors.editsAndActivity.c2pa.resized.description": "Afmetingen of bestandsgrootte gewijzigd",
+  "selectors.editsAndActivity.c2pa.resized.label": "Formaatbewerkingen",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Andere bewerkingen of activiteiten uitgevoerd die niet konden worden herkend",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Onbekende bewerkingen of activiteiten"
 }

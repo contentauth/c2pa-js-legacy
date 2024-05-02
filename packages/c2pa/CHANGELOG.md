@@ -1,6 +1,41 @@
 # Change Log - c2pa
 
-This log was last generated on Tue, 26 Mar 2024 21:30:40 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 15:46:27 GMT and should not be manually modified.
+
+## 0.21.0
+Mon, 22 Apr 2024 15:46:27 GMT
+
+### Minor changes
+
+- Add i18n registration API for selectEditsAndActivity
+
+## 0.20.0
+Fri, 12 Apr 2024 19:34:30 GMT
+
+### Minor changes
+
+- Add support for V2 Actions when using `selectGenerativeInfo`
+
+## 0.19.4
+Fri, 05 Apr 2024 19:04:44 GMT
+
+### Patches
+
+- Add icons for actions.v2
+
+## 0.19.3
+Fri, 05 Apr 2024 18:04:37 GMT
+
+### Patches
+
+- Add support for c2pa.actions.v2 in selectEditsAndActivity
+
+## 0.19.2
+Fri, 05 Apr 2024 16:07:54 GMT
+
+### Patches
+
+- Add MOV support
 
 ## 0.19.1
 Tue, 26 Mar 2024 21:30:40 GMT

@@ -43,6 +43,7 @@ export default merge(baseConfig, {
     ['./src/**/*.ts', './themes/**/*.css', './assets/svg/**/*.svg'],
     { ignore: ['**/*.spec.ts', '**/*.stories.ts'] },
   ),
+  preserveEntrySignatures: 'strict',
   output: {
     format: 'es',
     dir: 'dist',

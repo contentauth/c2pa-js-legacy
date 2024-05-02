@@ -99,6 +99,13 @@ export type C2paActionsAssertion = Assertion<
   }
 >;
 
+export type C2paActionsAssertionV2 = Assertion<
+  'c2pa.actions.v2',
+  {
+    actions: ActionV2[];
+  }
+>;
+
 export type C2paHashDataAssertion = Assertion<
   'c2pa.hash.data',
   {
@@ -130,9 +137,38 @@ export type Web3Assertion = Assertion<
 
 export type ManifestAssertion =
   | C2paActionsAssertion
+  | C2paActionsAssertionV2
   | C2paHashDataAssertion
   | CreativeWorkAssertion
   | Web3Assertion;
+
+export interface ActionV2 {
+  action: string;
+  softwareAgent?: GeneratorInfoMap;
+  description?: string;
+  digitalSourceType?: string;
+  when?: string;
+  changes?: Change[];
+  actors?: Actor[];
+  related?: ActionV2[];
+  reason?: string;
+  parameters?: ParametersV2;
+}
+interface ParametersV2 {
+  ingredient?: HashedUri;
+  description?: string;
+  [key: string]: any;
+}
+
+interface Change {
+  [key: string]: any;
+}
+
+export interface GeneratorInfoMap {
+  name: string;
+  version: string;
+  [key: string]: any;
+}
 
 export interface ActionV1 {
   action: string;

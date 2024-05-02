@@ -1,50 +1,24 @@
 {
-  "selectors": {
-    "editsAndActivity": {
-      "c2pa.color_adjustments": {
-        "description": "Скориговано властивості, як-от тон, насиченість, криві, тіні або підсвічування",
-        "label": "Зміни кольору або експозиції"
-      },
-      "c2pa.created": {
-        "description": "Створено новий файл або вміст",
-        "label": "Створено"
-      },
-      "c2pa.cropped": {
-        "description": "Використано інструменти кадрування, зменшення або розширення області видимого вмісту",
-        "label": "Зміни кадрування"
-      },
-      "c2pa.drawing": {
-        "description": "Використано інструменти, як-от олівці, пензлі, гумки, або інструменти для форм, контурів або пера",
-        "label": "Зміни малювання"
-      },
-      "c2pa.edited": {
-        "description": "Внесено інші зміни",
-        "label": "Інші зміни"
-      },
-      "c2pa.filtered": {
-        "description": "Використано інструменти, як-от фільтри, стилі чи ефекти для зміни вигляду",
-        "label": "Зміни фільтру або стилю"
-      },
-      "c2pa.opened": {
-        "description": "Відкрито вже існуючий файл",
-        "label": "Відкрито"
-      },
-      "c2pa.orientation": {
-        "description": "Змінено положення або орієнтація (повернуто, віддзеркалено тощо)",
-        "label": "Зміни орієнтації"
-      },
-      "c2pa.placed": {
-        "description": "Додано вже існуючий вміст до цього файлу",
-        "label": "Імпортовано"
-      },
-      "c2pa.resized": {
-        "description": "Змінено геометричні розміри або розмір файлу",
-        "label": "Зміни розміру"
-      },
-      "c2pa.unknown": {
-        "description": "Виконано інші зміни або дії, які не вдалося розпізнати",
-        "label": "Невідомі зміни чи дії"
-      }
-    }
-  }
+  "selectors.editsAndActivity.c2pa.color_adjustments.description": "Скориговано властивості, як-от тон, насиченість, криві, тіні або підсвічування",
+  "selectors.editsAndActivity.c2pa.color_adjustments.label": "Зміни кольору або експозиції",
+  "selectors.editsAndActivity.c2pa.created.description": "Створено новий файл або вміст",
+  "selectors.editsAndActivity.c2pa.created.label": "Створено",
+  "selectors.editsAndActivity.c2pa.cropped.description": "Використано інструменти кадрування, зменшення або розширення області видимого вмісту",
+  "selectors.editsAndActivity.c2pa.cropped.label": "Зміни кадрування",
+  "selectors.editsAndActivity.c2pa.drawing.description": "Використано інструменти, як-от олівці, пензлі, гумки, або інструменти для форм, контурів або пера",
+  "selectors.editsAndActivity.c2pa.drawing.label": "Зміни малювання",
+  "selectors.editsAndActivity.c2pa.edited.description": "Внесено інші зміни",
+  "selectors.editsAndActivity.c2pa.edited.label": "Інші зміни",
+  "selectors.editsAndActivity.c2pa.filtered.description": "Використано інструменти, як-от фільтри, стилі чи ефекти для зміни вигляду",
+  "selectors.editsAndActivity.c2pa.filtered.label": "Зміни фільтру або стилю",
+  "selectors.editsAndActivity.c2pa.opened.description": "Відкрито вже існуючий файл",
+  "selectors.editsAndActivity.c2pa.opened.label": "Відкрито",
+  "selectors.editsAndActivity.c2pa.orientation.description": "Змінено положення або орієнтація (повернуто, віддзеркалено тощо)",
+  "selectors.editsAndActivity.c2pa.orientation.label": "Зміни орієнтації",
+  "selectors.editsAndActivity.c2pa.placed.description": "Додано вже існуючий вміст до цього файлу",
+  "selectors.editsAndActivity.c2pa.placed.label": "Імпортовано",
+  "selectors.editsAndActivity.c2pa.resized.description": "Змінено геометричні розміри або розмір файлу",
+  "selectors.editsAndActivity.c2pa.resized.label": "Зміни розміру",
+  "selectors.editsAndActivity.c2pa.unknown.description": "Виконано інші зміни або дії, які не вдалося розпізнати",
+  "selectors.editsAndActivity.c2pa.unknown.label": "Невідомі зміни чи дії"
 }

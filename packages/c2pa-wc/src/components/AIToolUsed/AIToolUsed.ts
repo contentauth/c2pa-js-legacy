@@ -10,13 +10,12 @@
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '../../../assets/svg/monochrome/generic-info.svg';
-import { Configurable } from '../../mixins/configurable';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import { hasChanged } from '../../utils';
+import { Localizable } from '../../mixins/localizable';
 
 import '../Icon';
 import '../PanelSection';
-import defaultStringMap from './AIToolUsed.str.json';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -30,16 +29,8 @@ declare global {
   }
 }
 
-export interface AIToolUsedConfig {
-  stringMap: Record<string, string>;
-}
-
-const defaultConfig: AIToolUsedConfig = {
-  stringMap: defaultStringMap,
-};
-
 @customElement('cai-ai-tool')
-export class AIToolUsed extends Configurable(LitElement, defaultConfig) {
+export class AIToolUsed extends Localizable(LitElement) {
   static get styles() {
     return [defaultStyles, baseSectionStyles];
   }
@@ -52,9 +43,9 @@ export class AIToolUsed extends Configurable(LitElement, defaultConfig) {
 
   render() {
     return html` <cai-panel-section
-      helpText=${this._config.stringMap['produced-by.helpText']}
+      helpText=${this.strings['produced-by.helpText']}
     >
-      <div slot="header">${this._config.stringMap['ai-tool-used.header']}</div>
+      <div slot="header">${this.strings['ai-tool-used.header']}</div>
       <div slot="content">${this.data}</div>
     </cai-panel-section>`;
   }
