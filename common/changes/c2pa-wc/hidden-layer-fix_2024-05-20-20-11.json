@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "extended hidden layer to allow hovering on L2 in right-start position",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
