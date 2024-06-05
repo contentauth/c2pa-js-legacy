@@ -185,7 +185,7 @@ export class Popover extends LitElement {
         .hidden-layer {
           position: absolute;
           left: calc(var(--cai-popover-icon-size, 24px) * -1);
-          width: var(--cai-popover-icon-size, 24px);
+          width: calc(var(--cai-popover-icon-size, 24px) * 3);
           height: calc(var(--cai-popover-icon-size, 24px) * 3);
           top: calc(var(--cai-popover-icon-size, 24px) * -1);
         }

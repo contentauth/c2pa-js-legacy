@@ -1,6 +1,13 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Mon, 22 Apr 2024 15:46:27 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2024 15:16:13 GMT and should not be manually modified.
+
+## 0.13.1
+Wed, 22 May 2024 15:16:13 GMT
+
+### Patches
+
+- extended hidden layer to allow hovering on L2 in right-start position
 
 ## 0.13.0
 Mon, 22 Apr 2024 15:46:27 GMT

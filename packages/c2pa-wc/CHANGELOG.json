@@ -2,6 +2,18 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.13.1",
+      "tag": "c2pa-wc_v0.13.1",
+      "date": "Wed, 22 May 2024 15:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "extended hidden layer to allow hovering on L2 in right-start position"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.0",
       "tag": "c2pa-wc_v0.13.0",
       "date": "Mon, 22 Apr 2024 15:46:27 GMT",
