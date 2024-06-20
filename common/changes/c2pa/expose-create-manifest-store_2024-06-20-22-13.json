@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Expose `createManifestStore`",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
