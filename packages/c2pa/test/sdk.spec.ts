@@ -78,6 +78,7 @@ describe('c2pa', function () {
               'xmp:iid:8dc9aa07-6920-40b7-b6bc-0638b8414141',
             );
             expect(activeManifest?.signatureInfo).toEqual({
+              alg: 'Ps256',
               cert_serial_number:
                 '625534260363177462480876791874889527700529350752',
               issuer: 'Adobe, Inc.',

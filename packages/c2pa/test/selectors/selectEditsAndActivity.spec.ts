@@ -351,5 +351,28 @@ describe('selectEditsAndActivity', function () {
         });
       });
     });
+
+    describe('genai-actions-v2', function () {
+      beforeAll(async function (this: TestContext) {
+        const c2pa = await createC2pa({
+          wasmSrc: './dist/assets/wasm/toolkit_bg.wasm',
+          workerSrc: './dist/c2pa.worker.js',
+        });
+
+        const result = await c2pa.read(
+          './node_modules/@contentauth/testing/fixtures/images/genai-actions-v2.jpg',
+        );
+        this.manifest = result.manifestStore?.activeManifest!;
+      });
+
+      it('should select the correct action between c2pa.edited and c2pa.edited.metadata', async function (this: TestContext) {
+        const result = await selectEditsAndActivity(this.manifest);
+
+        expect(result?.[0]?.id).toEqual(`c2pa.edited`);
+        expect(result?.[0]?.icon).toMatch(/^data:image\/svg\+xml,/);
+        expect(result?.[0]?.label).toEqual(`Other edits`);
+        expect(result?.[0]?.description).toEqual(`Made other changes`);
+      });
+    });
   });
 });

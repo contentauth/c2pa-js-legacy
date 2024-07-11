@@ -125,7 +125,7 @@ function parseLocaleFile(
     // Discard "selectors.editsAndActivity"
     const actionNameAndStringType = stringParts.slice(2);
     // Combine "c2pa" with the action name (e.g. "c2pa.placed")
-    const actionName = actionNameAndStringType.slice(0, 2).join('.');
+    const actionName = actionNameAndStringType.slice(0, -1).join('.');
     // Get the type of string (e.g. "label", "description")
     const [type] = actionNameAndStringType.slice(-1);
 

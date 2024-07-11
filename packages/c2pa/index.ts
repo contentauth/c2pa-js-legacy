@@ -37,13 +37,17 @@ export {
 export { Ingredient } from './src/ingredient';
 export { DownloaderOptions } from './src/lib/downloader';
 export { Manifest } from './src/manifest';
-export { ManifestMap, ManifestStore } from './src/manifestStore';
+export {
+  ManifestMap,
+  ManifestStore,
+  createManifestStore,
+} from './src/manifestStore';
 export {
   IconVariant,
   TranslatedDictionaryCategory,
   getC2paCategorizedActions,
-  selectEditsAndActivity,
   registerLocaleForEditsAndActivities,
+  selectEditsAndActivity,
 } from './src/selectors/selectEditsAndActivity';
 export {
   parseGenerator,

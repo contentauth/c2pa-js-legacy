@@ -1,6 +1,25 @@
 # Change Log - c2pa
 
-This log was last generated on Mon, 22 Apr 2024 15:46:27 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2024 20:54:46 GMT and should not be manually modified.
+
+## 0.22.1
+Mon, 24 Jun 2024 20:54:46 GMT
+
+### Patches
+
+- Fix action selection with multi-part action names
+
+## 0.22.0
+Thu, 20 Jun 2024 22:18:18 GMT
+
+### Minor changes
+
+- Expose `createManifestStore`
+
+## 0.21.1
+Wed, 19 Jun 2024 16:57:37 GMT
+
+_Version update only_
 
 ## 0.21.0
 Mon, 22 Apr 2024 15:46:27 GMT
