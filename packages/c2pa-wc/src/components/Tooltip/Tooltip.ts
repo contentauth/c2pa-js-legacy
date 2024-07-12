@@ -11,7 +11,6 @@ import { autoPlacement } from '@floating-ui/dom';
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import '../../../assets/svg/monochrome/help.svg';
 import { defaultStyles } from '../../styles';
 import { Configurable } from '../../mixins/configurable';
@@ -109,22 +108,20 @@ export class Tooltip extends Configurable(LitElement, defaultConfig) {
         ?arrow=${this.arrow}
         .autoPlacement=${this.autoPlacement}
         ?interactive=${false}
+        trigger="mouseenter:mouseleave focus:blur click"
       >
         <div
           id="trigger"
           slot="trigger"
           role="button"
           tabindex="0"
-          aria-label=${ifDefined(this.label ?? undefined)}
-          aria-labelledby=${`${this.label ? 'trigger' : ''} icon`}
+          aria-label=${`${this.label ?? ''} ${
+            this._config.stringMap['tooltip.information']
+          }`.trim()}
           aria-describedby="tooltip"
         >
           <slot name="trigger">
-            <cai-icon-help
-              id="icon"
-              role="img"
-              aria-label=${this._config.stringMap['tooltip.information']}
-            ></cai-icon-help>
+            <cai-icon-help></cai-icon-help>
           </slot>
         </div>
         <div

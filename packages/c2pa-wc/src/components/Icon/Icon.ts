@@ -108,15 +108,24 @@ export class Icon extends LitElement {
     },
     {
       pattern: /solana/i,
-      icon: html`<cai-icon-solana></cai-icon-solana`,
+      icon: html`<cai-icon-solana
+        role="img"
+        aria-label="Solana"
+      ></cai-icon-solana>`,
     },
     {
       pattern: /ethereum/i,
-      icon: html`<cai-icon-ethereum></cai-icon-ethereum>`,
+      icon: html`<cai-icon-ethereum
+        role="img"
+        aria-label="Ethereum"
+      ></cai-icon-ethereum>`,
     },
     {
       pattern: /linkedin/i,
-      icon: html`<cai-icon-linkedin></cai-icon-linkedin>`,
+      icon: html`<cai-icon-linkedin
+        role="img"
+        aria-label="LinkedIn"
+      ></cai-icon-linkedin>`,
     },
   ];
 
