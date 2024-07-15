@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "Nyttjat AI-verktyg",
+  "content-summary.header": "Sammanfattning av innehåll",
+  "content-summary.content.aiGenerated": "Det här innehållet genererades med ett AI-verktyg.",
+  "content-summary.content.composite": "Den här bilden kombinerar flera innehållsdelar. Minst en genererades med ett AI-verktyg.",
+  "manifest-summary.viewMore": "Inspektera",
+  "manifest-summary.error": "Innehållsuppgifter är inte tillgängliga eller ogiltiga",
+  "minimum-viable-provenance.header": "Innehållsuppgifter",
+  "minimum-viable-provenance.helpText": "Tillskrivnings- och historikdata kopplades till detta innehåll",
+  "minimum-viable-provenance.invalidDate": "Ogiltigt datum",
+  "minimum-viable-provenance.issuedBy": "Utfärdat av",
+  "minimum-viable-provenance.on": "av",
+  "produced-by.header": "Producerat av",
+  "produced-by.helpText": "Valt namn på personen som exporterade det här innehållet",
+  "produced-with.header": "Begagnad app eller enhet",
+  "produced-with.helpText": "Programvara som används för att göra det här innehållet",
+  "produced-with.beta": "Innehållsuppgifter (beta)",
+  "social-media.header": "Sociala medier",
+  "social-media.helpText": "Sociala mediekonton kopplade till producenten av det här innehållet",
+  "web3.header": "Web3",
+  "web3.copied": "Kopierat!"
+}

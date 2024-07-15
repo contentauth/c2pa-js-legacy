@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "Gebruikte AI-tool",
+  "content-summary.header": "Samenvatting van content",
+  "content-summary.content.aiGenerated": "Deze content is gegenereerd met een AI-tool.",
+  "content-summary.content.composite": "Deze afbeelding combineert meerdere soorten content. Minstens één ervan is gegenereerd met een AI-tool.",
+  "manifest-summary.viewMore": "Inspecteren",
+  "manifest-summary.error": "Inhoudsreferenties niet beschikbaar of ongeldig",
+  "minimum-viable-provenance.header": "Inhoudsreferenties",
+  "minimum-viable-provenance.helpText": "Naamsvermelding en geschiedenisgegevens bij deze content gevoegd",
+  "minimum-viable-provenance.invalidDate": "Ongeldige datum",
+  "minimum-viable-provenance.issuedBy": "Uitgegeven door",
+  "minimum-viable-provenance.on": "aan",
+  "produced-by.header": "Gemaakt door",
+  "produced-by.helpText": "Naam gekozen van de persoon die deze content heeft geëxporteerd",
+  "produced-with.header": "Gebruikte app of apparaat",
+  "produced-with.helpText": "Software die is gebruikt om deze content te maken",
+  "produced-with.beta": "Inhoudsreferenties (Beta)",
+  "social-media.header": "Social media",
+  "social-media.helpText": "Socialmedia-accounts verbonden met de maker van deze content",
+  "web3.header": "Web3",
+  "web3.copied": "Gekopieerd!"
+}

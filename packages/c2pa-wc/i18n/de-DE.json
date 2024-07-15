@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "Verwendetes KI-Tool",
+  "content-summary.header": "Zusammenfassung des Inhalts",
+  "content-summary.content.aiGenerated": "Dieser Inhalt wurde mit einem KI-Tool generiert.",
+  "content-summary.content.composite": "Dieses Bild kombiniert mehrere Inhalte. Mindestens einer davon wurde mit einem KI-Tool generiert.",
+  "manifest-summary.viewMore": "Prüfen",
+  "manifest-summary.error": "Inhaltsurhebernachweise sind nicht verfügbar oder ungültig.",
+  "minimum-viable-provenance.header": "Inhaltsurhebernachweise",
+  "minimum-viable-provenance.helpText": "Mit diesem Inhalt verknüpfte Namensnennungs- und Verlaufsdaten",
+  "minimum-viable-provenance.invalidDate": "Ungültiges Datum",
+  "minimum-viable-provenance.issuedBy": "Ausgestellt von",
+  "minimum-viable-provenance.on": "am",
+  "produced-by.header": "Erstellt von",
+  "produced-by.helpText": "Gewählter Name der Person, die diesen Inhalt exportiert hat",
+  "produced-with.header": "Verwendete Applikation oder verwendetes Gerät",
+  "produced-with.helpText": "Software, die zum Erstellen dieses Inhalts verwendet wurde",
+  "produced-with.beta": "Inhaltsurhebernachweise (Beta)",
+  "social-media.header": "Social Media",
+  "social-media.helpText": "Mit dem Ersteller dieses Inhalts verknüpfte Social-Media-Konten",
+  "web3.header": "Web3",
+  "web3.copied": "Kopiert!"
+}

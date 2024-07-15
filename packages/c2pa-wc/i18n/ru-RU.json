@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "Использованный инструмент ИИ",
+  "content-summary.header": "Сводная информация о контенте",
+  "content-summary.content.aiGenerated": "Контент создан с помощью инструмента на основе ИИ.",
+  "content-summary.content.composite": "Изображение состоит из нескольких фрагментов контента, причем как минимум один из них создан с помощью инструментов на основе ИИ.",
+  "manifest-summary.viewMore": "Проверить",
+  "manifest-summary.error": "Учетные данные для содержимого недоступны или недействительны",
+  "minimum-viable-provenance.header": "Учетные данные для содержимого",
+  "minimum-viable-provenance.helpText": "Сведения об атрибуции и истории, прикрепленные к этому контенту",
+  "minimum-viable-provenance.invalidDate": "Недопустимая дата",
+  "minimum-viable-provenance.issuedBy": "Кем выдано",
+  "minimum-viable-provenance.on": "в",
+  "produced-by.header": "Кем создано",
+  "produced-by.helpText": "Имя человека, который экспортировал содержимое",
+  "produced-with.header": "Использованное приложение или устройство",
+  "produced-with.helpText": "Программное обеспечение, используемое для создания содержимого",
+  "produced-with.beta": "Учетные данные для содержимого (Beta)",
+  "social-media.header": "Социальные сети",
+  "social-media.helpText": "Учетные записи социальных сетей производителя контента",
+  "web3.header": "Web3",
+  "web3.copied": "Скопировано!"
+}

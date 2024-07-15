@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "[C] _üAI tool used",
+  "content-summary.header": "[E] _üContent summary",
+  "content-summary.content.aiGenerated": "[B] _üThis content was generated with an AI tool.",
+  "content-summary.content.composite": "[D] _üThis image combines multiple pieces of content. At least one was generated with an AI tool.",
+  "manifest-summary.viewMore": "[G] _üInspect",
+  "manifest-summary.error": "[F] _üContent Credentials unavailable or invalid",
+  "minimum-viable-provenance.header": "[H] _üContent Credentials",
+  "minimum-viable-provenance.helpText": "[I] _üAttribution and history data attached to this content",
+  "minimum-viable-provenance.invalidDate": "[J] _üInvalid date",
+  "minimum-viable-provenance.issuedBy": "[K] _üIssued by",
+  "minimum-viable-provenance.on": "[L] _üon",
+  "produced-by.header": "[M] _üProduced by",
+  "produced-by.helpText": "[N] _üChosen name of the person who exported this content",
+  "produced-with.header": "[P] _üApp or device used",
+  "produced-with.helpText": "[Q] _üSoftware used to make this content",
+  "produced-with.beta": "[O] _üContent Credentials (Beta)",
+  "social-media.header": "[R] _üSocial media",
+  "social-media.helpText": "[S] _üSocial media accounts connected to the producer of this content",
+  "web3.header": "[U] _üWeb3",
+  "web3.copied": "[T] _üCopied!"
+}
