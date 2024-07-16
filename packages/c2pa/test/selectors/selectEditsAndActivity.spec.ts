@@ -346,7 +346,7 @@ describe('selectEditsAndActivity', function () {
           expect(result?.[0]?.icon).toMatch(/^data:image\/svg\+xml,/);
           expect(result?.[0]?.label).toEqual(`Créé`);
           expect(result?.[0]?.description).toEqual(
-            `Création d’un nouveau fichier ou contenu`,
+            `Création d’un fichier ou contenu`,
           );
         });
       });
