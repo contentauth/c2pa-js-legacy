@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "Alat AI yang digunakan",
+  "content-summary.header": "Ringkasan konten",
+  "content-summary.content.aiGenerated": "Konten ini dibuat dengan alat AI.",
+  "content-summary.content.composite": "Citra ini memadukan beberapa konten. Setidaknya satu dibuat dengan alat AI.",
+  "manifest-summary.viewMore": "Periksa",
+  "manifest-summary.error": "Content Credentials tidak tersedia atau tidak valid",
+  "minimum-viable-provenance.header": "Content Credentials",
+  "minimum-viable-provenance.helpText": "Data atribusi dan riwayat yang dilampirkan pada konten ini",
+  "minimum-viable-provenance.invalidDate": "Tanggal tidak valid",
+  "minimum-viable-provenance.issuedBy": "Dikeluarkan oleh",
+  "minimum-viable-provenance.on": "pada",
+  "produced-by.header": "Dibuat oleh",
+  "produced-by.helpText": "Nama pilihan orang yang mengekspor konten ini",
+  "produced-with.header": "Aplikasi atau perangkat yang digunakan",
+  "produced-with.helpText": "Perangkat lunak yang digunakan untuk membuat konten ini",
+  "produced-with.beta": "Content Credentials (Beta)",
+  "social-media.header": "Media sosial",
+  "social-media.helpText": "Akun media sosial yang terhubung ke pembuat konten ini",
+  "web3.header": "Web3",
+  "web3.copied": "Disalin!"
+}
