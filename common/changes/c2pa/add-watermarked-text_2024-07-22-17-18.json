@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add copy for `c2pa.watermarked`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
