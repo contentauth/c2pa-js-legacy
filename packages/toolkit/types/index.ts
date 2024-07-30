@@ -36,6 +36,11 @@ export interface HashedUri {
   hash: number[];
 }
 
+export interface DataType {
+  type: string;
+  version?: string;
+}
+
 export interface Ingredient extends ResourceParent {
   title: string;
   format: string;
@@ -46,6 +51,8 @@ export interface Ingredient extends ResourceParent {
   hash?: string;
   is_parent?: boolean;
   active_manifest?: string;
+  data_types?: DataType[];
+  relationship?: string;
   validation_status?: ValidationStatus[];
   metadata?: Metadata;
 }

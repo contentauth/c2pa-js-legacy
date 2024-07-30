@@ -7,6 +7,7 @@
  * it.
  */
 import {
+  DataType,
   Metadata,
   Ingredient as ToolkitIngredient,
   ValidationStatus,
@@ -56,6 +57,11 @@ export interface Ingredient {
   validationStatus: ValidationStatus[];
 
   /**
+   * Ingredient data - see https://c2pa.org/specifications/specifications/2.0/specs/C2PA_Specification.html#_ingredient_data
+   */
+  dataTypes?: DataType[];
+
+  /**
    * The manifest contained within this ingredient, if applicable
    */
   manifest: Manifest | null;
@@ -81,7 +87,7 @@ export function createIngredient(
   ingredientData: ToolkitIngredient,
   manifest?: Manifest,
 ): Ingredient {
-  return {
+  const ingredient: Ingredient = {
     title: ingredientData.title,
     format: ingredientData.format,
     documentId: ingredientData.document_id ?? null,
@@ -98,4 +104,10 @@ export function createIngredient(
       ingredientData.thumbnail,
     ),
   };
+
+  if (ingredientData.data_types) {
+    ingredient.dataTypes = ingredientData.data_types;
+  }
+
+  return ingredient;
 }
