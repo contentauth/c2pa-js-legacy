@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add support for ingredient `data_types` field",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
