@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add `id_ID` and `vi_VN` to translations index",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
