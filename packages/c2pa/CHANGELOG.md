@@ -1,6 +1,53 @@
 # Change Log - c2pa
 
-This log was last generated on Mon, 24 Jun 2024 20:54:46 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 21:39:10 GMT and should not be manually modified.
+
+## 0.23.1
+Tue, 30 Jul 2024 21:39:10 GMT
+
+### Patches
+
+- Add `id_ID` and `vi_VN` to translations index
+
+## 0.23.0
+Tue, 30 Jul 2024 00:37:40 GMT
+
+### Minor changes
+
+- Add support for ingredient `data_types` field
+
+## 0.22.6
+Tue, 23 Jul 2024 15:58:41 GMT
+
+### Patches
+
+- Add icon for `c2pa.watermarked`
+
+## 0.22.5
+Tue, 23 Jul 2024 15:13:27 GMT
+
+### Patches
+
+- Add language support for ID and VN
+
+## 0.22.4
+Mon, 22 Jul 2024 17:52:53 GMT
+
+### Patches
+
+- Add copy for `c2pa.watermarked`
+
+## 0.22.3
+Tue, 16 Jul 2024 15:36:02 GMT
+
+### Patches
+
+- Update translations
+
+## 0.22.2
+Mon, 15 Jul 2024 20:21:36 GMT
+
+_Version update only_
 
 ## 0.22.1
 Mon, 24 Jun 2024 20:54:46 GMT

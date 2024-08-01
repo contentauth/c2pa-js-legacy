@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "Kullanılan yapay zeka aracı",
+  "content-summary.header": "İçerik özeti",
+  "content-summary.content.aiGenerated": "Bu içerik bir yapay zeka aracıyla oluşturuldu.",
+  "content-summary.content.composite": "Bu görüntüde birden fazla içerik parçası birleştirilmiştir. En az bir tanesi bir yapay zeka aracı ile oluşturulmuştur.",
+  "manifest-summary.viewMore": "İncele",
+  "manifest-summary.error": "İçerik Kimlik Bilgileri mevcut değil veya geçersiz",
+  "minimum-viable-provenance.header": "İçerik Kimlik Bilgileri",
+  "minimum-viable-provenance.helpText": "Bu içeriğe eklenen atıf ve geçmiş verileri",
+  "minimum-viable-provenance.invalidDate": "Geçersiz tarih",
+  "minimum-viable-provenance.issuedBy": "Yayımlayan",
+  "minimum-viable-provenance.on": "açık",
+  "produced-by.header": "Üreten",
+  "produced-by.helpText": "Bu içeriği dışa aktaran kişinin seçilen adı",
+  "produced-with.header": "Kullanılan uygulama veya cihaz",
+  "produced-with.helpText": "Bu içeriği oluşturmak için kullanılan yazılım",
+  "produced-with.beta": "İçerik Kimlik Bilgileri (Beta)",
+  "social-media.header": "Sosyal medya",
+  "social-media.helpText": "Bu içeriğin üreticisine bağlı sosyal medya hesapları",
+  "web3.header": "Web3",
+  "web3.copied": "Kopyalandı!"
+}

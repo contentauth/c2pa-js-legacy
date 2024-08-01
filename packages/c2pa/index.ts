@@ -12,6 +12,7 @@ export {
   C2paActionsAssertion,
   C2paHashDataAssertion,
   CreativeWorkAssertion,
+  DataType,
 } from '@contentauth/toolkit';
 export { AssertionAccessor, ExtendedAssertions } from './src/assertions';
 export {

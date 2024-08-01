@@ -2,6 +2,100 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.13.11",
+      "tag": "c2pa-wc_v0.13.11",
+      "date": "Tue, 30 Jul 2024 21:39:10 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.23.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.10",
+      "tag": "c2pa-wc_v0.13.10",
+      "date": "Tue, 30 Jul 2024 00:37:41 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.23.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.9",
+      "tag": "c2pa-wc_v0.13.9",
+      "date": "Tue, 23 Jul 2024 15:58:41 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.22.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.8",
+      "tag": "c2pa-wc_v0.13.8",
+      "date": "Tue, 23 Jul 2024 15:13:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add language support for ID and VN"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.22.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.7",
+      "tag": "c2pa-wc_v0.13.7",
+      "date": "Mon, 22 Jul 2024 17:52:53 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.22.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.6",
+      "tag": "c2pa-wc_v0.13.6",
+      "date": "Tue, 16 Jul 2024 15:36:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update translations"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.22.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.5",
+      "tag": "c2pa-wc_v0.13.5",
+      "date": "Mon, 15 Jul 2024 20:21:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.22.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.4",
       "tag": "c2pa-wc_v0.13.4",
       "date": "Mon, 24 Jun 2024 20:54:46 GMT",

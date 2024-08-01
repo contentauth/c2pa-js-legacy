@@ -1,0 +1,22 @@
+{
+  "ai-tool-used.header": "Strumento AI utilizzato",
+  "content-summary.header": "Riepilogo dei contenuti",
+  "content-summary.content.aiGenerated": "Questo contenuto è stato generato con uno strumento AI.",
+  "content-summary.content.composite": "Questa immagine combina più parti di contenuto. Almeno una è stata generata con uno strumento AI.",
+  "manifest-summary.viewMore": "Inspect",
+  "manifest-summary.error": "Credenziali del contenuto non disponibili o non valide",
+  "minimum-viable-provenance.header": "Credenziali del contenuto",
+  "minimum-viable-provenance.helpText": "Dati di attribuzione e cronologia allegati a questo contenuto",
+  "minimum-viable-provenance.invalidDate": "Data non valida",
+  "minimum-viable-provenance.issuedBy": "Rilasciato da",
+  "minimum-viable-provenance.on": "in",
+  "produced-by.header": "Prodotto da",
+  "produced-by.helpText": "Nome scelto della persona che ha esportato questo contenuto",
+  "produced-with.header": "App o dispositivo utilizzati",
+  "produced-with.helpText": "Software utilizzato per creare questo contenuto",
+  "produced-with.beta": "Credenziali del contenuto (Beta)",
+  "social-media.header": "Social media",
+  "social-media.helpText": "Account social media collegati al produttore di questo contenuto",
+  "web3.header": "Web3",
+  "web3.copied": "Copiato."
+}

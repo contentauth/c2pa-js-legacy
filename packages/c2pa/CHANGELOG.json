@@ -2,6 +2,95 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.23.1",
+      "tag": "c2pa_v0.23.1",
+      "date": "Tue, 30 Jul 2024 21:39:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add `id_ID` and `vi_VN` to translations index"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.23.0",
+      "tag": "c2pa_v0.23.0",
+      "date": "Tue, 30 Jul 2024 00:37:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for ingredient `data_types` field"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.11.7`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.6",
+      "tag": "c2pa_v0.22.6",
+      "date": "Tue, 23 Jul 2024 15:58:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add icon for `c2pa.watermarked`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.5",
+      "tag": "c2pa_v0.22.5",
+      "date": "Tue, 23 Jul 2024 15:13:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add language support for ID and VN"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.4",
+      "tag": "c2pa_v0.22.4",
+      "date": "Mon, 22 Jul 2024 17:52:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add copy for `c2pa.watermarked`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.3",
+      "tag": "c2pa_v0.22.3",
+      "date": "Tue, 16 Jul 2024 15:36:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update translations"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.2",
+      "tag": "c2pa_v0.22.2",
+      "date": "Mon, 15 Jul 2024 20:21:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.11.6`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.22.1",
       "tag": "c2pa_v0.22.1",
       "date": "Mon, 24 Jun 2024 20:54:46 GMT",

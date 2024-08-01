@@ -1,6 +1,45 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Mon, 24 Jun 2024 20:54:46 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 21:39:10 GMT and should not be manually modified.
+
+## 0.13.11
+Tue, 30 Jul 2024 21:39:10 GMT
+
+_Version update only_
+
+## 0.13.10
+Tue, 30 Jul 2024 00:37:41 GMT
+
+_Version update only_
+
+## 0.13.9
+Tue, 23 Jul 2024 15:58:41 GMT
+
+_Version update only_
+
+## 0.13.8
+Tue, 23 Jul 2024 15:13:27 GMT
+
+### Patches
+
+- Add language support for ID and VN
+
+## 0.13.7
+Mon, 22 Jul 2024 17:52:53 GMT
+
+_Version update only_
+
+## 0.13.6
+Tue, 16 Jul 2024 15:36:02 GMT
+
+### Patches
+
+- Update translations
+
+## 0.13.5
+Mon, 15 Jul 2024 20:21:36 GMT
+
+_Version update only_
 
 ## 0.13.4
 Mon, 24 Jun 2024 20:54:46 GMT
