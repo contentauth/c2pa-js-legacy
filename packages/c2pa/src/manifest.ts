@@ -25,7 +25,12 @@ type ResolvedClaimGeneratorInfo = Omit<ClaimGeneratorInfo, 'icon'> & {
 
 export interface Manifest {
   /**
-   *  Human-readable title, generally source filename
+   * Label for this manifest in the manifest store
+   */
+  label: string | null;
+
+  /**
+   * Human-readable title, generally source filename
    */
   title: string;
 
@@ -123,6 +128,7 @@ export function createManifest(
   );
 
   return {
+    label: manifestData.label ?? null,
     title: manifestData.title,
     format: manifestData.format,
     vendor: manifestData.vendor ?? null,
