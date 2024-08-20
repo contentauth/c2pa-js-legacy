@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Add `label` field to `Manifest` object",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
