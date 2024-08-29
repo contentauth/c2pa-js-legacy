@@ -150,6 +150,12 @@ export function selectGenerativeSoftwareAgents(
       }),
     ),
   ];
+
+  //if there are no software agents, return null
+  if (softwareAgents.length === 1 && Object.keys(softwareAgents[0]).length === 0) {
+    return null;
+  }
+
   //if there are undefined software agents remove them from the array
 
   return softwareAgents.filter((element) => typeof element !== 'undefined');
