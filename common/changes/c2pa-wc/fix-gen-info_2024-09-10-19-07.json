@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Fix generative info display",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
