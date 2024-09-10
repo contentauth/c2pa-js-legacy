@@ -142,17 +142,26 @@ export function selectGenerativeInfo(
  */
 export function selectGenerativeSoftwareAgents(
   generativeInfo: GenerativeInfo[],
-) {
-  const softwareAgents = [
-    ...new Set(
-      generativeInfo.map((assertion) => {
-        return assertion?.softwareAgent?.name ?? assertion?.softwareAgent;
-      }),
-    ),
-  ];
+): string[] {
+  const softwareAgents = generativeInfo?.length
+    ? [
+        ...new Set(
+          generativeInfo
+            .map((assertion) =>
+              typeof assertion?.softwareAgent?.name === 'string'
+                ? assertion?.softwareAgent?.name
+                : typeof assertion?.softwareAgent === 'string'
+                ? assertion?.softwareAgent
+                : undefined,
+            )
+            .filter((element) => typeof element !== 'undefined'),
+        ),
+      ]
+    : [];
+
   //if there are undefined software agents remove them from the array
 
-  return softwareAgents.filter((element) => typeof element !== 'undefined');
+  return softwareAgents;
 }
 
 /**

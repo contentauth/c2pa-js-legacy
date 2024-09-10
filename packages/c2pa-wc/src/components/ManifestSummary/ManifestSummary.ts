@@ -180,6 +180,10 @@ export class ManifestSummary extends Configurable(
       return null;
     }
 
+    const aiToolUsed = this.manifestStore?.generativeInfo
+      ? selectGenerativeSoftwareAgents(this.manifestStore?.generativeInfo)
+      : null;
+
     const dataSelectors = {
       contentSummary: this.manifestStore?.generativeInfo
         ? selectGenerativeType(this.manifestStore?.generativeInfo)
@@ -187,9 +191,7 @@ export class ManifestSummary extends Configurable(
       producedBy: this.manifestStore?.producer?.name,
       producedWith: this.manifestStore?.claimGenerator,
       socialMedia: this.manifestStore?.socialAccounts,
-      aiToolUsed: this.manifestStore?.generativeInfo
-        ? selectGenerativeSoftwareAgents(this.manifestStore?.generativeInfo)
-        : null,
+      aiToolUsed: aiToolUsed?.length ? aiToolUsed : null,
       web3: this.manifestStore?.web3,
     };
 
