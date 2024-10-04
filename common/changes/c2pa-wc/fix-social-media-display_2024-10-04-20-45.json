@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Fix empty social media display",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
