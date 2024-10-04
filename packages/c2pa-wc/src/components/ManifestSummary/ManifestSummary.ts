@@ -233,7 +233,7 @@ export class ManifestSummary extends Configurable(
                     ></cai-produced-with>
                   `
                 : nothing}
-              ${dataSelectors.socialMedia
+              ${dataSelectors.socialMedia?.length
                 ? html`
                     <cai-social-media
                       .data=${dataSelectors.socialMedia}
