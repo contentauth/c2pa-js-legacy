@@ -1,6 +1,13 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Tue, 30 Jul 2024 00:37:40 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Aug 2024 17:03:27 GMT and should not be manually modified.
+
+## 0.11.8
+Mon, 19 Aug 2024 17:03:27 GMT
+
+### Patches
+
+- Update c2pa-rs to 0.33.3
 
 ## 0.11.7
 Tue, 30 Jul 2024 00:37:40 GMT

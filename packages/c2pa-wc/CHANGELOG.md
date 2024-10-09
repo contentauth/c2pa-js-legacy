@@ -1,6 +1,30 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Tue, 30 Jul 2024 21:39:10 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Oct 2024 21:00:52 GMT and should not be manually modified.
+
+## 0.13.15
+Fri, 04 Oct 2024 21:00:52 GMT
+
+### Patches
+
+- Fix empty social media display
+
+## 0.13.14
+Tue, 10 Sep 2024 19:21:30 GMT
+
+### Patches
+
+- Fix generative info display
+
+## 0.13.13
+Tue, 20 Aug 2024 14:09:04 GMT
+
+_Version update only_
+
+## 0.13.12
+Mon, 19 Aug 2024 17:03:27 GMT
+
+_Version update only_
 
 ## 0.13.11
 Tue, 30 Jul 2024 21:39:10 GMT
