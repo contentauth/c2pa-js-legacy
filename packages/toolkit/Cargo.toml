@@ -8,7 +8,7 @@ version = "0.33.3-1"
 crate-type = ["cdylib"]
 
 [dependencies]
-c2pa = { version = "0.33.3", features = ["serialize_thumbnails", "pdf"] }
+c2pa = { version = "0.37.0", features = ["serialize_thumbnails", "pdf"] }
 console_error_panic_hook = "0.1.7"
 console_log = { version = "1.0.0", features = ["color"] }
 js-sys = "0.3.69"
