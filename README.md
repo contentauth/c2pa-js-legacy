@@ -26,3 +26,13 @@ To run an individual package's `package.json` commands, use the `rushx` command 
 cd packages/c2pa
 rushx dev
 ```
+
+### Contributions and feedback
+
+We welcome contributions to this project.  For information on contributing, providing feedback, and ongoing work, see [Contributing](CONTRIBUTING.md).
+
+## License
+
+This repository is distributed under the terms of the [MIT license](LICENSE).
+
+Some components and dependent crates are licensed under different terms; please check 
