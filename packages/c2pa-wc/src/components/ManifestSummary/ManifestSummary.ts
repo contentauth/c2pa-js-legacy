@@ -140,6 +140,22 @@ export class ManifestSummary extends Configurable(
           background-color: var(--cai-button-color);
         }
 
+        #view-more-disabled {
+          display: block;
+          transition: all 150ms ease-in-out;
+          background-color: transparent;
+          border-radius: 9999px;
+          border: 2px solid var(--cai-background-pill);
+          padding: 8px 0;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          width: 100%;
+          color: var(--cai-primary-color);
+          background-color: var(--cai-background-pill);
+          pointer-events: none;
+        }
+
         .empty {
           display: none;
         }
@@ -279,7 +295,16 @@ export class ManifestSummary extends Configurable(
                 ${this.strings['manifest-summary.viewMore']}
               </a>
             `
-          : nothing}
+          : html`
+              <a
+                id="view-more-disabled"
+                part=${ManifestSummary.cssParts.viewMore}
+                href=${this.viewMoreUrl}
+                target="_blank"
+              >
+                ${this.strings['manifest-summary.viewMore']}
+              </a>
+            `}
       </div>
     </div>`;
   }
