@@ -2,6 +2,18 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.13.18",
+      "tag": "c2pa-wc_v0.13.18",
+      "date": "Wed, 29 Jan 2025 23:26:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add disable state to inspect button in cai-manifest-sumamry"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.17",
       "tag": "c2pa-wc_v0.13.17",
       "date": "Wed, 29 Jan 2025 18:20:48 GMT",
