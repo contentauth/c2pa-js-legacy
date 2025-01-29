@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Add disable state to inspect button in cai-manifest-sumamry",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
