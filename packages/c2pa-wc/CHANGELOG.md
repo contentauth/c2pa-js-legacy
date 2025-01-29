@@ -1,6 +1,13 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Fri, 18 Oct 2024 18:01:58 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Jan 2025 18:20:48 GMT and should not be manually modified.
+
+## 0.13.17
+Wed, 29 Jan 2025 18:20:48 GMT
+
+### Patches
+
+- Add hide-content-summary attribute to hide content summary section
 
 ## 0.13.16
 Fri, 18 Oct 2024 18:01:58 GMT
