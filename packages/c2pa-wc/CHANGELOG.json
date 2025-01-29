@@ -2,6 +2,18 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.13.17",
+      "tag": "c2pa-wc_v0.13.17",
+      "date": "Wed, 29 Jan 2025 18:20:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add hide-content-summary attribute to hide content summary section"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.16",
       "tag": "c2pa-wc_v0.13.16",
       "date": "Fri, 18 Oct 2024 18:01:58 GMT",
