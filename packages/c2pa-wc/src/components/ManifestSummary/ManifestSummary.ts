@@ -159,6 +159,12 @@ export class ManifestSummary extends Configurable(
   })
   viewMoreUrl = '';
 
+  @property({
+    type: Boolean,
+    attribute: 'hide-content-summary',
+  })
+  hideContentSummary = false;
+
   private _postRef: Ref<HTMLSlotElement> = createRef();
 
   @state()
@@ -205,7 +211,7 @@ export class ManifestSummary extends Configurable(
         ${this.manifestStore.error === 'error'
           ? html` <div>${this.strings['manifest-summary.error']}</div> `
           : html`
-              ${dataSelectors.contentSummary
+              ${dataSelectors.contentSummary && !this.hideContentSummary
                 ? html`
                     <cai-content-summary
                       .data=${dataSelectors.contentSummary}
