@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "c2pa",
-      "comment": "Remove dependency on browser crypto impl",
+      "comment": "Update to c2pa-rs 0.45.1 to remove dependency on browser crypto impl",
       "type": "minor"
     }
   ],
