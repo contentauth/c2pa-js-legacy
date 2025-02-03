@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Remove dependency on browser crypto impl",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}

@@ -51,37 +51,37 @@ describe('c2pa', function () {
           it('should include the correct validation errors', function (this: TestContext) {
             expect(this.result.manifestStore?.validationStatus).toEqual([
               {
-                code: 'signingCredential.invalid',
-                url: 'Cose_Sign1',
-                explanation:
-                  'certificate issuer and subject cannot be the same {self-signed disallowed}',
-              },
-              {
                 code: 'general.error',
                 url: 'self#jumbf=/c2pa/adobetest:urn:uuid:825cf3cf-0127-4af3-b65c-c11d0f961e67/c2pa.signature',
-                explanation: 'claim signature is not valid: CoseInvalidCert',
+                explanation: 'claim signature is not valid',
               },
               {
                 code: 'signingCredential.invalid',
                 url: 'Cose_Sign1',
                 explanation:
-                  'certificate issuer and subject cannot be the same {self-signed disallowed}',
+                  'certificate issuer and subject cannot be the same (self-signed disallowed)',
+              },
+              {
+                code: 'signingCredential.invalid',
+                url: 'Cose_Sign1',
+                explanation:
+                  'certificate issuer and subject cannot be the same (self-signed disallowed)',
               },
               {
                 code: 'general.error',
                 url: 'self#jumbf=/c2pa/adobetest:urn:uuid:879beec2-74bb-4150-8245-9176dd6a8972/c2pa.signature',
-                explanation: 'claim signature is not valid: CoseInvalidCert',
+                explanation: 'claim signature is not valid',
               },
               {
                 code: 'signingCredential.invalid',
                 url: 'Cose_Sign1',
                 explanation:
-                  'certificate issuer and subject cannot be the same {self-signed disallowed}',
+                  'certificate issuer and subject cannot be the same (self-signed disallowed)',
               },
               {
                 code: 'general.error',
                 url: 'self#jumbf=/c2pa/adobetest:urn:uuid:120c2204-929d-4e97-a3b7-f5ecc9408b79/c2pa.signature',
-                explanation: 'claim signature is not valid: CoseInvalidCert',
+                explanation: 'claim signature is not valid',
               },
             ]);
           });
