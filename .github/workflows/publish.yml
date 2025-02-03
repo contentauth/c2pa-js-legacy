@@ -4,6 +4,8 @@ on:
     types: [closed]
     paths:
       - common/changes/**
+  workflow_dispatch:
+
 jobs:
   publish:
     if: github.event.pull_request.merged == true
