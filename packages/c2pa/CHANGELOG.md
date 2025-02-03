@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Fri, 18 Oct 2024 18:01:58 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Feb 2025 23:15:46 GMT and should not be manually modified.
+
+## 0.26.0
+Mon, 03 Feb 2025 23:15:46 GMT
+
+### Minor changes
+
+- Remove dependency on browser crypto impl
 
 ## 0.24.2
 Fri, 18 Oct 2024 18:01:58 GMT

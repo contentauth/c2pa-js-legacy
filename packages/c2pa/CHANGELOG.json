@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.26.0",
+      "tag": "c2pa_v0.26.0",
+      "date": "Mon, 03 Feb 2025 23:15:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove dependency on browser crypto impl"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.24.2",
       "tag": "c2pa_v0.24.2",
       "date": "Fri, 18 Oct 2024 18:01:58 GMT",
