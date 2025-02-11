@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Đã dịch",
   "selectors.editsAndActivity.c2pa.unknown.description": "Đã thực hiện các chỉnh sửa hoặc hoạt động khác không nhận diện được",
   "selectors.editsAndActivity.c2pa.unknown.label": "Các chỉnh sửa hoặc hoạt động không xác định",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "Đã áp dụng hình mờ vô hình để cải thiện độ bền của Content Credential này",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "Đã áp dụng hình mờ",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Đã thực hiện các thay đổi đối với siêu dữ liệu của tệp",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Các thay đổi đối với siêu dữ liệu"
 }

@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "已翻譯",
   "selectors.editsAndActivity.c2pa.unknown.description": "執行了其他無法辨識的編輯或活動",
   "selectors.editsAndActivity.c2pa.unknown.label": "未知的編輯或活動",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "套用了隱形浮水印，以提高此 Content Credential 的持久性",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "已套用浮水印",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "對檔案中繼資料進行了變更",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "中繼資料變更"
 }

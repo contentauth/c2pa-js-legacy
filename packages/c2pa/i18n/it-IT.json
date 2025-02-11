@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Tradotto",
   "selectors.editsAndActivity.c2pa.unknown.description": "Sono state eseguite altre modifiche o attività che non è stato possibile riconoscere",
   "selectors.editsAndActivity.c2pa.unknown.label": "Modifiche o attività sconosciute",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "È stata applicata una filigrana invisibile per migliorare la durata di questa Content Credential",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "Con filigrana",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Modifiche apportate ai metadati del file",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Modifiche metadati"
 }

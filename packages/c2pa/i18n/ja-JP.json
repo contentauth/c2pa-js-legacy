@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "翻訳済み",
   "selectors.editsAndActivity.c2pa.unknown.description": "認識できない他の編集またはアクティビティを実行",
   "selectors.editsAndActivity.c2pa.unknown.label": "不明な編集またはアクティビティ",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "この Content Credential の耐久性を向上させるために非表示の透かしを適用しました",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "透かし入り",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "ファイルのメタデータに変更を加えました",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "メタデータの変更"
 }

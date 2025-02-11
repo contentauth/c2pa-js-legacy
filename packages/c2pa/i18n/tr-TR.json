@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Çevrildi",
   "selectors.editsAndActivity.c2pa.unknown.description": "Algılanamayan başka düzenlemeler veya etkinlikler gerçekleştirildi",
   "selectors.editsAndActivity.c2pa.unknown.label": "Bilinmeyen düzenlemeler veya etkinlikler",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "Bu Content Credentials'ın devamlılığını sağlamak için görünmez bir filigran uygulandı",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "Filigranlı",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Dosya meta verilerinde değişiklikler yapıldı",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Meta veri değişiklikleri"
 }

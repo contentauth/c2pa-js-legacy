@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Oversatt",
   "selectors.editsAndActivity.c2pa.unknown.description": "Utførte andre redigeringer eller aktiviteter som ikke gjenkjennes",
   "selectors.editsAndActivity.c2pa.unknown.label": "Ukjent endring eller aktivitet",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "Brukte et usynlig vannmerke for å forbedre holdbarheten for foreliggende Content Credential",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "Vannmerket",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Gjorde endringer i fil-metadata",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Endringer i metadata"
 }
