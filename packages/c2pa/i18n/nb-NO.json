@@ -7,7 +7,7 @@
   "selectors.editsAndActivity.c2pa.created.label": "Opprettet",
   "selectors.editsAndActivity.c2pa.cropped.description": "Brukte beskjæringsverktøy for å redusere eller utvide synlig innholdsområde",
   "selectors.editsAndActivity.c2pa.cropped.label": "Beskjæringsredigeringer",
-  "selectors.editsAndActivity.c2pa.deleted.description": "Slettet visuelle områder eller innholdsvarighet",
+  "selectors.editsAndActivity.c2pa.deleted.description": "Slettede visuelle områder eller innholdsvarighet",
   "selectors.editsAndActivity.c2pa.deleted.label": "Slettet innhold",
   "selectors.editsAndActivity.c2pa.drawing.description": "Brukte verktøy som blyanter, pensler, viskelær eller form-, bane- eller pennverktøy",
   "selectors.editsAndActivity.c2pa.drawing.label": "Tegneredigeringer",
