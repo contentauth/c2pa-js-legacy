@@ -15,6 +15,7 @@ import {
 import debug from 'debug';
 import traverse from 'traverse';
 import { Manifest, createManifest } from './manifest';
+import { CawgReport } from './lib/cawg';
 
 export interface ManifestStore {
   /**
@@ -76,14 +77,20 @@ function parseJsonTypeHints(
 
 /**
  * Creates a facade object with convenience methods over manifest store data returned from the toolkit.
+ * Merges a manifest store with a CAWG report from the toolkit such that each manifest has its associated CAWG data attached.
  *
  * @param config C2pa configuration object
  * @param manifestStoreData Manifest store data returned by the toolkit
+ * @param cawgData Deserialized CAWG report returned by the toolkit
  */
 export function createManifestStore(
   manifestStoreData: ToolkitManifestStore,
+  cawgData: CawgReport,
 ): ManifestStore {
-  const manifests = createManifests(parseJsonTypeHints(manifestStoreData));
+  const manifests = createManifests(
+    parseJsonTypeHints(manifestStoreData),
+    cawgData,
+  );
 
   return {
     manifests,
@@ -96,14 +103,18 @@ export function createManifestStore(
  * Ensures manifests are resolved in the correct order to build the "tree" of manifests and their ingredients.
  *
  * @param manifestStoreData
+ * @param cawgData
  * @returns
  */
-function createManifests(manifestStoreData: ToolkitManifestStore) {
+function createManifests(
+  manifestStoreData: ToolkitManifestStore,
+  cawgData: CawgReport,
+) {
   const {
     manifests: toolkitManifests,
     active_manifest: toolkitActiveManifestId,
   } = manifestStoreData;
-  dbg('Received manifest store from toolkit', manifestStoreData);
+  dbg('Received manifest store from toolkit', manifestStoreData, cawgData);
 
   // Perform a post-order traversal of the manifest tree (leaves-to-root) to guarantee that a manifest's ingredient
   // manifests are already available when it is created.
@@ -139,9 +150,9 @@ function createManifests(manifestStoreData: ToolkitManifestStore) {
   const orderedManifests = postorderManifests.reduce(
     (manifests, stackManifestData) => {
       const { data: manifestData, label } = stackManifestData;
-      dbg('Creating manifest with data', manifestData);
+      dbg('Creating manifest with data', manifestData, cawgData);
 
-      const manifest = createManifest(manifestData, manifests);
+      const manifest = createManifest(manifestData, manifests, cawgData);
       manifests[label] = manifest;
       return manifests;
     },

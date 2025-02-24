@@ -14,7 +14,7 @@ import {
   scan_array_buffer,
 } from '@contentauth/detector';
 import {
-  ManifestStore,
+  AssetReport,
   getManifestStoreFromArrayBuffer,
   getManifestStoreFromManifestAndAsset,
   default as initToolkit,
@@ -34,7 +34,7 @@ const worker = {
     buffer: ArrayBuffer,
     type: string,
     settings?: string,
-  ): Promise<ManifestStore> {
+  ): Promise<AssetReport> {
     await initToolkit(wasm);
     return getManifestStoreFromArrayBuffer(buffer, type, settings);
   },
@@ -43,7 +43,7 @@ const worker = {
     manifestBuffer: ArrayBuffer,
     asset: Blob,
     settings?: string,
-  ) {
+  ): Promise<AssetReport> {
     await initToolkit(wasm);
     const assetBuffer = await asset.arrayBuffer();
     return getManifestStoreFromManifestAndAsset(

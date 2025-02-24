@@ -18,6 +18,11 @@ import { AssertionAccessor, createAssertionAccessor } from './assertions';
 import { Ingredient, createIngredient } from './ingredient';
 import { ManifestMap } from './manifestStore';
 import { Thumbnail, createThumbnail } from './thumbnail';
+import {
+  CawgReport,
+  getVerifiedIdentitiesFromCawgManifestReports,
+  VerifiedIdentity,
+} from './lib/cawg';
 
 type ResolvedClaimGeneratorInfo = Omit<ClaimGeneratorInfo, 'icon'> & {
   icon: Thumbnail | null;
@@ -90,6 +95,8 @@ export interface Manifest {
    * Interface providing access to assertions contained within this manifest
    */
   assertions: AssertionAccessor;
+
+  verifiedIdentities: VerifiedIdentity[];
 }
 
 function parseClaimGeneratorInfo(
@@ -113,10 +120,12 @@ function parseClaimGeneratorInfo(
  *
  * @param manifestData Raw manifest data returned by the toolkit
  * @param manifests A map of previously-created manifest objects to be provided to ingredients. Must contain any manifest referenced by this manifest's ingredients.
+ * @param cawgData Deserialized CAWG report returned by the toolkit
  */
 export function createManifest(
   manifestData: ToolkitManifest,
   manifests: ManifestMap,
+  cawgData: CawgReport,
 ): Manifest {
   const ingredients = manifestData.ingredients.map((ingredientData) =>
     createIngredient(
@@ -146,5 +155,10 @@ export function createManifest(
     parent: null,
     thumbnail: createThumbnail(manifestData.resources, manifestData.thumbnail),
     assertions: createAssertionAccessor(manifestData.assertions),
+    verifiedIdentities: manifestData.label
+      ? getVerifiedIdentitiesFromCawgManifestReports(
+          cawgData[manifestData.label],
+        )
+      : [],
   };
 }

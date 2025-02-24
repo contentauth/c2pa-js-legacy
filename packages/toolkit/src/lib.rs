@@ -7,6 +7,7 @@
 
 // See https://github.com/rustwasm/wasm-bindgen/issues/2774
 #![allow(clippy::unused_unit)]
+use cawg_identity::{claim_aggregation::IcaSignatureVerifier, IdentityAssertion};
 use log::Level;
 use serde::Serialize;
 use serde_wasm_bindgen::Serializer;
@@ -27,7 +28,7 @@ use util::log_time;
 
 #[wasm_bindgen(typescript_custom_section)]
 pub const TS_APPEND_CONTENT: &'static str = r#"
-import { ManifestStore } from './types'
+import { AssetReport } from './types'
 
 export * from './types';
 
@@ -35,14 +36,14 @@ export function getManifestStoreFromArrayBuffer(
     buf: ArrayBuffer,
     mimeType: string,
     settings?: string
-): Promise<ManifestStore>;
+): Promise<AssetReport>;
 
 export function getManifestStoreFromManifestAndAsset(
     manifestBuffer: ArrayBuffer,
     assetBuffer: ArrayBuffer,
     mimeType: string,
     settings?: string
-): Promise<ManifestStore>;
+): Promise<AssetReport>;
 "#;
 
 #[wasm_bindgen(start)]
@@ -67,6 +68,18 @@ fn as_js_error(err: Error) -> JsSysError {
     js_err
 }
 
+fn serde_error_as_js_error(err: serde_json::Error) -> JsSysError {
+    let js_err = JsSysError::new(&err.to_string());
+    js_err.set_name("Toolkit(SerdeJsonError)");
+    js_err
+}
+
+#[derive(Serialize)]
+struct AssetReport {
+    manifest_store: c2pa::ManifestStore,
+    cawg_json: String,
+}
+
 #[wasm_bindgen(js_name = getManifestStoreFromArrayBuffer, skip_typescript)]
 pub async fn get_manifest_store_from_array_buffer(
     buf: JsValue,
@@ -81,13 +94,8 @@ pub async fn get_manifest_store_from_array_buffer(
     let result = get_manifest_store_data(&asset, &mime_type, settings.as_deref())
         .await
         .map_err(as_js_error)?;
-    log_time("get_manifest_store_from_array_buffer::get_result");
-    let serializer = Serializer::new().serialize_maps_as_objects(true);
-    let js_value = result
-        .serialize(&serializer)
-        .map_err(|_err| Error::JavaScriptConversion)
-        .map_err(as_js_error)?;
-    log_time("get_manifest_store_from_array_buffer::javascript_conversion");
+
+    let js_value = get_serialized_report_with_cawg_from_manifest_store(result).await?;
 
     Ok(js_value)
 }
@@ -118,12 +126,28 @@ pub async fn get_manifest_store_from_manifest_and_asset(
     .await
     .map_err(as_js_error)?;
 
+    let js_value = get_serialized_report_with_cawg_from_manifest_store(result).await?;
+
+    Ok(js_value)
+}
+
+async fn get_serialized_report_with_cawg_from_manifest_store(
+    manifest_store: c2pa::ManifestStore,
+) -> Result<JsValue, JsSysError> {
+    let isv = IcaSignatureVerifier {};
+    let ia_summary = IdentityAssertion::summarize_manifest_store(&manifest_store, &isv).await;
+    let ia_json = serde_json::to_string(&ia_summary).map_err(serde_error_as_js_error)?;
+
+    let report = AssetReport {
+        manifest_store,
+        cawg_json: ia_json,
+    };
+
     let serializer = Serializer::new().serialize_maps_as_objects(true);
-    let js_value = result
+    let js_value = report
         .serialize(&serializer)
         .map_err(|_err| Error::JavaScriptConversion)
         .map_err(as_js_error)?;
-    log_time("get_manifest_store_data_from_manifest_and_asset::javascript_conversion");
 
     Ok(js_value)
 }

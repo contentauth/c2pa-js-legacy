@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Implement CAWG reading",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

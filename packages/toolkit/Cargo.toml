@@ -9,6 +9,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 c2pa = { version = "0.45.3",  features = ["serialize_thumbnails", "pdf", "v1_api", "file_io"]  }
+cawg-identity = { version = "0.8.0", features = ["v1_api"] }
 console_error_panic_hook = "0.1.7"
 console_log = { version = "1.0.0", features = ["color"] }
 js-sys = "0.3.69"
