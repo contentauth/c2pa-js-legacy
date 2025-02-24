@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Implement CAWG reading",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
