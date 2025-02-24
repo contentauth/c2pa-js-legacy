@@ -2,6 +2,18 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.13.0",
+      "tag": "@contentauth/toolkit_v0.13.0",
+      "date": "Mon, 24 Feb 2025 21:12:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Implement CAWG reading"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.12.1",
       "tag": "@contentauth/toolkit_v0.12.1",
       "date": "Tue, 11 Feb 2025 19:43:56 GMT",

@@ -2,6 +2,23 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.28.0",
+      "tag": "c2pa_v0.28.0",
+      "date": "Mon, 24 Feb 2025 21:12:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Implement CAWG reading"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.27.1",
       "tag": "c2pa_v0.27.1",
       "date": "Tue, 11 Feb 2025 19:43:56 GMT",
