@@ -18,6 +18,11 @@ export interface ResourceReference {
   identifier: string;
 }
 
+export interface AssetReport {
+  manifest_store: ManifestStore;
+  cawg_json: string;
+}
+
 export interface ManifestStore {
   active_manifest: string;
   manifests: Record<string, Manifest>;

@@ -320,5 +320,46 @@ describe('c2pa', function () {
         expect(result.manifestStore).toBeNull();
       });
     });
+
+    describe('CAWG identity', function () {
+      it('should be returned correctly', async function () {
+        const c2pa = await createC2pa({
+          wasmSrc: './dist/assets/wasm/toolkit_bg.wasm',
+          workerSrc: './dist/c2pa.worker.js',
+        });
+
+        const result = await c2pa.read(
+          './node_modules/@contentauth/testing/fixtures/images/ims_multiple_manifests.jpg',
+        );
+
+        const activeManifest = result.manifestStore?.activeManifest;
+        const activeManifestVerifiedIdentities =
+          activeManifest?.verifiedIdentities;
+        const ingredientVerifiedIdentities =
+          activeManifest?.ingredients[0].manifest?.verifiedIdentities;
+
+        expect(activeManifestVerifiedIdentities).toEqual([
+          {
+            type: 'cawg.social_media',
+            username: 'firstlast555',
+            uri: 'https://net.s2stagehance.com/firstlast555',
+            verifiedAt: '2025-01-10T19:53:59Z',
+            provider: { id: 'https://behance.net', name: 'behance' },
+          },
+        ]);
+
+        expect(ingredientVerifiedIdentities).toEqual([
+          {
+            type: 'cawg.social_media',
+            username: 'Robert Tiles',
+            uri: 'https://net.s2stagehance.com/roberttiles',
+            verifiedAt: '2024-09-24T18:15:11Z',
+            provider: { id: 'https://behance.net', name: 'behance' },
+          },
+        ]);
+
+        expect(result).not.toBeNull();
+      });
+    });
   });
 });

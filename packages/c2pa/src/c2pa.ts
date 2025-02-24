@@ -18,6 +18,7 @@ import { SdkWorkerPool, createPoolWrapper } from './lib/poolWrapper';
 import { fetchWasm } from './lib/wasm';
 import { ManifestStore, createManifestStore } from './manifestStore';
 import { C2paSourceType, Source, createSource } from './source';
+import { deserializeCawgString } from './lib/cawg';
 
 const dbg = debug('c2pa');
 const dbgTask = debug('c2pa:task');
@@ -233,11 +234,12 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
 
     try {
       const result = await pool.getReport(wasm, buffer, source.type, settings);
+      const cawg = deserializeCawgString(result.cawg_json);
 
       dbgTask('[%s] Received worker result', jobId, result);
 
       return {
-        manifestStore: createManifestStore(result),
+        manifestStore: createManifestStore(result.manifest_store, cawg),
         source,
       };
     } catch (err: any) {
@@ -353,8 +355,9 @@ async function fetchRemoteManifest(
       source.blob,
       settings,
     );
+    const cawg = deserializeCawgString(result.cawg_json);
 
-    return createManifestStore(result);
+    return createManifestStore(result.manifest_store, cawg);
   } catch (err) {
     if (err instanceof TypeError) {
       dbg('Invalid URL given, skipping remote manifest loading', manifestUrl);
