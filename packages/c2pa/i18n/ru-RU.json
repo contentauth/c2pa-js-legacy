@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Переведенный",
   "selectors.editsAndActivity.c2pa.unknown.description": "Внесены другие правки или выполнены иные действия, которые не удалось распознать",
   "selectors.editsAndActivity.c2pa.unknown.label": "Неизвестные изменения или действия",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "Применен невидимый водяной знак для повышения долговечности Content Credentials",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "С водяными знаками",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Внесены изменения в метаданные файла",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Изменения метаданных"
 }

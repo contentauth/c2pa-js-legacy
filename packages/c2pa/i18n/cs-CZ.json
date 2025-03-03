@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Přeloženo",
   "selectors.editsAndActivity.c2pa.unknown.description": "Byly provedeny další úpravy nebo aktivita, kterou nebylo možné rozpoznat",
   "selectors.editsAndActivity.c2pa.unknown.label": "Neznámé úpravy nebo aktivita",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "Byl použit neviditelný vodoznak, který zlepší trvanlivost údajů Content Credentials.",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "Vodoznak",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Provedli změny v metadatech souboru",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Změny metadat"
 }

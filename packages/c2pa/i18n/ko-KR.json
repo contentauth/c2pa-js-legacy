@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "번역됨",
   "selectors.editsAndActivity.c2pa.unknown.description": "수행되었으나 인식할 수 없는 기타 편집 또는 활동",
   "selectors.editsAndActivity.c2pa.unknown.label": "알 수 없는 편집 또는 활동",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "이 Content Credentials의 지속성을 개선하기 위해 보이지 않는 워터마크가 적용되었습니다.",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "워터마크 적용됨",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "파일 메타데이터가 변경됨",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "메타데이터 변경 사항"
 }

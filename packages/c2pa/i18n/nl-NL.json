@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Vertaald",
   "selectors.editsAndActivity.c2pa.unknown.description": "Andere bewerkingen of activiteiten uitgevoerd die niet konden worden herkend",
   "selectors.editsAndActivity.c2pa.unknown.label": "Onbekende bewerkingen of activiteiten",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "Er is een onzichtbaar watermerk toegepast om de duurzaamheid van deze Content Credential te verbeteren",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "Met watermerk",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Wijzigingen aangebracht in metadata van bestand",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Wijzigingen in metadata"
 }

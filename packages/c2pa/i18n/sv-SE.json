@@ -37,8 +37,8 @@
   "selectors.editsAndActivity.c2pa.translated.label": "Översatte",
   "selectors.editsAndActivity.c2pa.unknown.description": "Utförde andra redigeringar eller aktiviteter som inte kunde identifieras",
   "selectors.editsAndActivity.c2pa.unknown.label": "Okänd redigering eller aktivitet",
-  "selectors.editsAndActivity.c2pa.watermarked.description": "Applied an invisible watermark to improve this Content Credential's durability",
-  "selectors.editsAndActivity.c2pa.watermarked.label": "Watermarked",
+  "selectors.editsAndActivity.c2pa.watermarked.description": "En osynlig vattenstämpel har lagts in för att förbättra Content Credentials hållbarhet",
+  "selectors.editsAndActivity.c2pa.watermarked.label": "Vattenstämplat",
   "selectors.editsAndActivity.c2pa.edited.metadata.description": "Ändrade i filmetadata",
   "selectors.editsAndActivity.c2pa.edited.metadata.label": "Metadataändringar"
 }
