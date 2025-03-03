@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.28.1",
+      "tag": "c2pa_v0.28.1",
+      "date": "Mon, 03 Mar 2025 16:53:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Do not translate brand strings"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.0",
       "tag": "c2pa_v0.28.0",
       "date": "Mon, 24 Feb 2025 21:12:02 GMT",

@@ -2,6 +2,23 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.13.23",
+      "tag": "c2pa-wc_v0.13.23",
+      "date": "Mon, 03 Mar 2025 16:53:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Do not translate brand strings"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.28.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.22",
       "tag": "c2pa-wc_v0.13.22",
       "date": "Mon, 24 Feb 2025 21:12:02 GMT",

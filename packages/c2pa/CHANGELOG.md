@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Mon, 24 Feb 2025 21:12:02 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Mar 2025 16:53:34 GMT and should not be manually modified.
+
+## 0.28.1
+Mon, 03 Mar 2025 16:53:34 GMT
+
+### Patches
+
+- Do not translate brand strings
 
 ## 0.28.0
 Mon, 24 Feb 2025 21:12:02 GMT
