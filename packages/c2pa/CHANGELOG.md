@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Mon, 03 Mar 2025 16:53:34 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Mar 2025 21:49:13 GMT and should not be manually modified.
+
+## 0.28.2
+Tue, 04 Mar 2025 21:49:13 GMT
+
+### Patches
+
+- Handle case with null CAWG data
 
 ## 0.28.1
 Mon, 03 Mar 2025 16:53:34 GMT

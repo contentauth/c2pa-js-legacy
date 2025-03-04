@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.28.2",
+      "tag": "c2pa_v0.28.2",
+      "date": "Tue, 04 Mar 2025 21:49:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Handle case with null CAWG data"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.1",
       "tag": "c2pa_v0.28.1",
       "date": "Mon, 03 Mar 2025 16:53:34 GMT",
