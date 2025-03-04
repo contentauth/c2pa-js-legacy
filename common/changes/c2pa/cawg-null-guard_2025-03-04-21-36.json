@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Handle case with null CAWG data",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
