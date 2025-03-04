@@ -155,10 +155,11 @@ export function createManifest(
     parent: null,
     thumbnail: createThumbnail(manifestData.resources, manifestData.thumbnail),
     assertions: createAssertionAccessor(manifestData.assertions),
-    verifiedIdentities: manifestData.label
-      ? getVerifiedIdentitiesFromCawgManifestReports(
-          cawgData[manifestData.label],
-        )
-      : [],
+    verifiedIdentities:
+      manifestData.label && cawgData[manifestData.label]
+        ? getVerifiedIdentitiesFromCawgManifestReports(
+            cawgData[manifestData.label],
+          )
+        : [],
   };
 }
