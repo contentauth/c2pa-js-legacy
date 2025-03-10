@@ -102,6 +102,7 @@ export class Thumbnail extends LitElement {
         }
         cai-tooltip.badge-tooltip,
         .badge-no-tooltip {
+          --cai-popover-icon-border-radius: 50% 50% 0 50%;
           position: absolute;
           top: var(--cai-thumbnail-badge-icon-top, 1px);
           right: var(--cai-thumbnail-badge-icon-right, 1px);

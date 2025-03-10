@@ -42,10 +42,16 @@ export class Indicator extends LitElement {
           display: inline-block;
           width: var(--cai-indicator-size, 24px);
           height: var(--cai-indicator-size, 24px);
+          border-radius: 50% 50% 0 50%;
+          line-height: 0;
         }
         .icon {
           --cai-icon-width: var(--cai-indicator-size, 24px);
           --cai-icon-height: var(--cai-indicator-size, 24px);
+        }
+        :host:focus-visible {
+          outline-color: var(--cai-focus-ring-color, #1473e6);
+          outline-offset: 1px;
         }
       `,
     ];

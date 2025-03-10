@@ -25,7 +25,7 @@ export default {
   component: 'cai-thumbnail',
   argTypes: {
     src: {
-      defaultValue: 'https://place-puppy.com/450x300',
+      defaultValue: 'https://place.dog/450/300',
       control: {
         type: 'text',
       },

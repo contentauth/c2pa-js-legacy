@@ -14,13 +14,16 @@
         interactive
         style="float: right; position: relative; top: 40px; left: -10px"
       >
-        <cai-indicator slot="trigger"></cai-indicator>
+        <cai-indicator
+          slot="trigger"
+          aria-label="Content Credentials for test image"
+        ></cai-indicator>
         <cai-manifest-summary
           locale="en-US"
           slot="content"
         ></cai-manifest-summary>
       </cai-popover>
-      <img width="600" src="./test.jpg" />
+      <img width="600" src="./test.jpg" alt="test image" />
     </div>
   </body>
 </html>

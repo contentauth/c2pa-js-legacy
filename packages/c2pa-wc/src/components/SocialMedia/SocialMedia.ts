@@ -10,6 +10,8 @@
 import { L2SocialAccount } from 'c2pa';
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { Configurable } from '../../mixins/configurable';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { baseSectionStyles, defaultStyles } from '../../styles';
 import { Localizable } from '../../mixins/localizable';
 
@@ -43,7 +45,6 @@ export class SocialMedia extends Localizable(LitElement) {
           list-style: none;
           padding: 0px 0px 0px 2px;
           margin: 0;
-          overflow: hidden;
         }
 
         .section-social-media-list-item {
@@ -71,13 +72,13 @@ export class SocialMedia extends Localizable(LitElement) {
       helpText=${this.strings['social-media.helpText']}
     >
       <div slot="header">${this.strings['social-media.header']}</div>
-      <ul class="section-social-media-list" slot="content">
+      <ul class="section-social-media-list" slot="content" aria-label=${this.strings['social-media.header']}>
         ${this.data?.map(
           (socialAccount) => html`
             <li class="section-social-media-list-item">
               <a
                 class="section-social-media-list-item-link"
-                href=${socialAccount['@id']}
+                href=${ifDefined(socialAccount['@id'] ?? undefined)}
                 target="_blank"
               >
                 <cai-icon source="${socialAccount['@id']}"></cai-icon>

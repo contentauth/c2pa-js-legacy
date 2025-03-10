@@ -84,7 +84,7 @@ export class Popover extends LitElement {
   interactive = false;
 
   @property({ type: String })
-  trigger: string = 'mouseenter:mouseleave focus:blur';
+  trigger: string = 'mouseenter:mouseleave click';
 
   @property({ type: Number })
   zIndex = 10;
@@ -100,6 +100,18 @@ export class Popover extends LitElement {
 
   @query('#trigger')
   triggerElement: HTMLElement | undefined;
+
+  private _triggerElementSlot: HTMLSlotElement | undefined;
+
+  private _triggerSlotAssignedNodes: Node[] = [];
+
+  private _triggerElementButton: HTMLElement | undefined;
+
+  private _contentElementSlot: HTMLSlotElement | undefined;
+
+  private _contentSlotAssignedNodes: Node[] = [];
+
+  private _hasTooltipRole = false;
 
   // @TODO: respect updated properties
   protected updated(
@@ -196,10 +208,59 @@ export class Popover extends LitElement {
   private _showTooltip() {
     this._isShown = true;
     this._updatePosition();
+    this.hostElement!.ownerDocument!.addEventListener(
+      'keydown',
+      this._onKeyDownEsc.bind(this),
+    );
+    if (!this._hasTooltipRole) {
+      this._triggerElementButton?.setAttribute('aria-expanded', 'true');
+    }
   }
 
   private _hideTooltip() {
     this._isShown = false;
+    this.hostElement!.ownerDocument!.removeEventListener(
+      'keydown',
+      this._onKeyDownEsc.bind(this),
+    );
+    if (!this._hasTooltipRole) {
+      this._triggerElementButton?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  private _toogleTooltip() {
+    if (!this._isShown) {
+      this._showTooltip();
+    } else {
+      this._hideTooltip();
+    }
+  }
+
+  private _onKeyDownEsc(e: KeyboardEvent) {
+    switch (e.key) {
+      case 'Escape':
+        if (this._isShown) {
+          e.stopPropagation();
+          e.preventDefault();
+          const restoreFocus = this.contains(document.activeElement);
+          this._hideTooltip();
+          if (restoreFocus) {
+            this._triggerElementButton!.focus();
+          }
+        }
+        break;
+    }
+  }
+
+  private _onKeyDownTrigger(e: KeyboardEvent) {
+    switch (e.key) {
+      case 'Enter':
+      case ' ':
+        e.stopPropagation();
+        e.preventDefault();
+        (e.target as HTMLElement).click();
+        break;
+    }
   }
 
   private _cleanupTriggers() {
@@ -212,27 +273,51 @@ export class Popover extends LitElement {
   private _setTriggers() {
     this._cleanupTriggers();
     const triggers = this.trigger.split(/\s+/);
+    const toggleTooltipFn = this._toogleTooltip.bind(this);
+    const showTooltipFn = this._showTooltip.bind(this);
+    const hideTooltipFn = this._hideTooltip.bind(this);
+    const keydownTriggerFn = this._onKeyDownTrigger.bind(this);
 
     this._eventCleanupFns = triggers.map((trigger) => {
       const [show, hide] = trigger.split(':');
-      this.triggerElement!.addEventListener(show, this._showTooltip.bind(this));
-      if (this.interactive && hide === 'mouseleave') {
-        this.hostElement!.addEventListener(hide, this._hideTooltip.bind(this));
+      if (show === 'click') {
+        this.triggerElement!.addEventListener(show, toggleTooltipFn);
+        this.triggerElement!.addEventListener('keydown', keydownTriggerFn);
       } else {
         this.triggerElement!.addEventListener(
-          hide,
-          this._hideTooltip.bind(this),
+          show,
+          showTooltipFn,
+          show === 'focus',
         );
+        if (this.interactive && hide === 'mouseleave') {
+          this.hostElement!.addEventListener(hide, hideTooltipFn);
+        } else {
+          this.triggerElement!.addEventListener(
+            hide,
+            hideTooltipFn,
+            hide === 'blur',
+          );
+        }
       }
       return () => {
-        this.triggerElement!.removeEventListener(show, this._showTooltip);
-        if (this.interactive && hide === 'mouseleave') {
-          this.contentElement!.addEventListener(
-            hide,
-            this._hideTooltip.bind(this),
-          );
+        if (show === 'click') {
+          this.triggerElement!.removeEventListener(show, toggleTooltipFn);
+          this.triggerElement!.removeEventListener('keydown', keydownTriggerFn);
         } else {
-          this.triggerElement!.removeEventListener(hide, this._hideTooltip);
+          this.triggerElement!.removeEventListener(
+            show,
+            showTooltipFn,
+            show === 'focus',
+          );
+          if (this.interactive && hide === 'mouseleave') {
+            this.contentElement!.addEventListener(hide, hideTooltipFn);
+          } else {
+            this.triggerElement!.removeEventListener(
+              hide,
+              hideTooltipFn,
+              hide === 'blur',
+            );
+          }
         }
       };
     });
@@ -315,6 +400,29 @@ export class Popover extends LitElement {
     );
 
     this.contentElement?.classList.add('hidden');
+
+    this._contentElementSlot = this.contentElement?.querySelector(
+      'slot[name="content"]',
+    ) as HTMLSlotElement;
+    this._contentSlotAssignedNodes =
+      this._contentElementSlot?.assignedElements({ flatten: true }) ?? [];
+    this._hasTooltipRole = this._contentSlotAssignedNodes.some(
+      (node) =>
+        node instanceof HTMLElement && node.getAttribute('role') === 'tooltip',
+    );
+
+    this._triggerElementSlot = this.triggerElement?.querySelector(
+      'slot[name="trigger"]',
+    ) as HTMLSlotElement;
+    this._triggerSlotAssignedNodes =
+      this._triggerElementSlot?.assignedElements({ flatten: true }) ?? [];
+    this._triggerElementButton = this
+      ._triggerSlotAssignedNodes[0] as HTMLElement;
+    this._triggerElementButton.setAttribute('role', 'button');
+    this._triggerElementButton.setAttribute('tabindex', '0');
+    if (!this._hasTooltipRole) {
+      this._triggerElementButton.setAttribute('aria-expanded', 'false');
+    }
   }
 
   disconnectedCallback(): void {
@@ -333,6 +441,10 @@ export class Popover extends LitElement {
     };
 
     return html`<div id="element">
+      <div id="trigger">
+        <div class="hidden-layer"></div>
+        <slot name="trigger"></slot>
+      </div>
       <div
         id="content"
         class=${classMap(contentClassMap)}
@@ -355,10 +467,6 @@ export class Popover extends LitElement {
       >
         <slot name="content"></slot>
         ${this.arrow ? html`<div id="arrow"></div>` : null}
-      </div>
-      <div id="trigger">
-        <div class="hidden-layer"></div>
-        <slot name="trigger"></slot>
       </div>
     </div>`;
   }

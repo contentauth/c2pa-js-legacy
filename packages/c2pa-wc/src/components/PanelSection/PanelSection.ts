@@ -33,6 +33,9 @@ export class PanelSection extends LitElement {
   @property({ type: String })
   helpText: string | null = null;
 
+  @property({ type: String })
+  headingLevel: '1' | '2' | '3' | '4' | '5' | '6' = '3';
+
   static get styles() {
     return [
       defaultStyles,

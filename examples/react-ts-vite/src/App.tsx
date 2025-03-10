@@ -116,11 +116,14 @@ function WebComponents({
   return (
     <div className="web-components">
       <div className="wrapper">
-        <img src={imageUrl} />
+        <img src={imageUrl} alt="test image" />
         {manifestStore ? (
           <div>
             <cai-popover interactive class="theme-spectrum">
-              <cai-indicator slot="trigger"></cai-indicator>
+              <cai-indicator
+                slot="trigger"
+                aria-label="Content Credentials for test image"
+              ></cai-indicator>
               <cai-manifest-summary
                 ref={summaryRef}
                 slot="content"

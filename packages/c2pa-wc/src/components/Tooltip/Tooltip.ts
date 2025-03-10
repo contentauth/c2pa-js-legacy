@@ -13,6 +13,8 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import '../../../assets/svg/monochrome/help.svg';
 import { defaultStyles } from '../../styles';
+import { Configurable } from '../../mixins/configurable';
+import defaultStringMap from './Tooltip.str.json';
 
 import '../Icon';
 import '../Popover';
@@ -29,8 +31,16 @@ declare global {
   }
 }
 
+export interface TooltipConfig {
+  stringMap: Record<string, string>;
+}
+
+const defaultConfig: TooltipConfig = {
+  stringMap: defaultStringMap,
+};
+
 @customElement('cai-tooltip')
-export class Tooltip extends LitElement {
+export class Tooltip extends Configurable(LitElement, defaultConfig) {
   @state()
   protected _isShown = false;
 
@@ -43,6 +53,9 @@ export class Tooltip extends LitElement {
   @property({ type: Boolean })
   arrow = true;
 
+  @property({ type: String })
+  label?: string;
+
   static get styles() {
     return [
       defaultStyles,
@@ -51,8 +64,15 @@ export class Tooltip extends LitElement {
           display: flex;
           --cai-icon-width: var(--cai-popover-icon-width, 16px);
           --cai-icon-height: var(--cai-popover-icon-height, 16px);
-          --cai-icon-fill: var(--cai-popover-icon-fill, #a8a8a8);
+          --cai-icon-border-radius: var(--cai-popover-icon-border-radius, 50%);
+          --cai-icon-fill: var(--cai-popover-icon-fill, #909090);
           cursor: pointer;
+          height: var(--cai-icon-height);
+          width: var(--cai-icon-width);
+          line-height: 0;
+          border-radius: var(--cai-icon-border-radius);
+          outline-color: var(--cai-focus-ring-color);
+          outline-offset: 1px;
         }
         .content {
           min-width: 165px;
@@ -85,16 +105,31 @@ export class Tooltip extends LitElement {
     return html`
       <cai-popover
         id="popover"
-        arrow=${this.arrow}
+        ?arrow=${this.arrow}
         .autoPlacement=${this.autoPlacement}
         ?interactive=${false}
+        trigger="mouseenter:mouseleave focus:blur click"
       >
-        <div id="trigger" slot="trigger">
+        <div
+          id="trigger"
+          slot="trigger"
+          role="button"
+          tabindex="0"
+          aria-label=${`${this.label ?? ''} ${
+            this._config.stringMap['tooltip.information']
+          }`.trim()}
+          aria-describedby="tooltip"
+        >
           <slot name="trigger">
             <cai-icon-help></cai-icon-help>
           </slot>
         </div>
-        <div class=${classMap(contentClassMap)} slot="content">
+        <div
+          class=${classMap(contentClassMap)}
+          slot="content"
+          role="tooltip"
+          id="tooltip"
+        >
           <slot name="content"></slot>
         </div>
       </cai-popover>
