@@ -16,6 +16,24 @@ export interface WorkerManager {
   terminate: () => void;
 }
 
+function handleMessage(resolve: (value: unknown) => void, reject: (reason?: any) => void, workingRef: { working: boolean }) {
+  return (e: MessageEvent<WorkerResponse>) => {
+    if (e.data.type === 'success') {
+      resolve(e.data.data);
+    } else {
+      reject(deserializeError(e.data.error));
+    }
+    workingRef.working = false;
+  };
+}
+
+function handleError(reject: (reason?: any) => void, workingRef: { working: boolean }) {
+  return (e: ErrorEvent) => {
+    workingRef.working = false;
+    reject(e);
+  };
+}
+
 /**
  * Create a wrapper responsible for managing a single worker
  *
@@ -24,32 +42,25 @@ export interface WorkerManager {
  */
 export function createWorkerManager(scriptUrl: string): WorkerManager {
   const worker = new Worker(scriptUrl);
-  let working = false;
+  const workingRef = { working: false };
 
   const execute: WorkerManager['execute'] = async (request) => {
-    worker.postMessage(request);
-    working = true;
+    const transferable = request instanceof ArrayBuffer ? [request] : [];
+    worker.postMessage(request, transferable);
+    workingRef.working = true;
 
     return new Promise((resolve, reject) => {
-      worker.onmessage = function (e: MessageEvent<WorkerResponse>) {
-        if (e.data.type === 'success') {
-          resolve(e.data.data);
-        } else {
-          reject(deserializeError(e.data.error));
-        }
-        working = false;
-      };
-
-      worker.onerror = function (e) {
-        working = false;
-        reject(e);
-      };
+      worker.onmessage = handleMessage(resolve, reject, workingRef);
+      worker.onerror = handleError(reject, workingRef);
     });
   };
 
-  const isWorking: WorkerManager['isWorking'] = () => working;
+  const isWorking: WorkerManager['isWorking'] = () => workingRef.working;
 
-  const terminate: WorkerManager['terminate'] = () => worker.terminate();
+  const terminate: WorkerManager['terminate'] = () => {
+    worker.terminate();
+    workingRef.working = false;
+  };
 
   return {
     execute,
