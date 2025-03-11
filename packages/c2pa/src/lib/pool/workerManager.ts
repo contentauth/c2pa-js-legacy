@@ -45,6 +45,7 @@ export function createWorkerManager(scriptUrl: string): WorkerManager {
   const workingRef = { working: false };
 
   const execute: WorkerManager['execute'] = async (request) => {
+    // TODO: Improve handling of transferable objects here
     const transferable = request instanceof ArrayBuffer ? [request] : [];
     worker.postMessage(request, transferable);
     workingRef.working = true;

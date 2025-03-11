@@ -87,7 +87,7 @@ export class Validator {
     const wasm = await detectorWasm();
 
     dbg('Scanning buffer for C2PA marker with length %d', chunk.byteLength);
-    // TODO: Add support for transferable objects
+    // TODO: Add support for transferable objects (+1)
     const result = await this.#pool.scanInput(wasm, chunk);
     dbg('Scanned buffer and got result', result);
     return result;

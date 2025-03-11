@@ -34,6 +34,7 @@ export function setupWorker(methods: WorkerMethods) {
     try {
       const res = await methods[method](...args);
 
+      // TODO: Handle make data transferrable instead of copying
       postMessage({
         type: 'success',
         data: res,
