@@ -135,7 +135,9 @@ async fn get_serialized_report_with_cawg_from_manifest_store(
     manifest_store: c2pa::ManifestStore,
 ) -> Result<JsValue, JsSysError> {
     let isv = IcaSignatureVerifier {};
-    let ia_summary = IdentityAssertion::summarize_manifest_store(&manifest_store, &isv).await;
+    let ia_summary =
+        IdentityAssertion::summarize_manifest_store(&manifest_store, &mut Default::default(), &isv)
+            .await;
     let ia_json = serde_json::to_string(&ia_summary).map_err(serde_error_as_js_error)?;
 
     let report = AssetReport {
