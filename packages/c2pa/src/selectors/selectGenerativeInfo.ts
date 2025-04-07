@@ -58,8 +58,6 @@ export interface GenerativeInfo {
 export function selectGenerativeInfo(
   manifest: Manifest,
 ): GenerativeInfo[] | null {
-  console.log('##### selectGenerativeInfo');
-
   const data = manifest.assertions.data.reduce<GenerativeInfo[]>(
     (acc, assertion: Assertion<any, any>) => {
       // Check for legacy assertion
@@ -85,11 +83,6 @@ export function selectGenerativeInfo(
         const genAiActions: GenerativeInfo[] = actions.reduce<GenerativeInfo[]>(
           (actionAcc, action: ActionV1) => {
             const { digitalSourceType, softwareAgent, parameters } = action;
-            console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-            console.log('action', action);
-            console.log('action', parameters);
-            console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-
             if (
               digitalSourceType &&
               genAiDigitalSourceTypes.includes(digitalSourceType)
