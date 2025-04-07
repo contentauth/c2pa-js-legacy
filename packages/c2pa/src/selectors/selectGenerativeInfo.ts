@@ -58,6 +58,8 @@ export interface GenerativeInfo {
 export function selectGenerativeInfo(
   manifest: Manifest,
 ): GenerativeInfo[] | null {
+  console.log('##### selectGenerativeInfo');
+
   const data = manifest.assertions.data.reduce<GenerativeInfo[]>(
     (acc, assertion: Assertion<any, any>) => {
       // Check for legacy assertion
@@ -79,6 +81,7 @@ export function selectGenerativeInfo(
       // Check for actions v1 assertion
       if (assertion.label === 'c2pa.actions') {
         const { actions } = (assertion as C2paActionsAssertion).data;
+
         const genAiActions: GenerativeInfo[] = actions.reduce<GenerativeInfo[]>(
           (actionAcc, action: ActionV1) => {
             const { digitalSourceType, softwareAgent, parameters } = action;
