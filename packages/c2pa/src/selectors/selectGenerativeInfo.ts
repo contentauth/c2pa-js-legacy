@@ -104,7 +104,10 @@ export function selectGenerativeInfo(
               const paramsDigitalSourceType =
                 parameters['com.adobe.digitalSourceType'];
               const paramsSoftwareAgent = parameters['com.adobe.softwareAgent'];
-              if (genAiDigitalSourceTypes.includes(paramsDigitalSourceType)) {
+              if (
+                genAiDigitalSourceTypes.includes(paramsDigitalSourceType) &&
+                paramsSoftwareAgent
+              ) {
                 actionAcc.push({
                   assertion,
                   action: action,
