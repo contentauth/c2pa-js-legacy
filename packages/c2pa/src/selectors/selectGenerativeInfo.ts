@@ -81,7 +81,7 @@ export function selectGenerativeInfo(
         const { actions } = (assertion as C2paActionsAssertion).data;
         const genAiActions: GenerativeInfo[] = actions.reduce<GenerativeInfo[]>(
           (actionAcc, action: ActionV1) => {
-            const { digitalSourceType, softwareAgent } = action;
+            const { digitalSourceType, softwareAgent, parameters } = action;
             if (
               digitalSourceType &&
               genAiDigitalSourceTypes.includes(digitalSourceType)
@@ -92,6 +92,21 @@ export function selectGenerativeInfo(
                 type: formatGenAiDigitalSourceTypes(digitalSourceType),
                 softwareAgent: { name: softwareAgent },
               } as GenerativeInfo);
+            }
+
+            // for 3rd party models, we need to check the parameters
+            if (parameters) {
+              const paramsDigitalSourceType =
+                parameters['com.adobe.digitalSourceType'];
+              const paramsSoftwareAgent = parameters['com.adobe.softwareAgent'];
+              if (genAiDigitalSourceTypes.includes(paramsDigitalSourceType)) {
+                actionAcc.push({
+                  assertion,
+                  action: action,
+                  type: formatGenAiDigitalSourceTypes(paramsDigitalSourceType),
+                  softwareAgent: { name: paramsSoftwareAgent },
+                } as GenerativeInfo);
+              }
             }
 
             return actionAcc;
