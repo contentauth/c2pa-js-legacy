@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.29.0",
+      "tag": "c2pa_v0.29.0",
+      "date": "Tue, 08 Apr 2025 18:59:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: Lookup ai details in other parameters"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.4",
       "tag": "c2pa_v0.28.4",
       "date": "Fri, 04 Apr 2025 21:29:51 GMT",

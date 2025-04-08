@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Fri, 04 Apr 2025 21:29:51 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Apr 2025 18:59:44 GMT and should not be manually modified.
+
+## 0.29.0
+Tue, 08 Apr 2025 18:59:44 GMT
+
+### Minor changes
+
+- feat: Lookup ai details in other parameters
 
 ## 0.28.4
 Fri, 04 Apr 2025 21:29:51 GMT
