@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "feat: Lookup ai details in other parameters",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
