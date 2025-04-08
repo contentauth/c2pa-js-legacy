@@ -100,8 +100,8 @@ export function selectGenerativeInfo(
               const paramsDigitalSourceType =
                 parameters['com.adobe.digitalSourceType'];
               const paramsSoftwareAgent = parameters['com.adobe.details'];
-
               if (
+                paramsDigitalSourceType &&
                 genAiDigitalSourceTypes.includes(paramsDigitalSourceType) &&
                 paramsSoftwareAgent
               ) {
