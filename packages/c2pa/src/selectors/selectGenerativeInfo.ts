@@ -96,10 +96,11 @@ export function selectGenerativeInfo(
             }
 
             // for 3rd party models, we need to check the parameters
-            if (parameters) {
+            if (action.action === 'c2pa.opened' && parameters) {
               const paramsDigitalSourceType =
                 parameters['com.adobe.digitalSourceType'];
-              const paramsSoftwareAgent = parameters['com.adobe.softwareAgent'];
+              const paramsSoftwareAgent = parameters['com.adobe.details'];
+
               if (
                 genAiDigitalSourceTypes.includes(paramsDigitalSourceType) &&
                 paramsSoftwareAgent

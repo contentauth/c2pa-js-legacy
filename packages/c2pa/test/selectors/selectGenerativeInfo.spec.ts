@@ -140,5 +140,24 @@ describe('selectGenerativeInfo', function () {
         ]);
       }
     });
+
+    it('should find 3rd party gen AI details', async function (this: TestContext) {
+      const result = await this.c2pa.read(
+        './node_modules/@contentauth/testing/fixtures/images/third-party-model.png',
+      );
+      const manifest = result.manifestStore?.activeManifest;
+      expect(manifest).not.toBeNull();
+
+      const genAssertions = selectGenerativeInfo(manifest);
+
+      expect(genAssertions).not.toBeNull();
+      expect(genAssertions[0]).not.toBeNull();
+      expect(genAssertions[0].action.action).toEqual('c2pa.opened');
+      expect(genAssertions[0].type).toEqual('trainedAlgorithmicMedia');
+      expect(genAssertions[0].softwareAgent).not.toBeNull();
+      expect(genAssertions[0].softwareAgent.name).toEqual(
+        'imagen-3.0-generate-002',
+      );
+    });
   });
 });
