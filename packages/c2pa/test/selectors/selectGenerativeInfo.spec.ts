@@ -145,7 +145,7 @@ describe('selectGenerativeInfo', function () {
     it('should look up parameters details in assertion', async function (this: TestContext) {
       const manifest = {
         label: 'urn:uuid:05f3b244-301a-49c4-ae14-c24bec024002',
-        title: 'Generated Image',
+        title: 'An image for tests',
         format: 'image/png',
         vendor: null,
         claimGenerator: 'c2pa-js unit tests',
