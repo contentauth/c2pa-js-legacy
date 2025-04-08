@@ -122,6 +122,7 @@ describe('selectGenerativeInfo', function () {
         './node_modules/@contentauth/testing/fixtures/images/genai-actions-v2.jpg',
       );
       const manifest = result.manifestStore?.activeManifest;
+
       expect(manifest).not.toBeNull();
       if (manifest) {
         const genAssertions = selectGenerativeInfo(manifest);
@@ -138,6 +139,119 @@ describe('selectGenerativeInfo', function () {
             softwareAgent: { name: 'Adobe Firefly' },
           },
         ]);
+      }
+    });
+
+    it('should look up parameters details in assertion', async function (this: TestContext) {
+      const manifest = {
+        label: 'urn:uuid:05f3b244-301a-49c4-ae14-c24bec024002',
+        title: 'Generated Image',
+        format: 'image/png',
+        vendor: null,
+        claimGenerator: 'c2pa-js unit tests',
+        claimGeneratorHints: null,
+        claimGeneratorInfo: [],
+        instanceId: 'xmp:iid:12fe9a47-8ad3-4ad1-b362-2ff987428e03',
+        signatureInfo: {
+          alg: 'Ps256',
+          issuer: 'Unit tests',
+          cert_serial_number: '11111',
+          time: '2025-03-31T13:36:22+00:00',
+        },
+        credentials: [],
+        ingredients: [
+          {
+            title: 'An Image',
+            format: 'image/png',
+            documentId: null,
+            instanceId: 'xmp:iid:52cc660c-8de9-472e-9441-810749fc4514',
+            provenance: null,
+            hash: null,
+            isParent: true,
+            validationStatus: [],
+            metadata: null,
+            manifest: null,
+            thumbnail: {
+              blob: {},
+              contentType: 'image/jpeg',
+            },
+          },
+        ],
+        redactions: [],
+        parent: null,
+        thumbnail: null,
+        assertions: {
+          data: [
+            {
+              label: 'c2pa.actions',
+              data: {
+                actions: [
+                  {
+                    action: 'c2pa.opened',
+                    parameters: {
+                      'com.adobe.details': 'the-other-model-name',
+                      'com.adobe.digitalSourceType':
+                        'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+                      ingredient: {
+                        url: 'self#jumbf=c2pa.assertions/c2pa.ingredient',
+                        hash: [1, 2, 3],
+                      },
+                      'com.adobe.type': 'remoteProvider.3rdParty',
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        verifiedIdentities: [],
+      };
+
+      expect(manifest).not.toBeNull();
+      if (manifest) {
+        const genAssertions = selectGenerativeInfo(manifest);
+        const expectedResult = [
+          {
+            assertion: {
+              label: 'c2pa.actions',
+              data: {
+                actions: [
+                  {
+                    action: 'c2pa.opened',
+                    parameters: {
+                      'com.adobe.details': 'the-other-model-name',
+                      'com.adobe.digitalSourceType':
+                        'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+                      ingredient: {
+                        url: 'self#jumbf=c2pa.assertions/c2pa.ingredient',
+                        hash: [1, 2, 3],
+                      },
+                      'com.adobe.type': 'remoteProvider.3rdParty',
+                    },
+                  },
+                ],
+              },
+            },
+            action: {
+              action: 'c2pa.opened',
+              parameters: {
+                'com.adobe.details': 'the-other-model-name',
+                'com.adobe.digitalSourceType':
+                  'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+                ingredient: {
+                  url: 'self#jumbf=c2pa.assertions/c2pa.ingredient',
+                  hash: [1, 2, 3],
+                },
+                'com.adobe.type': 'remoteProvider.3rdParty',
+              },
+            },
+            type: 'trainedAlgorithmicMedia',
+            softwareAgent: {
+              name: 'the-other-model-name',
+            },
+          },
+        ];
+        expect(genAssertions).toEqual(expectedResult);
       }
     });
   });
