@@ -83,6 +83,7 @@ export function selectGenerativeInfo(
         const genAiActions: GenerativeInfo[] = actions.reduce<GenerativeInfo[]>(
           (actionAcc, action: ActionV1) => {
             const { digitalSourceType, softwareAgent, parameters } = action;
+
             if (
               digitalSourceType &&
               genAiDigitalSourceTypes.includes(digitalSourceType)
@@ -100,6 +101,7 @@ export function selectGenerativeInfo(
               const paramsDigitalSourceType =
                 parameters['com.adobe.digitalSourceType'];
               const paramsSoftwareAgent = parameters['com.adobe.details'];
+
               if (
                 paramsDigitalSourceType &&
                 genAiDigitalSourceTypes.includes(paramsDigitalSourceType) &&
