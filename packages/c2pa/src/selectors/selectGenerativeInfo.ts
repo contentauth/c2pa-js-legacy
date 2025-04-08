@@ -101,9 +101,11 @@ export function selectGenerativeInfo(
               const paramsDigitalSourceType =
                 parameters['com.adobe.digitalSourceType'];
               const paramsSoftwareAgent = parameters['com.adobe.details'];
+              const provider = parameters['com.adobe.type'];
 
               if (
                 paramsDigitalSourceType &&
+                provider === 'remoteProvider.3rdParty' &&
                 genAiDigitalSourceTypes.includes(paramsDigitalSourceType) &&
                 paramsSoftwareAgent
               ) {
