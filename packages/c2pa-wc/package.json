@@ -31,7 +31,7 @@
     "build:verbose": "rushx clean && rollup -c rollup.config.js",
     "test": "wtr",
     "lint": "eslint .",
-    "storybook": "heft start --storybook",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider heft storybook-watch --storybook",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -97,8 +97,8 @@
     "@storybook/builder-vite": "~0.2.2",
     "@storybook/preview-web": "~6.5.10",
     "@storybook/client-api": "~6.5.10",
-    "@rushstack/heft": "~0.47.0",
-    "@rushstack/heft-storybook-plugin": "~0.1.69",
+    "@rushstack/heft": "~0.72.0",
+    "@rushstack/heft-storybook-plugin": "~0.9.5",
     "c2pa-wc-storykit": "workspace:*",
     "prettier": "^2.6.2",
     "@rollup/pluginutils": "~4.2.1",

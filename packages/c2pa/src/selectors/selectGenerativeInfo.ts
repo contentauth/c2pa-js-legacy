@@ -156,7 +156,7 @@ export function selectGenerativeInfo(
     [],
   );
 
-  return data.length ? data : null;
+  return data?.length ? data : null;
 }
 
 /**

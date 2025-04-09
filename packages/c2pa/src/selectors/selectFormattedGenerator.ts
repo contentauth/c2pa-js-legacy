@@ -17,7 +17,17 @@ import type { Manifest } from '../manifest';
  */
 export function parseGenerator(value: string) {
   // We are stripping parenthesis so that any version matches in there don't influence the test
-  const withoutParens = value.replace(/\([^)]*\)/g, '');
+  let withoutParens = '';
+  let depth = 0;
+  for (let i = 0; i < value.length; i++) {
+    if (value[i] === '(') {
+      depth++;
+    } else if (value[i] === ')') {
+      depth--;
+    } else if (depth === 0) {
+      withoutParens += value[i];
+    }
+  }
 
   // Old-style (XMP Agent) string (match space + version)
   if (/\s+\d+\.\d(\.\d)*\s+/.test(withoutParens)) {
@@ -40,5 +50,13 @@ export function parseGenerator(value: string) {
 }
 
 export function selectFormattedGenerator(manifest: Manifest) {
-  return parseGenerator(manifest.claimGenerator);
+  const claimGeneratorInfoName = manifest.claimGeneratorInfo.find(
+    (val) => val?.name,
+  )?.name;
+  return (
+    claimGeneratorInfoName ??
+    (manifest.claimGenerator !== null
+      ? parseGenerator(manifest.claimGenerator)
+      : null)
+  );
 }

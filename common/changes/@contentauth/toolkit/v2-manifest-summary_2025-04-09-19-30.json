@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Improve CAWG signature validation",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}

@@ -52,7 +52,7 @@ export interface Manifest {
   /**
    * User Agent string identifying the software/hardware/system that created this manifest
    */
-  claimGenerator: string;
+  claimGenerator: string | null;
   claimGeneratorHints: Record<string, unknown> | null;
   claimGeneratorInfo: ResolvedClaimGeneratorInfo[];
 
@@ -141,7 +141,7 @@ export function createManifest(
     title: manifestData.title,
     format: manifestData.format,
     vendor: manifestData.vendor ?? null,
-    claimGenerator: manifestData.claim_generator,
+    claimGenerator: manifestData.claim_generator ?? null,
     claimGeneratorHints: manifestData.claim_generator_hints ?? null,
     claimGeneratorInfo: parseClaimGeneratorInfo(
       manifestData.resources,

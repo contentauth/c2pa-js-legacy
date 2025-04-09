@@ -7,7 +7,10 @@
 
 // See https://github.com/rustwasm/wasm-bindgen/issues/2774
 #![allow(clippy::unused_unit)]
-use cawg_identity::{claim_aggregation::IcaSignatureVerifier, IdentityAssertion};
+use cawg_identity::{
+    claim_aggregation::IcaSignatureVerifier, x509::X509SignatureVerifier, BuiltInSignatureVerifier,
+    IdentityAssertion,
+};
 use log::Level;
 use serde::Serialize;
 use serde_wasm_bindgen::Serializer;
@@ -134,10 +137,16 @@ pub async fn get_manifest_store_from_manifest_and_asset(
 async fn get_serialized_report_with_cawg_from_manifest_store(
     manifest_store: c2pa::ManifestStore,
 ) -> Result<JsValue, JsSysError> {
-    let isv = IcaSignatureVerifier {};
-    let ia_summary =
-        IdentityAssertion::summarize_manifest_store(&manifest_store, &mut Default::default(), &isv)
-            .await;
+    let verifier = BuiltInSignatureVerifier {
+        ica_verifier: IcaSignatureVerifier {},
+        x509_verifier: X509SignatureVerifier {},
+    };
+    let ia_summary = IdentityAssertion::summarize_manifest_store(
+        &manifest_store,
+        &mut Default::default(),
+        &verifier,
+    )
+    .await;
     let ia_json = serde_json::to_string(&ia_summary).map_err(serde_error_as_js_error)?;
 
     let report = AssetReport {

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Add manifest-summary-v2 and getManifestSummaryData",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
