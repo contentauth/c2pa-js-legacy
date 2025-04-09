@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Update types, add isHandmade, update other selectors",
+      "type": "minor"
+    }
+  ],
+  "packageName": "c2pa"
+}
