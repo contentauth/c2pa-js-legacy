@@ -2,6 +2,18 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.13.3",
+      "tag": "@contentauth/toolkit_v0.13.3",
+      "date": "Wed, 09 Apr 2025 19:43:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve CAWG signature validation"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.2",
       "tag": "@contentauth/toolkit_v0.13.2",
       "date": "Fri, 04 Apr 2025 21:29:51 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Fri, 04 Apr 2025 21:29:51 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Apr 2025 19:43:58 GMT and should not be manually modified.
+
+## 0.13.3
+Wed, 09 Apr 2025 19:43:58 GMT
+
+### Patches
+
+- Improve CAWG signature validation
 
 ## 0.13.2
 Fri, 04 Apr 2025 21:29:51 GMT

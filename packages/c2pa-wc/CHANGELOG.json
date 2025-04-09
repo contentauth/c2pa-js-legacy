@@ -2,6 +2,23 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.14.0",
+      "tag": "c2pa-wc_v0.14.0",
+      "date": "Wed, 09 Apr 2025 19:43:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add manifest-summary-v2 and getManifestSummaryData"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.27",
       "tag": "c2pa-wc_v0.13.27",
       "date": "Tue, 08 Apr 2025 18:59:44 GMT",

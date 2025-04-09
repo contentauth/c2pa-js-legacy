@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Tue, 08 Apr 2025 18:59:44 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Apr 2025 19:43:58 GMT and should not be manually modified.
+
+## 0.30.0
+Wed, 09 Apr 2025 19:43:58 GMT
+
+### Minor changes
+
+- Update types, add isHandmade, update other selectors
 
 ## 0.29.0
 Tue, 08 Apr 2025 18:59:44 GMT
