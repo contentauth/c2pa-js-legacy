@@ -72,7 +72,7 @@ export class Icon extends LitElement {
       icon: html`<cai-icon-truepic></cai-icon-truepic>`,
     },
     {
-      pattern: /twitter\.com/i,
+      pattern: /(?:twitter|x)\.com/i,
       icon: html`<cai-icon-twitter></cai-icon-twitter>`,
     },
     {
@@ -81,7 +81,7 @@ export class Icon extends LitElement {
     },
     {
       pattern: /solana/i,
-      icon: html`<cai-icon-solana></cai-icon-solana`,
+      icon: html`<cai-icon-solana></cai-icon-solana>`,
     },
     {
       pattern: /ethereum/i,

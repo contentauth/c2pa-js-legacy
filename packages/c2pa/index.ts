@@ -62,5 +62,6 @@ export {
 } from './src/selectors/selectGenerativeInfo';
 export { selectProducer } from './src/selectors/selectProducer';
 export { selectSocialAccounts } from './src/selectors/selectSocialAccounts';
+export { isHandmade } from './src/selectors/isHandmade';
 export { C2paSourceType, Source, SourceMetadata } from './src/source';
 export { BlobUrlData, DisposableBlobUrl, Thumbnail } from './src/thumbnail';

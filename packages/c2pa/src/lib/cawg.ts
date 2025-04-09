@@ -20,7 +20,7 @@ export interface NamedActor {
   type: string[];
   issuer: string;
   validFrom: Date;
-  verifiedIdentities: VerifiedIdentity[];
+  verifiedIdentities?: VerifiedIdentity[];
   credentialSchema: CredentialSchema[];
 }
 
@@ -29,13 +29,24 @@ export interface CredentialSchema {
   type: string;
 }
 
-export interface VerifiedIdentity {
-  type: string;
-  username: string;
-  uri: string;
+interface VerifiedIdentityBase {
   verifiedAt: string;
   provider: Provider;
 }
+
+interface VerifiedIdentitySocial extends VerifiedIdentityBase {
+  type: 'cawg.social_media';
+  username: string;
+  uri: string;
+}
+
+interface VerifiedIdentityName extends VerifiedIdentityBase {
+  type: 'cawg.document_verification';
+  name: string;
+  profileUrl?: string;
+}
+
+export type VerifiedIdentity = VerifiedIdentitySocial | VerifiedIdentityName;
 
 export interface Provider {
   id: string;
@@ -50,6 +61,6 @@ export function getVerifiedIdentitiesFromCawgManifestReports(
   cawgManifestReports: CawgManifestReport[],
 ): VerifiedIdentity[] {
   return cawgManifestReports
-    .map((report) => report.named_actor.verifiedIdentities)
+    .map((report) => report.named_actor?.verifiedIdentities ?? [])
     .flat();
 }

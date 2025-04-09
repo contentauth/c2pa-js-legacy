@@ -278,7 +278,6 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
 export function generateVerifyUrl(assetUrl: string) {
   const url = new URL('https://verify.contentauthenticity.org/inspect');
   url.searchParams.set('source', assetUrl);
-  console.log('source', assetUrl);
   return url.toString();
 }
 

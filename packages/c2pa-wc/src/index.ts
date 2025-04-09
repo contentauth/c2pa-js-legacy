@@ -18,6 +18,8 @@ export * from './components/ProducedWith';
 export * from './components/SocialMedia';
 export * from './components/Thumbnail';
 export * from './components/Tooltip';
+export * from './components/ManifestSummaryV2';
 export * as utils from './utils';
 
 export { registerLocale } from './i18n';
+export { getManifestSummaryData as getManifestSummaryStore } from './getManifestSummaryData';

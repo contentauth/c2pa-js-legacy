@@ -115,6 +115,8 @@ export type C2paActionsAssertionV2 = Assertion<
   'c2pa.actions.v2',
   {
     actions: ActionV2[];
+    allActionsIncluded?: boolean;
+    templates: Template[];
   }
 >;
 
@@ -166,6 +168,12 @@ export interface ActionV2 {
   reason?: string;
   parameters?: ParametersV2;
 }
+
+export interface Template {
+  digitalSourceType: string;
+  action: string;
+}
+
 interface ParametersV2 {
   ingredient?: HashedUri;
   description?: string;
