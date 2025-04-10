@@ -69,7 +69,7 @@ export function getManifestSummaryData(
 function getSocialAccounts(manifest: Manifest): SocialAccount[] {
   const cwSocialAccounts: SocialAccount[] =
     selectSocialAccounts(manifest)?.map((socialAccount) => ({
-      provider: socialAccount['@type'],
+      provider: socialAccount['@id'] ?? '',
       url: socialAccount['@id'] ?? null,
       username: socialAccount.name,
       verified: false,

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa-wc",
+      "comment": "Fix broken social display and handmade detection",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa-wc"
+}
