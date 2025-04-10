@@ -11,9 +11,8 @@ import { Manifest } from '../manifest';
 import { ManifestStore } from '../manifestStore';
 
 export function isHandmade(manifestStore: ManifestStore): boolean {
-  const manifests = manifestStore.manifests;
-
-  return Object.values(manifests).every(isHandmadeManifest);
+  const manifests = Object.values(manifestStore.manifests);
+  return manifests.length > 0 && manifests.every(isHandmadeManifest);
 }
 
 function isHandmadeManifest(manifest: Manifest): boolean {
@@ -28,16 +27,18 @@ function isHandmadeManifest(manifest: Manifest): boolean {
     return false;
   }
 
-  const actionsHandmade = actionsV2.every(({ data }) => {
-    const handmadeTemplate = !!data.templates.find(
-      (template) =>
-        template.action === '*' &&
-        template.digitalSourceType ===
-          'http://cv.iptc.org/newscodes/digitalsourcetype/humanEdits',
-    );
+  const actionsHandmade =
+    actionsV2.length > 0 &&
+    actionsV2.every(({ data }) => {
+      const handmadeTemplate = !!data.templates.find(
+        (template) =>
+          template.action === '*' &&
+          template.digitalSourceType ===
+            'http://cv.iptc.org/newscodes/digitalsourcetype/humanEdits',
+      );
 
-    return data.allActionsIncluded && handmadeTemplate;
-  });
+      return data.allActionsIncluded && handmadeTemplate;
+    });
 
   return actionsHandmade;
 }

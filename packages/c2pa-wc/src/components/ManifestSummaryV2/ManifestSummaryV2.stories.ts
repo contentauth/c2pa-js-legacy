@@ -42,6 +42,7 @@ export default {
 
 const Base: Story<ArgTypes> = ({ manifestStore, inspectUrl }: ArgTypes) => {
   return html`<cai-manifest-summary-v2
+    style="width: 300px;"
     .manifestStore=${manifestStore}
     .inspectUrl=${inspectUrl}
   ></cai-manifest-summary-v2>`;
