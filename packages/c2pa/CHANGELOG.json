@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.1",
+      "tag": "c2pa_v0.30.1",
+      "date": "Thu, 10 Apr 2025 22:02:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix handmade detection"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.0",
       "tag": "c2pa_v0.30.0",
       "date": "Wed, 09 Apr 2025 19:43:58 GMT",

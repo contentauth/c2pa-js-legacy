@@ -2,6 +2,23 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.14.1",
+      "tag": "c2pa-wc_v0.14.1",
+      "date": "Thu, 10 Apr 2025 22:02:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix broken social display and handmade detection"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.14.0",
       "tag": "c2pa-wc_v0.14.0",
       "date": "Wed, 09 Apr 2025 19:43:58 GMT",
