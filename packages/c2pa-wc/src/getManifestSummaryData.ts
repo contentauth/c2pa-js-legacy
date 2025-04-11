@@ -105,7 +105,7 @@ function getNameAndVerifier(
       name: verifiedName.name,
       nameVerifier: {
         name: verifiedName.provider.name,
-        profileUrl: verifiedName.profileUrl ?? null,
+        profileUrl: verifiedName.uri ?? null,
       },
     };
   }

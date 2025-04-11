@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Update CAWG types",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
