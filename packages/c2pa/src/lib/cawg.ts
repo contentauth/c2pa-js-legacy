@@ -32,18 +32,17 @@ export interface CredentialSchema {
 interface VerifiedIdentityBase {
   verifiedAt: string;
   provider: Provider;
+  uri: string;
 }
 
 interface VerifiedIdentitySocial extends VerifiedIdentityBase {
   type: 'cawg.social_media';
   username: string;
-  uri: string;
 }
 
 interface VerifiedIdentityName extends VerifiedIdentityBase {
   type: 'cawg.document_verification';
   name: string;
-  profileUrl?: string;
 }
 
 export type VerifiedIdentity = VerifiedIdentitySocial | VerifiedIdentityName;
