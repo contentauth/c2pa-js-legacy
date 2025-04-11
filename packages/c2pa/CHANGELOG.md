@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Thu, 10 Apr 2025 22:02:53 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Apr 2025 17:26:57 GMT and should not be manually modified.
+
+## 0.30.2
+Fri, 11 Apr 2025 17:26:57 GMT
+
+### Patches
+
+- Update CAWG types
 
 ## 0.30.1
 Thu, 10 Apr 2025 22:02:53 GMT

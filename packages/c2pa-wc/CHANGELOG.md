@@ -1,6 +1,13 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Thu, 10 Apr 2025 22:02:53 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Apr 2025 17:26:57 GMT and should not be manually modified.
+
+## 0.14.2
+Fri, 11 Apr 2025 17:26:57 GMT
+
+### Patches
+
+- Display profile URLs correctly
 
 ## 0.14.1
 Thu, 10 Apr 2025 22:02:53 GMT
