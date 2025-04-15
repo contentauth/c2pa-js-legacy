@@ -319,9 +319,9 @@ checksum = "d71b6127be86fdcfddb610f7182ac57211d4b18a3e9c82eb2d17662f2227ad6a"
 
 [[package]]
 name = "c2pa"
-version = "0.49.1"
+version = "0.49.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41d4d54a1583f700949d2dfcddf145e1f97750f349d2858860d7f9dec504183a"
+checksum = "3bf481a584dc4582415d934b0ae59aa2eae18f54d2b28c1799dc5f26f4fb9f77"
 dependencies = [
  "asn1-rs",
  "async-generic",
@@ -391,9 +391,9 @@ dependencies = [
 
 [[package]]
 name = "c2pa-crypto"
-version = "0.8.1"
+version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d17549039a111d0154ff4f03207743eebc47841a7f413f60dd8145559860d238"
+checksum = "34c09afad0a3e26b05a53178ff720f514febca752da0f1fa9ab3ec25d330da05"
 dependencies = [
  "asn1-rs",
  "async-generic",
@@ -469,9 +469,9 @@ dependencies = [
 
 [[package]]
 name = "c2pa-status-tracker"
-version = "0.6.0"
+version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "61461a3009162a3b4a3e707a7fa6f286f19e665f0b8de24725653b4f39ad3d17"
+checksum = "65523701dd13e10b1903334a882c7d81c2e3ed4989fec80d2b9a08f732c707a7"
 
 [[package]]
 name = "cawg-identity"
