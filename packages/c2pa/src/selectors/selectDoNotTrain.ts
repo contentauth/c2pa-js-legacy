@@ -59,5 +59,5 @@ export function selectDoNotTrain(manifest: Manifest): boolean {
     [],
   );
 
-  return disallowedActions.length === 0;
+  return disallowedActions.length !== 0;
 }
