@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.6",
+      "tag": "c2pa_v0.30.6",
+      "date": "Tue, 22 Apr 2025 22:10:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Correct DNT selector logic"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.5",
       "tag": "c2pa_v0.30.5",
       "date": "Tue, 22 Apr 2025 21:29:46 GMT",
