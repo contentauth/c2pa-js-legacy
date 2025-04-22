@@ -11,6 +11,7 @@ import {
   isHandmade,
   Manifest,
   ManifestStore,
+  selectDoNotTrain,
   selectFormattedGenerator,
   selectGenerativeInfo,
   selectProducer,
@@ -24,6 +25,7 @@ export interface ManifestSummaryStore {
   socialAccounts: SocialAccount[];
   contentSummaryTag: ContentSummaryTag | null;
   unrecordedChanges: boolean;
+  doNotTrain: boolean;
   error: boolean;
 }
 
@@ -62,6 +64,7 @@ export function getManifestSummaryData(
     socialAccounts: getSocialAccounts(activeManifest),
     contentSummaryTag,
     unrecordedChanges,
+    doNotTrain: selectDoNotTrain(activeManifest),
     error,
   };
 }

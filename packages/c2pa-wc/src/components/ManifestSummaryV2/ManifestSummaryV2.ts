@@ -13,6 +13,7 @@ import { hasChanged } from '../../utils';
 import '../../../assets/svg/monochrome/verified.svg';
 import '../../../assets/svg/monochrome/inspect.svg';
 import '../../../assets/svg/monochrome/alert-notice.svg';
+import '../../../assets/svg/monochrome/dnt.svg';
 
 import '../Icon';
 import {
@@ -190,6 +191,21 @@ export class ManifestSummaryV2 extends Localizable(LitElement) {
       .inspect-link:hover {
         background-color: rgba(0, 0, 0, 0.15);
       }
+
+      .dnt-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        color: #222222;
+      }
+
+      .dnt-icon {
+        flex-shrink: 0;
+        width: 20px;
+      }
     `,
   ];
 
@@ -239,6 +255,7 @@ export class ManifestSummaryV2 extends Localizable(LitElement) {
       : null;
     const socialAccounts = this.manifestStore.socialAccounts;
     const unrecorded = this.manifestStore.unrecordedChanges;
+    const doNotTrain = this.manifestStore.doNotTrain;
     const error = this.manifestStore.error;
 
     const inspectUrl = this.inspectUrl;
@@ -353,6 +370,15 @@ export class ManifestSummaryV2 extends Localizable(LitElement) {
                           >
                         `,
                       )}
+                    </div>
+                  `
+                : nothing}
+              ${doNotTrain
+                ? html`
+                    <div class="divider"></div>
+                    <div class="dnt-container">
+                      <cai-icon-dnt class="dnt-icon"></cai-icon-dnt>
+                      ${this.strings['manifest-summary-v2.dnt']}
                     </div>
                   `
                 : nothing}
