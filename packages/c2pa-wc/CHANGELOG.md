@@ -1,6 +1,13 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Wed, 16 Apr 2025 17:11:17 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Apr 2025 21:29:46 GMT and should not be manually modified.
+
+## 0.14.5
+Tue, 22 Apr 2025 21:29:46 GMT
+
+### Patches
+
+- Add do not train section to cai-manifest-summary-v2
 
 ## 0.14.4
 Wed, 16 Apr 2025 17:11:17 GMT

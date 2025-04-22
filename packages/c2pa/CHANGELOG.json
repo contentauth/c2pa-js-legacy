@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.5",
+      "tag": "c2pa_v0.30.5",
+      "date": "Tue, 22 Apr 2025 21:29:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add selectDoNotTrain"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.4",
       "tag": "c2pa_v0.30.4",
       "date": "Wed, 16 Apr 2025 17:11:17 GMT",

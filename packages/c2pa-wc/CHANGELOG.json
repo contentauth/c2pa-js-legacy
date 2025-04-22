@@ -2,6 +2,23 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.14.5",
+      "tag": "c2pa-wc_v0.14.5",
+      "date": "Tue, 22 Apr 2025 21:29:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add do not train section to cai-manifest-summary-v2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.14.4",
       "tag": "c2pa-wc_v0.14.4",
       "date": "Wed, 16 Apr 2025 17:11:17 GMT",
