@@ -18,5 +18,16 @@
   "social-media.header": "社交媒體",
   "social-media.helpText": "連接至此內容製作者的社交媒體帳戶",
   "web3.header": "Web3",
-  "web3.copied": "已拷貝！"
+  "web3.copied": "已拷貝！",
+  "manifest-summary-v2.recordedBy": "Recorded by",
+  "manifest-summary-v2.unrecordedChanges": "This file has unrecorded changes.",
+  "manifest-summary-v2.error": "There’s a problem with these Content Credentials and they can’t be viewed.",
+  "manifest-summary-v2.name": "Name",
+  "manifest-summary-v2.verifiedBy": "Verified by",
+  "manifest-summary-v2.inspect": "檢查",
+  "manifest-summary-v2.ai": "AI Info",
+  "manifest-summary-v2.no-ai": "Created without generative AI",
+  "manifest-summary-v2.camera-captured": "Camera-captured",
+  "manifest-summary-v2.more-info": "More info available",
+  "manifest-summary-v2.dnt": "I request that generative AI models not train on or use my content."
 }
