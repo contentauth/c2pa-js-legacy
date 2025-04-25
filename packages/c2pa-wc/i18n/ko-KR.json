@@ -29,5 +29,5 @@
   "manifest-summary-v2.no-ai": "Created without generative AI",
   "manifest-summary-v2.camera-captured": "Camera-captured",
   "manifest-summary-v2.more-info": "More info available",
-  "manifest-summary-v2.dnt": "I request that generative AI models not train on or use my content."
+  "manifest-summary-v2.dnt": "생성형 AI 모델이 내 콘텐츠를 사용하거나 학습하지 않도록 할 것을 요청합니다."
 }
