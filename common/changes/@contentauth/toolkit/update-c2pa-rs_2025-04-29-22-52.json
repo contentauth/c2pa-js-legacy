@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Pass validation results through",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}
