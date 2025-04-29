@@ -26,7 +26,24 @@ export interface AssetReport {
 export interface ManifestStore {
   active_manifest: string;
   manifests: Record<string, Manifest>;
-  validation_status?: ValidationStatus[];
+  validation_status: ValidationStatus[];
+  validation_results: ValidationResults;
+}
+
+export interface ValidationResults {
+  activeManifest: ValidationResultData;
+  ingredientDeltas: IngredientDelta[];
+}
+
+export interface IngredientDelta {
+  ingredientAssertionUri: string;
+  validationDeltas: ValidationResultData;
+}
+
+export interface ValidationResultData {
+  failure: ValidationStatus[];
+  informational: ValidationStatus[];
+  success: ValidationStatus[];
 }
 
 export interface ValidationStatus {
