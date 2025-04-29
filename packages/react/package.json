@@ -1,6 +1,6 @@
 {
   "name": "@contentauth/react",
-  "version": "0.2.85",
+  "version": "0.2.86",
   "description": "React components and hooks for the C2PA JavaScript SDK",
   "main": "dist/index.js",
   "type": "module",
@@ -35,8 +35,8 @@
     "classnames": "~2.3.1"
   },
   "peerDependencies": {
-    "c2pa": "^0.30.7",
-    "c2pa-wc": "^0.14.7",
+    "c2pa": "^0.30.8",
+    "c2pa-wc": "^0.14.8",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },

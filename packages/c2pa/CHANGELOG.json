@@ -2,6 +2,23 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.8",
+      "tag": "c2pa_v0.30.8",
+      "date": "Tue, 29 Apr 2025 23:13:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pass validation results through"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.7`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.7",
       "tag": "c2pa_v0.30.7",
       "date": "Thu, 24 Apr 2025 22:18:28 GMT",
