@@ -133,7 +133,7 @@ export type C2paActionsAssertionV2 = Assertion<
   {
     actions: ActionV2[];
     allActionsIncluded?: boolean;
-    templates: Template[];
+    templates?: Template[];
   }
 >;
 

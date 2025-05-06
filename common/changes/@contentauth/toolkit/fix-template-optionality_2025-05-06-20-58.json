@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Make templates optional in actions v2",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}
