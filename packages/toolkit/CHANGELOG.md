@@ -1,6 +1,13 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Tue, 29 Apr 2025 23:13:41 GMT and should not be manually modified.
+This log was last generated on Tue, 06 May 2025 21:10:16 GMT and should not be manually modified.
+
+## 0.13.8
+Tue, 06 May 2025 21:10:16 GMT
+
+### Patches
+
+- Make templates optional in actions v2
 
 ## 0.13.7
 Tue, 29 Apr 2025 23:13:41 GMT

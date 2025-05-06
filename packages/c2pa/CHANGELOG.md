@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Tue, 29 Apr 2025 23:13:41 GMT and should not be manually modified.
+This log was last generated on Tue, 06 May 2025 21:10:16 GMT and should not be manually modified.
+
+## 0.30.9
+Tue, 06 May 2025 21:10:16 GMT
+
+### Patches
+
+- Handle non-existent templates in actions v2
 
 ## 0.30.8
 Tue, 29 Apr 2025 23:13:41 GMT

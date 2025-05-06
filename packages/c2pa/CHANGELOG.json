@@ -2,6 +2,23 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.9",
+      "tag": "c2pa_v0.30.9",
+      "date": "Tue, 06 May 2025 21:10:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Handle non-existent templates in actions v2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.8`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.8",
       "tag": "c2pa_v0.30.8",
       "date": "Tue, 29 Apr 2025 23:13:41 GMT",

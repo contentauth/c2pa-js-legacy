@@ -2,6 +2,18 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.13.8",
+      "tag": "@contentauth/toolkit_v0.13.8",
+      "date": "Tue, 06 May 2025 21:10:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make templates optional in actions v2"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.7",
       "tag": "@contentauth/toolkit_v0.13.7",
       "date": "Tue, 29 Apr 2025 23:13:41 GMT",
