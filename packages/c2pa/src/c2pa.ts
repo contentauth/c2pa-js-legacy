@@ -201,7 +201,9 @@ export async function createC2pa(config: C2paConfig): Promise<C2pa> {
 
   const pool = await createPoolWrapper({
     scriptSrc: config.workerSrc,
-    maxWorkers: navigator.hardwareConcurrency || 4,
+    maxWorkers:
+      config.poolOptions?.maxWorkers || navigator.hardwareConcurrency || 4,
+    type: config.poolOptions?.type,
   });
 
   const downloader = new Downloader(pool, config.downloaderOptions);

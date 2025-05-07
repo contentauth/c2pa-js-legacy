@@ -13,6 +13,7 @@ import { createWorkerManager, WorkerManager } from './workerManager';
 export interface WorkerPoolConfig {
   scriptSrc: string;
   maxWorkers: number;
+  type?: WorkerType;
 }
 
 interface WorkerPool {
@@ -40,7 +41,10 @@ export function createWorkerPool(config: WorkerPoolConfig): WorkerPool {
       if (!worker.isWorking()) return worker;
     }
     if (workers.length < config.maxWorkers) {
-      const newWorker = createWorkerManager(config.scriptSrc);
+      const options: WorkerOptions = {
+        type: config.type,
+      };
+      const newWorker = createWorkerManager(config.scriptSrc, options);
       workers.push(newWorker);
       return newWorker;
     }
