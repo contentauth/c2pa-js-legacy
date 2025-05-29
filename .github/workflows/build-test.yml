@@ -5,35 +5,43 @@ on:
       - main
   pull_request:
     types: [opened, synchronize]
+
 jobs:
   build-test:
     name: 'Build and test'
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.84.0
           targets: wasm32-unknown-unknown
-      - uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.MACHINEUSER_PRIVATE_KEY }}
+
+      # Removed ssh-agent step that was failing
+
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
+
       - name: Install Rush
         run: npm install -g @microsoft/rush
+
       - name: Install wasm-pack
         run: |
           rustup target add wasm32-unknown-unknown
           curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
       - name: Install project dependencies
         run: rush install
+
       - name: Build packages
         run: rush build:release --only tag:production --only tag:tooling
+
       - name: Lint packages
         run: rush lint
+
       - name: Run integration tests
         env:
           BROWSERSTACK_USER: ${{ secrets.BROWSERSTACK_USER }}
