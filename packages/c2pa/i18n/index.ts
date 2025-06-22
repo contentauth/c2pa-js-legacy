@@ -1,3 +1,4 @@
+export { default as ar_SA } from './ar-SA.json';
 export { default as cs_CZ } from './cs-CZ.json';
 export { default as da_DK } from './da-DK.json';
 export { default as de_DE } from './de-DE.json';
