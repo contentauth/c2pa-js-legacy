@@ -22,6 +22,9 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body-includes: CHANGESET_MESSAGE
+      - name: Test
+        id: Test
+        run: rush change --verify
       - name: Check changeset status
         id: verify
         run: rush change --verify | grep 'Found change file' &> /dev/null
