@@ -18,5 +18,16 @@
   "social-media.header": "Sosyal medya",
   "social-media.helpText": "Bu içeriğin üreticisine bağlı sosyal medya hesapları",
   "web3.header": "Web3",
-  "web3.copied": "Kopyalandı!"
+  "web3.copied": "Kopyalandı!",
+  "manifest-summary-v2.recordedBy": "Recorded by",
+  "manifest-summary-v2.unrecordedChanges": "This file has unrecorded changes.",
+  "manifest-summary-v2.error": "There’s a problem with these Content Credentials and they can’t be viewed.",
+  "manifest-summary-v2.name": "Name",
+  "manifest-summary-v2.verifiedBy": "Verified by",
+  "manifest-summary-v2.inspect": "İncele",
+  "manifest-summary-v2.ai": "AI Info",
+  "manifest-summary-v2.no-ai": "Created without generative AI",
+  "manifest-summary-v2.camera-captured": "Camera-captured",
+  "manifest-summary-v2.more-info": "More info available",
+  "manifest-summary-v2.dnt": "Üretken yapay zeka modellerinin içeriğimle eğitilmemesini ve içeriğimi kullanmamasını istiyorum."
 }

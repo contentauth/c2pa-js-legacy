@@ -18,5 +18,16 @@
   "social-media.header": "Соціальні мережі",
   "social-media.helpText": "Облікові записи в соціальних мережах, підключені до виробника цього вмісту",
   "web3.header": "Web3",
-  "web3.copied": "Скопійовано!"
+  "web3.copied": "Скопійовано!",
+  "manifest-summary-v2.recordedBy": "Recorded by",
+  "manifest-summary-v2.unrecordedChanges": "This file has unrecorded changes.",
+  "manifest-summary-v2.error": "There’s a problem with these Content Credentials and they can’t be viewed.",
+  "manifest-summary-v2.name": "Name",
+  "manifest-summary-v2.verifiedBy": "Verified by",
+  "manifest-summary-v2.inspect": "Оглянути",
+  "manifest-summary-v2.ai": "AI Info",
+  "manifest-summary-v2.no-ai": "Created without generative AI",
+  "manifest-summary-v2.camera-captured": "Camera-captured",
+  "manifest-summary-v2.more-info": "More info available",
+  "manifest-summary-v2.dnt": "Я прошу, щоб моделі генеративного ШІ не навчалися на моєму вмісті та не використовували його."
 }

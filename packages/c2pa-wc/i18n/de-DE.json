@@ -18,5 +18,16 @@
   "social-media.header": "Social Media",
   "social-media.helpText": "Mit dem Ersteller dieses Inhalts verknüpfte Social-Media-Konten",
   "web3.header": "Web3",
-  "web3.copied": "Kopiert!"
+  "web3.copied": "Kopiert!",
+  "manifest-summary-v2.recordedBy": "Recorded by",
+  "manifest-summary-v2.unrecordedChanges": "This file has unrecorded changes.",
+  "manifest-summary-v2.error": "There’s a problem with these Content Credentials and they can’t be viewed.",
+  "manifest-summary-v2.name": "Name",
+  "manifest-summary-v2.verifiedBy": "Verified by",
+  "manifest-summary-v2.inspect": "Prüfen",
+  "manifest-summary-v2.ai": "AI Info",
+  "manifest-summary-v2.no-ai": "Created without generative AI",
+  "manifest-summary-v2.camera-captured": "Camera-captured",
+  "manifest-summary-v2.more-info": "More info available",
+  "manifest-summary-v2.dnt": "Modelle der generativen KI dürfen meine Inhalte nicht zu Trainings- oder anderen Zwecken verwenden."
 }

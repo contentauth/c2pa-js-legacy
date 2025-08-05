@@ -18,5 +18,16 @@
   "social-media.header": "Sociale medier",
   "social-media.helpText": "Konti på sociale medier, der er tilknyttet producenten af dette indhold",
   "web3.header": "Web3",
-  "web3.copied": "Kopieret!"
+  "web3.copied": "Kopieret!",
+  "manifest-summary-v2.recordedBy": "Recorded by",
+  "manifest-summary-v2.unrecordedChanges": "This file has unrecorded changes.",
+  "manifest-summary-v2.error": "There’s a problem with these Content Credentials and they can’t be viewed.",
+  "manifest-summary-v2.name": "Name",
+  "manifest-summary-v2.verifiedBy": "Verified by",
+  "manifest-summary-v2.inspect": "Inspicer",
+  "manifest-summary-v2.ai": "AI Info",
+  "manifest-summary-v2.no-ai": "Created without generative AI",
+  "manifest-summary-v2.camera-captured": "Camera-captured",
+  "manifest-summary-v2.more-info": "More info available",
+  "manifest-summary-v2.dnt": "Jeg ønsker ikke, at generativ AI-modeller træner ved brug af mit indhold eller bruger dit indhold."
 }
