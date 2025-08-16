@@ -2,6 +2,18 @@
   "name": "@contentauth/detector",
   "entries": [
     {
+      "version": "0.3.6",
+      "tag": "@contentauth/detector_v0.3.6",
+      "date": "Sat, 16 Aug 2025 05:24:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update c2pa-rs"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.5",
       "tag": "@contentauth/detector_v0.3.5",
       "date": "Wed, 22 Mar 2023 18:52:56 GMT",

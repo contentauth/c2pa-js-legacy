@@ -2,6 +2,23 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.14.10",
+      "tag": "c2pa-wc_v0.14.10",
+      "date": "Sat, 16 Aug 2025 05:24:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Secure social links"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.10`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.14.9",
       "tag": "c2pa-wc_v0.14.9",
       "date": "Tue, 06 May 2025 21:10:16 GMT",
