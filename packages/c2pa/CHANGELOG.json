@@ -2,6 +2,26 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.10",
+      "tag": "c2pa_v0.30.10",
+      "date": "Sat, 16 Aug 2025 03:24:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "User anchor and cert common name support"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/detector\" to `0.3.6`"
+          },
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.9`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.9",
       "tag": "c2pa_v0.30.9",
       "date": "Tue, 06 May 2025 21:10:16 GMT",
