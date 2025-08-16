@@ -1,6 +1,13 @@
 # Change Log - @contentauth/detector
 
-This log was last generated on Wed, 22 Mar 2023 18:52:56 GMT and should not be manually modified.
+This log was last generated on Sat, 16 Aug 2025 15:22:35 GMT and should not be manually modified.
+
+## 0.3.6
+Sat, 16 Aug 2025 15:22:35 GMT
+
+### Patches
+
+- Update c2pa-rs
 
 ## 0.3.5
 Wed, 22 Mar 2023 18:52:56 GMT
