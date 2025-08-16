@@ -83,6 +83,7 @@ export interface SignatureInfo {
   issuer?: string;
   time?: string;
   cert_serial_number?: string;
+  common_name?: string;
 }
 
 export interface ClaimGeneratorInfo {
