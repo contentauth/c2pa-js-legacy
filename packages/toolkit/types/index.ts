@@ -77,6 +77,7 @@ export interface Ingredient extends ResourceParent {
   relationship?: string;
   validation_status?: ValidationStatus[];
   metadata?: Metadata;
+  validation_results?: ValidationResults;
 }
 
 export interface SignatureInfo {

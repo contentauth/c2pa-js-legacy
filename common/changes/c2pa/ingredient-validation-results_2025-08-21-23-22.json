@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "c2pa",
+      "comment": "Make ingredient validation_results available",
+      "type": "patch"
+    }
+  ],
+  "packageName": "c2pa"
+}
