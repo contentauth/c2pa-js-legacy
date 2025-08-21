@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Sat, 16 Aug 2025 15:28:06 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 23:39:31 GMT and should not be manually modified.
+
+## 0.30.11
+Thu, 21 Aug 2025 23:39:31 GMT
+
+### Patches
+
+- Make ingredient validation_results available
 
 ## 0.30.10
 Sat, 16 Aug 2025 15:28:06 GMT
