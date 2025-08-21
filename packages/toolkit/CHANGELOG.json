@@ -2,6 +2,18 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.13.10",
+      "tag": "@contentauth/toolkit_v0.13.10",
+      "date": "Thu, 21 Aug 2025 23:42:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pass validation_results through"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.9",
       "tag": "@contentauth/toolkit_v0.13.9",
       "date": "Sat, 16 Aug 2025 15:28:06 GMT",
