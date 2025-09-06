@@ -295,9 +295,9 @@ checksum = "d71b6127be86fdcfddb610f7182ac57211d4b18a3e9c82eb2d17662f2227ad6a"
 
 [[package]]
 name = "c2pa"
-version = "0.59.1"
+version = "0.62.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd5a7bab7ae5cd4ca1c51096d743acd00cadf0f9607523ef4f6150c7dc07fe21"
+checksum = "15064f64d4e6324036b5df4398a63dbdc6f120d0d1ccd1d7a140ce7aba12332a"
 dependencies = [
  "asn1-rs",
  "async-generic",
@@ -322,7 +322,6 @@ dependencies = [
  "ed25519-dalek",
  "env_logger",
  "extfmt",
- "getrandom 0.2.16",
  "hex",
  "hex-literal",
  "http",
@@ -350,7 +349,6 @@ dependencies = [
  "quick-xml",
  "rand 0.8.5",
  "rand_chacha 0.3.1",
- "rand_core 0.9.3",
  "range-set",
  "rasn",
  "rasn-cms",
@@ -2819,6 +2817,16 @@ dependencies = [
  "cfg-if",
  "cpufeatures",
  "digest",
+ "sha2-asm",
+]
+
+[[package]]
+name = "sha2-asm"
+version = "0.6.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b845214d6175804686b2bd482bcffe96651bb2d1200742b712003504a2dac1ab"
+dependencies = [
+ "cc",
 ]
 
 [[package]]
@@ -3383,11 +3391,12 @@ checksum = "b6c140620e7ffbb22c2dee59cafe6084a59b5ffc27a8859a5f0d494b5d52b6be"
 
 [[package]]
 name = "uuid"
-version = "1.12.0"
+version = "1.18.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "744018581f9a3454a9e15beb8a33b017183f1e7c0cd170232a2d1453b23a51c4"
+checksum = "2f87b8aa10b915a06587d0dec516c282ff295b475d94abf425d62b57710070a2"
 dependencies = [
- "getrandom 0.2.16",
+ "getrandom 0.3.3",
+ "js-sys",
  "serde",
  "wasm-bindgen",
 ]

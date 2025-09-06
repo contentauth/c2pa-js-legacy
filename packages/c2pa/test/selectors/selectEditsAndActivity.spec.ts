@@ -66,29 +66,29 @@ describe('selectEditsAndActivity', function () {
             `Changed position or orientation (rotated, flipped, etc.)`,
           );
 
-          expect(result?.[4]?.id).toEqual(`c2pa.unknown`);
+          expect(result?.[4]?.id).toEqual(`com.adobe.text`);
           expect(result?.[4]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/alert-circle-dark.svg`,
-          );
-          expect(result?.[4]?.label).toEqual(`Unknown edits or activity`);
-          expect(result?.[4]?.description).toEqual(
-            `Performed other edits or activity that couldn't be recognized`,
-          );
-
-          expect(result?.[5]?.id).toEqual(`com.adobe.text`);
-          expect(result?.[5]?.icon).toEqual(
             `https://cai-assertions.adobe.com/icons/text-dark.svg`,
           );
-          // expect(result?.[5]?.label).toEqual(`Unknown edits or activity`);
-          expect(result?.[5]?.description).toEqual(
+          expect(result?.[4]?.label).toEqual(`Text edits`);
+          expect(result?.[4]?.description).toEqual(
             `Created or made changes to text, including font family, color, or other styles`,
+          );
+
+          expect(result?.[5]?.id).toEqual(`c2pa.unknown`);
+          expect(result?.[5]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/alert-circle-dark.svg`,
+          );
+          expect(result?.[5]?.label).toEqual(`Unknown edits or activity`);
+          expect(result?.[5]?.description).toEqual(
+            `Performed other edits or activity that couldn't be recognized`,
           );
 
           expect(result?.[6]?.id).toEqual(`com.adobe.animation_video`);
           expect(result?.[6]?.icon).toEqual(
             `https://cai-assertions.adobe.com/icons/video-outline-dark.svg`,
           );
-          // expect(result?.[6]?.label).toEqual(`Video edits`);
+          expect(result?.[6]?.label).toEqual(`Video edits`);
           expect(result?.[6]?.description).toEqual(
             `Created or made changes to animation, audio, or other video properties`,
           );
@@ -108,33 +108,33 @@ describe('selectEditsAndActivity', function () {
             `Ajout du contenu préexistant à ce fichier`,
           );
 
-          expect(result?.[1]?.id).toEqual(`c2pa.orientation`);
+          expect(result?.[1]?.id).toEqual(`c2pa.drawing`);
           expect(result?.[1]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/rotate-left-outline-dark.svg`,
-          );
-          expect(result?.[1]?.label).toEqual(`Modifications de l’orientation`);
-          expect(result?.[1]?.description).toEqual(
-            `Modifications de la position ou de l’orientation (rotation, renversement, etc.)`,
-          );
-
-          expect(result?.[2]?.id).toEqual(`c2pa.drawing`);
-          expect(result?.[2]?.icon).toEqual(
             `https://cai-assertions.adobe.com/icons/draw-dark.svg`,
           );
-          expect(result?.[2]?.label).toEqual(`Modifications du dessin`);
-          expect(result?.[2]?.description).toEqual(
+          expect(result?.[1]?.label).toEqual(`Modifications du dessin`);
+          expect(result?.[1]?.description).toEqual(
             `Utilisation d’outils, comme des crayons, des pinceaux, des gommes ou des outils de forme, de tracé ou de plume`,
           );
 
-          expect(result?.[3]?.id).toEqual(`c2pa.filtered`);
-          expect(result?.[3]?.icon).toEqual(
+          expect(result?.[2]?.id).toEqual(`c2pa.filtered`);
+          expect(result?.[2]?.icon).toEqual(
             `https://cai-assertions.adobe.com/icons/properties-dark.svg`,
           );
-          expect(result?.[3]?.label).toEqual(
+          expect(result?.[2]?.label).toEqual(
             `Modifications du filtre ou du style`,
           );
-          expect(result?.[3]?.description).toEqual(
+          expect(result?.[2]?.description).toEqual(
             `Utilisation d’outils tels que des filtres, des styles ou des effets pour modifier l’apparence`,
+          );
+
+          expect(result?.[3]?.id).toEqual(`com.adobe.text`);
+          expect(result?.[3]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/text-dark.svg`,
+          );
+          expect(result?.[3]?.label).toEqual(`Modifications du texte`);
+          expect(result?.[3]?.description).toEqual(
+            `Création ou modification du texte, notamment de la famille de polices, de la couleur ou d’autres styles`,
           );
 
           expect(result?.[4]?.id).toEqual(`c2pa.unknown`);
@@ -148,22 +148,22 @@ describe('selectEditsAndActivity', function () {
             `Réalisation d’autres modifications ou activités qui n’ont pas pu être reconnues`,
           );
 
-          expect(result?.[5]?.id).toEqual(`com.adobe.text`);
+          expect(result?.[5]?.id).toEqual(`com.adobe.animation_video`);
           expect(result?.[5]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/text-dark.svg`,
-          );
-          // expect(result?.[5]?.label).toEqual(`Modifications vidéo`);
-          expect(result?.[5]?.description).toEqual(
-            `Created or made changes to text, including font family, color, or other styles`,
-          );
-
-          expect(result?.[6]?.id).toEqual(`com.adobe.animation_video`);
-          expect(result?.[6]?.icon).toEqual(
             `https://cai-assertions.adobe.com/icons/video-outline-dark.svg`,
           );
-          // expect(result?.[6]?.label).toEqual(`Orientation Modifications de `);
+          expect(result?.[5]?.label).toEqual(`Modifications vidéo`);
+          expect(result?.[5]?.description).toEqual(
+            `Création ou modification de l’animation, de l’audio ou d’autres propriétés vidéo`,
+          );
+
+          expect(result?.[6]?.id).toEqual(`c2pa.orientation`);
+          expect(result?.[6]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/rotate-left-outline-dark.svg`,
+          );
+          expect(result?.[6]?.label).toEqual(`Orientation Modifications de `);
           expect(result?.[6]?.description).toEqual(
-            `Created or made changes to animation, audio, or other video properties`,
+            `Changement de position ou d’orientation (rotation, renversement, etc.)`,
           );
         });
 
@@ -208,29 +208,29 @@ describe('selectEditsAndActivity', function () {
             `Changed position or orientation (rotated, flipped, etc.)`,
           );
 
-          expect(result?.[4]?.id).toEqual(`c2pa.unknown`);
+          expect(result?.[4]?.id).toEqual(`com.adobe.text`);
           expect(result?.[4]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/alert-circle-dark.svg`,
-          );
-          expect(result?.[4]?.label).toEqual(`Unknown edits or activity`);
-          expect(result?.[4]?.description).toEqual(
-            `Performed other edits or activity that couldn't be recognized`,
-          );
-
-          expect(result?.[5]?.id).toEqual(`com.adobe.text`);
-          expect(result?.[5]?.icon).toEqual(
             `https://cai-assertions.adobe.com/icons/text-dark.svg`,
           );
-          // expect(result?.[5]?.label).toEqual(`Unknown edits or activity`);
-          expect(result?.[5]?.description).toEqual(
+          expect(result?.[4]?.label).toEqual(`Text edits`);
+          expect(result?.[4]?.description).toEqual(
             `Created or made changes to text, including font family, color, or other styles`,
+          );
+
+          expect(result?.[5]?.id).toEqual(`c2pa.unknown`);
+          expect(result?.[5]?.icon).toEqual(
+            `https://cai-assertions.adobe.com/icons/alert-circle-dark.svg`,
+          );
+          expect(result?.[5]?.label).toEqual(`Unknown edits or activity`);
+          expect(result?.[5]?.description).toEqual(
+            `Performed other edits or activity that couldn't be recognized`,
           );
 
           expect(result?.[6]?.id).toEqual(`com.adobe.animation_video`);
           expect(result?.[6]?.icon).toEqual(
             `https://cai-assertions.adobe.com/icons/video-outline-dark.svg`,
           );
-          // expect(result?.[6]?.label).toEqual(`Video edits`);
+          expect(result?.[6]?.label).toEqual(`Video edits`);
           expect(result?.[6]?.description).toEqual(
             `Created or made changes to animation, audio, or other video properties`,
           );
@@ -254,58 +254,58 @@ describe('selectEditsAndActivity', function () {
 
           expect(result?.length).toEqual(7);
 
-          expect(result?.[0]?.id).toEqual(`c2pa.unknown`);
+          expect(result?.[0]?.id).toEqual(`com.adobe.text`);
           expect(result?.[0]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/alert-circle-dark.svg`,
+            `https://cai-assertions.adobe.com/icons/text-dark.svg`,
           );
-          expect(result?.[0]?.label).toEqual(`foo`);
-          expect(result?.[0]?.description).toEqual(`foo`);
+          expect(result?.[0]?.label).toEqual(`Text edits`);
+          expect(result?.[0]?.description).toEqual(
+            `Created or made changes to text, including font family, color, or other styles`,
+          );
 
-          expect(result?.[1]?.id).toEqual(`c2pa.placed`);
+          expect(result?.[1]?.id).toEqual(`com.adobe.animation_video`);
           expect(result?.[1]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/save-to-light-dark.svg`,
+            `https://cai-assertions.adobe.com/icons/video-outline-dark.svg`,
           );
-          expect(result?.[1]?.label).toEqual(`foo`);
-          expect(result?.[1]?.description).toEqual(`foo`);
+          expect(result?.[1]?.label).toEqual(`Video edits`);
+          expect(result?.[1]?.description).toEqual(
+            `Created or made changes to animation, audio, or other video properties`,
+          );
 
-          expect(result?.[2]?.id).toEqual(`c2pa.drawing`);
+          expect(result?.[2]?.id).toEqual(`c2pa.unknown`);
           expect(result?.[2]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/draw-dark.svg`,
+            `https://cai-assertions.adobe.com/icons/alert-circle-dark.svg`,
           );
           expect(result?.[2]?.label).toEqual(`foo`);
           expect(result?.[2]?.description).toEqual(`foo`);
 
-          expect(result?.[3]?.id).toEqual(`c2pa.filtered`);
+          expect(result?.[3]?.id).toEqual(`c2pa.placed`);
           expect(result?.[3]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/properties-dark.svg`,
+            `https://cai-assertions.adobe.com/icons/save-to-light-dark.svg`,
           );
           expect(result?.[3]?.label).toEqual(`foo`);
           expect(result?.[3]?.description).toEqual(`foo`);
 
-          expect(result?.[4]?.id).toEqual(`c2pa.orientation`);
+          expect(result?.[4]?.id).toEqual(`c2pa.drawing`);
           expect(result?.[4]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/rotate-left-outline-dark.svg`,
+            `https://cai-assertions.adobe.com/icons/draw-dark.svg`,
           );
           expect(result?.[4]?.label).toEqual(`foo`);
           expect(result?.[4]?.description).toEqual(`foo`);
 
-          expect(result?.[5]?.id).toEqual(`com.adobe.text`);
+          expect(result?.[5]?.id).toEqual(`c2pa.filtered`);
           expect(result?.[5]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/text-dark.svg`,
+            `https://cai-assertions.adobe.com/icons/properties-dark.svg`,
           );
-          // expect(result?.[5]?.label).toEqual(`foo`);
-          expect(result?.[5]?.description).toEqual(
-            `Created or made changes to text, including font family, color, or other styles`,
-          );
+          expect(result?.[5]?.label).toEqual(`foo`);
+          expect(result?.[5]?.description).toEqual(`foo`);
 
-          expect(result?.[6]?.id).toEqual(`com.adobe.animation_video`);
+          expect(result?.[6]?.id).toEqual(`c2pa.orientation`);
           expect(result?.[6]?.icon).toEqual(
-            `https://cai-assertions.adobe.com/icons/video-outline-dark.svg`,
+            `https://cai-assertions.adobe.com/icons/rotate-left-outline-dark.svg`,
           );
-          // expect(result?.[6]?.label).toEqual(`foo`);
-          expect(result?.[6]?.description).toEqual(
-            `Created or made changes to animation, audio, or other video properties`,
-          );
+          expect(result?.[6]?.label).toEqual(`foo`);
+          expect(result?.[6]?.description).toEqual(`foo`);
         });
       });
     });
