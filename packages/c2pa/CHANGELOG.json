@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.12",
+      "tag": "c2pa_v0.30.12",
+      "date": "Sat, 06 Sep 2025 23:26:29 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.11`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.11",
       "tag": "c2pa_v0.30.11",
       "date": "Thu, 21 Aug 2025 23:43:07 GMT",
