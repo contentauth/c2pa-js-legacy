@@ -2,6 +2,18 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.13.11",
+      "tag": "@contentauth/toolkit_v0.13.11",
+      "date": "Sun, 07 Sep 2025 05:40:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update c2pa-rs"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.10",
       "tag": "@contentauth/toolkit_v0.13.10",
       "date": "Thu, 21 Aug 2025 23:43:07 GMT",
