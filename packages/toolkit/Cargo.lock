@@ -296,8 +296,7 @@ checksum = "d71b6127be86fdcfddb610f7182ac57211d4b18a3e9c82eb2d17662f2227ad6a"
 [[package]]
 name = "c2pa"
 version = "0.62.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "15064f64d4e6324036b5df4398a63dbdc6f120d0d1ccd1d7a140ce7aba12332a"
+source = "git+https://github.com/contentauth/c2pa-rs.git?rev=28bf68#28bf68739f3508fa12909531b77ccf40a180fac7"
 dependencies = [
  "asn1-rs",
  "async-generic",
@@ -315,7 +314,6 @@ dependencies = [
  "console_log",
  "const-hex",
  "const-oid",
- "conv",
  "coset",
  "der",
  "ecdsa",
@@ -562,15 +560,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "conv"
-version = "0.3.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "78ff10625fd0ac447827aa30ea8b861fead473bb60aeb73af6c1c58caf0d1299"
-dependencies = [
- "custom_derive",
-]
-
-[[package]]
 name = "core-foundation-sys"
 version = "0.8.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -683,12 +672,6 @@ dependencies = [
  "quote",
  "syn 2.0.104",
 ]
-
-[[package]]
-name = "custom_derive"
-version = "0.1.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ef8ae57c4978a2acd8b869ce6b9ca1dfe817bff704c220209fdef2c0b75a01b9"
 
 [[package]]
 name = "darling"
