@@ -1,6 +1,13 @@
 # Change Log - c2pa
 
-This log was last generated on Sun, 07 Sep 2025 05:40:43 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Sep 2025 18:15:58 GMT and should not be manually modified.
+
+## 0.30.13
+Thu, 11 Sep 2025 18:15:58 GMT
+
+### Patches
+
+- Update c2pa-rs and fix generative info lookup
 
 ## 0.30.12
 Sun, 07 Sep 2025 05:40:43 GMT
