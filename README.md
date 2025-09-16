@@ -1,4 +1,7 @@
-# C2PA JavaScript SDK
+# C2PA JavaScript SDK (legacy)
+
+> [!WARNING]  
+> The packages in this monorepo are now deprecated. Implementors wishing to interact with C2PA data on the web should use our [new libraries instead](https://github.com/contentauth/c2pa-js).
 
 This library aims to make viewing and verifying C2PA metadata in the browser as easy as possible.
 
