@@ -10,6 +10,7 @@
 import {
   Manifest as ToolkitManifest,
   ManifestStore as ToolkitManifestStore,
+  ValidationResults,
   ValidationStatus,
 } from '@contentauth/toolkit';
 import debug from 'debug';
@@ -32,6 +33,8 @@ export interface ManifestStore {
    * List of validation errors
    */
   validationStatus: ValidationStatus[];
+
+  validationResults: ValidationResults;
 }
 
 export interface ManifestMap {
@@ -96,6 +99,7 @@ export function createManifestStore(
     manifests,
     activeManifest: manifests[manifestStoreData.active_manifest],
     validationStatus: manifestStoreData?.validation_status ?? [],
+    validationResults: manifestStoreData?.validation_results ?? null,
   };
 }
 
@@ -115,7 +119,6 @@ function createManifests(
     active_manifest: toolkitActiveManifestId,
   } = manifestStoreData;
   dbg('Received manifest store from toolkit', manifestStoreData, cawgData);
-
   // Perform a post-order traversal of the manifest tree (leaves-to-root) to guarantee that a manifest's ingredient
   // manifests are already available when it is created.
 

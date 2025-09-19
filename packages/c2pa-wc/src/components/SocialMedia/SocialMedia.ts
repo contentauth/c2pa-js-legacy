@@ -72,19 +72,21 @@ export class SocialMedia extends Localizable(LitElement) {
     >
       <div slot="header">${this.strings['social-media.header']}</div>
       <ul class="section-social-media-list" slot="content">
-        ${this.data?.map(
-          (socialAccount) => html`
-            <li class="section-social-media-list-item">
-              <a
-                class="section-social-media-list-item-link"
-                href=${socialAccount['@id']}
-                target="_blank"
-              >
-                <cai-icon source="${socialAccount['@id']}"></cai-icon>
-              </a>
-            </li>
-          `,
-        )}
+        ${this.data
+          ?.filter((account) => account['@id']?.startsWith('http'))
+          .map(
+            (socialAccount) => html`
+              <li class="section-social-media-list-item">
+                <a
+                  class="section-social-media-list-item-link"
+                  href=${socialAccount['@id']}
+                  target="_blank"
+                >
+                  <cai-icon source="${socialAccount['@id']}"></cai-icon>
+                </a>
+              </li>
+            `,
+          )}
       </ul>
     </cai-panel-section>`;
   }

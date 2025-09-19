@@ -26,7 +26,24 @@ export interface AssetReport {
 export interface ManifestStore {
   active_manifest: string;
   manifests: Record<string, Manifest>;
-  validation_status?: ValidationStatus[];
+  validation_status: ValidationStatus[];
+  validation_results: ValidationResults;
+}
+
+export interface ValidationResults {
+  activeManifest: ValidationResultData;
+  ingredientDeltas: IngredientDelta[];
+}
+
+export interface IngredientDelta {
+  ingredientAssertionUri: string;
+  validationDeltas: ValidationResultData;
+}
+
+export interface ValidationResultData {
+  failure: ValidationStatus[];
+  informational: ValidationStatus[];
+  success: ValidationStatus[];
 }
 
 export interface ValidationStatus {
@@ -60,12 +77,14 @@ export interface Ingredient extends ResourceParent {
   relationship?: string;
   validation_status?: ValidationStatus[];
   metadata?: Metadata;
+  validation_results?: ValidationResults;
 }
 
 export interface SignatureInfo {
   issuer?: string;
   time?: string;
   cert_serial_number?: string;
+  common_name?: string;
 }
 
 export interface ClaimGeneratorInfo {
@@ -116,7 +135,7 @@ export type C2paActionsAssertionV2 = Assertion<
   {
     actions: ActionV2[];
     allActionsIncluded?: boolean;
-    templates: Template[];
+    templates?: Template[];
   }
 >;
 
