@@ -30,7 +30,7 @@ export function isHandmadeManifest(manifest: Manifest): boolean {
   const actionsHandmade =
     actionsV2.length > 0 &&
     actionsV2.every(({ data }) => {
-      const handmadeTemplate = !!data.templates.find(
+      const handmadeTemplate = !!data.templates?.find(
         (template) =>
           template.action === '*' &&
           template.digitalSourceType ===

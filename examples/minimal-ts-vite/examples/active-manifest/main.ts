@@ -4,7 +4,7 @@ import workerSrc from 'c2pa/dist/c2pa.worker.js?url';
 import { parseISO } from 'date-fns';
 
 const sampleImage =
-  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
+  'https://raw.githubusercontent.com/contentauth/c2pa-js-legacy/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 (async () => {
   let output: string[] = [];

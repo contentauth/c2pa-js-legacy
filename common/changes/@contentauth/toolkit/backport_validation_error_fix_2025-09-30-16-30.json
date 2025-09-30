@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@contentauth/toolkit",
+      "comment": "Fix for some validation errors being thrown as exceptions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@contentauth/toolkit"
+}
