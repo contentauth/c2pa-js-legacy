@@ -12,7 +12,7 @@
   "types": "pkg/toolkit.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/contentauth/c2pa-js",
+    "url": "https://github.com/contentauth/c2pa-js-legacy",
     "directory": "packages/toolkit"
   },
   "files": [
