@@ -2,7 +2,7 @@ import { createC2pa } from 'c2pa';
 import wasmModule from 'c2pa/dist/assets/wasm/toolkit_bg.wasm';
 
 const sampleImage =
-  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
+  'https://raw.githubusercontent.com/contentauth/c2pa-js-legacy/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 (async () => {
   // Initialize the c2pa-js SDK
