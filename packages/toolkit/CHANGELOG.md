@@ -1,6 +1,13 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Tue, 16 Sep 2025 19:04:49 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Sep 2025 18:12:55 GMT and should not be manually modified.
+
+## 0.13.14
+Tue, 30 Sep 2025 18:12:55 GMT
+
+### Patches
+
+- Fix for some validation errors being thrown as exceptions
 
 ## 0.13.13
 Tue, 16 Sep 2025 19:04:49 GMT

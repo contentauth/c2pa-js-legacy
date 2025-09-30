@@ -2,6 +2,32 @@
   "name": "@contentauth/react",
   "entries": [
     {
+      "version": "0.2.93",
+      "tag": "@contentauth/react_v0.2.93",
+      "date": "Tue, 30 Sep 2025 18:12:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for some validation errors being thrown as exceptions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.15`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" to `0.14.15`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa\" from `^0.30.14` to `^0.30.15`"
+          },
+          {
+            "comment": "Updating dependency \"c2pa-wc\" from `^0.14.14` to `^0.14.15`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.92",
       "tag": "@contentauth/react_v0.2.92",
       "date": "Tue, 16 Sep 2025 19:04:49 GMT",

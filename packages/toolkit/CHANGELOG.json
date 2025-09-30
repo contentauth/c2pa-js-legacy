@@ -2,6 +2,18 @@
   "name": "@contentauth/toolkit",
   "entries": [
     {
+      "version": "0.13.14",
+      "tag": "@contentauth/toolkit_v0.13.14",
+      "date": "Tue, 30 Sep 2025 18:12:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for some validation errors being thrown as exceptions"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.13",
       "tag": "@contentauth/toolkit_v0.13.13",
       "date": "Tue, 16 Sep 2025 19:04:49 GMT",

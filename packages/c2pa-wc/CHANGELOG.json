@@ -2,6 +2,23 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.14.15",
+      "tag": "c2pa-wc_v0.14.15",
+      "date": "Tue, 30 Sep 2025 18:12:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for some validation errors being thrown as exceptions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.15`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.14.14",
       "tag": "c2pa-wc_v0.14.14",
       "date": "Tue, 16 Sep 2025 19:04:49 GMT",

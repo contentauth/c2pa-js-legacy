@@ -2,6 +2,18 @@
   "name": "@contentauth/detector",
   "entries": [
     {
+      "version": "0.3.7",
+      "tag": "@contentauth/detector_v0.3.7",
+      "date": "Tue, 30 Sep 2025 18:12:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for some validation errors being thrown as exceptions"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.6",
       "tag": "@contentauth/detector_v0.3.6",
       "date": "Sat, 16 Aug 2025 15:28:06 GMT",
