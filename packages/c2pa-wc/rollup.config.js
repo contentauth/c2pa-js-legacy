@@ -16,6 +16,7 @@ import merge from 'deepmerge';
 import fg from 'fast-glob';
 import path from 'path';
 import postcss from 'rollup-plugin-postcss';
+import replace from '@rollup/plugin-replace';
 
 const litSvg = require('./etc/rollup/plugins/lit-svg.cjs');
 
@@ -73,5 +74,8 @@ export default merge(baseConfig, {
     commonjs(),
     typescript(),
     postcss(),
+    replace({
+      'process.env.NODE_ENV': "'production'",
+    }),
   ],
 });
