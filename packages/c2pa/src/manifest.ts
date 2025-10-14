@@ -20,6 +20,7 @@ import { ManifestMap } from './manifestStore';
 import { Thumbnail, createThumbnail } from './thumbnail';
 import {
   CawgReport,
+  getIssuersFromCawgManifestReports,
   getVerifiedIdentitiesFromCawgManifestReports,
   VerifiedIdentity,
 } from './lib/cawg';
@@ -97,6 +98,8 @@ export interface Manifest {
   assertions: AssertionAccessor;
 
   verifiedIdentities: VerifiedIdentity[];
+
+  cawgIssuers: string[];
 }
 
 function parseClaimGeneratorInfo(
@@ -160,6 +163,10 @@ export function createManifest(
         ? getVerifiedIdentitiesFromCawgManifestReports(
             cawgData[manifestData.label],
           )
+        : [],
+    cawgIssuers:
+      manifestData.label && cawgData[manifestData.label]
+        ? getIssuersFromCawgManifestReports(cawgData[manifestData.label])
         : [],
   };
 }
