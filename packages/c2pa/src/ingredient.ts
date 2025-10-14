@@ -10,6 +10,7 @@ import {
   DataType,
   Metadata,
   Ingredient as ToolkitIngredient,
+  ValidationResults,
   ValidationStatus,
 } from '@contentauth/toolkit';
 import { Manifest } from './manifest';
@@ -75,6 +76,8 @@ export interface Ingredient {
    * Additional metadata as defined by the C2PA spec
    */
   metadata: Metadata | null;
+
+  validationResults?: ValidationResults;
 }
 
 /**
@@ -98,6 +101,7 @@ export function createIngredient(
     validationStatus: ingredientData.validation_status ?? [],
     metadata: ingredientData.metadata ?? null,
     manifest: manifest ?? null,
+    validationResults: ingredientData.validation_results,
 
     thumbnail: createThumbnail(
       ingredientData.resources,

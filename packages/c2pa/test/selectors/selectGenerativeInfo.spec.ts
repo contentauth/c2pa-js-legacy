@@ -23,7 +23,7 @@ describe('selectGenerativeInfo', function () {
         const genAssertions = selectGenerativeInfo(manifest);
         expect(genAssertions).toEqual([
           {
-            assertion: { label: 'c2pa.actions', data: jasmine.any(Object) },
+            assertion: { label: 'c2pa.actions.v2', data: jasmine.any(Object) },
             action: {
               action: 'c2pa.placed',
               digitalSourceType:
@@ -32,10 +32,10 @@ describe('selectGenerativeInfo', function () {
               softwareAgent: 'Adobe Firefly',
             },
             type: 'trainedAlgorithmicMedia',
-            softwareAgent: { name: 'Adobe Firefly' },
+            softwareAgent: 'Adobe Firefly',
           },
           {
-            assertion: { label: 'c2pa.actions', data: jasmine.any(Object) },
+            assertion: { label: 'c2pa.actions.v2', data: jasmine.any(Object) },
             action: {
               action: 'c2pa.placed',
               digitalSourceType:
@@ -44,11 +44,11 @@ describe('selectGenerativeInfo', function () {
               softwareAgent: 'Adobe Firefly',
             },
             type: 'trainedAlgorithmicMedia',
-            softwareAgent: { name: 'Adobe Firefly' },
+            softwareAgent: 'Adobe Firefly',
           },
           {
             assertion: {
-              label: 'c2pa.actions',
+              label: 'c2pa.actions.v2',
               data: jasmine.any(Object),
             },
             action: {
@@ -59,7 +59,7 @@ describe('selectGenerativeInfo', function () {
               softwareAgent: 'Adobe Firefly',
             },
             type: 'trainedAlgorithmicMedia',
-            softwareAgent: { name: 'Adobe Firefly' },
+            softwareAgent: 'Adobe Firefly',
           },
         ]);
       }

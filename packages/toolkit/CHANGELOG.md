@@ -1,6 +1,69 @@
 # Change Log - @contentauth/toolkit
 
-This log was last generated on Wed, 16 Apr 2025 17:11:17 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Sep 2025 18:12:55 GMT and should not be manually modified.
+
+## 0.13.14
+Tue, 30 Sep 2025 18:12:55 GMT
+
+### Patches
+
+- Fix for some validation errors being thrown as exceptions
+
+## 0.13.13
+Tue, 16 Sep 2025 19:04:49 GMT
+
+### Patches
+
+- Update c2pa-rs
+
+## 0.13.12
+Thu, 11 Sep 2025 18:31:42 GMT
+
+### Patches
+
+- Updated c2pa-rs
+
+## 0.13.11
+Sun, 07 Sep 2025 05:40:43 GMT
+
+### Patches
+
+- Update c2pa-rs
+
+## 0.13.10
+Thu, 21 Aug 2025 23:43:07 GMT
+
+### Patches
+
+- Pass validation_results through
+
+## 0.13.9
+Sat, 16 Aug 2025 15:28:06 GMT
+
+### Patches
+
+- Update c2pa-rs
+
+## 0.13.8
+Tue, 06 May 2025 21:10:16 GMT
+
+### Patches
+
+- Make templates optional in actions v2
+
+## 0.13.7
+Tue, 29 Apr 2025 23:13:41 GMT
+
+### Patches
+
+- Pass validation results through
+
+## 0.13.6
+Thu, 24 Apr 2025 22:18:28 GMT
+
+### Patches
+
+- Update c2pa rs
 
 ## 0.13.5
 Wed, 16 Apr 2025 17:11:17 GMT

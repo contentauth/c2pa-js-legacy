@@ -28,6 +28,7 @@ export interface ToolkitTrustSettings {
    * A list of allowed trust anchors
    */
   trustAnchors?: string;
+  userAnchors?: string;
   trustConfig?: string;
   /**
    * A list of allowed end-entity certificates/hashes for trust checking
