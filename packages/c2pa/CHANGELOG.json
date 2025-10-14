@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.16",
+      "tag": "c2pa_v0.30.16",
+      "date": "Tue, 14 Oct 2025 18:30:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add cawgIssuers to manifest"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.15",
       "tag": "c2pa_v0.30.15",
       "date": "Tue, 30 Sep 2025 18:12:55 GMT",
