@@ -2,6 +2,18 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.17",
+      "tag": "c2pa_v0.30.17",
+      "date": "Fri, 07 Nov 2025 18:33:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme updated with deprecation notice"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.16",
       "tag": "c2pa_v0.30.16",
       "date": "Tue, 14 Oct 2025 18:30:13 GMT",
