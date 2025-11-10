@@ -1,6 +1,77 @@
 # Change Log - c2pa
 
-This log was last generated on Tue, 22 Apr 2025 22:10:04 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Nov 2025 18:33:42 GMT and should not be manually modified.
+
+## 0.30.17
+Fri, 07 Nov 2025 18:33:42 GMT
+
+### Patches
+
+- Readme updated with deprecation notice
+
+## 0.30.16
+Tue, 14 Oct 2025 18:30:13 GMT
+
+### Patches
+
+- Add cawgIssuers to manifest
+
+## 0.30.15
+Tue, 30 Sep 2025 18:12:55 GMT
+
+### Patches
+
+- Fix for some validation errors being thrown as exceptions
+
+## 0.30.14
+Tue, 16 Sep 2025 19:04:49 GMT
+
+_Version update only_
+
+## 0.30.13
+Thu, 11 Sep 2025 18:31:42 GMT
+
+### Patches
+
+- Update c2pa-rs and fix generative info lookup
+
+## 0.30.12
+Sun, 07 Sep 2025 05:40:43 GMT
+
+_Version update only_
+
+## 0.30.11
+Thu, 21 Aug 2025 23:43:07 GMT
+
+### Patches
+
+- Make ingredient validation_results available
+
+## 0.30.10
+Sat, 16 Aug 2025 15:28:06 GMT
+
+### Patches
+
+- User anchor and cert common name support
+
+## 0.30.9
+Tue, 06 May 2025 21:10:16 GMT
+
+### Patches
+
+- Handle non-existent templates in actions v2
+
+## 0.30.8
+Tue, 29 Apr 2025 23:13:41 GMT
+
+### Patches
+
+- Pass validation results through
+
+## 0.30.7
+Thu, 24 Apr 2025 22:18:28 GMT
+
+_Version update only_
 
 ## 0.30.6
 Tue, 22 Apr 2025 22:10:04 GMT

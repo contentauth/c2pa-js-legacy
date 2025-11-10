@@ -2,6 +2,174 @@
   "name": "c2pa",
   "entries": [
     {
+      "version": "0.30.17",
+      "tag": "c2pa_v0.30.17",
+      "date": "Fri, 07 Nov 2025 18:33:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme updated with deprecation notice"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.16",
+      "tag": "c2pa_v0.30.16",
+      "date": "Tue, 14 Oct 2025 18:30:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add cawgIssuers to manifest"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.15",
+      "tag": "c2pa_v0.30.15",
+      "date": "Tue, 30 Sep 2025 18:12:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for some validation errors being thrown as exceptions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/detector\" to `0.3.7`"
+          },
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.14`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.14",
+      "tag": "c2pa_v0.30.14",
+      "date": "Tue, 16 Sep 2025 19:04:49 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.13`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.13",
+      "tag": "c2pa_v0.30.13",
+      "date": "Thu, 11 Sep 2025 18:31:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update c2pa-rs and fix generative info lookup"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.12`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.12",
+      "tag": "c2pa_v0.30.12",
+      "date": "Sun, 07 Sep 2025 05:40:43 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.11`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.11",
+      "tag": "c2pa_v0.30.11",
+      "date": "Thu, 21 Aug 2025 23:43:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make ingredient validation_results available"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.10`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.10",
+      "tag": "c2pa_v0.30.10",
+      "date": "Sat, 16 Aug 2025 15:28:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "User anchor and cert common name support"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/detector\" to `0.3.6`"
+          },
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.9`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.9",
+      "tag": "c2pa_v0.30.9",
+      "date": "Tue, 06 May 2025 21:10:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Handle non-existent templates in actions v2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.8",
+      "tag": "c2pa_v0.30.8",
+      "date": "Tue, 29 Apr 2025 23:13:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pass validation results through"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.7`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.7",
+      "tag": "c2pa_v0.30.7",
+      "date": "Thu, 24 Apr 2025 22:18:28 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@contentauth/toolkit\" to `0.13.6`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.6",
       "tag": "c2pa_v0.30.6",
       "date": "Tue, 22 Apr 2025 22:10:04 GMT",

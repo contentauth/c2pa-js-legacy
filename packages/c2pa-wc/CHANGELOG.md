@@ -1,6 +1,65 @@
 # Change Log - c2pa-wc
 
-This log was last generated on Tue, 22 Apr 2025 22:10:04 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Nov 2025 18:33:42 GMT and should not be manually modified.
+
+## 0.14.17
+Fri, 07 Nov 2025 18:33:42 GMT
+
+_Version update only_
+
+## 0.14.16
+Tue, 14 Oct 2025 18:30:13 GMT
+
+_Version update only_
+
+## 0.14.15
+Tue, 30 Sep 2025 18:12:55 GMT
+
+### Patches
+
+- Fix for some validation errors being thrown as exceptions
+
+## 0.14.14
+Tue, 16 Sep 2025 19:04:49 GMT
+
+_Version update only_
+
+## 0.14.13
+Thu, 11 Sep 2025 18:31:42 GMT
+
+_Version update only_
+
+## 0.14.12
+Sun, 07 Sep 2025 05:40:43 GMT
+
+_Version update only_
+
+## 0.14.11
+Thu, 21 Aug 2025 23:43:07 GMT
+
+_Version update only_
+
+## 0.14.10
+Sat, 16 Aug 2025 15:28:06 GMT
+
+### Patches
+
+- Secure social links
+
+## 0.14.9
+Tue, 06 May 2025 21:10:16 GMT
+
+_Version update only_
+
+## 0.14.8
+Tue, 29 Apr 2025 23:13:41 GMT
+
+_Version update only_
+
+## 0.14.7
+Thu, 24 Apr 2025 22:18:28 GMT
+
+_Version update only_
 
 ## 0.14.6
 Tue, 22 Apr 2025 22:10:04 GMT

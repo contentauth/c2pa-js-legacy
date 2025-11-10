@@ -7,10 +7,6 @@
 
 // See https://github.com/rustwasm/wasm-bindgen/issues/2774
 #![allow(clippy::unused_unit)]
-use cawg_identity::{
-    claim_aggregation::IcaSignatureVerifier, x509::X509SignatureVerifier, BuiltInSignatureVerifier,
-    IdentityAssertion,
-};
 use log::Level;
 use serde::Serialize;
 use serde_wasm_bindgen::Serializer;
@@ -28,6 +24,13 @@ use manifest_store::{
     get_manifest_store_data, get_manifest_store_data_from_manifest_and_asset_bytes,
 };
 use util::log_time;
+
+use c2pa::identity::{
+    claim_aggregation::IcaSignatureVerifier, x509::X509SignatureVerifier, BuiltInSignatureVerifier,
+    IdentityAssertion,
+};
+
+use c2pa::crypto::cose::Verifier;
 
 #[wasm_bindgen(typescript_custom_section)]
 pub const TS_APPEND_CONTENT: &'static str = r#"
@@ -52,7 +55,6 @@ export function getManifestStoreFromManifestAndAsset(
 #[wasm_bindgen(start)]
 pub fn run() {
     panic::set_hook(Box::new(console_error_panic_hook::hook));
-    console_log::init_with_level(Level::Info).unwrap();
 }
 
 /// Creates a JavaScript Error with additional error info
@@ -139,7 +141,9 @@ async fn get_serialized_report_with_cawg_from_manifest_store(
 ) -> Result<JsValue, JsSysError> {
     let verifier = BuiltInSignatureVerifier {
         ica_verifier: IcaSignatureVerifier {},
-        x509_verifier: X509SignatureVerifier {},
+        x509_verifier: X509SignatureVerifier {
+            cose_verifier: Verifier::IgnoreProfileAndTrustPolicy,
+        },
     };
     let ia_summary = IdentityAssertion::summarize_manifest_store(
         &manifest_store,

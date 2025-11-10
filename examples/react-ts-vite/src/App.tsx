@@ -17,7 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 const sampleImage =
-  'https://raw.githubusercontent.com/contentauth/c2pa-js/main/tools/testing/fixtures/images/CAICAI.jpg';
+  'https://raw.githubusercontent.com/contentauth/c2pa-js-legacy/main/tools/testing/fixtures/images/CAICAI.jpg';
 
 interface ManifestInfoProps {
   manifest: Manifest;

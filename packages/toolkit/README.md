@@ -49,4 +49,4 @@ Run `yarn build` to build a production-optimized build of the WebAssembly module
 
 Before packaging, you'll have to open up a PR, get it approved, and merge it into `main`. To package, go into the root of this git repository and run `yarn run publish`. This will go through all of the changed packages and ask you what versions you'd like to increment to. After following the steps, lerna should update all versions in package.json as well as create new tags and package versions.
 
-Please be sure to add release notes and an overview of changes to the [releases page](https://github.com/contentauth/c2pa-js/releases).
+Please be sure to add release notes and an overview of changes to the [releases page](https://github.com/contentauth/c2pa-js-legacy/releases).

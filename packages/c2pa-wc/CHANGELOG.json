@@ -2,6 +2,148 @@
   "name": "c2pa-wc",
   "entries": [
     {
+      "version": "0.14.17",
+      "tag": "c2pa-wc_v0.14.17",
+      "date": "Fri, 07 Nov 2025 18:33:42 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.17`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.16",
+      "tag": "c2pa-wc_v0.14.16",
+      "date": "Tue, 14 Oct 2025 18:30:13 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.16`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.15",
+      "tag": "c2pa-wc_v0.14.15",
+      "date": "Tue, 30 Sep 2025 18:12:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for some validation errors being thrown as exceptions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.15`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.14",
+      "tag": "c2pa-wc_v0.14.14",
+      "date": "Tue, 16 Sep 2025 19:04:49 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.14`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.13",
+      "tag": "c2pa-wc_v0.14.13",
+      "date": "Thu, 11 Sep 2025 18:31:42 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.13`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.12",
+      "tag": "c2pa-wc_v0.14.12",
+      "date": "Sun, 07 Sep 2025 05:40:43 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.12`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.11",
+      "tag": "c2pa-wc_v0.14.11",
+      "date": "Thu, 21 Aug 2025 23:43:07 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.11`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.10",
+      "tag": "c2pa-wc_v0.14.10",
+      "date": "Sat, 16 Aug 2025 15:28:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Secure social links"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.10`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.9",
+      "tag": "c2pa-wc_v0.14.9",
+      "date": "Tue, 06 May 2025 21:10:16 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.9`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.8",
+      "tag": "c2pa-wc_v0.14.8",
+      "date": "Tue, 29 Apr 2025 23:13:41 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.7",
+      "tag": "c2pa-wc_v0.14.7",
+      "date": "Thu, 24 Apr 2025 22:18:28 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"c2pa\" to `0.30.7`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.14.6",
       "tag": "c2pa-wc_v0.14.6",
       "date": "Tue, 22 Apr 2025 22:10:04 GMT",

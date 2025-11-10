@@ -1,6 +1,63 @@
 # Change Log - @contentauth/react
 
-This log was last generated on Tue, 22 Apr 2025 22:10:04 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Nov 2025 18:33:42 GMT and should not be manually modified.
+
+## 0.2.95
+Fri, 07 Nov 2025 18:33:42 GMT
+
+_Version update only_
+
+## 0.2.94
+Tue, 14 Oct 2025 18:30:13 GMT
+
+_Version update only_
+
+## 0.2.93
+Tue, 30 Sep 2025 18:12:55 GMT
+
+### Patches
+
+- Fix for some validation errors being thrown as exceptions
+
+## 0.2.92
+Tue, 16 Sep 2025 19:04:49 GMT
+
+_Version update only_
+
+## 0.2.91
+Thu, 11 Sep 2025 18:31:42 GMT
+
+_Version update only_
+
+## 0.2.90
+Sun, 07 Sep 2025 05:40:43 GMT
+
+_Version update only_
+
+## 0.2.89
+Thu, 21 Aug 2025 23:43:07 GMT
+
+_Version update only_
+
+## 0.2.88
+Sat, 16 Aug 2025 15:28:06 GMT
+
+_Version update only_
+
+## 0.2.87
+Tue, 06 May 2025 21:10:16 GMT
+
+_Version update only_
+
+## 0.2.86
+Tue, 29 Apr 2025 23:13:41 GMT
+
+_Version update only_
+
+## 0.2.85
+Thu, 24 Apr 2025 22:18:28 GMT
+
+_Version update only_
 
 ## 0.2.84
 Tue, 22 Apr 2025 22:10:04 GMT
